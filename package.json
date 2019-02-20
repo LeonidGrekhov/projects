@@ -4,7 +4,9 @@
   "description": "csc648-sp19 group project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build-front-end && npm run start-server",
+    "build-front-end": "cd front-end && npm install && npm run build",
+    "start-server": "DEBUG=Team4:* node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,10 @@
   },
   "homepage": "https://github.com/CSC-648-SFSU/csc648-sp19-team244#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
   }
 }
