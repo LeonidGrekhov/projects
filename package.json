@@ -6,7 +6,9 @@
   "scripts": {
     "start": "npm run build-front-end && npm run start-server",
     "build-front-end": "cd front-end && npm install && npm run build",
-    "start-server": "DEBUG=Team4:* node ./bin/www"
+    "start-server": "npm run install-server && npm run run-server",
+    "install-server": "npm install",
+    "run-server": "DEBUG=Team4:* node ./bin/www"
   },
   "repository": {
     "type": "git",
