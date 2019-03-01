@@ -1,0 +1,30 @@
+{
+  "name": "csc648-sp19-team244",
+  "version": "1.0.0",
+  "description": "csc648-sp19 group project",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build-front-end && npm run start-server",
+    "build-front-end": "cd front-end && npm install && npm run build",
+    "start-server": "npm run install-server && npm run run-server",
+    "install-server": "npm install",
+    "run-server": "DEBUG=Team4:* node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC-648-SFSU/csc648-sp19-team244.git"
+  },
+  "author": "many",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CSC-648-SFSU/csc648-sp19-team244/issues"
+  },
+  "homepage": "https://github.com/CSC-648-SFSU/csc648-sp19-team244#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  }
+}
