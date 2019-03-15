@@ -5,6 +5,7 @@
  */
 
 var app = require('../app');
+var { init: socketInit } = require('../sockets');
 var debug = require('debug')('Team4:server');
 var http = require('http');
 
@@ -20,6 +21,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+socketInit(server);
 
 /**
  * Listen on provided port, on all network interfaces.
