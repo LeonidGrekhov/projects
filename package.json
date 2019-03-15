@@ -8,7 +8,9 @@
     "build-front-end": "cd front-end && npm install && npm run build",
     "start-server": "npm run install-server && npm run run-server",
     "install-server": "npm install",
-    "run-server": "DEBUG=Team4:* node ./bin/www"
+    "run-server": "DEBUG=Team4:* node ./bin/www",
+    "run-local-react": "cd front-end && REACT_APP_LOCAL_SERVER=yes PORT=4000 npm start",
+    "run-local-server": "DEBUG=Team4:* LOCAL_SERVER=yes node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
     "cookie-parser": "^1.4.4",
     "debug": "^4.1.1",
     "express": "^4.16.4",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "socket.io": "^2.2.0"
   }
 }
