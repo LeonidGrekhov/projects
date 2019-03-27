@@ -5,5 +5,4 @@ module.exports = (request, response, next) => {
   } else {
     response.sendStatus(404);
   }
-  return null;
 };
