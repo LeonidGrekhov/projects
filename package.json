@@ -12,7 +12,13 @@
     "run-local-react": "cd front-end && REACT_APP_LOCAL_SERVER=yes PORT=4000 npm start",
     "run-local-server": "DEBUG=Team4:* LOCAL_SERVER=yes node ./bin/www",
     "run-local-react:windows": "cd front-end && SET REACT_APP_LOCAL_SERVER=yes& SET PORT=4000& npm start",
-    "run-local-server:windows": "SET DEBUG=Team4:*& SET LOCAL_SERVER=yes& node ./bin/www"
+    "run-local-server:windows": "SET DEBUG=Team4:*& SET LOCAL_SERVER=yes& node ./bin/www",
+    "db:create:migration": "sequelize migration:generate --name",
+    "db:run:migration": "sequelize db:migrate",
+    "db:undo:migration": "sequelize db:migrate:undo:all",
+    "db:create:seed": "sequelize seed:generate --name",
+    "db:run:seed": "sequelize db:seed:all",
+    "db:undo:seed": "sequelize db:seed:undo:all"
   },
   "repository": {
     "type": "git",
