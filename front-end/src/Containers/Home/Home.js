@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import members from "../About/members";
+import NavBar from "../../Generics/NavBar/NavBar";
 class Home extends Component {
   render() {
     let memberButtons = members.map((memberName, i) => {
@@ -18,6 +19,8 @@ class Home extends Component {
     });
     return (
       <div>
+        <NavBar  authenticated={true}
+        />
         <div className="container text-center">
           <span>Software Engineering class SFSU</span>
           <br />
