@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./NavBar.css";
+import cartLogo from "./shoppingCart.svg";
 class Navbar extends Component {
   ComponentWillReceiveProps = props => {};
 
@@ -27,29 +28,24 @@ class Navbar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto" />
           <form className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control mr-sm-2"
-              type="text"
-              placeholder="Email"
-              aria-label="Email"
-            />
-            <input
-              className="form-control mr-sm-2"
-              type="password"
-              placeholder="Password"
-              aria-label="Password"
-            />
+          
             <button
-              className="btn btn-success my-2 my-sm-0"
-              style={{ marginRight: ".5rem" }}
+            variant="primary"
+            id="LoginButton"
+              className="btn btn-outline-primary mr-2 my-2 my-sm-0"
               type="submit"
             >
               Login
             </button>
-            <button className="btn btn-warning my-2 my-sm-0" type="submit">
+            <button variant="primary" id="SignUpButton" className="btn btn-primary my-2 mr-2 my-sm-0" type="submit">
               Sign Up
-            </button>
+            </button>   
+            <img src={cartLogo} class="mr-2" height="30" width="30" alt="banner" />
+            <button variant="primary" id="cartDiv" className="btn btn-primary my-2 mr-2 my-sm-0" type="submit">
+              {" "}0
+            </button>   
           </form>
+
         </div>
       </nav>
          
