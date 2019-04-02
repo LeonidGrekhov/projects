@@ -88,17 +88,17 @@ class Navbar extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto" />
-          <form className="form-inline ">
+          <ul className="navbar-nav" />
+          <form className="form-inline flex-fill " >
             <input
-              className="form-control mr-sm-2"
+              className="form-control mr-sm-2 flex-fill"
               id="navBarSearchForm "
               type="search"
               placeholder="Search"
               aria-label="Search"
               
             />
-            <button className="btn btn-outline-success my-2 my-sm-2" type="submit">
+            <button className="btn btn-outline-success mr-2 my-2 my-sm-2" type="submit">
               Search
             </button>
           </form>
