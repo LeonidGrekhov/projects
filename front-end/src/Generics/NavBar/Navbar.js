@@ -8,6 +8,7 @@ class Navbar extends Component {
   ComponentWillReceiveProps = props => {};
 
   render() {
+    //logged in version of the navbar. 
     if (this.props.authenticated) {
       return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,6 +54,7 @@ class Navbar extends Component {
          
       );
     }
+    // This is the not logged in version of the navbar. 
     return  (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
