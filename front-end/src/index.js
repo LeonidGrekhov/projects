@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
 import routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
+import "../src/index.css"
 
 if (null !== $ && null !== Popper) {
   ReactDOM.render(
