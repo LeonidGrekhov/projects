@@ -3,7 +3,7 @@ const SALT_ROUNDS = 10;
 
 const insertUser = db => (name, email, hash_me, type = 'general') =>
   bcrypt.hash(hash_me, SALT_ROUNDS).then(password =>
-    db.th_users.create({
+    db.user.create({
       name,
       email,
       password,
@@ -12,14 +12,14 @@ const insertUser = db => (name, email, hash_me, type = 'general') =>
   );
 
 const findUserByEmail = db => email =>
-  db.th_users.findOne({ where: { email } });
+  db.user.findOne({ where: { email } });
 
-const findUserById = db => id => db.th_users.findOne({ where: { id } });
+const findUserById = db => id => db.user.findOne({ where: { id } });
 
 const updatePassword = db => (email, new_password) =>
   bcrypt
     .hash(new_password, SALT_ROUNDS)
-    .then(hash => db.th_users.update({ password: hash }, { where: { email } }));
+    .then(hash => db.user.update({ password: hash }, { where: { email } }));
 
 const insertSession = db => (sid, data, expire) =>
   db.session.create({
