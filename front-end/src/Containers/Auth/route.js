@@ -1,9 +1,9 @@
-import Login from './Login';
+import Register from './Register';
 
 export default [
   {
-    path: '/login',
+    path: '/register',
     exact: true,
-    component: Login
+    component: Register
   }
 ];
