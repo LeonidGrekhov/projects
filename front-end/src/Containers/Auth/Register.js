@@ -17,7 +17,7 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount = () => {
     Auth.getRegister().then(response => {
       if (!response.ok) {
         window.location = '/';
