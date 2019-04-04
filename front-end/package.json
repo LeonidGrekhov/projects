@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "bootstrap-select": "^1.13.9",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.7",
     "react": "^16.8.2",
