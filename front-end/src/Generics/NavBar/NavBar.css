@@ -44,10 +44,5 @@
 }
 #cartDiv:focus {
   border-color: #d1d1d1;
-
   background-color: #d1d1d1;
-}
-
-#navBarSearchForm {
-  width: 100% !important;
 }
