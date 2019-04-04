@@ -18,18 +18,7 @@ class SearchResult extends Component {
 
   bodyContent = () => {
     if (null === this.state.pageCount) {
-      return (
-        <div className='container' style={{ minHeight: '65vw' }}>
-          <div className='align-self-center'>
-            <div
-              className='spinner-border text-info'
-              style={{ width: '10vw', height: '10vw' }}
-            >
-              <span className='sr-only'>Loading...</span>
-            </div>
-          </div>
-        </div>
-      );
+      return <Generics.Body.Loading />;
     } else {
       return (
         <div className='container'>
