@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 class Header extends Component {
     render() {
         return (
-            <div>Hello header</div>
+            <div></div>
         );
     }
 } export default Header;

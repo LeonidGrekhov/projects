@@ -248,7 +248,6 @@ class Navbar extends Component {
         >
           <span className='navbar-toggler-icon' />
         </button>
-
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav' />
           {navBarSearchForm}
