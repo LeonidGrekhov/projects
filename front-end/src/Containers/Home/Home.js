@@ -50,10 +50,10 @@ class Home extends Component {
           content={
             <div className="container-fluid">
               <div className="row justify-content-center">
-                <div id="bookGallery" className="row pb-2 flex-fill">
+                <div id="bookGallery" className="row py-5 flex-fill">
                 <div className="col-3">
                   <div
-                    id="carouselExampleControls"
+                    id="bookImage"
                     className="carousel slide"
                     data-ride="carousel"
                   >
@@ -85,7 +85,7 @@ class Home extends Component {
                 </div>
                 <div className="col-6">
                   <div
-                    id="carouselExampleControls2"
+                    id="MainBookImage"
                     className="carousel slide"
                     data-ride="carousel"
                   >
@@ -114,7 +114,7 @@ class Home extends Component {
                     </div>
                     <a
                       className="carousel-control-prev"
-                      href="#carouselExampleControls2"
+                      href="#MainBookImage"
                       role="button"
                       data-slide="prev"
                     >
@@ -126,7 +126,7 @@ class Home extends Component {
                     </a>
                     <a
                       className="carousel-control-next"
-                      href="#carouselExampleControls2"
+                      href="#MainBookImage"
                       role="button"
                       data-slide="next"
                     >
@@ -141,7 +141,7 @@ class Home extends Component {
                 {/* Middle book image */}
                 <div className="col-3">
                   <div
-                    id="carouselExampleControls3"
+                    id="bookImage"
                     className="carousel slide"
                     data-ride="carousel"
                   >
