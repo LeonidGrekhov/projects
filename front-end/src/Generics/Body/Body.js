@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 import SideBar from './Sidebar/Sidebar';
 import Loading from './Loading/Loading';
 
