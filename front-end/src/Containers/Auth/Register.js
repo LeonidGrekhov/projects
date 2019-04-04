@@ -9,7 +9,8 @@ class Register extends Component {
     super(props);
     this.state = {
       showSideBar: false,
-      name: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: ''
     };
@@ -23,7 +24,7 @@ class Register extends Component {
         window.location = '/';
       }
     });
-  }
+  };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -32,7 +33,8 @@ class Register extends Component {
   onSubmit = event => {
     event.preventDefault();
     Auth.postRegister(
-      this.state.name,
+      this.state.firstname,
+      this.state.lastname,
       this.state.email,
       this.state.password
     ).then(response => {
@@ -50,19 +52,45 @@ class Register extends Component {
       <Generics.Body
         noSideBar={!this.state.showSideBar}
         content={
-          <div className='container'>
+          <div
+            className='container'
+            style={{
+              minHeight: '68vh',
+              marginTop: '12vh'
+            }}
+          >
             <form>
               <div className='form-group'>
-                <label htmlFor='form-name'>Name</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='form-name'
-                  placeholder='Enter name'
-                  name='name'
-                  value={this.state.name}
-                  onChange={this.onChange}
-                />
+                <div className='form-group row'>
+                  <label className='col-sm-6' htmlFor='form-first-name'>
+                    First Name
+                  </label>
+                  <label className='col-sm-6' htmlFor='form-last-name'>
+                    Last Name
+                  </label>
+                </div>
+                <div className='form-group row'>
+                  <input
+                    type='text'
+                    className='form-control col'
+                    id='form-first-name'
+                    placeholder='Enter  first name'
+                    name='firstname'
+                    value={this.state.name}
+                    onChange={this.onChange}
+                    style={{ marginLeft: '1em', marginRight: '1em' }}
+                  />
+                  <input
+                    type='text'
+                    className='form-control col'
+                    id='form-last-name'
+                    placeholder='Enter last name'
+                    name='lastname'
+                    value={this.state.name}
+                    onChange={this.onChange}
+                    style={{ marginLeft: '1em', marginRight: '1em' }}
+                  />
+                </div>
               </div>
               <div className='form-group'>
                 <label htmlFor='form-email'>Email address</label>
