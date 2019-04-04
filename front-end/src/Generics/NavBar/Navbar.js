@@ -5,7 +5,16 @@ import './NavBar.css';
 import cartLogo from './shoppingCart.svg';
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.onRegister = this.onRegister.bind(this);
+  }
   ComponentWillReceiveProps = props => {};
+
+  onRegister = event => {
+    event.preventDefault();
+    window.location = '/register';
+  };
 
   render() {
     //logged in version of the navbar.
@@ -44,6 +53,7 @@ class Navbar extends Component {
                 id='SignUpButton'
                 className='btn btn-primary my-2 mr-2 my-sm-0'
                 type='submit'
+                onClick={this.onRegister}
               >
                 Sign Up
               </button>
@@ -118,6 +128,7 @@ class Navbar extends Component {
               id='SignUpButton'
               className='btn btn-primary my-2 mr-2 my-sm-0'
               type='submit'
+              onClick={this.onRegister}
             >
               Sign Up
             </button>
