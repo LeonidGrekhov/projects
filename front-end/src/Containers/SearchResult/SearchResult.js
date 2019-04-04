@@ -2,29 +2,112 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
+import { Search } from '../../api';
+
+let debug = true;
+let json = {
+  data: [
+    {
+      name: 'book1',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book2',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book3',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book4',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book5',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book6',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book7',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book8',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book9',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    },
+    {
+      name: 'book10',
+      description: 'nothing',
+      image:
+        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+    }
+  ]
+};
+
 class SearchResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showSideBar: true,
-      pageCount: null,
-      page: parseInt(this.props.match.params.page)
+      data: null,
+      page: parseInt(this.props.match.params.page),
+      pageCount: null
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.pagination = this.pagination.bind(this);
+    this.onPageChange = this.onPageChange.bind(this);
+    this.result = this.result.bind(this);
   }
 
   componentDidMount = () => {};
 
   bodyContent = () => {
-    if (null === this.state.pageCount) {
-      return <Generics.Body.Loading />;
-    } else {
+    if (debug) {
       return (
         <div className='container'>
-          {this.pagination(this.state.page, this.state.pageCount)}
+          {this.pagination(this.state.page, 9)}
+          {this.result(json.data)}
+          {this.pagination(this.state.page, 9)}
         </div>
       );
+    } else {
+      if (null === this.state.pageCount) {
+        return <Generics.Body.Loading />;
+      } else {
+        return (
+          <div className='container'>
+            {this.pagination(this.state.page, this.state.pageCount)}
+            {this.result(this.state.data)}
+            {this.pagination(this.state.page, this.state.pageCount)}
+          </div>
+        );
+      }
     }
   };
 
@@ -41,14 +124,24 @@ class SearchResult extends Component {
     );
     let previous = currentPageIndex != 1 && (
       <li className='page-item'>
-        <a className='page-link' href='#'>
+        <a
+          className='page-link'
+          href='#'
+          name={currentPageIndex - 1}
+          onClick={this.onPageChange}
+        >
           Previous
         </a>
       </li>
     );
     let next = currentPageIndex !== pageCount && (
       <li className='page-item'>
-        <a className='page-link' href='#'>
+        <a
+          className='page-link'
+          href='#'
+          name={currentPageIndex + 1}
+          onClick={this.onPageChange}
+        >
           Next
         </a>
       </li>
@@ -63,7 +156,12 @@ class SearchResult extends Component {
       }
       previousPages.push(
         <li key={currentPageIndex + i} className='page-item'>
-          <a className='page-link' href='#'>
+          <a
+            className='page-link'
+            href='#'
+            name={currentPageIndex + i}
+            onClick={this.onPageChange}
+          >
             {currentPageIndex + i}
           </a>
         </li>
@@ -75,7 +173,12 @@ class SearchResult extends Component {
       }
       nextPages.push(
         <li key={currentPageIndex + i} className='page-item'>
-          <a className='page-link' href='#'>
+          <a
+            className='page-link'
+            href='#'
+            name={currentPageIndex + i}
+            onClick={this.onPageChange}
+          >
             {currentPageIndex + i}
           </a>
         </li>
@@ -83,7 +186,7 @@ class SearchResult extends Component {
     }
     return (
       <nav aria-label='Page navigation'>
-        <ul className='pagination'>
+        <ul className='pagination justify-content-center'>
           {previous}
           {previousPages}
           {currentPage}
@@ -94,7 +197,93 @@ class SearchResult extends Component {
     );
   };
 
-  render() {
+  onPageChange = event => {
+    event.preventDefault();
+    if (debug) {
+      this.setState({ page: parseInt(event.target.name) });
+      window.history.pushState(
+        {
+          html: document.innerHTML,
+          pageTitle: document.title
+        },
+        '',
+        `./${event.target.name}`
+      );
+    } else {
+      if (this.props.match.params.author) {
+        Search.getSearchByAuthor(
+          this.props.match.params.author,
+          event.target.name
+        ).then(data => {
+          this.setState({
+            data,
+            page: parseInt(event.target.name)
+          });
+          window.history.pushState(
+            {
+              html: document.innerHTML,
+              pageTitle: document.title
+            },
+            '',
+            `./${event.target.name}`
+          );
+        });
+      } else if (this.props.match.params.isbn) {
+        Search.getSearchByIsbn(
+          this.props.match.params.author,
+          event.target.name
+        ).then(data => {
+          this.setState({
+            data,
+            page: parseInt(event.target.name)
+          });
+          window.history.pushState(
+            {
+              html: document.innerHTML,
+              pageTitle: document.title
+            },
+            '',
+            `./${event.target.name}`
+          );
+        });
+      } else {
+        Search.getSearchByTitle(
+          this.props.match.params.author,
+          event.target.name
+        ).then(data => {
+          this.setState({
+            data,
+            page: parseInt(event.target.name)
+          });
+          window.history.pushState(
+            {
+              html: document.innerHTML,
+              pageTitle: document.title
+            },
+            '',
+            `./${event.target.name}`
+          );
+        });
+      }
+    }
+  };
+
+  result = data =>
+    data.map(book => (
+      <div className='container'>
+        <div className='row mt-3'>
+          <div className='col-3 text-center'>
+            <img src={book.image} className='img-fluid' alt='fluid' />
+          </div>
+          <div className='col'>
+            <h3>{book.name}</h3>
+            <h4>{book.description}</h4>
+          </div>
+        </div>
+      </div>
+    ));
+
+  render = () => {
     return (
       <div>
         <Generics.NavBar />
@@ -106,7 +295,7 @@ class SearchResult extends Component {
         <Generics.Footer />
       </div>
     );
-  }
+  };
 }
 
 export default SearchResult;
