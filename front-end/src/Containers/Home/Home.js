@@ -43,33 +43,175 @@ class Home extends Component {
         <Generics.Body
           noSideBar={!this.state.showSideBar}
           content={
-            <div>
-                      <div className="container text-center">
-            <span>Software Engineering class SFSU</span>
-          <br />
-          <span>Spring 201912345</span>
-          <br />
-          <span>Section 4</span>
-          <br />
-          <span>Team 4</span>
-          <br />
-        <br />
+            
+            <div className ="row">
+<div className ="col-3">
+        <div
+          id="carouselExampleControls"
+          className="carousel slide"
+          data-ride="carousel"
+          
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                alt="First slide"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
+                alt="Second slide"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
+                alt="Third slide"
+              />
+            </div>
+          </div>
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="prev"
+          >
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+            <span className="sr-only">Previous</span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="next"
+          >
+            <span className="carousel-control-next-icon" aria-hidden="true" />
+            <span className="sr-only">Next</span>
+          </a>
         </div>
-        <div className="container">
-        <button type="button" className="btn btn-info" onClick={this.onShowOrHide}>
-              Show/Hide
-            </button>
-            <br />
+</div>        
+<div className="col-6">    
+     
 
-            <br/>
-          <Link to="/about">
-            <button type="button" className="btn btn-info">
-              About Page
-            </button>
-          </Link>
-          {memberButtons}
+        <div
+          id="carouselExampleControls2"
+          className="carousel slide"
+          data-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                alt="First slide"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
+                alt="Second slide"
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
+                alt="Third slide"
+              />
+            </div>
+          </div>
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleControls2"
+            role="button"
+            data-slide="prev"
+          >
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+            <span className="sr-only">Previous</span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleControls2"
+            role="button"
+            data-slide="next"
+          >
+            <span className="carousel-control-next-icon" aria-hidden="true" />
+            <span className="sr-only">Next</span>
+          </a>
+        </div>
+        
+    </div>    
+        
+<div className="col-3">
+        <div
+          id="carouselExampleControls3"
+          className="carousel slide"
+          data-ride="carousel"
+        >
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img
+                className="d-block"
+                
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                alt="First slide"
+                style={{
+                    width:'150px',
+                    height:'100px'
+                }}
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
+                alt="Second slide"
+                
+              />
+            </div>
+            <div className="carousel-item">
+              <img
+                className="d-block"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
+                alt="Third slide"
+                style={{
+                    width:'20vw',
+                    height:'10vh'
+                }}
+              />
+            </div>
           </div>
           </div>
+
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleControls3"
+            role="button"
+            data-slide="prev"
+          >
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+            <span className="sr-only">Previous</span>
+          </a>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleControls3"
+            role="button"
+            data-slide="next"
+          >
+            <span className="carousel-control-next-icon" aria-hidden="true" />
+            <span className="sr-only">Next</span>
+          </a>
+        </div>
+        
+        </div>
+
+
 
           }
         />
