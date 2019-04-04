@@ -1,81 +1,91 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import  './Sidebar.css';
+import React, { Component } from 'react';
+
+import './Sidebar.css';
+
 let DeparmentsList = {
-    data:[{
-        departmentName:'a',
-        departmentCollege:[{
-            collegeQuery: 'ads',
-            collegeName: 'asd'
-        },
-        {
-            collegeQuery: 'ads',
-            collegeName: 'asd'
-        },
-        {
-            collegeQuery: 'ads',
-            collegeName: 'asd'
-        }
-    ]},
+  data: [
     {
-        departmentName:'b',
-        departmentCollege:[{
-            collegeQuery: 'ads',
-            collegeName: 'asd'
+      departmentName: 'College of Business',
+      departmentCollege: [
+        {
+          collegeQuery: 'acctg',
+          collegeName: 'Accounting Department'
         },
         {
-            collegeQuery: 'ads',
-            collegeName: 'asd'
+          collegeQuery: 'buslab',
+          collegeName: 'Business Computer Lab'
         },
         {
-            collegeQuery: 'ads',
-            collegeName: 'asd'
+          collegeQuery: 'econ',
+          collegeName: 'Economics Department'
         }
-    ]
-
+      ]
+    },
+    {
+      departmentName: 'College of Science and Engineering',
+      departmentCollege: [
+        {
+          collegeQuery: 'biology',
+          collegeName: 'Biology Department'
+        },
+        {
+          collegeQuery: 'cs',
+          collegeName: 'Department of Computer Science'
+        },
+        {
+          collegeQuery: 'statmath',
+          collegeName: 'Mathematics Department'
+        }
+      ]
     }
-]
-}
-
+  ]
+};
 
 class Sidebar extends Component {
-    
+  onSearchMacro = event =>
+    (window.location = `/search/${event.target.name}/page/1`);
 
-      onSearchMacro = event => window.location = `/search/${event.target.name}/page/1`;
-
-    render() {
-        console.log(DeparmentsList)
+  render() {
     return (
-        
-        
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>San Francisco State Univercity</h3>
-            </div>
-    
-            <ul class="list-unstyled components">
-                <p>Deparments</p>
-                {
-                    DeparmentsList.data.map( (department, i) => (
-                        <li key={i}>
-                            <a href={
-                                `#${department.departmentName}Submenu`
-                                } data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{department.departmentName}</a>
-                            <ul class="collapse list-unstyled" id={`${department.departmentName}Submenu`}>
-                            {department.departmentCollege.map( (college, i) => (
-                                <li key={i}>
-                            <a onClick={this.onSearchMacro} name={college.collegeQuery} >{college.collegeName}</a>
-                        </li>
-                            ))}
-                            
-                        </ul>
-                        </li>
-                    ))
-                }
-            </ul>
-        </nav>
-    
-    
+      <nav id='sidebar' style={{ minHeight: '100%' }}>
+        <div className='sidebar-header'>
+          <h3>San Francisco State University</h3>
+        </div>
+
+        <ul className='list-unstyled components'>
+          <p>Deparments</p>
+          {DeparmentsList.data.map((department, i) => (
+            <li key={i}>
+              <a
+                href={`#${department.departmentName.replace(
+                  /\s+/g,
+                  '-'
+                )}Submenu`}
+                data-toggle='collapse'
+                aria-expanded='false'
+                className='dropdown-toggle'
+                style={{
+                  fontSize: '0.85vw'
+                }}
+              >
+                {department.departmentName}
+              </a>
+              <ul
+                className='collapse list-unstyled'
+                id={`${department.departmentName.replace(/\s+/g, '-')}Submenu`}
+              >
+                {department.departmentCollege.map((college, i) => (
+                  <li key={i}>
+                    <a onClick={this.onSearchMacro} name={college.collegeQuery}>
+                      {college.collegeName}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </nav>
     );
   }
 }
