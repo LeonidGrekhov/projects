@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import Generics from "../../Generics";
 
 let BookJson = {
-  name: "Leonid Grekhov",
-  role: "front-end engineer",
-  picture: "alpha.png",
-  email: "lgrekhov@mail.sfsu.edu",
-  website: "none",
-  description: "I'm a senior student, majoring in computer science at SFSU."
+    BookTitle: "Once upon",
+    Description: "this book is about",
+    picture: "alpha.png",
+    SellerInfo: "Seller@mail.sfsu.edu",
+    SellerDescription: "used",
+    SellerPrice: "$8.99"
 };
 
 class BookId extends Component {
@@ -36,7 +36,11 @@ class BookId extends Component {
               />
             </div>
             <div className="col-6">
-              <div className="text-default">Description: </div>
+            <div className="text-default">Title: {BookJson.BookTitle}</div>
+            <div className="text-default">Description: {BookJson.Description}</div>
+            <div className="text-default">SellerInfo: {BookJson.SellerInfo}</div>
+            <div className="text-default">Book State: {BookJson.SellerDescription}</div>
+              <div className="text-default">Price: {BookJson.SellerPrice}</div>
             </div>
           </div>
         </div>
