@@ -208,6 +208,11 @@ class Home extends Component {
             <span className="sr-only">Next</span>
           </a>
         </div>
+        <div className="row bg-light flex-fill p-2 justify-content-center">
+                <h4>
+                  LitLister is the future of buying and selling books for college students. 
+                </h4>
+        </div>
 
         </div>
 
