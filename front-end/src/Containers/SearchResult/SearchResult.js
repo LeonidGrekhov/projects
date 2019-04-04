@@ -8,63 +8,63 @@ let debug = true;
 let json = {
   data: [
     {
-      name: 'book1',
+      title: 'book1',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book2',
+      title: 'book2',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book3',
+      title: 'book3',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book4',
+      title: 'book4',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book5',
+      title: 'book5',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book6',
+      title: 'book6',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book7',
+      title: 'book7',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book8',
+      title: 'book8',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book9',
+      title: 'book9',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     },
     {
-      name: 'book10',
+      title: 'book10',
       description: 'nothing',
-      image:
+      pictureurl:
         'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
     }
   ]
@@ -117,16 +117,16 @@ class SearchResult extends Component {
     }
     let currentPage = (
       <li className='page-item active'>
-        <a className='page-link' href='#'>
+        <a className='page-link' href='# '>
           {currentPageIndex}
         </a>
       </li>
     );
-    let previous = currentPageIndex != 1 && (
+    let previous = currentPageIndex !== 1 && (
       <li className='page-item'>
         <a
           className='page-link'
-          href='#'
+          href='# '
           name={currentPageIndex - 1}
           onClick={this.onPageChange}
         >
@@ -138,7 +138,7 @@ class SearchResult extends Component {
       <li className='page-item'>
         <a
           className='page-link'
-          href='#'
+          href='# '
           name={currentPageIndex + 1}
           onClick={this.onPageChange}
         >
@@ -158,7 +158,7 @@ class SearchResult extends Component {
         <li key={currentPageIndex + i} className='page-item'>
           <a
             className='page-link'
-            href='#'
+            href='# '
             name={currentPageIndex + i}
             onClick={this.onPageChange}
           >
@@ -175,7 +175,7 @@ class SearchResult extends Component {
         <li key={currentPageIndex + i} className='page-item'>
           <a
             className='page-link'
-            href='#'
+            href='# '
             name={currentPageIndex + i}
             onClick={this.onPageChange}
           >
@@ -230,7 +230,7 @@ class SearchResult extends Component {
         });
       } else if (this.props.match.params.isbn) {
         Search.getSearchByIsbn(
-          this.props.match.params.author,
+          this.props.match.params.isbn,
           event.target.name
         ).then(data => {
           this.setState({
@@ -248,7 +248,7 @@ class SearchResult extends Component {
         });
       } else {
         Search.getSearchByTitle(
-          this.props.match.params.author,
+          this.props.match.params.title,
           event.target.name
         ).then(data => {
           this.setState({
@@ -269,19 +269,23 @@ class SearchResult extends Component {
   };
 
   result = data =>
-    data.map(book => (
-      <div className='container'>
-        <div className='row mt-3'>
-          <div className='col-3 text-center'>
-            <img src={book.image} className='img-fluid' alt='fluid' />
-          </div>
-          <div className='col'>
-            <h3>{book.name}</h3>
-            <h4>{book.description}</h4>
+    data ? (
+      data.map((book, i) => (
+        <div className='container' key={i}>
+          <div className='row mt-3'>
+            <div className='col-3 text-center'>
+              <img src={book.pictureurl} className='img-fluid' alt='fluid' />
+            </div>
+            <div className='col'>
+              <h3>{book.title}</h3>
+              <h4>{book.description}</h4>
+            </div>
           </div>
         </div>
-      </div>
-    ));
+      ))
+    ) : (
+      <div className='container mt-3'>no result :(</div>
+    );
 
   render = () => {
     return (
