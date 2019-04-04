@@ -24,11 +24,23 @@ router.post('/api/logout', (request, response) => {
   return null;
 });
 
-router.post('/api/register', emptyStringsToNull, (request, response) => {
-  const { name, email, password } = request.body;
-  // do register here
-  // db.create_user then log in
-  return response.json({ name, email, password });
-});
+router.post(
+  '/api/register',
+  notAuthenticated,
+  emptyStringsToNull,
+  (request, response) => {
+    const { firstname, lastname, email, password } = request.body;
+    return Auth.insertUser(firstname, lastname, email, password)
+      .then(user =>
+        request.login(user, error => {
+          if (error) {
+            return response.json(error);
+          }
+          return response.json(user);
+        })
+      )
+      .catch(error => response.json(error));
+  }
+);
 
 module.exports = router;
