@@ -26,12 +26,12 @@ background:rgb(64, 66, 68);
 #SignUpButton:focus{
     background:rgb(130, 16, 187);
 
-    
+
 }
 #SignUpButton:hover{
     background:rgb(130, 16, 187);
 
-    
+
 }
 #cartDiv{
 color: black;
@@ -61,13 +61,13 @@ border-color: #d1d1d1;
     color: white;
     border-color: rgb(64, 66, 68);
     background:rgb(64, 66, 68);
-   
+
 
 }
 #navSearchButton:hover{
     background: white;
     color: black;
-  
+
 }
 #navBarSearchForm:focus{
     border-color: rgb(114, 14, 164) !important;
@@ -75,6 +75,6 @@ border-color: #d1d1d1;
 
 }
 #entireSearchBar{
-  
+
 
 }
