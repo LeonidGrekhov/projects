@@ -19,6 +19,7 @@ class BodyLanding extends Component {
 
   render() {
     return (
+      <div className="container-fluid">
       <div className='row'>
         {this.state.showSideBar && (
           <div className='col-2'>
@@ -26,6 +27,7 @@ class BodyLanding extends Component {
           </div>
         )}
         <div className='col'>{this.props.content}</div>
+      </div>
       </div>
     );
   }

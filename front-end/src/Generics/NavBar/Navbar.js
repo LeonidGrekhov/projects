@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "./logo.svg";
 import "./NavBar.css";
 import cartLogo from "./shoppingCart.svg";
+import searchIcon from "./Search_icon.svg";
 
 class Navbar extends Component {
   ComponentWillReceiveProps = props => {};
@@ -89,16 +90,16 @@ class Navbar extends Component {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav" />
-          <form className="form-inline flex-fill " >
+          <form className="form-inline flex-fill " id="entireSearchBar" >
             <input
               className="form-control mr-sm-2 flex-fill"
-              id="navBarSearchForm "
+              id="navBarSearchForm"
               type="search"
               placeholder="Search"
               aria-label="Search"
               
             />
-            <button className="btn btn-outline-success mr-2 my-2 my-sm-2" type="submit">
+            <button id="navSearchButton"  className="btn mr-2 my-2 my-sm-2" type="submit">
               Search
             </button>
           </form>
