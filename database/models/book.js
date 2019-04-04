@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     isbn: {
-      type: DataTypes.INTEGER(15),
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     description: {

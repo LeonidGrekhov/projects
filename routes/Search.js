@@ -33,5 +33,20 @@ router.get(
     }
 )
 
+router.get(
+    '/api/search/isbn/:isbnString',
+    (request,response) => {
+        console.log(request.params.isbnString);
+        var searchTerm = request.params.isbnString;
+        Search.findBookByISBN(searchTerm)
+        .then((data)=>{
+            response.json({data})
+        })
+        .catch((error)=>{
+            console.log(error)
+            response.json({error})
+        })
+    }
+)
 
 module.exports = router;

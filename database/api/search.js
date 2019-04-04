@@ -41,8 +41,20 @@ const findBookByAuthor = db => author => {
   return db.book.findAll({where});
 };
 
+const findBookByISBN = db => isbn => {
+  console.log(isbn);
+
+  return db.book.findAll({
+    where: {
+      isbn: {
+        [db.Sequelize.Op.like]: '%' + isbn + '%'
+      }
+    }
+  });
+}
 
 module.exports = db => ({
   findBookByTitle: findBookByTitle(db),
-  findBookByAuthor: findBookByAuthor(db)
+  findBookByAuthor: findBookByAuthor(db),
+  findBookByISBN: findBookByISBN(db)
 });

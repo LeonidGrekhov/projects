@@ -16,7 +16,7 @@
     "db:create:seed": "sequelize seed:generate --name",
     "db:run:seed": "sequelize db:seed:all",
     "db:undo:seed": "sequelize db:seed:undo:all",
-    "model-building":"sequelize-auto -h team44bookproject.cirinnrfd1cl.us-west-2.rds.amazonaws.com  -d BookProject -u Team44Project  -x 6NLy9?Qwj75%]5Z9 -p 3306  -e mysql  -o ./database/models"
+    "model-building": "sequelize-auto -h team44bookproject.cirinnrfd1cl.us-west-2.rds.amazonaws.com  -d BookProject -u Team44Project  -x 6NLy9?Qwj75%]5Z9 -p 3306  -e mysql  -o ./database/models"
   },
   "repository": {
     "type": "git",
