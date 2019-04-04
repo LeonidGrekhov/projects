@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const AuthRoute = require('./Auth');
 const DefaultRoute = require('./Default');
+const SearchRoute = require('./Search');
 
 if (process.env.LOCAL_SERVER) {
   router.use((_, response, next) => {
@@ -16,6 +17,7 @@ if (process.env.LOCAL_SERVER) {
 }
 
 router.use(AuthRoute);
+router.use(SearchRoute);
 router.use(DefaultRoute);
 
 module.exports = router;

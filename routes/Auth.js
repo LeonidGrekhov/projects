@@ -49,8 +49,8 @@ router.post(
   notAuthenticated,
   emptyStringsToNull,
   (request, response) => {
-    const { name, email, password } = request.body;
-    return Auth.insertUser(name, email, password)
+    const { firstname, lastname, email, password } = request.body;
+    return Auth.insertUser(firstname, lastname, email, password)
       .then(user =>
         request.login(user, error => {
           if (error) {

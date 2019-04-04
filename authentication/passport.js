@@ -25,7 +25,7 @@ const verifyCallback = (username, password, done) =>
     })
     .catch(error => done(null, false, error.message));
 
-passport.serializeUser((user, done) => done(null, user.id));
+passport.serializeUser((user, done) => done(null, user.uid));
 
 passport.deserializeUser((id, done) =>
   Auth.findUserById(id)

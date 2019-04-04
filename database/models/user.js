@@ -1,41 +1,36 @@
-'use strict';
-module.exports = (sequelize, Sequelize) => {
-  const user = sequelize.define(
-    'user',
-    {
-      id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          isEmail: true
-        },
-        unique: {
-          args: true,
-          msg: 'Email address already in use!'
-        }
-      },
-      password: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      type: {
-        type: Sequelize.ENUM,
-        values: ['general', 'buyer', 'seller', 'customer service', 'admin'],
-        allowNull: false
-      }
+/* jshint indent: 2 */
+
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('user', {
+    uid: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
-    {
-      timestamps: false
+    firstname: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    lastname: {
+      type: DataTypes.STRING(100),
+      allowNull: true
+    },
+    type: {
+      type: DataTypes.ENUM('general','buyer','seller','customerservice','admin'),
+      allowNull: false,
+      defaultValue: 'general'
+    },
+    email: {
+      type: DataTypes.STRING(330),
+      allowNull: false
+    },
+    password: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
-  );
-  return user;
+  }, {
+    timestamps: false,
+    tableName: 'user'
+  });
 };

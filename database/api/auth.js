@@ -1,10 +1,11 @@
 const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
 
-const insertUser = db => (name, email, hash_me, type = 'general') =>
+const insertUser = db => (firstname, lastname, email, hash_me, type = 'general') =>
   bcrypt.hash(hash_me, SALT_ROUNDS).then(password =>
     db.user.create({
-      name,
+      firstname,
+      lastname,
       email,
       password,
       type
@@ -14,7 +15,7 @@ const insertUser = db => (name, email, hash_me, type = 'general') =>
 const findUserByEmail = db => email =>
   db.user.findOne({ where: { email } });
 
-const findUserById = db => id => db.user.findOne({ where: { id } });
+const findUserById = db => uid => db.user.findOne({ where: { uid } });
 
 const updatePassword = db => (email, new_password) =>
   bcrypt
