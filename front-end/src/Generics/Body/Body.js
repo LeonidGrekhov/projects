@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import SideBar from "./Sidebar/Sidebar";
+import React, { Component } from 'react';
+
+import SideBar from './Sidebar/Sidebar';
+import Loading from './Loading/Loading';
 
 class BodyLanding extends Component {
   constructor(props) {
@@ -18,18 +19,18 @@ class BodyLanding extends Component {
 
   render() {
     return (
-    
-      <div className="row">
+      <div className='row'>
         {this.state.showSideBar && (
-          <div className="col-3">
+          <div className='col-2'>
             <SideBar />
           </div>
         )}
-
-
-        <div className="col">{this.props.content}</div>
+        <div className='col'>{this.props.content}</div>
       </div>
     );
   }
 }
+
+BodyLanding.Loading = Loading;
+
 export default BodyLanding;
