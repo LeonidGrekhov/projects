@@ -17,5 +17,21 @@ router.get(
     }
 )
 
+router.get(
+    '/api/search/author/:authorString',
+    (request,response) => {
+        console.log(request.params.authorString);
+        var searchTerm = request.params.authorString;
+        Search.findBookByAuthor(searchTerm)
+        .then((data)=>{
+            response.json({data})
+        })
+        .catch((error)=>{
+            console.log(error)
+            response.json({error})
+        })
+    }
+)
+
 
 module.exports = router;
