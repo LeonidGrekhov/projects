@@ -46,3 +46,12 @@
   border-color: #d1d1d1;
   background-color: #d1d1d1;
 }
+
+#categorySelect {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}

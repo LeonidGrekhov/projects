@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './NavBar.css';
 import cartLogo from './shoppingCart.svg';
 
-let debugUser = true;
+let debugUser = false;
 
 class Navbar extends Component {
   constructor(props) {
@@ -14,10 +14,14 @@ class Navbar extends Component {
     this.state = {
       user: null,
       email: '',
-      password: ''
+      password: '',
+      search: '',
+      category: 'title'
     };
     this.onChange = this.onChange.bind(this);
+    this.onLogin = this.onLogin.bind(this);
     this.onRegister = this.onRegister.bind(this);
+    this.onSearch = this.onSearch.bind(this);
   }
 
   componentDidMount = () => {
@@ -27,6 +31,7 @@ class Navbar extends Component {
           firstname: 'Rob'
         }
       });
+    } else {
     }
   };
 
@@ -52,71 +57,107 @@ class Navbar extends Component {
     window.location = '/register';
   };
 
+  onSearch = event => {
+    event.preventDefault();
+    if ('' !== this.state.search) {
+      window.location = `/search/${this.state.category}/${
+        this.state.search
+      }/page/1`;
+    }
+  };
+
   render = () => {
     let navBarSearchForm = (
-      <form className='form-inline flex-fill '>
-        <input
-          className='form-control mr-sm-2 flex-fill'
-          id='navBarSearchInput'
-          type='search'
-          placeholder='Search'
-          aria-label='Search'
-        />
-        <button
-          className='btn btn-outline-success mr-2 my-2 my-sm-2'
-          type='submit'
-        >
-          Search
-        </button>
+      <form className='form-inline flex-fill mr-2' onSubmit={this.onSearch}>
+        <div className='input-group flex-fill' onSubmit={this.onSearch}>
+          <div className='input-group-prepend' onSubmit={this.onSearch}>
+            <select
+              id='categorySelect'
+              className='form-control bg-warning text-dark border-warning'
+              name='category'
+              value={this.state.category}
+              onChange={this.onChange}
+              style={{
+                boxShadow: '0 0 0 0.2rem rgba(132, 0, 255, 0)'
+              }}
+            >
+              <option>title</option>
+              <option>author</option>
+              <option>isbn</option>
+            </select>
+          </div>
+          <input
+            type='text'
+            className='form-control'
+            placeholder='what are the books you are looking for?'
+            name='search'
+            value={this.state.search}
+            onChange={this.onChange}
+            style={{
+              boxShadow: '0 0 0 0.2rem rgba(132, 0, 255, 0)'
+            }}
+            onSubmit={this.onSearch}
+          />
+          <div className='input-group-append'>
+            <button
+              className='btn btn-success'
+              type='button'
+              style={{
+                boxShadow: '0 0 0 0.2rem rgba(132, 0, 255, 0)'
+              }}
+              onClick={this.onSearch}
+              onSubmit={this.onSearch}
+            >
+              Search
+            </button>
+          </div>
+        </div>
       </form>
     );
     let navBarLogInButton = (
-      <div class='dropdown'>
+      <div className='dropdown'>
         <button
           variant='primary'
           id='LoginButton'
           className='btn btn-outline-primary mr-2 my-2 my-sm-0 dropdown-toggle'
           type='button'
-          id='dropdownLoginButton'
           data-toggle='dropdown'
           aria-haspopup='true'
           aria-expanded='false'
         >
           Login
         </button>
-        <div className='dropdown-menu' aria-labelledby='dropdownLoginButton'>
+        <div className='dropdown-menu' aria-labelledby='LoginButton'>
           <div className='container'>
-            <form>
-              <div className='form-group'>
-                <input
-                  type='text'
-                  name='email'
-                  placeholder='  email'
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  style={{ marginBottom: '1em' }}
-                />
-              </div>
-              <div className='form-group'>
-                <input
-                  type='password'
-                  name='password'
-                  placeholder='  password'
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  style={{ marginBottom: '1em' }}
-                />
-              </div>
-              <div className='form-group'>
-                <button
-                  className='btn btn-block btn-outline-primary'
-                  type='submit'
-                  onClick={this.onLogin}
-                >
-                  Login
-                </button>
-              </div>
-            </form>
+            <div className='form-group'>
+              <input
+                type='text'
+                name='email'
+                placeholder='  email'
+                value={this.state.email}
+                onChange={this.onChange}
+                style={{ marginBottom: '1em' }}
+              />
+            </div>
+            <div className='form-group'>
+              <input
+                type='password'
+                name='password'
+                placeholder='  password'
+                value={this.state.password}
+                onChange={this.onChange}
+                style={{ marginBottom: '1em' }}
+              />
+            </div>
+            <div className='form-group'>
+              <button
+                className='btn btn-block btn-outline-primary'
+                type='submit'
+                onClick={this.onLogin}
+              >
+                Login
+              </button>
+            </div>
           </div>
         </div>
       </div>
