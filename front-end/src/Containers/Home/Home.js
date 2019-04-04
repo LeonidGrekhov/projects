@@ -13,7 +13,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSideBar: true
+      showSideBar: false
     }
     this.onShowOrHide = this.onShowOrHide.bind(this);
   }
@@ -46,6 +46,9 @@ class Home extends Component {
             <div>
                       <div className="container text-center">
             <span>Software Engineering class SFSU</span>
+            <button type="button" className="btn btn-info" onClick={this.onShowOrHide}>
+              Show/Hide
+            </button>
           <br />
           <span>Spring 201912345</span>
           <br />
@@ -56,9 +59,7 @@ class Home extends Component {
         <br />
         </div>
         <div className="container">
-        <button type="button" className="btn btn-info" onClick={this.onShowOrHide}>
-              Show/Hide
-            </button>
+        
             <br />
 
             <br/>

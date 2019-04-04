@@ -20,9 +20,13 @@ class BodyLanding extends Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="container-fluid">
+            <div className="row flex-fill">
+
+
                 {this.state.showSideBar && <div className="col-2"><SideBar/></div>}
                 <div className="col">{this.props.content}</div>
+            </div>
             </div>
         );
     }

@@ -56,8 +56,25 @@ border-color: #d1d1d1;
 
 }
 
-#navBarSearchForm{
+#navSearchButton{
+    border-radius: 0;
+    color: white;
+    border-color: rgb(64, 66, 68);
+    background:rgb(64, 66, 68);
    
-    width: 100% !important;
+
+}
+#navSearchButton:hover{
+    background: white;
+    color: black;
+  
+}
+#navBarSearchForm:focus{
+    border-color: rgb(114, 14, 164) !important;
+    box-shadow: 0 0 0 0.2rem rgba(114, 14, 164,.25);
+
+}
+#entireSearchBar{
+  
 
 }
