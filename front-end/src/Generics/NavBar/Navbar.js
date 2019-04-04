@@ -32,10 +32,15 @@ class Navbar extends Component {
         }
       });
     } else {
+      Auth.getLogin().then(response => {
+        if (response.user) {
+          this.setState({
+            user: response.user
+          });
+        }
+      });
     }
   };
-
-  ComponentWillReceiveProps = props => {};
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
