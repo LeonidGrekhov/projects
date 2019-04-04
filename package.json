@@ -13,9 +13,6 @@
     "run-local-server": "DEBUG=Team4:* LOCAL_SERVER=yes node ./bin/www",
     "run-local-react:windows": "cd front-end && SET REACT_APP_LOCAL_SERVER=yes& SET PORT=4000& npm start",
     "run-local-server:windows": "SET DEBUG=Team4:*& SET LOCAL_SERVER=yes& node ./bin/www",
-    "db:create:migration": "sequelize migration:generate --name",
-    "db:run:migration": "sequelize db:migrate",
-    "db:undo:migration": "sequelize db:migrate:undo:all",
     "db:create:seed": "sequelize seed:generate --name",
     "db:run:seed": "sequelize db:seed:all",
     "db:undo:seed": "sequelize db:seed:undo:all"
@@ -40,10 +37,11 @@
     "express-mysql-session": "^2.1.0",
     "express-session": "^1.15.6",
     "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^5.2.1",
+    "sequelize": "^5.2.11",
     "sequelize-cli": "^5.4.0",
     "socket.io": "^2.2.0"
   }
