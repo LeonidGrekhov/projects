@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import SideBar from './Sidebar/Sidebar';
 import Loading from './Loading/Loading';
 
-BodyLanding.Loading = Loading;
-
 class BodyLanding extends Component {
   constructor(props) {
     super(props);
@@ -32,5 +30,7 @@ class BodyLanding extends Component {
     );
   }
 }
+
+BodyLanding.Loading = Loading;
 
 export default BodyLanding;
