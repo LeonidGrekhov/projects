@@ -5,7 +5,15 @@ router.get(
     '/api/search/title/:titleString',
     (request,response) => {
         console.log(request.params.titleString);
-        response.send('The search route is fine')
+        var searchTerm = request.params.titleString;
+        Search.findBookByTitle(searchTerm)
+        .then((data)=>{
+            response.json({data})
+        })
+        .catch((error)=>{
+            console.log(error)
+            response.json({error})
+        })
     }
 )
 
