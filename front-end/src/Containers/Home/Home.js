@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import members from "../About/members";
 import "./Home.css";
 import CashIcon from "./money_icon.svg";
 import BookIcon from "./book_icon.svg";
@@ -27,19 +26,28 @@ class Home extends Component {
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
 
   render() {
-    let memberButtons = members.map((memberName, i) => {
+    const imageLinks = [
+      "theIntelligentInvestor.jpeg",
+      "CollegeAlgebra.jpeg",
+      "CollegePhysics.jpeg",
+      "Socrates.jpeg"
+    ];
+    let imageSlides = imageLinks.map((linkUrl, i) => {
+      var relativeLink = "./SampleBookCovers/"+linkUrl;
+      
+      console.log(relativeLink);
+
       return (
-        <div key={i}>
-          <br />
-          <Link to={`/about/${memberName}`}>
-            <button type="button" className="btn btn-info">
-              {memberName}
-            </button>
-          </Link>
-          <br />
-        </div>
+        <div className="carousel-item">
+        <img
+          className="d-block w-100"
+          src={require(relativeLink)}
+          alt="Second slide"
+        />
+      </div>
       );
     });
+
     return (
       <div>
         <Generics.NavBar />
@@ -65,20 +73,7 @@ class Home extends Component {
                           alt="First slide"
                         />
                       </div>
-                      <div className="carousel-item">
-                        <img
-                          className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
-                          alt="Second slide"
-                        />
-                      </div>
-                      <div className="carousel-item">
-                        <img
-                          className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
-                          alt="Third slide"
-                        />
-                      </div>
+                      {imageSlides}
                     </div>
                     
                   </div>
@@ -154,21 +149,7 @@ class Home extends Component {
                          
                         />
                       </div>
-                      <div className="carousel-item">
-                        <img
-                          className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
-                          alt="Second slide"
-                        />
-                      </div>
-                      <div className="carousel-item">
-                        <img
-                           className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
-                          alt="Third slide"
-                         
-                        />
-                      </div>
+                      {imageSlides}
                     </div>
                   </div>
 
