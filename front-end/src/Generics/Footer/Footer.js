@@ -17,7 +17,7 @@ class Footer extends Component {
       return (
         <div className="d-inline  m-2" key={i} >
           <Link  to={`/${actualLink}`}>
-            <span  class="text-muted">
+            <span  className="text-muted">
               <strong id="footerLink">{linkUrl}</strong>
             </span>
           </Link>

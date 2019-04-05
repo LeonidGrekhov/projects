@@ -50,11 +50,13 @@ class Home extends Component {
 
       return (
         <div className="carousel-item">
+
         <img
           id="bookImage"
-          className="d-block w-100"
+          className="d-block"
           src={linkUrl}
         />
+        
       </div>
       );
     });
@@ -68,19 +70,21 @@ class Home extends Component {
           noSideBar={!this.state.showSideBar}
           content={
             <div className="container-fluid">
+
               <div className="row justify-content-center">
-                <div id="bookGallery" className="row py-5 flex-fill justify-content-center">
+
+                <div id="bookGallery" className="row flex-fill py-5  justify-content-center">
                 <div className="col-3">
                   <div
-                    id="bookImage"
+              
                     className="carousel slide"
                     data-ride="carousel"
                   >
                     <div className="carousel-inner">
                       <div className="carousel-item active">
                         <img
-                          id="bookCover"
-                          className="d-block w-100"
+                         id="bookImage"
+                          className="d-block"
                           src={book4}
                           alt="First slide"
                         />
@@ -93,15 +97,15 @@ class Home extends Component {
 
                 <div className="col-3">
                   <div
-                    id="bookImage"
+                   
                     className="carousel slide"
                     data-ride="carousel"
                   >
                     <div className="carousel-inner">
                       <div className="carousel-item active">
                         <img
-                         id="bookCover"
-                          className="d-block w-100"
+                         id="bookImage"
+                          className="d-block"
                           src={book1}
                           alt="First slide"
                          
@@ -118,15 +122,15 @@ class Home extends Component {
                 {/* Middle book image */}
                 <div className="col-3">
                   <div
-                    id="bookImage"
-                    className="carousel slide"
+                  
+                    className="carousel slide "
                     data-ride="carousel"
                   >
-                    <div className="carousel-inner">
-                      <div className="carousel-item active">
+                    <div className="carousel-inner ">
+                      <div className="carousel-item  active">
                         <img
-                         id="bookCover"
-                          className="d-block w-100"
+                        id="bookImage"
+                          className="d-block"
                           src={book2}
                           alt="First slide"
                          
