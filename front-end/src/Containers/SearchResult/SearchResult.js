@@ -87,31 +87,43 @@ class SearchResult extends Component {
 
   componentDidMount = () => {
     if (this.props.match.params.author) {
-      Search.getSearchByAuthor(this.props.match.params.author, this.props.match.params.page).then( response => {
-        response.text().then( result =>{
+      Search.getSearchByAuthor(
+        this.props.match.params.author,
+        this.props.match.params.page
+      ).then(response => {
+        response.text().then(result => {
+          result = JSON.parse(result);
           this.setState({
             data: result.data,
             pageCount: result.pageCount
-          })
-        })
+          });
+        });
       });
     } else if (this.props.match.params.isbn) {
-      Search.getSearchByIsbn(this.props.match.params.isbn, this.props.match.params.page).then( response => {
-        response.text().then( result =>{
+      Search.getSearchByIsbn(
+        this.props.match.params.isbn,
+        this.props.match.params.page
+      ).then(response => {
+        response.text().then(result => {
+          result = JSON.parse(result);
           this.setState({
             data: result.data,
             pageCount: result.pageCount
-          })
-        })
+          });
+        });
       });
     } else if (this.props.match.params.title) {
-      Search.getSearchByTitle(this.props.match.params.title, this.props.match.params.page).then( response => {
-        response.text().then( result =>{
+      Search.getSearchByTitle(
+        this.props.match.params.title,
+        this.props.match.params.page
+      ).then(response => {
+        response.text().then(result => {
+          result = JSON.parse(result);
           this.setState({
             data: result.data,
             pageCount: result.pageCount
-          })
-        })
+          });
+        });
       });
     }
   };
@@ -242,56 +254,41 @@ class SearchResult extends Component {
       if (this.props.match.params.author) {
         Search.getSearchByAuthor(
           this.props.match.params.author,
-          event.target.name
-        ).then(data => {
-          this.setState({
-            data,
-            page: parseInt(event.target.name)
+          this.props.match.params.page
+        ).then(response => {
+          response.text().then(result => {
+            result = JSON.parse(result);
+            this.setState({
+              data: result.data,
+              pageCount: result.pageCount
+            });
           });
-          window.history.pushState(
-            {
-              html: document.innerHTML,
-              pageTitle: document.title
-            },
-            '',
-            `./${event.target.name}`
-          );
         });
       } else if (this.props.match.params.isbn) {
         Search.getSearchByIsbn(
           this.props.match.params.isbn,
-          event.target.name
-        ).then(data => {
-          this.setState({
-            data,
-            page: parseInt(event.target.name)
+          this.props.match.params.page
+        ).then(response => {
+          response.text().then(result => {
+            result = JSON.parse(result);
+            this.setState({
+              data: result.data,
+              pageCount: result.pageCount
+            });
           });
-          window.history.pushState(
-            {
-              html: document.innerHTML,
-              pageTitle: document.title
-            },
-            '',
-            `./${event.target.name}`
-          );
         });
-      } else {
+      } else if (this.props.match.params.title) {
         Search.getSearchByTitle(
           this.props.match.params.title,
-          event.target.name
-        ).then(data => {
-          this.setState({
-            data,
-            page: parseInt(event.target.name)
+          this.props.match.params.page
+        ).then(response => {
+          response.text().then(result => {
+            result = JSON.parse(result);
+            this.setState({
+              data: result.data,
+              pageCount: result.pageCount
+            });
           });
-          window.history.pushState(
-            {
-              html: document.innerHTML,
-              pageTitle: document.title
-            },
-            '',
-            `./${event.target.name}`
-          );
         });
       }
     }
