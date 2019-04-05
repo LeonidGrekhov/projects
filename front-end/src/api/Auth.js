@@ -9,5 +9,5 @@ export default {
     request('/login', { email, password }).then(jsonify),
   postLogout: () => request('/logout', {}),
   postRegister: (firstname, lastname, email, password) =>
-    request('/register', { name: firstname, lastname, email, password })
+    request('/register', { firstname, lastname, email, password })
 };

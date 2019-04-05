@@ -33,9 +33,15 @@ class Navbar extends Component {
       });
     } else {
       Auth.getLogin().then(response => {
-        if (response.user) {
-          this.setState({
-            user: response.user
+        if (response.ok) {
+          response.text().then( promise => {
+            if (promise.firstname) {
+              this.setState({
+                user: {
+                  firstname: promise.firstname
+                }
+              })
+            }
           });
         }
       });

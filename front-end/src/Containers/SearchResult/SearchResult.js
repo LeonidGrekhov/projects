@@ -4,7 +4,7 @@ import Generics from '../../Generics';
 
 import { Search } from '../../api';
 
-let debug = true;
+let debug = false;
 let json = {
   data: [
     {
@@ -85,7 +85,36 @@ class SearchResult extends Component {
     this.result = this.result.bind(this);
   }
 
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    if (this.props.match.params.author) {
+      Search.getSearchByAuthor(this.props.match.params.author, this.props.match.params.page).then( response => {
+        response.text().then( result =>{
+          this.setState({
+            data: result.data,
+            pageCount: result.pageCount
+          })
+        })
+      });
+    } else if (this.props.match.params.isbn) {
+      Search.getSearchByIsbn(this.props.match.params.isbn, this.props.match.params.page).then( response => {
+        response.text().then( result =>{
+          this.setState({
+            data: result.data,
+            pageCount: result.pageCount
+          })
+        })
+      });
+    } else if (this.props.match.params.title) {
+      Search.getSearchByTitle(this.props.match.params.title, this.props.match.params.page).then( response => {
+        response.text().then( result =>{
+          this.setState({
+            data: result.data,
+            pageCount: result.pageCount
+          })
+        })
+      });
+    }
+  };
 
   bodyContent = () => {
     if (debug) {
