@@ -12,7 +12,11 @@
     "run-local-react": "cd front-end && REACT_APP_LOCAL_SERVER=yes PORT=4000 npm start",
     "run-local-server": "DEBUG=Team4:* LOCAL_SERVER=yes node ./bin/www",
     "run-local-react:windows": "cd front-end && SET REACT_APP_LOCAL_SERVER=yes& SET PORT=4000& npm start",
-    "run-local-server:windows": "SET DEBUG=Team4:*& SET LOCAL_SERVER=yes& node ./bin/www"
+    "run-local-server:windows": "SET DEBUG=Team4:*& SET LOCAL_SERVER=yes& node ./bin/www",
+    "db:create:seed": "sequelize seed:generate --name",
+    "db:run:seed": "sequelize db:seed:all",
+    "db:undo:seed": "sequelize db:seed:undo:all",
+    "model-building": "sequelize-auto -h team44bookproject.cirinnrfd1cl.us-west-2.rds.amazonaws.com  -d BookProject -u Team44Project  -x 6NLy9?Qwj75%]5Z9 -p 3306  -e mysql  -o ./database/models"
   },
   "repository": {
     "type": "git",
@@ -25,11 +29,20 @@
   },
   "homepage": "https://github.com/CSC-648-SFSU/csc648-sp19-team244#readme",
   "dependencies": {
+    "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
     "debug": "^4.1.1",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.2.11",
+    "sequelize-auto": "^0.4.29",
+    "sequelize-auto-migrations": "^1.0.3",
+    "sequelize-cli": "^5.4.0",
     "socket.io": "^2.2.0"
   }
 }
