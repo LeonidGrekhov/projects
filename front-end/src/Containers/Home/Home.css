@@ -1,0 +1,24 @@
+#intro1{
+    color: white;
+    background: palevioletred;
+}
+#intro2{
+    color:white;
+    background: purple;
+}
+#intro3{
+    background: blueviolet;
+    color: white;
+}
+#bookGallery{
+    background: #272727;
+}
+#bookImage{
+    border-radius: 4px !important;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+}
+#MainBookImage{
+    border-radius: 4px !important;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+
+}
