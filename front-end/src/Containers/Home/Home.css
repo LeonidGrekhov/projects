@@ -15,10 +15,26 @@
 }
 #bookImage{
     border-radius: 4px !important;
+    
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
 }
 #MainBookImage{
+    
     border-radius: 4px !important;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+    
 
 }
+#bookCover {
+    border-radius: 4px !important;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+   
+   
+  }
+  
+  
+  
+ .carousel-item {
+  
+   transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+}
+

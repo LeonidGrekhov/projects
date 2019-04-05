@@ -8,6 +8,16 @@ import MapIcon from "./map_icon.svg";
 import ThumbIcon from "./thumbs_up.svg";
 import ShieldIcon from "./shield_icon.svg";
 import Generics from "../../Generics";
+
+//Book covers
+import book1 from "./SampleBookCovers/theIntelligentInvestor.jpeg";
+import book2 from "./SampleBookCovers/CollegePhysics.jpeg";
+import book3 from "./SampleBookCovers/Socrates.jpeg";
+import book4 from "./SampleBookCovers/CollegeAlgebra.jpeg";
+import { link } from "fs";
+
+
+
 //import NavBar from "../../Generics/NavBar/Navbar";
 //import Sidebar from "../../Generics/Sidebar/Sidebar";
 //import BodyLanding from "../../Generics/Body/BodyLanding"
@@ -26,23 +36,24 @@ class Home extends Component {
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
 
   render() {
-    const imageLinks = [
-      "theIntelligentInvestor.jpeg",
-      "CollegeAlgebra.jpeg",
-      "CollegePhysics.jpeg",
-      "Socrates.jpeg"
+    const imageLinkOrder1 = [
+      book1,book2,book3,book4
     ];
-    let imageSlides = imageLinks.map((linkUrl, i) => {
-      var relativeLink = "./SampleBookCovers/"+linkUrl;
+    const imageLinkOrder2 = [
+      book2,book3,book4,book1
+    ];
+    const imageLinkOrder3 = [
+      book3,book4,book1,book2
+    ];
+    let imageSlides = array => array.map((linkUrl, i) => {
       
-      console.log(relativeLink);
 
       return (
         <div className="carousel-item">
         <img
+          id="bookImage"
           className="d-block w-100"
-          src={require(relativeLink)}
-          alt="Second slide"
+          src={linkUrl}
         />
       </div>
       );
@@ -58,7 +69,7 @@ class Home extends Component {
           content={
             <div className="container-fluid">
               <div className="row justify-content-center">
-                <div id="bookGallery" className="row py-5 flex-fill">
+                <div id="bookGallery" className="row py-5 flex-fill justify-content-center">
                 <div className="col-3">
                   <div
                     id="bookImage"
@@ -68,71 +79,42 @@ class Home extends Component {
                     <div className="carousel-inner">
                       <div className="carousel-item active">
                         <img
+                          id="bookCover"
                           className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                          src={book4}
                           alt="First slide"
                         />
                       </div>
-                      {imageSlides}
+                      {imageSlides(imageLinkOrder1)}
                     </div>
                     
                   </div>
                 </div>
-                <div className="col-6">
+
+                <div className="col-3">
                   <div
-                    id="MainBookImage"
+                    id="bookImage"
                     className="carousel slide"
                     data-ride="carousel"
                   >
                     <div className="carousel-inner">
                       <div className="carousel-item active">
                         <img
+                         id="bookCover"
                           className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                          src={book1}
                           alt="First slide"
+                         
                         />
                       </div>
-                      <div className="carousel-item">
-                        <img
-                          className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
-                          alt="Second slide"
-                        />
-                      </div>
-                      <div className="carousel-item">
-                        <img
-                          className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
-                          alt="Third slide"
-                        />
-                      </div>
+                      {imageSlides(imageLinkOrder2)}
                     </div>
-                    <a
-                      className="carousel-control-prev"
-                      href="#MainBookImage"
-                      role="button"
-                      data-slide="prev"
-                    >
-                      <span
-                        className="carousel-control-prev-icon"
-                        aria-hidden="true"
-                      />
-                      <span className="sr-only">Previous</span>
-                    </a>
-                    <a
-                      className="carousel-control-next"
-                      href="#MainBookImage"
-                      role="button"
-                      data-slide="next"
-                    >
-                      <span
-                        className="carousel-control-next-icon"
-                        aria-hidden="true"
-                      />
-                      <span className="sr-only">Next</span>
-                    </a>
                   </div>
+
+             
+                 
                 </div>
+
                 {/* Middle book image */}
                 <div className="col-3">
                   <div
@@ -143,13 +125,14 @@ class Home extends Component {
                     <div className="carousel-inner">
                       <div className="carousel-item active">
                         <img
+                         id="bookCover"
                           className="d-block w-100"
-                          src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                          src={book2}
                           alt="First slide"
                          
                         />
                       </div>
-                      {imageSlides}
+                      {imageSlides(imageLinkOrder3)}
                     </div>
                   </div>
 
