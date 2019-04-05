@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/CSC-648-SFSU/csc648-sp19-team244#readme",
   "dependencies": {
+    "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
     "debug": "^4.1.1",
