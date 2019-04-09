@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 
-import Generics from "../../Generics";
+import Generics from '../../Generics';
 
 let BookJson = {
-    BookTitle: "Once upon",
-    Description: "this book is about",
-    picture: "alpha.png",
-    SellerInfo: "Seller@mail.sfsu.edu",
-    SellerDescription: "used",
-    SellerPrice: "$8.99"
+  BookTitle: 'Once upon',
+  Description: 'this book is about',
+  picture: 'alpha.png',
+  SellerInfo: 'Seller@mail.sfsu.edu',
+  SellerDescription: 'used',
+  SellerPrice: '$8.99'
 };
 
 class BookId extends Component {
@@ -26,21 +25,27 @@ class BookId extends Component {
   render() {
     let bodyContent = (
       <div>
-        <div className="container">
-          <div className="row-1">
-            <div className="col-6">
+        <div className='container'>
+          <div className='row-1'>
+            <div className='col-6'>
               <img
-                className="d-block w-100"
-                src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
-                
+                className='d-block w-100'
+                src='https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg'
+                alt='placeholder'
               />
             </div>
-            <div className="col-6">
-            <div className="text-default">Title: {BookJson.BookTitle}</div>
-            <div className="text-default">Description: {BookJson.Description}</div>
-            <div className="text-default">SellerInfo: {BookJson.SellerInfo}</div>
-            <div className="text-default">Book State: {BookJson.SellerDescription}</div>
-              <div className="text-default">Price: {BookJson.SellerPrice}</div>
+            <div className='col-6'>
+              <div className='text-default'>Title: {BookJson.BookTitle}</div>
+              <div className='text-default'>
+                Description: {BookJson.Description}
+              </div>
+              <div className='text-default'>
+                SellerInfo: {BookJson.SellerInfo}
+              </div>
+              <div className='text-default'>
+                Book State: {BookJson.SellerDescription}
+              </div>
+              <div className='text-default'>Price: {BookJson.SellerPrice}</div>
             </div>
           </div>
         </div>
