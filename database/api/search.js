@@ -14,6 +14,7 @@ const findBookByTitle = db => title => {
     [db.Sequelize.Op.or]: orValue
   }
   
+  // SQL Statement here; Sequelize allows us to avoid raw SQL queries.
   return db.book.findAll({where});
 };
    
@@ -37,13 +38,15 @@ const findBookByAuthor = db => author => {
     [db.Sequelize.Op.or]: orValue
   }
   console.log(where);
- 
+  
+  // SQL Statement here; Sequelize allows us to avoid raw SQL queries
   return db.book.findAll({where});
 };
 
 const findBookByISBN = db => isbn => {
   console.log(isbn);
 
+  // SQL statement here; Sequelize allows us to avoid raw SQL queries
   return db.book.findAll({
     where: {
       isbn: {
