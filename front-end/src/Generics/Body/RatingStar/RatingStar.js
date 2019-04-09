@@ -20,7 +20,7 @@ class RatingStar extends Component {
               paddingLeft: '0'
             }}
           >
-            <img src={starFilledIcon} width={dimension} />
+            <img src={starFilledIcon} width={dimension} alt='star filled' />
           </div>
         );
       } else if (rating - i <= -1) {
@@ -34,7 +34,7 @@ class RatingStar extends Component {
               paddingLeft: '0'
             }}
           >
-            <img src={starIcon} width={dimension} />
+            <img src={starIcon} width={dimension} alt='star' />
           </div>
         );
       } else {
@@ -50,6 +50,7 @@ class RatingStar extends Component {
               <img
                 src={starFilledIcon}
                 width={dimension}
+                alt='star filled'
                 style={{
                   clipPath: `inset(0 ${((rating - i) * -100).toFixed(2)}% 0 0)`
                 }}
@@ -64,6 +65,7 @@ class RatingStar extends Component {
               <img
                 src={starIcon}
                 width={dimension}
+                alt='star'
                 style={{
                   clipPath: `inset(0 0 0 ${((rating - i + 1) * 100).toFixed(
                     2
