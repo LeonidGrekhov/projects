@@ -100,46 +100,15 @@ class SearchResult extends Component {
   }
 
   componentDidMount = () => {
-    if (this.props.match.params.author) {
-      Search.getSearchByAuthor(
-        this.props.match.params.author,
-        this.props.match.params.page
-      ).then(response => {
-        response.text().then(result => {
-          result = JSON.parse(result);
-          this.setState({
-            data: result.data,
-            pageCount: result.pageCount
-          });
+    this.state.search(this.state.query, this.state.page).then(response =>
+      response.text().then(result => {
+        result = JSON.parse(result);
+        this.setState({
+          data: result.data,
+          pageCount: result.pageCount
         });
-      });
-    } else if (this.props.match.params.isbn) {
-      Search.getSearchByIsbn(
-        this.props.match.params.isbn,
-        this.props.match.params.page
-      ).then(response => {
-        response.text().then(result => {
-          result = JSON.parse(result);
-          this.setState({
-            data: result.data,
-            pageCount: result.pageCount
-          });
-        });
-      });
-    } else if (this.props.match.params.title) {
-      Search.getSearchByTitle(
-        this.props.match.params.title,
-        this.props.match.params.page
-      ).then(response => {
-        response.text().then(result => {
-          result = JSON.parse(result);
-          this.setState({
-            data: result.data,
-            pageCount: result.pageCount
-          });
-        });
-      });
-    }
+      })
+    );
   };
 
   bodyContent = () => {
@@ -265,46 +234,16 @@ class SearchResult extends Component {
         `./${event.target.name}`
       );
     } else {
-      if (this.props.match.params.author) {
-        Search.getSearchByAuthor(
-          this.props.match.params.author,
-          this.props.match.params.page
-        ).then(response => {
-          response.text().then(result => {
-            result = JSON.parse(result);
-            this.setState({
-              data: result.data,
-              pageCount: result.pageCount
-            });
+      let page = parseInt(event.target.name);
+      this.state.search(this.state.query, page).then(response =>
+        response.text().then(result => {
+          result = JSON.parse(result);
+          this.setState({
+            data: result.data,
+            page
           });
-        });
-      } else if (this.props.match.params.isbn) {
-        Search.getSearchByIsbn(
-          this.props.match.params.isbn,
-          this.props.match.params.page
-        ).then(response => {
-          response.text().then(result => {
-            result = JSON.parse(result);
-            this.setState({
-              data: result.data,
-              pageCount: result.pageCount
-            });
-          });
-        });
-      } else if (this.props.match.params.title) {
-        Search.getSearchByTitle(
-          this.props.match.params.title,
-          this.props.match.params.page
-        ).then(response => {
-          response.text().then(result => {
-            result = JSON.parse(result);
-            this.setState({
-              data: result.data,
-              pageCount: result.pageCount
-            });
-          });
-        });
-      }
+        })
+      );
     }
   };
 
