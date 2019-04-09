@@ -76,7 +76,11 @@ class Sidebar extends Component {
               >
                 {department.departmentCollege.map((college, i) => (
                   <li key={i}>
-                    <a onClick={this.onSearchMacro} name={college.collegeQuery}>
+                    <a
+                      onClick={this.onSearchMacro}
+                      name={college.collegeQuery}
+                      href='# '
+                    >
                       {college.collegeName}
                     </a>
                   </li>
