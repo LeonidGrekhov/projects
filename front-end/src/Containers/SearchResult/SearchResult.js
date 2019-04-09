@@ -142,6 +142,9 @@ class SearchResult extends Component {
     if (null === pageCount) {
       return false;
     }
+    if (null === this.state.data || 0 === this.state.data.length) {
+      return false;
+    }
     let currentPage = (
       <li className='page-item active'>
         <a className='page-link' href='# '>
@@ -266,7 +269,11 @@ class SearchResult extends Component {
         </div>
       ))
     ) : (
-      <div className='container mt-3'>no result :(</div>
+      <div className='container mt-3'>
+        <br />
+        <h2>no result :(</h2>
+        <br />
+      </div>
     );
 
   render = () => {
