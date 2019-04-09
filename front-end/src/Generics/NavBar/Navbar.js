@@ -18,6 +18,10 @@ class Navbar extends Component {
       search: '',
       category: 'title'
     };
+    if (this.props.category) {
+      this.state.category = this.props.category;
+      this.state.search = this.props.query;
+    }
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
     this.onRegister = this.onRegister.bind(this);
@@ -34,13 +38,13 @@ class Navbar extends Component {
     } else {
       Auth.getLogin().then(response => {
         if (response.ok) {
-          response.text().then( promise => {
+          response.text().then(promise => {
             if (promise.firstname) {
               this.setState({
                 user: {
                   firstname: promise.firstname
                 }
-              })
+              });
             }
           });
         }
