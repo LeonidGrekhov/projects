@@ -78,7 +78,16 @@ class RatingStar extends Component {
       }
     }
 
-    return <span className='row'>{star}</span>;
+    return (
+      <span
+        className='row'
+        data-toggle='tooltip'
+        data-placement='right'
+        title={`Rating: ${rating} / 5`}
+      >
+        {star}
+      </span>
+    );
   };
 }
 
