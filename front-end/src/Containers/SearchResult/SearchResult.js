@@ -79,6 +79,20 @@ class SearchResult extends Component {
       page: parseInt(this.props.match.params.page),
       pageCount: null
     };
+    let { author, isbn, title } = this.props.match.params;
+    if (author) {
+      this.state.category = 'author';
+      this.state.search = Search.getSearchByAuthor;
+      this.state.query = author;
+    } else if (isbn) {
+      this.state.category = 'isbn';
+      this.state.search = Search.getSearchByIsbn;
+      this.state.query = isbn;
+    } else if (title) {
+      this.state.category = 'title';
+      this.state.search = Search.getSearchByTitle;
+      this.state.query = title;
+    }
     this.bodyContent = this.bodyContent.bind(this);
     this.pagination = this.pagination.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
