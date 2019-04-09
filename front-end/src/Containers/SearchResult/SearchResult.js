@@ -77,7 +77,10 @@ class SearchResult extends Component {
       showSideBar: true,
       data: null,
       page: parseInt(this.props.match.params.page),
-      pageCount: null
+      pageCount: null,
+      category: null,
+      search: null,
+      query: null
     };
     let { author, isbn, title } = this.props.match.params;
     if (author) {
@@ -269,7 +272,10 @@ class SearchResult extends Component {
   render = () => {
     return (
       <div>
-        <Generics.NavBar />
+        <Generics.NavBar
+          category={this.state.category}
+          query={this.state.query}
+        />
         <Generics.Header />
         <Generics.Body
           noSideBar={!this.state.showSideBar}
