@@ -77,8 +77,25 @@ class SearchResult extends Component {
       showSideBar: true,
       data: null,
       page: parseInt(this.props.match.params.page),
-      pageCount: null
+      pageCount: null,
+      category: null,
+      search: null,
+      query: null
     };
+    let { author, isbn, title } = this.props.match.params;
+    if (author) {
+      this.state.category = 'author';
+      this.state.search = Search.getSearchByAuthor;
+      this.state.query = author;
+    } else if (isbn) {
+      this.state.category = 'isbn';
+      this.state.search = Search.getSearchByIsbn;
+      this.state.query = isbn;
+    } else if (title) {
+      this.state.category = 'title';
+      this.state.search = Search.getSearchByTitle;
+      this.state.query = title;
+    }
     this.bodyContent = this.bodyContent.bind(this);
     this.pagination = this.pagination.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
@@ -86,46 +103,15 @@ class SearchResult extends Component {
   }
 
   componentDidMount = () => {
-    if (this.props.match.params.author) {
-      Search.getSearchByAuthor(
-        this.props.match.params.author,
-        this.props.match.params.page
-      ).then(response => {
-        response.text().then(result => {
-          result = JSON.parse(result);
-          this.setState({
-            data: result.data,
-            pageCount: result.pageCount
-          });
+    this.state.search(this.state.query, this.state.page).then(response =>
+      response.text().then(result => {
+        result = JSON.parse(result);
+        this.setState({
+          data: result.data,
+          pageCount: result.pageCount
         });
-      });
-    } else if (this.props.match.params.isbn) {
-      Search.getSearchByIsbn(
-        this.props.match.params.isbn,
-        this.props.match.params.page
-      ).then(response => {
-        response.text().then(result => {
-          result = JSON.parse(result);
-          this.setState({
-            data: result.data,
-            pageCount: result.pageCount
-          });
-        });
-      });
-    } else if (this.props.match.params.title) {
-      Search.getSearchByTitle(
-        this.props.match.params.title,
-        this.props.match.params.page
-      ).then(response => {
-        response.text().then(result => {
-          result = JSON.parse(result);
-          this.setState({
-            data: result.data,
-            pageCount: result.pageCount
-          });
-        });
-      });
-    }
+      })
+    );
   };
 
   bodyContent = () => {
@@ -154,6 +140,9 @@ class SearchResult extends Component {
 
   pagination = (currentPageIndex, pageCount) => {
     if (null === pageCount) {
+      return false;
+    }
+    if (null === this.state.data || 0 === this.state.data.length) {
       return false;
     }
     let currentPage = (
@@ -251,46 +240,16 @@ class SearchResult extends Component {
         `./${event.target.name}`
       );
     } else {
-      if (this.props.match.params.author) {
-        Search.getSearchByAuthor(
-          this.props.match.params.author,
-          this.props.match.params.page
-        ).then(response => {
-          response.text().then(result => {
-            result = JSON.parse(result);
-            this.setState({
-              data: result.data,
-              pageCount: result.pageCount
-            });
+      let page = parseInt(event.target.name);
+      this.state.search(this.state.query, page).then(response =>
+        response.text().then(result => {
+          result = JSON.parse(result);
+          this.setState({
+            data: result.data,
+            page
           });
-        });
-      } else if (this.props.match.params.isbn) {
-        Search.getSearchByIsbn(
-          this.props.match.params.isbn,
-          this.props.match.params.page
-        ).then(response => {
-          response.text().then(result => {
-            result = JSON.parse(result);
-            this.setState({
-              data: result.data,
-              pageCount: result.pageCount
-            });
-          });
-        });
-      } else if (this.props.match.params.title) {
-        Search.getSearchByTitle(
-          this.props.match.params.title,
-          this.props.match.params.page
-        ).then(response => {
-          response.text().then(result => {
-            result = JSON.parse(result);
-            this.setState({
-              data: result.data,
-              pageCount: result.pageCount
-            });
-          });
-        });
-      }
+        })
+      );
     }
   };
 
@@ -310,13 +269,20 @@ class SearchResult extends Component {
         </div>
       ))
     ) : (
-      <div className='container mt-3'>no result :(</div>
+      <div className='container mt-3'>
+        <br />
+        <h2>no result :(</h2>
+        <br />
+      </div>
     );
 
   render = () => {
     return (
       <div>
-        <Generics.NavBar />
+        <Generics.NavBar
+          category={this.state.category}
+          query={this.state.query}
+        />
         <Generics.Header />
         <Generics.Body
           noSideBar={!this.state.showSideBar}
