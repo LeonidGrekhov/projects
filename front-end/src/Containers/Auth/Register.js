@@ -39,9 +39,7 @@ class Register extends Component {
       this.state.password
     ).then(response => {
       if (response.ok) {
-        console.log(response.text());
-        console.log(this.state);
-        //window.location = '/';
+        window.location = '/';
       } else {
         console.log(response);
       }
