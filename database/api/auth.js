@@ -12,11 +12,13 @@ const insertUser = db => (firstname, lastname, email, hash_me, type = 'general')
     })
   );
 
+// Returns from these functions should be in this format otherwise they may return null
 const findUserByEmail = db => email => {
   user = db.user.findOne({ where: { email } });
   return user
 };
 
+// Returns from these functions should be in this format otherwise they may return null
 const findUserById = db => uid => {
   user =  db.user.findOne({ where: { uid } });
   return user
