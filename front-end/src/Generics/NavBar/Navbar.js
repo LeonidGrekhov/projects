@@ -105,7 +105,7 @@ class Navbar extends Component {
             type='text'
             className='form-control'
             placeholder='what are the books you are looking for?'
-            name='search'
+            name='query'
             value={this.state.query}
             onChange={this.onChange}
             style={{
