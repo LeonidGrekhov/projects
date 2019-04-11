@@ -12,10 +12,17 @@ const insertUser = db => (firstname, lastname, email, hash_me, type = 'general')
     })
   );
 
-const findUserByEmail = db => email =>
-  db.user.findOne({ where: { email } });
+// Returns from these functions should be in this format otherwise they may return null
+const findUserByEmail = db => email => {
+  user = db.user.findOne({ where: { email } });
+  return user
+};
 
-const findUserById = db => uid => db.user.findOne({ where: { uid } });
+// Returns from these functions should be in this format otherwise they may return null
+const findUserById = db => uid => {
+  user =  db.user.findOne({ where: { uid } });
+  return user
+};
 
 const updatePassword = db => (email, new_password) =>
   bcrypt

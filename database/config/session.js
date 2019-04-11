@@ -7,7 +7,16 @@ const options = {
   user: 'Team44Project',
   password: '6NLy9?Qwj75%]5Z9',
   database: 'BookProject',
-  expiration: 3600000
+  expiration: 3600000,
+  createDatabaseTable: false,
+  schema: {
+    tableName: 'session',
+    columnNames: {
+      session_id: 'sid',
+      expires: 'expire',
+      data: 'data',
+    }
+  }
 };
 
 const session = express_session({
