@@ -6,8 +6,6 @@ import logo from './logo.svg';
 import './NavBar.css';
 import cartLogo from './shoppingCart.svg';
 
-let debugUser = false;
-
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -29,27 +27,20 @@ class Navbar extends Component {
   }
 
   componentDidMount = () => {
-    if (debugUser) {
-      this.setState({
-        user: {
-          firstname: 'Rob'
-        }
-      });
-    } else {
-      Auth.getLogin().then(response => {
-        if (response.ok) {
-          response.text().then(promise => {
-            if (promise.firstname) {
-              this.setState({
-                user: {
-                  firstname: promise.firstname
-                }
-              });
-            }
-          });
-        }
-      });
-    }
+    Auth.getLogin().then(response => {
+      if (response.ok) {
+        response.text().then(promise => {
+          promise = JSON.parse(promise);
+          if (promise.firstname) {
+            this.setState({
+              user: {
+                firstname: promise.firstname
+              }
+            });
+          }
+        });
+      }
+    });
   };
 
   onChange = event => {

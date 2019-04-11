@@ -7,7 +7,6 @@ const authenticated = require('./middlewares/authenticated');
 const notAuthenticated = require('./middlewares/notAuthenticated');
 const sendStatusOk = require('./middlewares/sendStatusOk');
 const emptyStringsToNull = require('./middlewares/emptyStringsToNull');
-const authenticateUser = require('./middlewares/authenticateUser');
 const sendUserIdAndUserName = require('./middlewares/sendUserIdAndUserName');
 
 router.get('/api/login', authenticated, sendUserIdAndUserName);
@@ -38,10 +37,10 @@ router.post(
                 }
                 return response.json(user);
               })
-            )
-          } else {
-            response.json({error: 'not found'})
-          }
+            );
+        } else {
+          response.json({ error: 'not found' });
+        }
       })
       .catch(error => response.json(error));
   }
@@ -58,21 +57,22 @@ router.post(
   emptyStringsToNull,
   (request, response) => {
     const { firstname, lastname, email, password } = request.body;
-    console.log('test');
-    console.log(firstname);
     return Auth.insertUser(firstname, lastname, email, password)
       .then(user =>
         request.login(user, error => {
-          console.log('test')
-          console.log(user)
-          console.log(error)
           if (error) {
             return response.json(error);
           }
-          return response.json(user);
+          return response.json({
+            firstname: user.firstname,
+            lastname: user.lastname
+          });
         })
       )
-      .catch(error => {console.log(error);response.json(error)});
+      .catch(error => {
+        console.log(error);
+        response.json(error);
+      });
   }
 );
 

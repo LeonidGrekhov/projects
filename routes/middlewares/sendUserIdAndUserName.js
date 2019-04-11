@@ -1,4 +1,4 @@
 module.exports = (_, response) => {
-  const { id, name } = response.locals.user;
-  return response.json({ id, name });
+  const { id, firstname } = response.locals.user;
+  return response.json({ id, firstname });
 };
