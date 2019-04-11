@@ -15,9 +15,13 @@ class Navbar extends Component {
       user: null,
       email: '',
       password: '',
-      search: '',
+      query: '',
       category: 'title'
     };
+    if (this.props.category) {
+      this.state.category = this.props.category;
+      this.state.query = this.props.query;
+    }
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
     this.onRegister = this.onRegister.bind(this);
@@ -34,13 +38,13 @@ class Navbar extends Component {
     } else {
       Auth.getLogin().then(response => {
         if (response.ok) {
-          response.text().then( promise => {
+          response.text().then(promise => {
             if (promise.firstname) {
               this.setState({
                 user: {
                   firstname: promise.firstname
                 }
-              })
+              });
             }
           });
         }
@@ -70,9 +74,9 @@ class Navbar extends Component {
 
   onSearch = event => {
     event.preventDefault();
-    if ('' !== this.state.search) {
+    if ('' !== this.state.query) {
       window.location = `/search/${this.state.category}/${
-        this.state.search
+        this.state.query
       }/page/1`;
     }
   };
@@ -101,8 +105,8 @@ class Navbar extends Component {
             type='text'
             className='form-control'
             placeholder='what are the books you are looking for?'
-            name='search'
-            value={this.state.search}
+            name='query'
+            value={this.state.query}
             onChange={this.onChange}
             style={{
               boxShadow: '0 0 0 0.2rem rgba(132, 0, 255, 0)'
