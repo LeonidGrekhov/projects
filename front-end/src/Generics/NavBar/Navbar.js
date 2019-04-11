@@ -66,9 +66,6 @@ class Navbar extends Component {
       }
     });
   };
-  onLogOut = event =>{
-
-  };
 
   onRegister = event => {
     event.preventDefault();
@@ -180,17 +177,6 @@ class Navbar extends Component {
         </div>
       </div>
     );
-    let navBarSignOutButton = (
-          <button
-          variant='primary'
-          id='LoginButton'
-          className='btn btn-outline-primary mr-2 ml-2 my-2 my-sm-0'
-          type='button'
-         onClick={this.onLogOut}
-        >
-          Log Out
-        </button>
-    );
     let navBarSignUpButton = (
       <button
         variant='primary'
@@ -248,7 +234,6 @@ class Navbar extends Component {
             {navBarSearchForm}
             <form className='form-inline my-2 my-lg-0'>
               <div className='text-light'>Hi, {this.state.user.firstname}</div>
-              {navBarSignOutButton}
               {navBarCartLogo}
               {navBarCartItem}
             </form>
