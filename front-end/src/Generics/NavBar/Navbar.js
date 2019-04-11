@@ -80,6 +80,9 @@ class Navbar extends Component {
       }/page/1`;
     }
   };
+  onSignOut = event =>{
+      //TODO Add sign out functionality
+  };
 
   render = () => {
     let navBarSearchForm = (
@@ -177,6 +180,17 @@ class Navbar extends Component {
         </div>
       </div>
     );
+    let navBarSignOutButton = (
+      <button
+        variant='primary'
+        id='LoginButton'
+        className='btn btn-primary ml-2 my-2 mr-2 my-sm-0'
+        type='submit'
+        onClick={this.onSignOut}
+      >
+        Sign Out
+      </button>
+    );
     let navBarSignUpButton = (
       <button
         variant='primary'
@@ -234,6 +248,7 @@ class Navbar extends Component {
             {navBarSearchForm}
             <form className='form-inline my-2 my-lg-0'>
               <div className='text-light'>Hi, {this.state.user.firstname}</div>
+              {navBarSignOutButton}
               {navBarCartLogo}
               {navBarCartItem}
             </form>
