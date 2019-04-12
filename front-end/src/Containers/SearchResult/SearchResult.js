@@ -254,7 +254,7 @@ class SearchResult extends Component {
   };
 
   result = data =>
-    data ? (
+    0 !== data.length ? (
       data.map((book, i) => (
         <div className='container' key={i}>
           <div className='row mt-3'>
