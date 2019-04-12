@@ -50,10 +50,12 @@ class Navbar extends Component {
   onLogin = event => {
     event.preventDefault();
     Auth.postLogin(this.state.email, this.state.password).then(response => {
-      if (response.user) {
-        this.setState({ user: response.user });
-      } else {
-        console.log(response.error);
+      if (response.firstname) {
+        this.setState({
+          user: {
+            firstname: response.firstname
+          }
+        });
       }
     });
   };
@@ -71,8 +73,9 @@ class Navbar extends Component {
       }/page/1`;
     }
   };
-  onSignOut = event =>{
-      //TODO Add sign out functionality
+  onSignOut = event => {
+    event.preventDefault();
+    Auth.postLogout().then(_ => this.setState({ user: null }));
   };
 
   render = () => {

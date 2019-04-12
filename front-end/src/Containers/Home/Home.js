@@ -32,7 +32,7 @@ class Home extends Component {
     let imageSlides = array =>
       array.map((linkUrl, i) => {
         return (
-          <div className='carousel-item'>
+          <div className='carousel-item' key={i}>
             <img id='bookImage' className='d-block' src={linkUrl} alt='book' />
           </div>
         );

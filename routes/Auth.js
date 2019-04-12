@@ -35,7 +35,10 @@ router.post(
                 if (error) {
                   return response.json(error);
                 }
-                return response.json(user);
+                return response.json({
+                  firstname: user.firstname,
+                  lastname: user.lastname
+                });
               })
             );
         } else {
