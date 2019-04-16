@@ -1,4 +1,4 @@
-import request from './request';
+import request from './middlewares/request';
 
 export default {
   getUserProfile: uid => request(`/user/${uid}`, {}, 'get')
