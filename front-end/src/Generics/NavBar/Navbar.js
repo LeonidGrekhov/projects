@@ -80,13 +80,13 @@ class Navbar extends Component {
 
   render = () => {
     let navBarSearchForm = (
-      <form className='form-inline flex-fill mr-2' onSubmit={this.onSearch}>
-        <div className='input-group flex-fill' onSubmit={this.onSearch}>
-          <div className='input-group-prepend' onSubmit={this.onSearch}>
+      <form className="form-inline flex-fill mr-2" onSubmit={this.onSearch}>
+        <div className="input-group flex-fill" onSubmit={this.onSearch}>
+          <div className="input-group-prepend" onSubmit={this.onSearch}>
             <select
-              id='categorySelect'
-              className='form-control bg-warning text-dark border-warning'
-              name='category'
+              id="categorySelect"
+              className="form-control bg-warning text-dark border-warning"
+              name="category"
               value={this.state.category}
               onChange={this.onChange}
               style={{
@@ -99,10 +99,10 @@ class Navbar extends Component {
             </select>
           </div>
           <input
-            type='text'
-            className='form-control'
-            placeholder='what are the books you are looking for?'
-            name='query'
+            type="text"
+            className="form-control"
+            placeholder="what are the books you are looking for?"
+            name="query"
             value={this.state.query}
             onChange={this.onChange}
             style={{
@@ -110,10 +110,10 @@ class Navbar extends Component {
             }}
             onSubmit={this.onSearch}
           />
-          <div className='input-group-append'>
+          <div className="input-group-append">
             <button
-              className='btn btn-success'
-              type='button'
+              className="btn btn-success"
+              type="button"
               style={{
                 boxShadow: '0 0 0 0.2rem rgba(132, 0, 255, 0)'
               }}
@@ -127,44 +127,44 @@ class Navbar extends Component {
       </form>
     );
     let navBarLogInButton = (
-      <div className='dropdown'>
+      <div className="dropdown">
         <button
-          variant='primary'
-          id='LoginButton'
-          className='btn btn-outline-primary mr-2 my-2 my-sm-0 dropdown-toggle'
-          type='button'
-          data-toggle='dropdown'
-          aria-haspopup='true'
-          aria-expanded='false'
+          variant="primary"
+          id="LoginButton"
+          className="btn btn-outline-primary mr-2 my-2 my-sm-0 dropdown-toggle"
+          type="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
         >
           Login
         </button>
-        <div className='dropdown-menu' aria-labelledby='LoginButton'>
-          <div className='container'>
-            <div className='form-group'>
+        <div className="dropdown-menu" aria-labelledby="LoginButton">
+          <div className="container">
+            <div className="form-group">
               <input
-                type='text'
-                name='email'
-                placeholder='  email'
+                type="text"
+                name="email"
+                placeholder="  email"
                 value={this.state.email}
                 onChange={this.onChange}
                 style={{ marginBottom: '1em' }}
               />
             </div>
-            <div className='form-group'>
+            <div className="form-group">
               <input
-                type='password'
-                name='password'
-                placeholder='  password'
+                type="password"
+                name="password"
+                placeholder="  password"
                 value={this.state.password}
                 onChange={this.onChange}
                 style={{ marginBottom: '1em' }}
               />
             </div>
-            <div className='form-group'>
+            <div className="form-group">
               <button
-                className='btn btn-block btn-outline-primary'
-                type='submit'
+                className="btn btn-block btn-outline-primary"
+                type="submit"
                 onClick={this.onLogin}
               >
                 Login
@@ -176,10 +176,10 @@ class Navbar extends Component {
     );
     let navBarSignOutButton = (
       <button
-        variant='primary'
-        id='LoginButton'
-        className='btn btn-primary ml-2 my-2 mr-2 my-sm-0'
-        type='submit'
+        variant="primary"
+        id="LoginButton"
+        className="btn btn-primary ml-2 my-2 mr-2 my-sm-0"
+        type="submit"
         onClick={this.onSignOut}
       >
         Sign Out
@@ -187,10 +187,10 @@ class Navbar extends Component {
     );
     let navBarSignUpButton = (
       <button
-        variant='primary'
-        id='SignUpButton'
-        className='btn btn-primary my-2 mr-2 my-sm-0'
-        type='submit'
+        variant="primary"
+        id="SignUpButton"
+        className="btn btn-primary my-2 mr-2 my-sm-0"
+        type="submit"
         onClick={this.onRegister}
       >
         Sign Up
@@ -199,19 +199,19 @@ class Navbar extends Component {
     let navBarCartLogo = (
       <img
         src={cartLogo}
-        className='mr-2'
-        height='30'
-        width='30'
-        alt='banner'
+        className="mr-2"
+        height="30"
+        width="30"
+        alt="banner"
       />
     );
 
     let navBarCartItem = (
       <button
-        variant='primary'
-        id='cartDiv'
-        className='btn btn-primary my-2 mr-2 my-sm-0'
-        type='submit'
+        variant="primary"
+        id="cartDiv"
+        className="btn btn-primary my-2 mr-2 my-sm-0"
+        type="submit"
       >
         {' '}
         0
@@ -220,28 +220,28 @@ class Navbar extends Component {
 
     if (this.state.user) {
       return (
-        <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-          <a className='navbar-brand' href='/'>
-            <img src={logo} height='28' alt='banner' />
-            {'  '} ListLister
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a className="navbar-brand" href="/">
+            <img src={logo} height="28" alt="banner" />
+            {'  '} LitLister
           </a>
           <button
-            className='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#navbarSupportedContent'
-            aria-controls='navbarSupportedContent'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            <span className='navbar-toggler-icon' />
+            <span className="navbar-toggler-icon" />
           </button>
 
-          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul className='navbar-nav mr-auto' />
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto" />
             {navBarSearchForm}
-            <form className='form-inline my-2 my-lg-0'>
-              <div className='text-light'>Hi, {this.state.user.firstname}</div>
+            <form className="form-inline my-2 my-lg-0">
+              <div className="text-light">Hi, {this.state.user.firstname}</div>
               {navBarSignOutButton}
               {navBarCartLogo}
               {navBarCartItem}
@@ -251,26 +251,26 @@ class Navbar extends Component {
       );
     }
     return (
-      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-        <a className='navbar-brand' href='/'>
-          <img src={logo} height='28' alt='banner' />
-          {'  '} ListLister
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a className="navbar-brand" href="/">
+          <img src={logo} height="28" alt="banner" />
+          {'  '} LitLister
         </a>
         <button
-          className='navbar-toggler'
-          type='button'
-          data-toggle='collapse'
-          data-target='#navbarSupportedContent'
-          aria-controls='navbarSupportedContent'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <span className='navbar-toggler-icon' />
+          <span className="navbar-toggler-icon" />
         </button>
-        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-          <ul className='navbar-nav' />
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav" />
           {navBarSearchForm}
-          <form className='form-inline my-2 my-lg-0'>
+          <form className="form-inline my-2 my-lg-0">
             {navBarLogInButton}
             {navBarSignUpButton}
             {navBarCartLogo}
