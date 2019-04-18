@@ -7,30 +7,39 @@ import members from '../../Containers/About/members';
 class About extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showSideBar: false
-    };
-  }
 
-  render() {
-    let memberCards = members.map((member, i) => {
-      let name = member.match.params;
-      return (
-        <div className="col-xl-3 col-md-6 mb-4">
-          <div className="card border-0 shadow">
-            <img
-              src="https://source.unsplash.com/TMgQMXoglsM/500x350"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body text-center">
-              <h5 className="card-title mb-0">{name}</h5>
-              <div className="card-text text-black-50">Web Developer</div>
+    this.state = {
+      showSideBar: false,
+      profiles: members.map(member => require('./' + member))
+    };
+    this.teamCards = this.teamCards.bind(this);
+  }
+  teamCards = () => (
+    <>
+      {members.map((member, i) => {
+        let name = member;
+        let profile = this.state.profiles[i];
+        return (
+          <div className="col-xl-3 col-md-6 mb-4" key={i}>
+            <div className="card border-0 ">
+              <img
+                src={require(`./${profile.picture}`)}
+                className="card-img-top cover"
+                height="250"
+                wdith="200"
+                alt="..."
+              />
+              <div className="card-body text-center">
+                <h5 className="card-title mb-0">{profile.name}</h5>
+                <div className="card-text text-black-50">{profile.role}</div>
+              </div>
             </div>
           </div>
-        </div>
-      );
-    });
+        );
+      })}
+    </>
+  );
+  render() {
     return (
       <div>
         <Generics.NavBar />
@@ -107,7 +116,7 @@ class About extends Component {
                 </p>
               </div>
 
-              <div className="row  about-box">
+              <div className="row  about-box ">
                 <span className="header-text  text-center  m-auto p-4">
                   Meet the team.
                 </span>
@@ -116,7 +125,9 @@ class About extends Component {
                   prices of textbooks. College is expensive enough so we wanted
                   to create something to bring the pain to greedy publishers.
                 </p>
-                {memberCards}
+              </div>
+              <div className="row justify-content-center flex-fill w-100">
+                {this.teamCards()}
               </div>
             </div>
           }
