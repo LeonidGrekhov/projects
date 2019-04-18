@@ -27,7 +27,7 @@ class BodyLanding extends Component {
               <SideBar />
             </div>
           )}
-          <div className="col flex-fill p-0">{this.props.content}</div>
+          <div className="col  p-0">{this.props.content}</div>
         </div>
       </div>
     );
