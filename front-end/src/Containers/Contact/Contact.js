@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Generics from '../../Generics';
-
+import '../../Containers/Contact/Contact.css';
 class Contact extends Component {
   constructor(props) {
     super(props);

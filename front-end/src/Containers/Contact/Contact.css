@@ -1,0 +1,6 @@
+.container-fluid {
+  height: auto !important; /* real browsers */
+  height: 100%; /* IE6: treaded as min-height*/
+  background-color: black;
+  min-height: 100%; /* real browsers */
+}
