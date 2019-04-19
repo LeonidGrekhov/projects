@@ -10,13 +10,21 @@ class Footer extends Component {
     };
   }
 
-  componentDidMount = () => {
+  updatePosition = () => {
     if (document.body.clientHeight > window.innerHeight) {
       this.setState({ position: 'relative' });
     } else {
       this.setState({ position: 'absolute' });
     }
-  };
+  }
+
+  componentDidMount = () => {
+    window.addEventListener('load', this.updatePosition);
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('load', this.updatePosition);
+  }
 
   render() {
     const footerLink = [
