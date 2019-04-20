@@ -1,4 +1,4 @@
-p.border.ps {
+div.border.ps {
   position: relative;
   min-height: 30vh;
   max-height: 30vh;
@@ -6,6 +6,6 @@ p.border.ps {
   direction: rtl;
 }
 
-p.border > .text-dark {
+div.border > .text-dark {
   direction: ltr;
 }
