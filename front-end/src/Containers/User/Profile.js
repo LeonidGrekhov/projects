@@ -15,7 +15,30 @@ let json = {
       'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
     description:
       'this is a placeholder account. Turn off debug to switch to an actual profile.'
-  }
+  },
+  chatLogData: [
+    {
+      cid: 24,
+      sender: 'jimmy99',
+      lastMessage: 'Hi',
+      time: '14:22 24-03-2019'
+    }, {
+      cid: 12,
+      sender: 'looking4FreeBooks',
+      lastMessage: 'Heyy',
+      time: '10:02 22-03-2019'
+    }, {
+      cid: 16,
+      sender: 'yourDad',
+      lastMessage: 'Hello',
+      time: '06:12 16-03-2019'
+    }, {
+      cid: 39,
+      sender: 'xXxpageDestroyerxXx',
+      lastMessage: 'Yo',
+      time: '23:57 01-03-2019'
+    }
+  ]
 };
 
 class Profile extends Component {
