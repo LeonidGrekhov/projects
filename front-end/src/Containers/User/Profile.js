@@ -46,6 +46,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       guest: true,
+      chatLogData: [],
       profileData: null,
       display: null,
       onUserNavigation: {
@@ -71,13 +72,13 @@ class Profile extends Component {
 
   componentDidMount = () => {
     if (debug) {
-      this.setState({ profileData: json.profileData, display: 'Profile' });
+      this.setState({ chatLogData: json.chatLogData, profileData: json.profileData, display: 'Profile' });
     } else {
       User.getUserProfile(this.props.match.params.uid).then(response => {
         if (response.ok) {
           response
             .text()
-            .then(profileData => this.setState({ profileData, display: 'Profile' }));
+            .then(({chatLogData, profileData}) => this.setState({ chatLogData, profileData, display: 'Profile' }));
         } else {
           window.location = '/404';
         }
