@@ -16,7 +16,7 @@ let json = {
     description:
       'this is a placeholder account. Turn off debug to switch to an actual profile.'
   },
-  chatLogData: [
+  chatListData: [
     {
       cid: 24,
       sender: 'jimmy99',
@@ -46,7 +46,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       guest: true,
-      chatLogData: [],
+      chatListData: [],
       profileData: null,
       display: null,
       onUserNavigation: {
@@ -54,7 +54,8 @@ class Profile extends Component {
         Message: this.onMessage,
         Review: this.onReview,
         Listing: this.onListing
-      }
+      },
+      renderReady: false
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.profileSideBar = this.profileSideBar.bind(this);
@@ -72,17 +73,20 @@ class Profile extends Component {
 
   componentDidMount = () => {
     if (debug) {
-      this.setState({ chatLogData: json.chatLogData, profileData: json.profileData, display: 'Profile' });
+      this.setState({ chatListData: json.chatListData, profileData: json.profileData, display: 'Profile' });
     } else {
-      User.getUserProfile(this.props.match.params.uid).then(response => {
-        if (response.ok) {
-          response
-            .text()
-            .then(({chatLogData, profileData}) => this.setState({ chatLogData, profileData, display: 'Profile' }));
-        } else {
-          window.location = '/404';
-        }
-      });
+      let {uid} = this.state;
+      User.getUserProfile(uid).then(
+        profileData => {
+          if (profileData.error) {
+            window.location = '/404';
+          } else {
+            User.getUserChatList(uid).then(
+              chatListData => this.setState({chatListData, profileData, display: 'Profile'})
+            )
+          }
+          }
+      );
     }
   };
 
@@ -230,29 +234,43 @@ class Profile extends Component {
   );
 
   userContent = ({ guest }) => {
-    if ('Profile' === this.state.display) {
+    let {display, profileData, chatListData, uid} = this.state;
+    if ('Profile' === display) {
       return (
         <>
           <br />
           <h2>Profile</h2>
-          <div>{this.state.profileData.description}</div>
+          <div>{profileData.description}</div>
         </>
       );
-    } else if ('Message' === this.state.display) {
+    } else if ('Message' === display) {
+      return (
+        <div>
+          <br />
+          {chatListData.map((chat, i) => (
+            <div className="row" key={i}>
+            <div class="col">
+            <div className="card" onClick={_ => window.location=`./${uid}/chat/${chat.cid}`}>
+  <div className="card-body">
+    <h5 className="card-title">{chat.sender}</h5>
+    <p className="card-text text-dark">{chat.time}</p>
+    <p className="card-text">{chat.lastMessage}</p>
+  </div>
+</div>
+</div>
+            </div>
+          ))}
+          
+          </div>
+      );
+    } else if ('Review' === display) {
       return (
         <div>
           <br />
           to do
         </div>
       );
-    } else if ('Review' === this.state.display) {
-      return (
-        <div>
-          <br />
-          to do
-        </div>
-      );
-    } else if ('Listing' === this.state.display) {
+    } else if ('Listing' === display) {
       return (
         <div>
           <br />
