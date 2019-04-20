@@ -8,6 +8,6 @@ export default {
   postCloseListing: ({aid, lid}) => request(`/admin/${aid}/closelisting`, {lid}),
   postCloseUserAccount: ({aid, uid}) => request(`/admin/${aid}/closeuseraccount`, {uid}),
   postRefundTransaction: ({aid, tid}) => request(`/admin/${aid}/refund`, {tid}),
-  postUpdateListingProfile: ({aid, lid, profile}) => request(`/admin/${aid}/updatelisting`, {aid, profile}),
+  postUpdateListingProfile: ({aid, lid, profile}) => request(`/admin/${aid}/updatelisting`, {lid, profile}),
   postUpdateUserAccountProfile: ({aid, uid, profile}) => request(`/admin/${aid}/updateuseraccount`, {uid, profile})
 };
