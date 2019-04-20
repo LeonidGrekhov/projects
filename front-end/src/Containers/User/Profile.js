@@ -6,7 +6,7 @@ import { User } from '../../api';
 
 let debug = true;
 let json = {
-  data: {
+  profileData: {
     firstname: 'Bob',
     lastname: 'Ross',
     email: 'fake@email.domain',
@@ -15,7 +15,30 @@ let json = {
       'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
     description:
       'this is a placeholder account. Turn off debug to switch to an actual profile.'
-  }
+  },
+  chatListData: [
+    {
+      cid: 24,
+      sender: 'jimmy99',
+      lastMessage: 'Hi',
+      time: '14:22 24-03-2019'
+    }, {
+      cid: 12,
+      sender: 'looking4FreeBooks',
+      lastMessage: 'Heyy',
+      time: '10:02 22-03-2019'
+    }, {
+      cid: 16,
+      sender: 'yourDad',
+      lastMessage: 'Hello',
+      time: '06:12 16-03-2019'
+    }, {
+      cid: 39,
+      sender: 'xXxpageDestroyerxXx',
+      lastMessage: 'Yo',
+      time: '23:57 01-03-2019'
+    }
+  ]
 };
 
 class Profile extends Component {
@@ -23,14 +46,16 @@ class Profile extends Component {
     super(props);
     this.state = {
       guest: true,
-      data: null,
+      chatListData: [],
+      profileData: null,
       display: null,
       onUserNavigation: {
         Profile: this.onProfile,
         Message: this.onMessage,
         Review: this.onReview,
         Listing: this.onListing
-      }
+      },
+      renderReady: false
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.profileSideBar = this.profileSideBar.bind(this);
@@ -48,17 +73,20 @@ class Profile extends Component {
 
   componentDidMount = () => {
     if (debug) {
-      this.setState({ data: json.data, display: 'Profile' });
+      this.setState({ chatListData: json.chatListData, profileData: json.profileData, display: 'Profile' });
     } else {
-      User.getUserProfile(this.props.match.params.uid).then(response => {
-        if (response.ok) {
-          response
-            .text()
-            .then(data => this.setState({ data, display: 'Profile' }));
-        } else {
-          window.location = '/404';
-        }
-      });
+      let {uid} = this.state;
+      User.getUserProfile(uid).then(
+        profileData => {
+          if (profileData.error) {
+            window.location = '/404';
+          } else {
+            User.getUserChatList(uid).then(
+              chatListData => this.setState({chatListData, profileData, display: 'Profile'})
+            )
+          }
+          }
+      );
     }
   };
 
@@ -103,7 +131,7 @@ class Profile extends Component {
       }}
     >
       <img
-        src={this.state.data.pictureurl}
+        src={this.state.profileData.pictureurl}
         className='img-fluid img-thumbnail'
         alt='profile'
         style={{
@@ -122,9 +150,9 @@ class Profile extends Component {
           }}
         >
           <h3>
-            {this.state.data.firstname} {this.state.data.lastname}
+            {this.state.profileData.firstname} {this.state.profileData.lastname}
           </h3>
-          {this.state.data.rating && this.displayRating(this.state.data.rating)}
+          {this.state.profileData.rating && this.displayRating(this.state.profileData.rating)}
         </li>
         <button
           type='button'
@@ -206,29 +234,43 @@ class Profile extends Component {
   );
 
   userContent = ({ guest }) => {
-    if ('Profile' === this.state.display) {
+    let {display, profileData, chatListData, uid} = this.state;
+    if ('Profile' === display) {
       return (
         <>
           <br />
           <h2>Profile</h2>
-          <div>{this.state.data.description}</div>
+          <div>{profileData.description}</div>
         </>
       );
-    } else if ('Message' === this.state.display) {
+    } else if ('Message' === display) {
+      return (
+        <div>
+          <br />
+          {chatListData.map((chat, i) => (
+            <div className="row" key={i}>
+            <div class="col">
+            <div className="card" onClick={_ => window.location=`./${uid}/chat/${chat.cid}`}>
+  <div className="card-body">
+    <h5 className="card-title">{chat.sender}</h5>
+    <p className="card-text text-dark">{chat.time}</p>
+    <p className="card-text">{chat.lastMessage}</p>
+  </div>
+</div>
+</div>
+            </div>
+          ))}
+          
+          </div>
+      );
+    } else if ('Review' === display) {
       return (
         <div>
           <br />
           to do
         </div>
       );
-    } else if ('Review' === this.state.display) {
-      return (
-        <div>
-          <br />
-          to do
-        </div>
-      );
-    } else if ('Listing' === this.state.display) {
+    } else if ('Listing' === display) {
       return (
         <div>
           <br />
