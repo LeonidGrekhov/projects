@@ -6,7 +6,7 @@ import { User } from '../../api';
 
 let debug = true;
 let json = {
-  data: {
+  profileData: {
     firstname: 'Bob',
     lastname: 'Ross',
     email: 'fake@email.domain',
@@ -23,7 +23,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       guest: true,
-      data: null,
+      profileData: null,
       display: null,
       onUserNavigation: {
         Profile: this.onProfile,
@@ -48,13 +48,13 @@ class Profile extends Component {
 
   componentDidMount = () => {
     if (debug) {
-      this.setState({ data: json.data, display: 'Profile' });
+      this.setState({ profileData: json.profileData, display: 'Profile' });
     } else {
       User.getUserProfile(this.props.match.params.uid).then(response => {
         if (response.ok) {
           response
             .text()
-            .then(data => this.setState({ data, display: 'Profile' }));
+            .then(profileData => this.setState({ profileData, display: 'Profile' }));
         } else {
           window.location = '/404';
         }
@@ -103,7 +103,7 @@ class Profile extends Component {
       }}
     >
       <img
-        src={this.state.data.pictureurl}
+        src={this.state.profileData.pictureurl}
         className='img-fluid img-thumbnail'
         alt='profile'
         style={{
@@ -122,9 +122,9 @@ class Profile extends Component {
           }}
         >
           <h3>
-            {this.state.data.firstname} {this.state.data.lastname}
+            {this.state.profileData.firstname} {this.state.profileData.lastname}
           </h3>
-          {this.state.data.rating && this.displayRating(this.state.data.rating)}
+          {this.state.profileData.rating && this.displayRating(this.state.profileData.rating)}
         </li>
         <button
           type='button'
@@ -211,7 +211,7 @@ class Profile extends Component {
         <>
           <br />
           <h2>Profile</h2>
-          <div>{this.state.data.description}</div>
+          <div>{this.state.profileData.description}</div>
         </>
       );
     } else if ('Message' === this.state.display) {
