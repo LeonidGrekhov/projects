@@ -6,6 +6,7 @@ import SearchResultRoute from './Containers/SearchResult/route';
 import BookRoute from './Containers/BookInfo/route';
 import UserRoute from './Containers/User/route';
 import ListingRoute from './Containers/Listing/route';
+import TransactionRoute from './Containers/Transaction/route';
 
 const routes = [
   ...HomeRoute,
@@ -15,6 +16,7 @@ const routes = [
   ...BookRoute,
   ...UserRoute,
   ...ListingRoute,
+  ...TransactionRoute,
   // Place 404 last so that incase of no match,
   // 404 will be displayed
   ...Error404Route
