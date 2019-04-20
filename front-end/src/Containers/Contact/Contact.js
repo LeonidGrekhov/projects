@@ -17,7 +17,13 @@ class Contact extends Component {
         <Generics.Header />
         <Generics.Body
           noSideBar={!this.state.showSideBar}
-          content={<div className="container-fluid h-100 w-100 main-Page" />}
+          content={
+            <div className="container-fluid h-100 flex-fill w-100 main-Page">
+              <div className="row">
+                <h1>Have Any Questions?</h1>
+              </div>
+            </div>
+          }
         />
         <Generics.Footer />
       </div>
