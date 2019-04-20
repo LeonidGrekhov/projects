@@ -8,7 +8,7 @@ export default [
     exact: true,
     component: UserProfile
   }, {
-    path: '/user/:uid/chat',
+    path: '/user/:uid/chat/:cid',
     exact: true,
     component: UserChat
   }, {
