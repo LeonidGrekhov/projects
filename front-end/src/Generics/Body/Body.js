@@ -21,7 +21,7 @@ class BodyLanding extends Component {
   render() {
     return (
       <div className="container-fluid height-100">
-        <div className="row" style={{minHeight:"calc(100vh - 88px)"}}>
+        <div className="row" style={{minHeight:"calc(100vh - 88px - 57.2px)"}}>
           {this.state.showSideBar && (
             <div className="col-2 p-0">
               <SideBar />

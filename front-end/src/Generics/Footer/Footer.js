@@ -5,25 +5,6 @@ import { Link } from 'react-router-dom';
 class Footer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      position: 'absolute'
-    };
-  }
-
-  updatePosition = () => {
-    if (document.body.clientHeight > window.innerHeight) {
-      this.setState({ position: 'relative' });
-    } else {
-      this.setState({ position: 'absolute' });
-    }
-  }
-
-  componentDidMount = () => {
-    window.addEventListener('load', this.updatePosition);
-  }
-
-  componentWillUnmount = () => {
-    window.removeEventListener('load', this.updatePosition);
   }
 
   render() {
@@ -50,7 +31,7 @@ class Footer extends Component {
     return (
       <div
         style={{
-          position: this.state.position,
+          position: 'relative',
           right: '0',
           bottom: '0',
           left: '0'
