@@ -23,9 +23,10 @@ class Contact extends Component {
                 <div className="big-Text mt-4">Have Any Questions?</div>
                 <p className="m-4">
                   If you have any questions or suggestions for us feel free to
-                  shoot us a email at
+                  shoot us an email at
                   <b> contact@litlister.com</b>
-                  <br />We will get back to you as soon as we can.
+                  <br />
+                  We will get back to you as soon as we can.
                 </p>
               </div>
             </div>
