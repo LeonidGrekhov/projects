@@ -21,3 +21,16 @@ b {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.float-load {
+  animation: loadAnimation 1.5s 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes loadAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

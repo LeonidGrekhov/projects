@@ -19,7 +19,7 @@ class Contact extends Component {
           noSideBar={!this.state.showSideBar}
           content={
             <div className="container-fluid h-100 main-Page">
-              <div className="row text-center justify-content-center">
+              <div className="row text-center float-load justify-content-center">
                 <div className="big-Text mt-4">Have Any Questions?</div>
                 <p className="m-4">
                   If you have any questions or suggestions for us feel free to
