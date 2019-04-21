@@ -18,9 +18,15 @@ class Contact extends Component {
         <Generics.Body
           noSideBar={!this.state.showSideBar}
           content={
-            <div className="container-fluid h-100 flex-fill w-100 main-Page">
-              <div className="row">
-                <h1>Have Any Questions?</h1>
+            <div className="container-fluid h-100 main-Page">
+              <div className="row text-center justify-content-center">
+                <div className="big-Text mt-4">Have Any Questions?</div>
+                <p className="m-4">
+                  If you have any questions or suggestions for us feel free to
+                  shoot us a email at
+                  <b> contact@litlister.com</b>
+                  <br />We will get back to you as soon as we can.
+                </p>
               </div>
             </div>
           }
