@@ -2,6 +2,8 @@ import Error404Route from './Containers/Error/404/route';
 import HomeRoute from './Containers/Home/route';
 import AboutRoute from './Containers/About/route';
 import AuthRoute from './Containers/Auth/route';
+import ContactRoute from './Containers/Contact/route';
+
 import SearchResultRoute from './Containers/SearchResult/route';
 import BookRoute from './Containers/BookInfo/route';
 import UserRoute from './Containers/User/route';
@@ -12,6 +14,7 @@ const routes = [
   ...HomeRoute,
   ...AboutRoute,
   ...AuthRoute,
+  ...ContactRoute,
   ...SearchResultRoute,
   ...BookRoute,
   ...UserRoute,
