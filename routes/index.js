@@ -2,6 +2,7 @@ const router = require('express').Router();
 const AuthRoute = require('./Auth');
 const DefaultRoute = require('./Default');
 const SearchRoute = require('./Search');
+const PaymentRoute = require('./Payment');
 
 if (process.env.LOCAL_SERVER) {
   router.use((_, response, next) => {
@@ -17,6 +18,7 @@ if (process.env.LOCAL_SERVER) {
 }
 
 router.use(AuthRoute);
+router.use(PaymentRoute);
 router.use(SearchRoute);
 router.use(DefaultRoute);
 
