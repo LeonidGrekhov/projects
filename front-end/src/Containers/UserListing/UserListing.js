@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Generics from '../../Generics';
-
+import './UserListing.css';
 let debug = true;
 
 let titleSuggestion = ['Once upon'];
@@ -10,7 +10,7 @@ let BookJson = {
   BookTitle: 'Once upon',
   Description:
     'In this eye-opening book, renowned economist and bestselling author Tyler Cowen explains that phenomenon: High earners are taking ever more advantage of machine intelligence in data analysis and achieving ever-better results. Meanwhile, low earners who haven’t committed to learning, to making the most of new technologies, have poor prospects. Nearly every business sector relies less and less on manual labor, and this fact is forever changing the world of work and wages. A steady, secure life somewhere in the middle—average—is over. With The Great Stagnation, Cowen explained why median wages stagnated over the last four decades; in Average Is Over he reveals the essential nature of the new economy, identifies the best path forward for workers and entrepreneurs, and provides readers with actionable advice to make the most of the new economic landscape. It is a challenging and sober must-read but ultimately exciting, good news. In debates about our nation’s economic future, it will be impossible to ignore.”',
-  picture: 'alpha.png'
+  pictureurl: 'https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg'
 };
 
 class UserListing extends Component {
@@ -24,14 +24,27 @@ class UserListing extends Component {
       searchSuggestion: <ul />,
       bookData: null,
       userDescription: '',
-      listData: null
+      listData: null,
+      listerImages: [],
+      listerImageDisplayIndex: null,
+      listerImageCapacity: 5,
+      renderReady: false
     };
     this.onShowOrHide = this.onShowOrHide.bind(this);
   }
 
+  componentDidMount = () => {
+    if (debug) {
+      this.setState({ renderReady: true });
+    }
+  };
+
   autoCompleteSearch = event => {
     console.log(event);
   };
+
+  onChange = event =>
+    this.setState({ [event.target.name]: event.target.value });
 
   onChangeSearch = event => {
     if (debug) {
@@ -59,6 +72,20 @@ class UserListing extends Component {
     } else {
       // api
     }
+  };
+
+  onImageUpload = event => {
+    let { listerImages, listerImageCapacity } = this.state;
+    let images = listerImages;
+    let index = 0;
+    if (images.length < listerImageCapacity) {
+      images.push(URL.createObjectURL(event.target.files[0]));
+      index = images.length - 1;
+    }
+    this.setState({
+      listerImages: images,
+      listerImageDisplayIndex: index
+    });
   };
 
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
@@ -94,18 +121,12 @@ class UserListing extends Component {
       <div className="col-6">
         <img
           className="d-block w-100"
-          src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+          src={this.state.bookData.pictureurl}
           alt="placeholder"
         />
       </div>
       <div className="col-6">
-        <div
-          className="container"
-          style={{
-            minHeight: '68vh',
-            marginTop: '12vh'
-          }}
-        >
+        <div>
           <form>
             <div className="row">
               <div className="text-default">
@@ -124,6 +145,29 @@ class UserListing extends Component {
                     value={this.state.userDescription}
                     onChange={this.onChange}
                   />
+                </div>
+                <div className="form-group">
+                  <div className="row">
+                    {this.state.listerImages.map((image, i) => (
+                      <div className="col" key={i}>
+                        <img className="img-fuild" src={image} />
+                      </div>
+                    ))}
+                  </div>
+                  <div class="upload-btn-wrapper">
+                    <button class="img-btn">+</button>
+                    <input type="file" onChange={this.onImageUpload} />
+                    {this.state.listerImageDisplayIndex && (
+                      <img
+                        className="img-fluid"
+                        src={
+                          this.state.listerImages[
+                            this.state.listerImageDisplayIndex
+                          ]
+                        }
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -146,20 +190,25 @@ class UserListing extends Component {
 
   render() {
     let bodyContent = (
-      <div>
-        <div className="container">
-          <div className="row-1">
-            {this.state.bookData
-              ? this.renderListingForm()
-              : this.renderSearch()}
+      <>
+        {this.state.renderReady ? (
+          <div>
+            <div className="container">
+              <div className="row-1">
+                {this.state.bookData
+                  ? this.renderListingForm()
+                  : this.renderSearch()}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        ) : (
+          <Generics.Body.Loading />
+        )}
+      </>
     );
     return (
       <div>
         <Generics.NavBar />
-
         <Generics.Header />
         <Generics.Body
           noSideBar={!this.state.showSideBar}
