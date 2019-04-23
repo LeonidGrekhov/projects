@@ -177,6 +177,17 @@ class Navbar extends Component {
         </div>
       </div>
     );
+    let navBarSignOutButton = (
+      <button
+        variant="primary"
+        id="LoginButton"
+        className="btn btn-primary ml-2 my-2 mr-2 my-sm-0"
+        type="submit"
+        onClick={this.onSignOut}
+      >
+        Sign Out
+      </button>
+    );
     let navBarSignUpButton = (
       <button
         variant="primary"
@@ -215,7 +226,7 @@ class Navbar extends Component {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <a className="navbar-brand" href="/">
             <img src={logo} height="28" alt="banner" />
-            {'  '} ListLister
+            {'  '} LitLister
           </a>
           <button
             className="navbar-toggler"
@@ -234,6 +245,7 @@ class Navbar extends Component {
             {navBarSearchForm}
             <form className="form-inline my-2 my-lg-0">
               <div className="text-light">Hi, {this.state.user.firstname}</div>
+              {navBarSignOutButton}
               {navBarCartLogo}
               {navBarCartItem}
             </form>
@@ -245,7 +257,7 @@ class Navbar extends Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand" href="/">
           <img src={logo} height="28" alt="banner" />
-          {'  '} ListLister
+          {'  '} LitLister
         </a>
         <button
           className="navbar-toggler"
