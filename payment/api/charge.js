@@ -1,23 +1,16 @@
-const stripe = require('stripe')('sk_test_TedK4jxBHA4ZmkT9TNwWopG200Tkbu6zeO');
-
-const createCharge = token =>
-  (async () => {
+const createCharge = stripe => token => {
+  console.log('*** DEBUG *** \n');
+  console.log('Token value: ' + token + '\n');
+  (async token => {
     const charge = await stripe.charges.create({
-      amount: 1,
+      amount: 999,
       currency: 'usd',
-      descrition: 'example',
-      source: token,
-      capture: false
+      descritption: 'Example charge',
+      soure: token
     });
-    return charge;
   })();
-
-const captureCharge = chargeID => {
-  const charge = stripe.Charges.capture(chargeID);
-  return charge;
 };
 
-module.exports = {
-  createCharge: createCharge(token),
-  captureCharge: captureCharge(chargeID)
-};
+module.exports = stripe => ({
+  createCharge: createCharge(stripe)
+});

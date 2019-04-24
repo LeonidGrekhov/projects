@@ -1,6 +1,4 @@
-const stripe = require('stripe')('sk_test_TedK4jxBHA4ZmkT9TNwWopG200Tkbu6zeO');
-
-const createCheckout = amount => book =>
+const createCheckout = stripe => amount => book =>
   (async () => {
     const session = await stripe.checkout.sessions.create({
       customer: 'example_cus',
@@ -22,6 +20,6 @@ const createCheckout = amount => book =>
     return session;
   })();
 
-module.exports = {
-  createCheckout: createCheckout(amount, book)
-};
+module.exports = stripe => ({
+  createCheckout: createCheckout(stripe)
+});
