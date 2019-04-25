@@ -14,7 +14,7 @@ class Footer extends Component {
       'Contact',
       'Team',
       'Invest',
-      'Terms of Service'
+      'TermsOfService'
     ];
     let linkNames = footerLink.map((linkUrl, i) => {
       var actualLink = linkUrl.split(' ').join('_');
