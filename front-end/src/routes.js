@@ -8,6 +8,7 @@ import SearchResultRoute from './Containers/SearchResult/route';
 import BookRoute from './Containers/BookInfo/route';
 import UserListing from './Containers/UserListing/route';
 import UserRoute from './Containers/User/route';
+import TeamRoute from './Containers/Team/route';
 import ListingRoute from './Containers/Listing/route';
 import AdminRoute from './Containers/Admin/route';
 import TransactionRoute from './Containers/Transaction/route';
@@ -25,6 +26,7 @@ const routes = [
   ...AdminRoute,
   ...UserListing,
   ...TransactionRoute,
+  ...TeamRoute,
   ...TermsOfServiceRoute,
   ...InvestRoute,
   // Place 404 last so that incase of no match,
