@@ -19,17 +19,18 @@ class Team extends Component {
         let profile = this.state.profiles[i];
         return (
           <div className="col-xl-3 col-md-6 mb-4" key={i}>
-            <div className="card border-0 ">
+            <div className="border-0 team-card text-center ">
               <img
                 src={require(`./${profile.picture}`)}
-                className="card-img-top cover"
-                height="250"
-                wdith="200"
+                className="img-fluid pb-2"
                 alt="..."
               />
-              <div className="card-body text-center">
+              <div className="p-3">
                 <h5 className="card-title mb-0">{profile.name}</h5>
-                <div className="card-text text-black-50">{profile.role}</div>
+                <div className="card-text role-text">{profile.role}</div>
+                <div className="cart-text text-black-50">
+                  {profile.description}
+                </div>
               </div>
             </div>
           </div>
@@ -46,14 +47,11 @@ class Team extends Component {
         <Generics.Body
           noSideBar={!this.state.showSideBar}
           content={
-            <div className="container-fluid h-100 main-body d-flex align-items-center justify-content-center">
+            <div className="container-fluid h-100 main-body justify-content-center">
               <div className="row justify-content-center p-4">
                 <div className="big-text">Who is the team?</div>
-                <p>
-                  We are currently preparing to work with investors so we can
-                  build the future together. Hold on tight while we prepare and
-                  set up and we will update this page soon.
-                </p>
+              </div>
+              <div className="row justify-content-center p-4">
                 {this.teamCards()}
               </div>
             </div>
