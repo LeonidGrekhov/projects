@@ -1,0 +1,23 @@
+.main-body {
+  -webkit-font-smoothing: antialiased;
+
+  letter-spacing: 0;
+  background: #212c4f;
+  transition: color 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    fill 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+h1 {
+  color: white;
+  font-weight: bold;
+}
+.big-text {
+  font-size: calc(30px + (30 * ((100vw - 320px) / 960)));
+  background: -webkit-linear-gradient(
+    90deg,
+    rgb(88, 86, 214) 0%,
+    rgb(156, 111, 255) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
