@@ -41,6 +41,18 @@ let json = {
       lastMessage: 'Yo',
       time: '23:57 01-03-2019'
     }
+  ],
+  reportListData: [
+    {
+      rid: 1,
+      title: 'adasd',
+      time: '14:22 24-03-2019'
+    },
+    {
+      rid: 3,
+      title: 'eitnieuyn69384',
+      time: '18:22 21-03-2019'
+    }
   ]
 };
 
@@ -49,14 +61,17 @@ class Profile extends Component {
     super(props);
     this.state = {
       guest: true,
+      uid: props.match.params.uid,
       chatListData: [],
+      reportListData: [],
       profileData: null,
       display: null,
       onUserNavigation: {
         Profile: this.onProfile,
         Message: this.onMessage,
         Review: this.onReview,
-        Listing: this.onListing
+        Listing: this.onListing,
+        Report: _ => this.setState({ display: 'Report' })
       },
       renderReady: false
     };
@@ -79,6 +94,7 @@ class Profile extends Component {
       this.setState({
         chatListData: json.chatListData,
         profileData: json.profileData,
+        reportListData: json.reportListData,
         display: 'Profile'
       });
     } else {
@@ -207,7 +223,7 @@ class Profile extends Component {
 
   userNavigation = () => (
     <ul className="nav justify-content-center nav-tabs">
-      {['Profile', 'Message', 'Review', 'Listing'].map((tab, i) => {
+      {['Profile', 'Message', 'Review', 'Listing', 'Report'].map((tab, i) => {
         if (this.state.display === tab) {
           return (
             <li key={i} className="nav-item">
@@ -240,7 +256,13 @@ class Profile extends Component {
   );
 
   userContent = ({ guest }) => {
-    let { display, profileData, chatListData, uid } = this.state;
+    let {
+      display,
+      profileData,
+      chatListData,
+      reportListData,
+      uid
+    } = this.state;
     if ('Profile' === display) {
       return (
         <>
@@ -285,6 +307,29 @@ class Profile extends Component {
           to do
         </div>
       );
+    } else if ('Report' === display) {
+      return (
+        <div>
+          <br />
+          {reportListData.map((report, i) => (
+            <div className="row" key={i}>
+              <div class="col">
+                <div
+                  className="card"
+                  onClick={_ =>
+                    (window.location = `./${uid}/report/${report.rid}`)
+                  }
+                >
+                  <div className="card-body">
+                    <h5 className="card-title">{report.title}</h5>
+                    <p className="card-text text-dark">{report.time}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
     }
   };
 
@@ -323,6 +368,7 @@ class Profile extends Component {
 
   onReport = event => {
     event.preventDefault();
+    window.location = `./${this.state.uid}/report`;
   };
 
   onConfigure = event => {
