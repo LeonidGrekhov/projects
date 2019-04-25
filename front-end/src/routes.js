@@ -9,6 +9,7 @@ import BookRoute from './Containers/BookInfo/route';
 import UserListing from './Containers/UserListing/route';
 import UserRoute from './Containers/User/route';
 import ListingRoute from './Containers/Listing/route';
+import AdminRoute from './Containers/Admin/route';
 import TransactionRoute from './Containers/Transaction/route';
 import InvestRoute from './Containers/Invest/route';
 
@@ -21,6 +22,7 @@ const routes = [
   ...BookRoute,
   ...UserRoute,
   ...ListingRoute,
+  ...AdminRoute,
   ...UserListing,
   ...TransactionRoute,
   ...TermsOfServiceRoute,
