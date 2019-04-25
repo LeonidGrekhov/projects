@@ -6,6 +6,8 @@ import logo from './logo.svg';
 import './NavBar.css';
 import cartLogo from './shoppingCart.svg';
 
+let debugUser = false;
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -27,20 +29,27 @@ class Navbar extends Component {
   }
 
   componentDidMount = () => {
-    Auth.getLogin().then(response => {
-      if (response.ok) {
-        response.text().then(promise => {
-          promise = JSON.parse(promise);
-          if (promise.firstname) {
-            this.setState({
-              user: {
-                firstname: promise.firstname
-              }
-            });
-          }
-        });
-      }
-    });
+    if (debugUser) {
+      this.setState({
+        user: {
+          firstname: 'Rob'
+        }
+      });
+    } else {
+      Auth.getLogin().then(response => {
+        if (response.ok) {
+          response.text().then(promise => {
+            if (promise.firstname) {
+              this.setState({
+                user: {
+                  firstname: promise.firstname
+                }
+              });
+            }
+          });
+        }
+      });
+    }
   };
 
   onChange = event => {
@@ -50,12 +59,10 @@ class Navbar extends Component {
   onLogin = event => {
     event.preventDefault();
     Auth.postLogin(this.state.email, this.state.password).then(response => {
-      if (response.firstname) {
-        this.setState({
-          user: {
-            firstname: response.firstname
-          }
-        });
+      if (response.user) {
+        this.setState({ user: response.user });
+      } else {
+        console.log(response.error);
       }
     });
   };
@@ -72,10 +79,6 @@ class Navbar extends Component {
         this.state.query
       }/page/1`;
     }
-  };
-  onSignOut = event => {
-    event.preventDefault();
-    Auth.postLogout().then(_ => this.setState({ user: null }));
   };
 
   render = () => {

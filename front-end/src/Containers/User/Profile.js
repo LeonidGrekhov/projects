@@ -22,17 +22,20 @@ let json = {
       sender: 'jimmy99',
       lastMessage: 'Hi',
       time: '14:22 24-03-2019'
-    }, {
+    },
+    {
       cid: 12,
       sender: 'looking4FreeBooks',
       lastMessage: 'Heyy',
       time: '10:02 22-03-2019'
-    }, {
+    },
+    {
       cid: 16,
       sender: 'yourDad',
       lastMessage: 'Hello',
       time: '06:12 16-03-2019'
-    }, {
+    },
+    {
       cid: 39,
       sender: 'xXxpageDestroyerxXx',
       lastMessage: 'Yo',
@@ -73,20 +76,22 @@ class Profile extends Component {
 
   componentDidMount = () => {
     if (debug) {
-      this.setState({ chatListData: json.chatListData, profileData: json.profileData, display: 'Profile' });
+      this.setState({
+        chatListData: json.chatListData,
+        profileData: json.profileData,
+        display: 'Profile'
+      });
     } else {
-      let {uid} = this.state;
-      User.getUserProfile(uid).then(
-        profileData => {
-          if (profileData.error) {
-            window.location = '/404';
-          } else {
-            User.getUserChatList(uid).then(
-              chatListData => this.setState({chatListData, profileData, display: 'Profile'})
-            )
-          }
-          }
-      );
+      let { uid } = this.state;
+      User.getUserProfile(uid).then(profileData => {
+        if (profileData.error) {
+          window.location = '/404';
+        } else {
+          User.getUserChatList(uid).then(chatListData =>
+            this.setState({ chatListData, profileData, display: 'Profile' })
+          );
+        }
+      });
     }
   };
 
@@ -96,17 +101,17 @@ class Profile extends Component {
       <div>
         {this.state.display ? (
           <div
-            className='container'
+            className="container"
             style={{
               minHeight: '68vh',
               marginTop: '8vh',
               paddingBottom: '8vh'
             }}
           >
-            <div className='row'>
+            <div className="row">
               {this.profileSideBar({ guest })}
               <div
-                className='col'
+                className="col"
                 style={{
                   marginLeft: '2em  '
                 }}
@@ -125,24 +130,24 @@ class Profile extends Component {
 
   profileSideBar = ({ guest }) => (
     <div
-      className='col-3'
+      className="col-3"
       style={{
         marginTop: '2em'
       }}
     >
       <img
         src={this.state.profileData.pictureurl}
-        className='img-fluid img-thumbnail'
-        alt='profile'
+        className="img-fluid img-thumbnail"
+        alt="profile"
         style={{
           borderBottomWidth: '0',
           borderBottomLeftRadius: '0',
           borderBottomRightRadius: '0'
         }}
       />
-      <ul className='list-group'>
+      <ul className="list-group">
         <li
-          className='list-group-item text-center'
+          className="list-group-item text-center"
           style={{
             borderTopWidth: '0',
             borderTopLeftRadius: '0',
@@ -152,47 +157,48 @@ class Profile extends Component {
           <h3>
             {this.state.profileData.firstname} {this.state.profileData.lastname}
           </h3>
-          {this.state.profileData.rating && this.displayRating(this.state.profileData.rating)}
+          {this.state.profileData.rating &&
+            this.displayRating(this.state.profileData.rating)}
         </li>
         <button
-          type='button'
-          className='list-group-item list-group-item-action'
-          name='Message'
+          type="button"
+          className="list-group-item list-group-item-action"
+          name="Message"
           onClick={this.onMessage}
         >
-          <i className='fa fa-envelope' /> Message
+          <i className="fa fa-envelope" /> Message
         </button>
         <button
-          type='button'
-          className='list-group-item list-group-item-action'
-          name='Review'
+          type="button"
+          className="list-group-item list-group-item-action"
+          name="Review"
           onClick={this.onReview}
         >
-          <i className='fa fa-star' /> Review
+          <i className="fa fa-star" /> Review
         </button>
         <button
-          type='button'
-          className='list-group-item list-group-item-action'
-          name='Listing'
+          type="button"
+          className="list-group-item list-group-item-action"
+          name="Listing"
           onClick={this.onListing}
         >
-          <i className='fa fa-list' /> Listing
+          <i className="fa fa-list" /> Listing
         </button>
         {guest ? (
           <button
-            type='button'
-            className='list-group-item list-group-item-action'
+            type="button"
+            className="list-group-item list-group-item-action"
             onClick={this.onReport}
           >
-            <i className='fa fa-flag' /> Report
+            <i className="fa fa-flag" /> Report
           </button>
         ) : (
           <button
-            type='button'
-            className='list-group-item list-group-item-action'
+            type="button"
+            className="list-group-item list-group-item-action"
             onClick={this.onConfigure}
           >
-            <i className='fa fa-cogs' /> Configure
+            <i className="fa fa-cogs" /> Configure
           </button>
         )}
       </ul>
@@ -200,14 +206,14 @@ class Profile extends Component {
   );
 
   userNavigation = () => (
-    <ul className='nav justify-content-center nav-tabs'>
+    <ul className="nav justify-content-center nav-tabs">
       {['Profile', 'Message', 'Review', 'Listing'].map((tab, i) => {
         if (this.state.display === tab) {
           return (
-            <li key={i} className='nav-item'>
+            <li key={i} className="nav-item">
               <a
-                className='nav-link active'
-                href='# '
+                className="nav-link active"
+                href="# "
                 name={tab}
                 onClick={this.onUserNavigation}
               >
@@ -217,10 +223,10 @@ class Profile extends Component {
           );
         } else {
           return (
-            <li key={i} className='nav-item'>
+            <li key={i} className="nav-item">
               <a
-                className='nav-link'
-                href='# '
+                className="nav-link"
+                href="# "
                 name={tab}
                 onClick={this.onUserNavigation}
               >
@@ -234,7 +240,7 @@ class Profile extends Component {
   );
 
   userContent = ({ guest }) => {
-    let {display, profileData, chatListData, uid} = this.state;
+    let { display, profileData, chatListData, uid } = this.state;
     if ('Profile' === display) {
       return (
         <>
@@ -249,19 +255,21 @@ class Profile extends Component {
           <br />
           {chatListData.map((chat, i) => (
             <div className="row" key={i}>
-            <div class="col">
-            <div className="card" onClick={_ => window.location=`./${uid}/chat/${chat.cid}`}>
-  <div className="card-body">
-    <h5 className="card-title">{chat.sender}</h5>
-    <p className="card-text text-dark">{chat.time}</p>
-    <p className="card-text">{chat.lastMessage}</p>
-  </div>
-</div>
-</div>
+              <div class="col">
+                <div
+                  className="card"
+                  onClick={_ => (window.location = `./${uid}/chat/${chat.cid}`)}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title">{chat.sender}</h5>
+                    <p className="card-text text-dark">{chat.time}</p>
+                    <p className="card-text">{chat.lastMessage}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
-          
-          </div>
+        </div>
       );
     } else if ('Review' === display) {
       return (

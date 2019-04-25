@@ -18,12 +18,10 @@ class ChatLog extends Component {
 
   componentDidMount = () => {
     this.ps = new PerfectScrollbar(ReactDOM.findDOMNode(this));
-    let height = ReactDOM.findDOMNode(
-        this
-      ).clientHeight;
-      ReactDOM.findDOMNode(this).scrollTop = height;
-      this.ps.update();
-      ReactDOM.findDOMNode(this).scrollTo(0, height);
+    let height = ReactDOM.findDOMNode(this).clientHeight;
+    ReactDOM.findDOMNode(this).scrollTop = height;
+    this.ps.update();
+    ReactDOM.findDOMNode(this).scrollTo(0, height);
   };
 
   componentDidUpdate = _ => {

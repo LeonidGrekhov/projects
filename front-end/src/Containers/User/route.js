@@ -7,11 +7,13 @@ export default [
     path: '/user/:uid',
     exact: true,
     component: UserProfile
-  }, {
+  },
+  {
     path: '/user/:uid/chat/:cid',
     exact: true,
     component: UserChat
-  }, {
+  },
+  {
     path: '/user/:uid/configuration',
     exact: true,
     component: UserConfiguration
