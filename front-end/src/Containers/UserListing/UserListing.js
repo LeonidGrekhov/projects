@@ -137,6 +137,7 @@ class UserListing extends Component {
 
   renderListingForm = () => (
     <>
+      <br />
       <div className="row">
         <div className="col-6">
           <img
@@ -144,54 +145,95 @@ class UserListing extends Component {
             src={this.state.bookData.pictureurl}
             alt="placeholder"
           />
+          <br />
+          <div className="row">
+            <div className="form-group">
+              <div className="row">
+                <div className="col-6">
+                  <div class="upload-btn-wrapper">
+                    <p>Upload up to 5 images of the book you wish to sell.</p>
+
+                    <button class="img-btn-plus">+</button>
+
+                    <div>current image: </div>
+                    <input type="file" onChange={this.onImageUpload} />
+                    {
+                      <img
+                        className="img-fluid"
+                        src={
+                          this.state.listerImages[
+                            this.state.listerImageDisplayIndex
+                          ]
+                        }
+                      />
+                    }
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="row">
+                    {this.state.listerImages.map((image, i) => (
+                      <div className="UploadedImage" key={i}>
+                        <img className="img-fluid" src={image} />
+                        <button
+                          class="img-btn-minus"
+                          onClick={this.onImageRemove}
+                        >
+                          -
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="col-6">
           <div>
             <form>
-              <div className="row">
+              <div className="col">
+                <div className="text-default">Title: {BookJson.BookTitle}</div>
+                <br />
                 <div className="text-default">
-                  Title: {BookJson.BookTitle}
-                  <div className="text-default">
-                    Description: {BookJson.Description}
-                  </div>
-                  <br />
-                  <div className="form-group">
-                    <label htmlFor="form">User description:</label>
-                    <textarea
-                      rows="4"
-                      type="userDescription"
-                      className="form-control"
-                      id="form-userDescription"
-                      placeholder="Enter book description"
-                      name="userDescription"
-                      value={this.state.userDescription}
-                      onChange={this.onChange}
-                    />
-                  </div>
-                  <select
-                    className="custom-select"
-                    value={this.state.bookCondition}
+                  Description: {BookJson.Description}
+                </div>
+                <br />
+                <div className="form-group">
+                  <label htmlFor="form">User description:</label>
+                  <textarea
+                    rows="4"
+                    type="userDescription"
+                    className="form-control"
+                    id="form-userDescription"
+                    placeholder="Enter book description"
+                    name="userDescription"
+                    value={this.state.userDescription}
                     onChange={this.onChange}
-                  >
-                    <option selected>Book Condition</option>
-                    <option value="1">New</option>
-                    <option value="2">Fair</option>
-                    <option value="3">Used(no missing pages)</option>
-                    <option value="2">Missing pages</option>
-                    <option value="3">Bad</option>
-                  </select>
-                  <div className="form-group">
-                    <textarea
-                      rows="1"
-                      type="userPrice"
-                      className="form-control"
-                      id="form-userPrice"
-                      placeholder="Enter price"
-                      name="userPrice"
-                      value={this.state.userPrice}
-                      onChange={this.onChange}
-                    />
-                  </div>
+                  />
+                </div>
+                <select
+                  className="custom-select"
+                  value={this.state.bookCondition}
+                  onChange={this.onChange}
+                >
+                  <option selected>Book Condition</option>
+                  <option value="1">New</option>
+                  <option value="2">Fair</option>
+                  <option value="3">Used(no missing pages)</option>
+                  <option value="2">Missing pages</option>
+                  <option value="3">Bad</option>
+                </select>
+                <div className="form-group">
+                  <textarea
+                    rows="1"
+                    type="userPrice"
+                    className="form-control"
+                    id="form-userPrice"
+                    placeholder="Enter price"
+                    name="userPrice"
+                    value={this.state.userPrice}
+                    onChange={this.onChange}
+                  />
                 </div>
               </div>
             </form>
@@ -205,44 +247,6 @@ class UserListing extends Component {
             <h1>
               User id: {this.state.uid} Transaction id:{this.state.lid}
             </h1>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="form-group">
-          <div className="row">
-            <div className="col-6">
-              <div class="upload-btn-wrapper">
-                <p>Upload up to 5 images of the book you wish to sell.</p>
-
-                <button class="img-btn-plus">+</button>
-
-                <div>current image: </div>
-                <input type="file" onChange={this.onImageUpload} />
-                {
-                  <img
-                    className="img-fluid"
-                    src={
-                      this.state.listerImages[
-                        this.state.listerImageDisplayIndex
-                      ]
-                    }
-                  />
-                }
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="row">
-                {this.state.listerImages.map((image, i) => (
-                  <div className="UploadedImage" key={i}>
-                    <img className="img-fluid" src={image} />
-                    <button class="img-btn-minus" onClick={this.onImageRemove}>
-                      -
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
