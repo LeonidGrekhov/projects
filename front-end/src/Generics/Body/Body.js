@@ -30,7 +30,7 @@ class BodyLanding extends Component {
               <SideBar />
             </div>
           )}
-          <div className="col">{this.props.content}</div>
+          <div className="col px-0">{this.props.content}</div>
         </div>
       </div>
     );
