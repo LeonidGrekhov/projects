@@ -278,12 +278,6 @@ class TermsOfService extends Component {
                     not be liable for any loss or damage of any nature.
                   </p>
                   <p />
-                  <h2>Credit and Contact Information</h2>
-                  <p>
-                    This Terms and conditions page was created at
-                    termsandconditionstemplate.com generator. If you have any
-                    queries regarding any of our terms, please contact us.
-                  </p>
                 </p>
               </div>
             </div>

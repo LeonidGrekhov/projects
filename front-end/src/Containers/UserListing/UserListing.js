@@ -90,18 +90,22 @@ class UserListing extends Component {
       listerImageDisplayIndex: index
     });
   };
-  onImageRemove = event => {
-    let { listerImages, listerImageCapacity } = this.state;
+  onImageRemove = _ => {
+    let { listerImages, listerImageDisplayIndex } = this.state;
     let images = listerImages;
-    let index = listerImageCapacity;
-
-    images.pop(URL.createObjectURL(event.target.files[index]));
-    index = images.length + 1;
-
-    this.setState({
-      listerImages: images,
-      listerImageDisplayIndex: index
-    });
+    if (0 < images.length) {
+      images.pop();
+      if (0 === images.length) {
+        this.setState({ listerImages: images, listerImageDisplayIndex: null });
+      } else if (listerImageDisplayIndex === images.length) {
+        this.setState({
+          listerImages: images,
+          listerImageDisplayIndex: listerImageDisplayIndex - 1
+        });
+      } else {
+        this.setState({ listerImages: images });
+      }
+    }
   };
   onSubmit = event => {
     event.preventDefault();
@@ -150,36 +154,45 @@ class UserListing extends Component {
             <div className="form-group">
               <div className="row">
                 <div className="col-6">
-                  <div class="upload-btn-wrapper">
-                    <p>Upload up to 5 images of the book you wish to sell.</p>
-
-                    <button class="img-btn-plus">+</button>
-
-                    <div>current image: </div>
-                    <input type="file" onChange={this.onImageUpload} />
-                    {
-                      <img
-                        className="img-fluid"
-                        src={
-                          this.state.listerImages[
-                            this.state.listerImageDisplayIndex
-                          ]
-                        }
-                      />
-                    }
-                  </div>
+                  <p>Upload up to 5 images of the book you wish to sell.</p>
+                  <label
+                    for="file-upload"
+                    class="img-btn-plus"
+                    style={{ display: 'inline-block' }}
+                  >
+                    +
+                  </label>
+                  <input
+                    id="file-upload"
+                    type="file"
+                    onChange={this.onImageUpload}
+                    style={{ display: 'none' }}
+                  />
+                  <button
+                    class="img-btn-minus"
+                    onClick={this.onImageRemove}
+                    style={{ marginRight: '15px', display: 'inline-block' }}
+                  >
+                    -
+                  </button>
+                  current image:
+                  {
+                    <img
+                      className="img-fluid"
+                      src={
+                        this.state.listerImages[
+                          this.state.listerImageDisplayIndex
+                        ]
+                      }
+                    />
+                  }
                 </div>
+
                 <div className="col-6">
                   <div className="row">
                     {this.state.listerImages.map((image, i) => (
                       <div className="UploadedImage" key={i}>
                         <img className="img-fluid" src={image} />
-                        <button
-                          class="img-btn-minus"
-                          onClick={this.onImageRemove}
-                        >
-                          -
-                        </button>
                       </div>
                     ))}
                   </div>

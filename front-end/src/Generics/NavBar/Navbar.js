@@ -39,6 +39,7 @@ class Navbar extends Component {
       Auth.getLogin().then(response => {
         if (response.ok) {
           response.text().then(promise => {
+            promise = JSON.parse(promise);
             if (promise.firstname) {
               this.setState({
                 user: {
@@ -59,8 +60,9 @@ class Navbar extends Component {
   onLogin = event => {
     event.preventDefault();
     Auth.postLogin(this.state.email, this.state.password).then(response => {
-      if (response.user) {
-        this.setState({ user: response.user });
+      console.log(response);
+      if (response.firstname) {
+        this.setState({ user: response });
       } else {
         console.log(response.error);
       }
@@ -79,6 +81,15 @@ class Navbar extends Component {
         this.state.query
       }/page/1`;
     }
+  };
+
+  onSignOut = event => {
+    event.preventDefault();
+    Auth.postLogout().then(response => {
+      if (response.ok) {
+        this.setState({ user: null });
+      }
+    });
   };
 
   render = () => {
@@ -220,7 +231,6 @@ class Navbar extends Component {
         0
       </button>
     );
-
     if (this.state.user) {
       return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -244,7 +254,38 @@ class Navbar extends Component {
             <ul className="navbar-nav mr-auto" />
             {navBarSearchForm}
             <form className="form-inline my-2 my-lg-0">
-              <div className="text-light">Hi, {this.state.user.firstname}</div>
+              <div className="dropdown show">
+                <a
+                  className="btn btn-secondary dropdown-toggle text-light"
+                  href="/"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Hi, {this.state.user.firstname}
+                </a>
+
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuLink"
+                >
+                  <a className="dropdown-item" href="/user/1">
+                    User Profile
+                  </a>
+                  <a className="dropdown-item" href="/user/1/listing/1">
+                    Create a listing
+                  </a>
+                  <a className="dropdown-item" href="/">
+                    Transaction history
+                  </a>
+                  <a className="dropdown-item" href="/">
+                    User Report
+                  </a>
+                </div>
+              </div>
+
               {navBarSignOutButton}
               {navBarCartLogo}
               {navBarCartItem}
