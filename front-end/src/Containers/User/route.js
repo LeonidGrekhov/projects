@@ -1,6 +1,7 @@
 import UserChat from './Chat';
 import UserConfiguration from './Configuration';
 import UserProfile from './Profile';
+import UserReportForm from './ReportForm';
 
 export default [
   {
@@ -17,5 +18,10 @@ export default [
     path: '/user/:uid/configuration',
     exact: true,
     component: UserConfiguration
+  },
+  {
+    path: '/user/:uid/report',
+    exact: true,
+    component: UserReportForm
   }
 ];
