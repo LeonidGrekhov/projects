@@ -2,7 +2,7 @@ import TermsOfService from './TermsOfService';
 
 export default [
   {
-    path: '/TermsOfService',
+    path: '/terms of service',
     exact: true,
     component: TermsOfService
   }

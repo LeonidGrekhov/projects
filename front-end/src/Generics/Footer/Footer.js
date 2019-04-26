@@ -14,13 +14,12 @@ class Footer extends Component {
       'Contact',
       'Team',
       'Invest',
-      'TermsOfService'
+      'Terms Of Service'
     ];
     let linkNames = footerLink.map((linkUrl, i) => {
-      var actualLink = linkUrl.split(' ').join('_');
       return (
         <div className="d-inline  m-2" key={i}>
-          <Link to={`/${actualLink}`}>
+          <Link to={`/${linkUrl}`}>
             <span className="text-muted">
               <strong id="footerLink">{linkUrl}</strong>
             </span>
