@@ -315,10 +315,11 @@ class Navbar extends Component {
           <ul className="navbar-nav" />
           {navBarSearchForm}
           <form className="form-inline my-2 my-lg-0">
+          <div> &nbsp;</div>
             {navBarLogInButton}
             {navBarSignUpButton}
-            {navBarCartLogo}
-            {navBarCartItem}
+            <div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+            <div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
           </form>
         </div>
       </nav>
