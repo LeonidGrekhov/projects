@@ -302,6 +302,9 @@ class SearchResult extends Component {
 
             <div className="col-md-4">
               <h3>{book.title}</h3>
+              <span>author(s): {book.author}</span>
+              <br />
+              <span>isbn: {book.isbn}</span>
               <div id="summary">
                 <p className="collapse" id="collapseSummary">
                   {book.description}
