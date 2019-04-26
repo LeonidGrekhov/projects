@@ -67,7 +67,7 @@ class Report extends Component {
         <div className="col">
           <form className="m-4">
             <div className="form-group">
-              <h1>User Report</h1>
+              <h2>User Report</h2>
             </div>
             <br />
             <div className="form-group">
