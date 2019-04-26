@@ -3,6 +3,7 @@ import UserConfiguration from './Configuration';
 import UserProfile from './Profile';
 import UserReport from './Report';
 import UserReportForm from './ReportForm';
+import UserCart from './Cart';
 
 export default [
   {
@@ -29,5 +30,10 @@ export default [
     path: '/user/:uid/report/:rid',
     exact: true,
     component: UserReport
+  },
+  {
+    path: '/user/:uid/cart',
+    exact: true,
+    component: UserCart
   }
 ];
