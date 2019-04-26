@@ -19,9 +19,9 @@ class NotFound extends Component {
           content={
             <div className="container-fluid h-100  main-body align-items-center d-flex justify-content-center">
               <div className="row  justify-content-center ">
-                <h1>
+                <div id="big-text">
                   Whoops. Sorry but we could not find what you are looking for.
-                </h1>
+                </div>
                 <img className="img-fluid  w-100" src={questionMark} />
               </div>
             </div>
