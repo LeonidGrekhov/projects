@@ -217,6 +217,7 @@ class Navbar extends Component {
         height="30"
         width="30"
         alt="banner"
+        onClick={_ => (window.location = 'user/1/cart')}
       />
     );
 
@@ -225,7 +226,7 @@ class Navbar extends Component {
         variant="primary"
         id="cartDiv"
         className="btn btn-primary my-2 mr-2 my-sm-0"
-        type="submit"
+        onClick={_ => (window.location = 'user/1/cart')}
       >
         {' '}
         0
@@ -315,7 +316,7 @@ class Navbar extends Component {
           <ul className="navbar-nav" />
           {navBarSearchForm}
           <form className="form-inline my-2 my-lg-0">
-          <div> &nbsp;</div>
+            <div> &nbsp;</div>
             {navBarLogInButton}
             {navBarSignUpButton}
             <div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
