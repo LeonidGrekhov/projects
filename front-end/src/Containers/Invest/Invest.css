@@ -7,10 +7,7 @@
     background-color 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
     fill 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-h1 {
-  color: white;
-  font-weight: bold;
-}
+
 .big-text {
   font-size: calc(30px + (30 * ((100vw - 320px) / 960)));
   background: -webkit-linear-gradient(
