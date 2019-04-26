@@ -1,6 +1,5 @@
-import request from './request';
-
-const jsonify = response => response.json();
+import jsonify from './middlewares/jsonify';
+import request from './middlewares/request';
 
 export default {
   getLogin: () => request('/login', {}, 'get'),
