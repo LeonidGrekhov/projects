@@ -98,7 +98,7 @@ class ListingList extends Component {
         />
       </div>
       <div className="col mt-3">
-        <h1>{this.state.bookData.title}</h1>
+        <h1 className="text-dark">{this.state.bookData.title}</h1>
         <h5>
           author(s):{' '}
           {this.state.bookData.authors.map((author, i) => (
@@ -108,12 +108,13 @@ class ListingList extends Component {
         <span>isbn: {this.state.bookData.isbn}</span>
         <br />
         <div className="row">
-            <div className="col-1">
-              rating:
-            </div>
-            <div className="col-1">
-            <Generics.Body.RatingStar rating={this.state.bookData.rating} dimension={12} />
-            </div>
+          <div className="col-1">rating:</div>
+          <div className="col-1">
+            <Generics.Body.RatingStar
+              rating={this.state.bookData.rating}
+              dimension={12}
+            />
+          </div>
         </div>
         <br />
         <br />
@@ -208,8 +209,8 @@ class ListingList extends Component {
             <div className="col col-3 border">{list.name}</div>
             <div className="col col-3 border">
               <div className="row">
-                <div className="col col-8" style={{margin: '0 auto'}}>
-                  <Generics.Body.RatingStar rating={list.rating}/>
+                <div className="col col-8" style={{ margin: '0 auto' }}>
+                  <Generics.Body.RatingStar rating={list.rating} />
                 </div>
               </div>
             </div>
