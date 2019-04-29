@@ -1,4 +1,4 @@
-const { models } = require('./database/models');
+const { models } = require('../../database/models');
 
 const VerificationController = (req, res) => {
   return models.user
@@ -34,4 +34,4 @@ const VerificationController = (req, res) => {
     });
 };
 
-export default VerificationController;
+module.exports = VerificationController;

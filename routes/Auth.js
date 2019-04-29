@@ -8,6 +8,7 @@ const notAuthenticated = require('./middlewares/notAuthenticated');
 const sendStatusOk = require('./middlewares/sendStatusOk');
 const emptyStringsToNull = require('./middlewares/emptyStringsToNull');
 const sendUserIdAndUserName = require('./middlewares/sendUserIdAndUserName');
+const sendVerificationEmail = require('./middlewares/sendgridemailhelper');
 
 router.get('/api/login', authenticated, sendUserIdAndUserName);
 
@@ -61,17 +62,21 @@ router.post(
   (request, response) => {
     const { firstname, lastname, email, password } = request.body;
     return Auth.insertUser(firstname, lastname, email, password)
-      .then(user =>
-        request.login(user, error => {
-          if (error) {
-            return response.json(error);
-          }
-          return response.json({
-            firstname: user.firstname,
-            lastname: user.lastname
+      .then(user => {
+        return Auth.insertVerificationToken(user.uid).then(verification => {
+          console.log(user.email, verification.token);
+          //sendVerificationEmail(user.email. verification.token);
+          request.login(user, error => {
+            if (error) {
+              return response.json(error);
+            }
+            return response.json({
+              firstname: user.firstname,
+              lastname: user.lastname
+            });
           });
-        })
-      )
+        });
+      })
       .catch(error => {
         console.log(error);
         response.json(error);

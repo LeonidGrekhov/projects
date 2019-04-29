@@ -1,9 +1,21 @@
-require('dotenv').config();
-const sendGrid = require('sendgrid').mail;
-const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+//require('dotenv').config();
+//const sendGrid = require('sendgrid').mail;
+//const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-export const sendVerificationEmail = (to, token) => {
-  const hostUrl = process.env.hostURL;
+/*const sendVerificationEmail = (to, token) => {
+  const msg = {
+    to: to,
+    from: "no-reply@litlister.com",
+    subject: 'Verify Your Email for Your LitLister Account',
+    text: 'Click on this link to verify your email litlister.com/verification?token=${token}&email=${to}'
+  }
+  sgMail.send(msg);
+}*/
+
+const sendVerificationEmail = (to, token) => {
+  const hostUrl = 'www.litlister.com';
   const request = sg.emptyRequest({
     method: 'POST',
     path: '/v3/mail/send',
@@ -41,14 +53,16 @@ export const sendVerificationEmail = (to, token) => {
   });
 };
 
-const sgMail = require('@sendgrid/mail');
+/*const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const msg = {
   to: 'jmendo12@mail.sfsu.edu',
-  from: 'test@example.com',
+  from: 'no-reply@litlister.com',
   subject: 'Sending with SendGrid is Fun',
   text: 'and easy to do anywhere, even with Node.js',
   html: '<strong> and easy to do anywhere, even with Node.js</strong>'
 };
 
 sgMail.send(msg);
+*/
+module.exports = sendVerificationEmail;

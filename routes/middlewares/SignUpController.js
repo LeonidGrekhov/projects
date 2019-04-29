@@ -1,7 +1,6 @@
-import crypto from 'crypto-random-string';
-import { REPL_MODE_SLOPPY } from 'repl';
-const { sendVerificationEmail } = require('./sendgridemailhelper');
-const { models } = require('./database/models');
+const cryptoRandomString = require('crypto-random-string');
+const sendVerificationEmail = require('./sendgridemailhelper');
+const models = require('../../database/models');
 
 const SignUpController = (req, res, next) => {
   return models.user
@@ -17,7 +16,7 @@ const SignUpController = (req, res, next) => {
         return models.verificationToken
           .create({
             uid: user.uid,
-            token: crypto(16)
+            token: cryptoRandomString(16)
           })
           .then(result => {
             sendVerificationEmail(user.email, result.token);
@@ -35,4 +34,4 @@ const SignUpController = (req, res, next) => {
     });
 };
 
-export default SignUpController;
+module.exports = SignUpController;

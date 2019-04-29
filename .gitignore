@@ -49,7 +49,8 @@ package-lock.json
 .yarn-integrity
 
 # dotenv environment variables file
-*.env
+.env
+sendgrid.env
 
 # DS_Store files
 .DS_STORE
