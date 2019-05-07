@@ -55,31 +55,41 @@ router.post('/api/logout', authenticated, (request, response) => {
   response.sendStatus(200);
 });
 
+/* New register router. First, check if the user exists, and if they do
+  throw an exists error. Otherwise insert the user into the db, insert a
+  verification token into the db, send the verification e-mail, and log the
+  user in.
+ */
 router.post(
   '/api/register',
   notAuthenticated,
   emptyStringsToNull,
   (request, response) => {
     const { firstname, lastname, email, password } = request.body;
-    return Auth.insertUser(firstname, lastname, email, password)
+
+    return Auth.findUserByEmail(email)
       .then(user => {
-        return Auth.insertVerificationToken(user.uid).then(verification => {
-          console.log(user.email, verification.token);
-          //sendVerificationEmail(user.email. verification.token);
-          request.login(user, error => {
-            if (error) {
-              return response.json(error);
-            }
-            return response.json({
-              firstname: user.firstname,
-              lastname: user.lastname
+        if (user) throw 'User exists';
+
+        return Auth.insertUser(firstname, lastname, email, password).then(
+          user => {
+            return Auth.insertVerificationToken(user.uid).then(verification => {
+              //sendVerificationEmail(user.email, verification.token);
+              request.login(user, error => {
+                if (error) {
+                  return response.json(error);
+                }
+                return response.json({
+                  firstname: user.firstname,
+                  lastname: user.lastname
+                });
+              });
             });
-          });
-        });
+          }
+        );
       })
-      .catch(error => {
-        console.log(error);
-        response.json(error);
+      .catch(e => {
+        response.json(e);
       });
   }
 );

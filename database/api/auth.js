@@ -2,6 +2,12 @@ const bcrypt = require('bcrypt');
 const cryptoRandomString = require('crypto-random-string');
 const SALT_ROUNDS = 10;
 
+// Returns from these functions should be in this format otherwise they may return null
+const findUserByEmail = db => email => {
+  user = db.user.findOne({ where: { email } });
+  return user;
+};
+
 const insertUser = db => (
   firstname,
   lastname,
@@ -15,15 +21,9 @@ const insertUser = db => (
       lastname,
       email,
       password,
-      typpe
+      type
     })
   );
-
-// Returns from these functions should be in this format otherwise they may return null
-const findUserByEmail = db => email => {
-  user = db.user.findOne({ where: { email } });
-  return user;
-};
 
 // Returns from these functions should be in this format otherwise they may return null
 const findUserById = db => uid => {
