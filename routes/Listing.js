@@ -28,4 +28,18 @@ router.post('/api/listing/edit', (request, response) => {
     });
 });
 
+//Delete listing request
+router.post('/api/listing/delete', (request, reponse) => {
+  const listingId = request.body.lid;
+  return Listing.deleteLisitng(listingId)
+    .then(Listing => {
+      console.log(Listing);
+      reponse.json(Listing);
+    })
+    .catch(error => {
+      console.log(error);
+      response.json(error);
+    });
+});
+
 module.exports = router;

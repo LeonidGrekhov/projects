@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    revision: 'cdf858b8723a53430d3619ac3583a00a',
-    url: '/static/media/chat_icon.cdf858b8.svg'
+    revision: '820b45edb9bcf45281c1f4e669002386',
+    url: '/static/media/chat_icon.820b45ed.svg'
   },
   {
-    revision: 'deaacd31550e0e6be9c6',
-    url: '/static/css/main.dbbbe3b7.chunk.css'
+    revision: '5ec4498e28506b50c891',
+    url: '/static/css/main.73c79f68.chunk.css'
   },
   {
     revision: '42ac5946195a7306e2a5',
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     url: '/static/media/michael winata.335ac4a1.jpg'
   },
   {
-    revision: '43121f01e237eaa2f042',
-    url: '/static/js/2.43121f01.chunk.js'
+    revision: '0c146a5e2194fc518bd7',
+    url: '/static/js/2.0c146a5e.chunk.js'
   },
   {
     revision: 'c54f98a0e8e57a52691ed32fb8ac783d',
@@ -36,44 +36,48 @@ self.__precacheManifest = [
     url: '/static/media/Socrates.23fe2d51.jpeg'
   },
   {
-    revision: 'e391515f93c6cce93520f26efc544ca1',
-    url: '/static/media/logo.e391515f.svg'
+    revision: '7d528012397efa152f055ef9cf6068bc',
+    url: '/static/media/logo.7d528012.svg'
   },
   {
-    revision: '7f10b5965d521060797f17a24d3c1d56',
-    url: '/static/media/star-outline.7f10b596.svg'
+    revision: '27859bb7a53576c24b403a9752ede78f',
+    url: '/static/media/star-outline.27859bb7.svg'
   },
   {
-    revision: '253379f4097400f671fefb52b421327b',
-    url: '/static/media/star-outline-filled.253379f4.svg'
+    revision: '5ed6acb600672526fda3af36d889ab0a',
+    url: '/static/media/star-outline-filled.5ed6acb6.svg'
   },
   {
-    revision: '63b405cdf3f7eac7747b1cb8b752c094',
-    url: '/static/media/money_icon.63b405cd.svg'
+    revision: 'd9282da1264dcae19b0451322add23d8',
+    url: '/static/media/money_icon.d9282da1.svg'
   },
   {
-    revision: 'baaa27c7373ca27891cc33a5f1e72885',
-    url: '/static/media/book_icon.baaa27c7.svg'
+    revision: 'af68bfde159342714b714e42b1b7758c',
+    url: '/static/media/book_icon.af68bfde.svg'
   },
   {
-    revision: 'deaacd31550e0e6be9c6',
-    url: '/static/js/main.deaacd31.chunk.js'
+    revision: '5ec4498e28506b50c891',
+    url: '/static/js/main.5ec4498e.chunk.js'
   },
   {
-    revision: 'e49b07f077723ab4229d515146c162c7',
-    url: '/static/media/map_icon.e49b07f0.svg'
+    revision: 'dfeedef425df3926c546ad67e15b6e54',
+    url: '/static/media/map_icon.dfeedef4.svg'
   },
   {
-    revision: '945f1fe5354fdb861d76ef4673f380e2',
-    url: '/static/media/thumbs_up.945f1fe5.svg'
+    revision: 'c2e65d8b8d49271fde3f1aab4d183948',
+    url: '/static/media/thumbs_up.c2e65d8b.svg'
   },
   {
-    revision: 'a7860448ee1a721b2605e727fd58f91a',
-    url: '/static/media/shield_icon.a7860448.svg'
+    revision: 'b6bab0cceed2f6c506270da4a2db1830',
+    url: '/static/media/shield_icon.b6bab0cc.svg'
   },
   {
-    revision: 'b68598085cf9bd7c0298ad28ecd1f72f',
-    url: '/static/media/shoppingCart.b6859808.svg'
+    revision: '69728e1fdf9c7a1cacf959f16466c3cf',
+    url: '/static/media/shoppingCart.69728e1f.svg'
+  },
+  {
+    revision: '674f50d287a8c48dc19ba404d20fe713',
+    url: '/static/media/fontawesome-webfont.674f50d2.eot'
   },
   {
     revision: 'af7ae505a9eed503f8b8e6982036873e',
@@ -82,10 +86,6 @@ self.__precacheManifest = [
   {
     revision: 'fee66e712a8a08eef5805a46892932ad',
     url: '/static/media/fontawesome-webfont.fee66e71.woff'
-  },
-  {
-    revision: '674f50d287a8c48dc19ba404d20fe713',
-    url: '/static/media/fontawesome-webfont.674f50d2.eot'
   },
   {
     revision: 'b06871f281fee6b241d60582ae9369b9',
@@ -108,11 +108,11 @@ self.__precacheManifest = [
     url: '/static/media/john.21e912b7.png'
   },
   {
-    revision: '43121f01e237eaa2f042',
-    url: '/static/css/2.81f496ff.chunk.css'
+    revision: '0c146a5e2194fc518bd7',
+    url: '/static/css/2.8f3abba8.chunk.css'
   },
   {
-    revision: '44a5ef4bd389124151ede7cd3e77ffaa',
+    revision: '4d9840e4630a26edc19619de2476fa50',
     url: '/index.html'
   }
 ];
