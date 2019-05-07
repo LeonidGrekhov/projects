@@ -1,5 +1,4 @@
 #LoginButton {
-  border-radius: 0;
   color: white;
   border-color: rgb(64, 66, 68);
   background: rgb(64, 66, 68);
@@ -15,7 +14,6 @@
   box-shadow: 0 0 0 0.2rem rgba(132, 0, 255, 0);
 }
 #SignUpButton {
-  border-radius: 0;
   color: white;
   border-color: rgba(132, 0, 255, 0);
 
