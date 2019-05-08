@@ -14,6 +14,10 @@ const deleteListing = db => lid => {
   return db.listing.destroy({ where: { lid } });
 };
 
+const findListing = db => bid => {
+  return db.listing.findAll({ where: { bid } });
+};
+
 const editPrice = db => (lid, price) => {
   return db.listing.update(
     {
@@ -27,5 +31,6 @@ const editPrice = db => (lid, price) => {
 module.exports = db => ({
   insertListing: insertListing(db),
   deleteLisitng: deleteListing(db),
+  findlisting: findListing(db),
   editPrice: editPrice(db)
 });

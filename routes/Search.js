@@ -6,6 +6,10 @@ router.get('/api/search/title/:titleString/page/:page', (request, response) => {
   var searchTerm = request.params.titleString;
   Search.findBookByTitle(searchTerm)
     .then(data => {
+      //If the user is authenticated, do search
+      // if (request.isAuthenticated()){
+
+      // }
       console.log('here');
       console.log(data);
       response.json({ data, pageCount: 1 });
