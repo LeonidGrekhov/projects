@@ -7,6 +7,9 @@ p {
 body {
   font-family: 'Open Sans', sans-serif;
 }
+.btn {
+  /*border-radius: 0px !important;*/
+}
 
 .litlister-remove-focus-outline,
 .litlister-remove-focus-outline:active:focus,
