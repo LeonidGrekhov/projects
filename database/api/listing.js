@@ -14,8 +14,15 @@ const deleteListing = db => lid => {
   return db.listing.destroy({ where: { lid } });
 };
 
-const findListing = db => bid => {
-  return db.listing.findAll({ where: { bid } });
+const findListing = db => bids => {
+  const Op = db.Sequelize.Op;
+  return db.listing.findAll({
+    where: {
+      bid: {
+        [Op.or]: bids
+      }
+    }
+  });
 };
 
 const editPrice = db => (lid, price) => {
@@ -30,7 +37,7 @@ const editPrice = db => (lid, price) => {
 
 module.exports = db => ({
   insertListing: insertListing(db),
-  deleteLisitng: deleteListing(db),
-  findlisting: findListing(db),
+  deleteListing: deleteListing(db),
+  findListing: findListing(db),
   editPrice: editPrice(db)
 });

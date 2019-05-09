@@ -3167,7 +3167,7 @@
           );
         }
         (x.fn = x.prototype = {
-          jquery: '3.4.1',
+          jquery: '3.4.0',
           constructor: x,
           length: 0,
           toArray: function() {
@@ -3253,7 +3253,7 @@
             return a;
           }),
           x.extend({
-            expando: 'jQuery' + ('3.4.1' + Math.random()).replace(/\D/g, ''),
+            expando: 'jQuery' + ('3.4.0' + Math.random()).replace(/\D/g, ''),
             isReady: !0,
             error: function(e) {
               throw new Error(e);
@@ -5506,7 +5506,7 @@
             return x.contains(e.ownerDocument, e);
           },
           le = { composed: !0 };
-        ae.getRootNode &&
+        ae.attachShadow &&
           (se = function(e) {
             return (
               x.contains(e.ownerDocument, e) ||
@@ -5749,7 +5749,7 @@
                     o,
                     i = G.get(this, t);
                   if (1 & e.isTrigger && this[t]) {
-                    if (i.length)
+                    if (i)
                       (x.event.special[t] || {}).delegateType &&
                         e.stopPropagation();
                     else if (
@@ -5759,27 +5759,27 @@
                       this[t](),
                       i !== (o = G.get(this, t)) || r
                         ? G.set(this, t, !1)
-                        : (o = {}),
+                        : (o = void 0),
                       i !== o)
                     )
                       return (
-                        e.stopImmediatePropagation(),
-                        e.preventDefault(),
-                        o.value
+                        e.stopImmediatePropagation(), e.preventDefault(), o
                       );
                   } else
-                    i.length &&
-                      (G.set(this, t, {
-                        value: x.event.trigger(
-                          x.extend(i[0], x.Event.prototype),
-                          i.slice(1),
+                    i &&
+                      (G.set(
+                        this,
+                        t,
+                        x.event.trigger(
+                          x.extend(i.shift(), x.Event.prototype),
+                          i,
                           this
                         )
-                      }),
+                      ),
                       e.stopImmediatePropagation());
                 }
               }))
-            : void 0 === G.get(e, t) && x.event.add(e, t, ke);
+            : x.event.add(e, t, ke);
         }
         (x.event = {
           global: {},
@@ -5996,6 +5996,7 @@
                   me.test(t.type) &&
                     t.click &&
                     N(t, 'input') &&
+                    void 0 === G.get(t, 'click') &&
                     Ne(t, 'click', ke),
                   !1
                 );
@@ -6003,7 +6004,11 @@
               trigger: function(e) {
                 var t = this || e;
                 return (
-                  me.test(t.type) && t.click && N(t, 'input') && Ne(t, 'click'),
+                  me.test(t.type) &&
+                    t.click &&
+                    N(t, 'input') &&
+                    void 0 === G.get(t, 'click') &&
+                    Ne(t, 'click'),
                   !0
                 );
               },
@@ -25850,4 +25855,4 @@
     }
   ]
 ]);
-//# sourceMappingURL=2.0c146a5e.chunk.js.map
+//# sourceMappingURL=2.43121f01.chunk.js.map
