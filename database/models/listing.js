@@ -33,6 +33,10 @@ module.exports = function(sequelize, DataTypes) {
       price: {
         type: DataTypes.INTEGER(11),
         allowNull: false
+      },
+      condition: {
+        type: DataTypes.STRING(45),
+        allowNull: true
       }
     },
     {

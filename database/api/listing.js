@@ -35,9 +35,20 @@ const editPrice = db => (lid, price) => {
   );
 };
 
+const editCondition = db => (lid, condition) => {
+  return db.listing.update(
+    {
+      condition: condition,
+      updated: moment().format()
+    },
+    { where: { lid } }
+  );
+};
+
 module.exports = db => ({
   insertListing: insertListing(db),
   deleteListing: deleteListing(db),
   findListing: findListing(db),
-  editPrice: editPrice(db)
+  editPrice: editPrice(db),
+  editCondition: editCondition(db)
 });
