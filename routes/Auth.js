@@ -69,12 +69,12 @@ router.post(
 
     return Auth.findUserByEmail(email)
       .then(user => {
-        if (user) throw 'User exists';
+        if (user) return Promise.reject(new Error('User Exists'));
 
         return Auth.insertUser(firstname, lastname, email, password).then(
           user => {
             return Auth.insertVerificationToken(user.uid).then(verification => {
-              //sendVerificationEmail(user.email, verification.token);
+              sendVerificationEmail(user.email, verification.token);
               request.login(user, error => {
                 if (error) {
                   return response.json(error);
