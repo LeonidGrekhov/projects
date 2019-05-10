@@ -7,12 +7,7 @@ import MapIcon from './map_icon.svg';
 import ThumbIcon from './thumbs_up.svg';
 import ShieldIcon from './shield_icon.svg';
 import Generics from '../../Generics';
-
-//Book covers
-import book1 from './SampleBookCovers/theIntelligentInvestor.jpeg';
-import book2 from './SampleBookCovers/CollegePhysics.jpeg';
-import book3 from './SampleBookCovers/Socrates.jpeg';
-import book4 from './SampleBookCovers/CollegeAlgebra.jpeg';
+import CustomCarousel from './CustomCarousel';
 
 class Home extends Component {
   constructor(props) {
@@ -26,18 +21,6 @@ class Home extends Component {
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
 
   render() {
-    const imageLinkOrder1 = [book1, book2, book3, book4];
-    const imageLinkOrder2 = [book2, book3, book4, book1];
-    const imageLinkOrder3 = [book3, book4, book1, book2];
-    let imageSlides = array =>
-      array.map((linkUrl, i) => {
-        return (
-          <div className="carousel-item" key={i}>
-            <img id="bookImage" className="d-block" src={linkUrl} alt="book" />
-          </div>
-        );
-      });
-
     return (
       <div>
         <Generics.NavBar />
@@ -51,54 +34,7 @@ class Home extends Component {
                 id="bookGallery"
                 className="row flex-fill py-5  justify-content-center"
               >
-                <div className="col-3">
-                  <div className="carousel slide" data-ride="carousel">
-                    <div className="carousel-inner">
-                      <div className="carousel-item active">
-                        <img
-                          id="bookImage"
-                          className="d-block"
-                          src={book4}
-                          alt="First slide"
-                        />
-                      </div>
-                      {imageSlides(imageLinkOrder1)}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-3">
-                  <div className="carousel slide" data-ride="carousel">
-                    <div className="carousel-inner">
-                      <div className="carousel-item active">
-                        <img
-                          id="bookImage"
-                          className="d-block"
-                          src={book1}
-                          alt="First slide"
-                        />
-                      </div>
-                      {imageSlides(imageLinkOrder2)}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Middle book image */}
-                <div className="col-3">
-                  <div className="carousel slide " data-ride="carousel">
-                    <div className="carousel-inner ">
-                      <div className="carousel-item  active">
-                        <img
-                          id="bookImage"
-                          className="d-block"
-                          src={book2}
-                          alt="First slide"
-                        />
-                      </div>
-                      {imageSlides(imageLinkOrder3)}
-                    </div>
-                  </div>
-                </div>
+                <CustomCarousel />
               </div>
 
               <div
