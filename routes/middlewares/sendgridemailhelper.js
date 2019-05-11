@@ -12,49 +12,10 @@ const sendVerificationEmail = (to, token) => {
     from: 'no-reply@litlister.com',
     subject: 'Verify Your Email for Your LitLister Account',
     text: `Click here to verify your email: https://litlister.com/verification?token=${token}&email=${to}`,
-    html:
-      '<a href = `litlister.com/verification?token=${token}&email=${to}`> Click here to verify your email </a>'
+    html: `Welcome to LitLister! Click <a href = "https://litlister.com/verification?token=${token}&email=${to}">
+        here</a> to verify your email`
   };
   sgMail.send(msg);
 };
-
-/*const sendVerificationEmail = (to, token) => {
-  const hostUrl = 'www.litlister.com';
-  const request = sgMail.emptyRequest({
-    method: 'POST',
-    path: '/v3/mail/send',
-    body: {
-      personalizations: [
-        {
-          to: [
-            {
-              email: to
-            }
-          ],
-          subject: 'Verify Your Email'
-        }
-      ],
-      from: {
-        email: 'no-reply@litlister.com'
-      },
-      content: [
-        {
-          type: 'text/plain',
-          value:
-            'Click on this link to verify your email ${hostUrl}/verification?token=${token}&email=${to}'
-        }
-      ]
-    }
-  });
-  return new Promise(function(resolve, reject) {
-    sgMail.API(request, function(error, response) {
-      if (error) {
-        return reject(error);
-      } else {
-        return resolve(response);
-      }
-    });
-  });
-};*/
 
 module.exports = sendVerificationEmail;

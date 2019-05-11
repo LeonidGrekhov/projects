@@ -67,6 +67,13 @@ router.post(
   (request, response) => {
     const { firstname, lastname, email, password } = request.body;
 
+    // Input validation code
+    const expectedEmail = /^[a-z0-9.]+@mail.sfsu.edu/;
+    if (firstname == null) throw 'Your first name is required';
+    if (lastname == null) throw 'Your last name is required';
+    if (password == null) throw 'A password is required';
+    if (!expectedEmail.test(email)) throw 'Your email must be an SFSU email';
+
     return Auth.findUserByEmail(email)
       .then(user => {
         if (user) return Promise.reject(new Error('User Exists'));
@@ -93,5 +100,26 @@ router.post(
       });
   }
 );
+
+router.get('/verification', (req, res) => {
+  const { token, email } = req.query;
+  return Auth.findUserByEmail(email)
+    .then(user => {
+      console.log('User found');
+      if (user.isVerified)
+        return res.status(202).json('Email Already Verified');
+
+      return Auth.verifyUser(email)
+        .then(user => {
+          return res.json(`User with ${email} verified!`);
+        })
+        .catch(e => {
+          return res.json(e);
+        });
+    })
+    .catch(e => {
+      return res.json(e);
+    });
+});
 
 module.exports = router;

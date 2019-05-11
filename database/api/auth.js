@@ -36,6 +36,10 @@ const updatePassword = db => (email, new_password) =>
     .hash(new_password, SALT_ROUNDS)
     .then(hash => db.user.update({ password: hash }, { where: { email } }));
 
+const verifyUser = db => email => {
+  return db.user.update({ isVerified: 1 }, { where: { email } });
+};
+
 const insertSession = db => (sid, data, expire) =>
   db.session.create({
     sid,
@@ -55,6 +59,7 @@ module.exports = db => ({
   findUserByEmail: findUserByEmail(db),
   findUserById: findUserById(db),
   updatePassword: updatePassword(db),
+  verifyUser: verifyUser(db),
   insertSession: insertSession(db),
   deleteSession: deleteSession(db),
   findSessionById: findSessionBySid(db),
