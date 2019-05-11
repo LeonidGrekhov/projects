@@ -1,5 +1,10 @@
 const router = require('express').Router();
 const { Listing } = require('../database/api');
+const fs = require('fs');
+
+const imageFileBuffer = fs.readFileSync(
+  '/Users/vismaypatel/Desktop/Software Engineering/TheBookProject/csc648-sp19-team244/database/api/2.png'
+);
 
 router.post('/api/listing/create', (request, response) => {
   const { book, user, price } = request.body;
@@ -47,15 +52,31 @@ router.post('/api/listing/edit/condition', (request, response) => {
 });
 
 //Delete listing request
-router.post('/api/listing/delete', (request, reponse) => {
+router.post('/api/listing/delete', (request, response) => {
   const listingId = request.body.lid;
   return Listing.deleteLisitng(listingId)
     .then(Listing => {
       console.log(Listing);
-      reponse.json(Listing);
+      response.json(Listing);
     })
     .catch(error => {
       console.log(error);
+      response.json(error);
+    });
+});
+
+router.post('/api/listing/uploadimage', (request, response) => {
+  const listingId = request.body.lid;
+  const filename = request.body.filename;
+  const extension = request.body.extension;
+  const streamData = request.body.streamData;
+
+  //calling a function with test buffer - imageFileBuffer
+  return Listing.uploadListingImage(listingId, streamData, filename, extension)
+    .then(data => {
+      response.json(data);
+    })
+    .catch(error => {
       response.json(error);
     });
 });
