@@ -37,6 +37,10 @@ module.exports = function(sequelize, DataTypes) {
       condition: {
         type: DataTypes.STRING(45),
         allowNull: true
+      },
+      imageurl: {
+        type: DataTypes.STRING(200),
+        allowNull: true
       }
     },
     {
