@@ -12,11 +12,19 @@ module.exports = function(sequelize, DataTypes) {
       },
       bid: {
         type: DataTypes.INTEGER(11),
-        allowNull: false
+        allowNull: false,
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
+        references: {
+          model: 'book',
+          key: 'bid'
+        }
       },
       sid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
         references: {
           model: 'user',
           key: 'uid'
