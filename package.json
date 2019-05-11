@@ -29,9 +29,11 @@
   },
   "homepage": "https://github.com/CSC-648-SFSU/csc648-sp19-team244#readme",
   "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
     "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
+    "crypto-random-string": "^2.0.0",
     "debug": "^4.1.1",
     "eslint": "^5.12.0",
     "express": "^4.16.4",
