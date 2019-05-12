@@ -23,13 +23,29 @@ const deleteListing = db => lid => {
   return db.listing.destroy({ where: { lid } });
 };
 
-const findListing = db => bids => {
+const findListingByBID = db => bid => {
+  return db.listing.findAll({
+    where: {
+      bid
+    }
+  });
+};
+
+const findListingByBIDS = db => bids => {
   const Op = db.Sequelize.Op;
   return db.listing.findAll({
     where: {
       bid: {
         [Op.or]: bids
       }
+    }
+  });
+};
+
+const findListingByLID = db => lid => {
+  return db.listing.findOne({
+    where: {
+      lid
     }
   });
 };
@@ -121,7 +137,9 @@ const uploadListingImage = db => (lid, streamData, filename, extension) => {
 module.exports = db => ({
   insertListing: insertListing(db),
   deleteListing: deleteListing(db),
-  findListing: findListing(db),
+  findListingByBID: findListingByBID(db),
+  findListingByBIDS: findListingByBIDS(db),
+  findListingByLID: findListingByLID(db),
   editPrice: editPrice(db),
   editCondition: editCondition(db),
   uploadListingImage: uploadListingImage(db)
