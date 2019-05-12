@@ -37,8 +37,8 @@ class CustomCarousel extends Component {
   }
 
   componentDidMount = () => {
-    let framePerSecond = 50;
-    let animationData = this.initializeAnimationData(json, framePerSecond * 2);
+    let framePerSecond = 30;
+    let animationData = this.initializeAnimationData(json, framePerSecond * 5);
     let intervalId = setInterval(this.animate, 1000 / framePerSecond);
     this.setState({ data: json, intervalId, animationData });
   };
@@ -50,7 +50,7 @@ class CustomCarousel extends Component {
   initializeAnimationData = (json, framePerSecond) => {
     let animationData = {};
     animationData.covers = json.map(e => e.pic);
-    animationData.picHeights = [300, 300, 300, 300, 300, 300, 300];
+    animationData.picHeights = [400, 400, 400, 400, 400, 400, 400];
     animationData.paddingRightResets = [2050, 1650, 1250, 850, 450, 50, -350];
     animationData.paddingRights = animationData.paddingRightResets;
     animationData.paddingRightDelta = [0, 0, 0, 0, 0, 0, 0];
@@ -131,7 +131,7 @@ class CustomCarousel extends Component {
         animationData.paddingRightDelta[i] +=
           animationData.paddingRightAnimationDelta;
       }
-      if (animationLeave[i] && 300 < animationData.picHeights[i]) {
+      if (animationLeave[i] && 400 < animationData.picHeights[i]) {
         animationData.picHeights[i] -= animationData.picHeightAnimationDelta;
         animationData.paddingRightDelta[i] -=
           animationData.paddingRightAnimationDelta;
