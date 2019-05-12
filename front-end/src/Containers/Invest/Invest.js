@@ -21,11 +21,11 @@ class Invest extends Component {
             <div className="container-fluid h-100 main-body d-flex align-items-center justify-content-center">
               <div className="row justify-content-center p-4">
                 <div className="big-text">Looking To Invest?</div>
-                <p>
+                <h5 style={{ color: 'white' }}>
                   We are currently preparing to work with investors so we can
                   build the future together. Hold on tight while we prepare and
                   set up and we will update this page soon.
-                </p>
+                </h5>
               </div>
             </div>
           }
