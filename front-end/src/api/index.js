@@ -5,5 +5,16 @@ import Listing from './Listing';
 import Search from './Search';
 import User from './User';
 import Transaction from './Transaction';
-
-export { socket, Admin, Auth, Listing, Search, User, Transaction };
+import UserListing from './UserListing';
+import BookInfo from './BookInfo';
+export {
+  socket,
+  Admin,
+  Auth,
+  Listing,
+  Search,
+  User,
+  Transaction,
+  UserListing,
+  BookInfo
+};
