@@ -2,12 +2,12 @@ const router = require('express').Router();
 const { Listing } = require('../database/api');
 const fs = require('fs');
 
-const imageFileBuffer = fs.readFileSync(
+/*const imageFileBuffer = fs.readFileSync(
   '/Users/vismaypatel/Desktop/Software Engineering/TheBookProject/csc648-sp19-team244/database/api/2.png'
-);
+);*/
 
 router.post('/api/listing/create', (request, response) => {
-  const { book, user, price } = request.body;
+  const { book, user, price, condition } = request.body;
   return Listing.insertListing(book, user, price)
     .then(Listing => {
       console.log(Listing);

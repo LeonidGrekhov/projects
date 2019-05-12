@@ -1,8 +1,8 @@
 const findBookByTitle = db => title => {
-  var splitString = title.split(" ");
-  
+  var splitString = title.split(' ');
+
   let orValue = [];
-  splitString.map( str => {
+  splitString.map(str => {
     let orValueInteration = {
       title: {
         [db.Sequelize.Op.like]: '%' + str + '%'
@@ -12,21 +12,20 @@ const findBookByTitle = db => title => {
   });
   let where = {
     [db.Sequelize.Op.or]: orValue
-  }
-  
+  };
+
   // SQL Statement here; Sequelize allows us to avoid raw SQL queries.
-  return db.book.findAll({where});
+  return db.book.findAll({ where });
 };
-   
 
 const findBookByAuthor = db => author => {
-  var splitString = author.split(" ");
+  var splitString = author.split(' ');
   console.log(splitString);
 
-  console.log(db.Sequelize.Op.or)
-  
+  console.log(db.Sequelize.Op.or);
+
   let orValue = [];
-  splitString.map( str => {
+  splitString.map(str => {
     let orValueInteration = {
       author: {
         [db.Sequelize.Op.like]: '%' + str + '%'
@@ -36,11 +35,11 @@ const findBookByAuthor = db => author => {
   });
   let where = {
     [db.Sequelize.Op.or]: orValue
-  }
+  };
   console.log(where);
-  
+
   // SQL Statement here; Sequelize allows us to avoid raw SQL queries
-  return db.book.findAll({where});
+  return db.book.findAll({ where });
 };
 
 const findBookByISBN = db => isbn => {
@@ -54,10 +53,28 @@ const findBookByISBN = db => isbn => {
       }
     }
   });
-}
+};
+
+const findBookByID = db => bid => {
+  return db.book.findOne({
+    where: {
+      bid
+    }
+  });
+};
+
+const findListingByID = db => lid => {
+  return db.listing.findOne({
+    where: {
+      lid
+    }
+  });
+};
 
 module.exports = db => ({
   findBookByTitle: findBookByTitle(db),
   findBookByAuthor: findBookByAuthor(db),
-  findBookByISBN: findBookByISBN(db)
+  findBookByISBN: findBookByISBN(db),
+  findBookByID: findBookByID(db),
+  findListingByID: findListingByID(db)
 });

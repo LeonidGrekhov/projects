@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    revision: 'cdf858b8723a53430d3619ac3583a00a',
-    url: '/static/media/chat_icon.cdf858b8.svg'
+    revision: 'baaa27c7373ca27891cc33a5f1e72885',
+    url: '/static/media/book_icon.baaa27c7.svg'
   },
   {
-    revision: 'deaacd31550e0e6be9c6',
-    url: '/static/css/main.dbbbe3b7.chunk.css'
+    revision: '5f34b62eeff92a157b98',
+    url: '/static/css/main.cc2c2eb0.chunk.css'
   },
   {
     revision: '42ac5946195a7306e2a5',
     url: '/static/js/runtime~main.42ac5946.js'
   },
   {
-    revision: '335ac4a1a9863984962b4664d7e95726',
-    url: '/static/media/michael winata.335ac4a1.jpg'
+    revision: '3ef0fe7e8aea4a0d8c4074d0901bc8cb',
+    url: '/static/media/michael winata.3ef0fe7e.jpg'
   },
   {
-    revision: '43121f01e237eaa2f042',
-    url: '/static/js/2.43121f01.chunk.js'
+    revision: '60db624e3251a2c5a99f',
+    url: '/static/js/2.60db624e.chunk.js'
   },
   {
     revision: 'c54f98a0e8e57a52691ed32fb8ac783d',
@@ -30,6 +30,10 @@ self.__precacheManifest = [
   {
     revision: 'f26890564a8b02a44b3ecbd2c21b2409',
     url: '/static/media/CollegeAlgebra.f2689056.jpeg'
+  },
+  {
+    revision: 'cd117e8dad3f86bc83056e0fdf3260d8',
+    url: '/static/media/gear_white.cd117e8d.svg'
   },
   {
     revision: '23fe2d514e361a4e01d8a6505787cc29',
@@ -48,16 +52,24 @@ self.__precacheManifest = [
     url: '/static/media/star-outline-filled.253379f4.svg'
   },
   {
+    revision: 'b68598085cf9bd7c0298ad28ecd1f72f',
+    url: '/static/media/shoppingCart.b6859808.svg'
+  },
+  {
+    revision: '54cff9d23032bb4f6640dec73bbc2cc9',
+    url: '/static/media/question_mark.54cff9d2.svg'
+  },
+  {
     revision: '63b405cdf3f7eac7747b1cb8b752c094',
     url: '/static/media/money_icon.63b405cd.svg'
   },
   {
-    revision: 'baaa27c7373ca27891cc33a5f1e72885',
-    url: '/static/media/book_icon.baaa27c7.svg'
+    revision: '5f34b62eeff92a157b98',
+    url: '/static/js/main.5f34b62e.chunk.js'
   },
   {
-    revision: 'deaacd31550e0e6be9c6',
-    url: '/static/js/main.deaacd31.chunk.js'
+    revision: 'cdf858b8723a53430d3619ac3583a00a',
+    url: '/static/media/chat_icon.cdf858b8.svg'
   },
   {
     revision: 'e49b07f077723ab4229d515146c162c7',
@@ -70,10 +82,6 @@ self.__precacheManifest = [
   {
     revision: 'a7860448ee1a721b2605e727fd58f91a',
     url: '/static/media/shield_icon.a7860448.svg'
-  },
-  {
-    revision: 'b68598085cf9bd7c0298ad28ecd1f72f',
-    url: '/static/media/shoppingCart.b6859808.svg'
   },
   {
     revision: 'af7ae505a9eed503f8b8e6982036873e',
@@ -96,23 +104,31 @@ self.__precacheManifest = [
     url: '/static/media/fontawesome-webfont.912ec66d.svg'
   },
   {
-    revision: 'ca873b4ce60d188f51d46470d18c5afa',
-    url: '/static/media/VismayPatel.ca873b4c.jpg'
+    revision: '9a7e20e8d54f87b32a3be3bfcb4fb1eb',
+    url: '/static/media/Edwin Menjivar.9a7e20e8.jpg'
   },
   {
-    revision: 'dea2646df1f999b1d14e7c60feb805aa',
-    url: '/static/media/jesusGarnica.dea2646d.png'
+    revision: 'e4e95f72069b52c5c2c1d37bbd2bd7e4',
+    url: '/static/media/Leonid Grekhov.e4e95f72.jpg'
   },
   {
-    revision: '21e912b7d64fdf61fceb63162d2f7f30',
-    url: '/static/media/john.21e912b7.png'
+    revision: 'e62e71903172e611333bcbee3917c828',
+    url: '/static/media/VismayPatel.e62e7190.jpg'
   },
   {
-    revision: '43121f01e237eaa2f042',
-    url: '/static/css/2.81f496ff.chunk.css'
+    revision: '60afb3b2d907bca3cb5e08e6fa14777b',
+    url: '/static/media/jesusGarnica.60afb3b2.jpg'
   },
   {
-    revision: '44a5ef4bd389124151ede7cd3e77ffaa',
+    revision: 'ccf309ba669686640c490c38d614deaf',
+    url: '/static/media/john.ccf309ba.jpg'
+  },
+  {
+    revision: '60db624e3251a2c5a99f',
+    url: '/static/css/2.dd4fc322.chunk.css'
+  },
+  {
+    revision: '797c148c17f1e7a2cba449f46053b0a8',
     url: '/index.html'
   }
 ];
