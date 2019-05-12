@@ -18,12 +18,11 @@ router.get('/api/search/title/:titleString/page/:page', (request, response) => {
       // listings in the response as well as the books; otherwise just books
       if (request.isAuthenticated()) {
         const bids = getBids(data);
-        return Listing.findListing(bids)
+        return Listing.findListingByBIDS(bids)
           .then(listings => {
-            response.json({ data, listings, pageCount: 1 });
+            response.json({ data, bids, listings, pageCount: 1 });
           })
           .catch(error => {
-            console.log(error);
             response.json(error);
           });
       } else {
@@ -32,7 +31,6 @@ router.get('/api/search/title/:titleString/page/:page', (request, response) => {
     })
 
     .catch(error => {
-      console.log(error);
       response.json({ error });
     });
 });
@@ -45,10 +43,9 @@ router.get(
       .then(data => {
         if (request.isAuthenticated()) {
           const bids = getBids(data);
-          return Listing.findListing(bids)
+          return Listing.findListingByBIDS(bids)
             .then(listings => {
-              console.log(listings);
-              response.json({ data, listings, pageCount: 1 });
+              response.json({ data, bids, listings, pageCount: 1 });
             })
             .catch(error => {
               response.json(error);
@@ -59,7 +56,6 @@ router.get(
       })
 
       .catch(error => {
-        console.log(error);
         response.json({ error });
       });
   }
@@ -71,10 +67,9 @@ router.get('/api/search/isbn/:isbnString/page/:page', (request, response) => {
     .then(data => {
       if (request.isAuthenticated()) {
         const bids = getBids(data);
-        return Listing.findListing(bids)
+        return Listing.findListingByBIDS(bids)
           .then(listings => {
-            console.log(listings);
-            response.json({ data, listings, pageCount: 1 });
+            response.json({ data, bids, listings, pageCount: 1 });
           })
           .catch(error => {
             response.json(error);
@@ -83,20 +78,38 @@ router.get('/api/search/isbn/:isbnString/page/:page', (request, response) => {
         response.json({ data, pageCount: 1 });
       }
     })
-
     .catch(error => {
-      console.log(error);
       response.json({ error });
     });
 });
 
+// Return a book and a single listing
 router.get('/api/book/:bid/listing/:lid', (req, res) => {
   const { bid, lid } = req.params;
   return Search.findBookByID(bid)
     .then(book => {
-      return Search.findListingByID(lid)
+      return Listing.findListingByLID(lid)
         .then(listing => {
           return res.json({ book, listing });
+        })
+        .catch(e => {
+          return res.json(e);
+        });
+    })
+    .catch(e => {
+      return res.json(e);
+    });
+});
+
+// Return a book and multiple listings
+router.get('/api/book/:bid/list/', (req, res) => {
+  const { bid } = req.params;
+
+  return Search.findBookByID(bid)
+    .then(book => {
+      return Listing.findListingByBID(bid)
+        .then(Listings => {
+          return res.json({ book, Listings });
         })
         .catch(e => {
           return res.json(e);

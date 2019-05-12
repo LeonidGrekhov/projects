@@ -20,9 +20,6 @@ const findBookByTitle = db => title => {
 
 const findBookByAuthor = db => author => {
   var splitString = author.split(' ');
-  console.log(splitString);
-
-  console.log(db.Sequelize.Op.or);
 
   let orValue = [];
   splitString.map(str => {
@@ -36,15 +33,12 @@ const findBookByAuthor = db => author => {
   let where = {
     [db.Sequelize.Op.or]: orValue
   };
-  console.log(where);
 
   // SQL Statement here; Sequelize allows us to avoid raw SQL queries
   return db.book.findAll({ where });
 };
 
 const findBookByISBN = db => isbn => {
-  console.log(isbn);
-
   // SQL statement here; Sequelize allows us to avoid raw SQL queries
   return db.book.findAll({
     where: {
@@ -63,18 +57,9 @@ const findBookByID = db => bid => {
   });
 };
 
-const findListingByID = db => lid => {
-  return db.listing.findOne({
-    where: {
-      lid
-    }
-  });
-};
-
 module.exports = db => ({
   findBookByTitle: findBookByTitle(db),
   findBookByAuthor: findBookByAuthor(db),
   findBookByISBN: findBookByISBN(db),
-  findBookByID: findBookByID(db),
-  findListingByID: findListingByID(db)
+  findBookByID: findBookByID(db)
 });
