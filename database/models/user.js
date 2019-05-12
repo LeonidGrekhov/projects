@@ -39,6 +39,10 @@ module.exports = function(sequelize, DataTypes) {
       },
       isVerified: {
         type: DataTypes.BOOLEAN
+      },
+      rating: {
+        type: DataTypes.INTEGER(11),
+        allowNull: true
       }
     },
     {
