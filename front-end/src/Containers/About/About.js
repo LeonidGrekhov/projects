@@ -87,11 +87,11 @@ class About extends Component {
                   We are made to fight against expensive books and save you
                   money.
                 </span>
-                <p className="p-5">
+                <h4 className="p-5">
                   We are college students helping others fight against rising
                   prices of textbooks. College is expensive enough so we wanted
                   to create something to bring the pain to greedy publishers.
-                </p>
+                </h4>
               </div>
               <div className="row p-3 m-3 about-box">
                 <div className="col header-text text-center align-middle">
@@ -108,23 +108,23 @@ class About extends Component {
                 </div>
               </div>
               <div className="row about-box">
-                <p className="p-5 text-center">
+                <h4 className="p-5 text-center">
                   We have only one goal and that is to set you up with your
                   books for the coming semester. Do not stress about that one
                   really expensive textbook. We will help you find a great deal
                   on it.
-                </p>
+                </h4>
               </div>
 
               <div className="row  about-box ">
                 <span className="header-text  text-center  m-auto p-4">
                   Meet the team.
                 </span>
-                <p className="p-5">
+                <h4 className="p-5">
                   We are college students helping others fight against rising
                   prices of textbooks. College is expensive enough so we wanted
                   to create something to bring the pain to greedy publishers.
-                </p>
+                </h4>
               </div>
               <div className="row justify-content-center flex-fill w-100">
                 {this.teamCards()}
