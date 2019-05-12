@@ -8,12 +8,13 @@ const S3 = new AWS.S3({
   secretAccessKey: 'qrbxPXO1ovS9UQpo+pdFc7He05j/z5Yk3oOJOz5u'
 });
 
-const insertListing = db => (book, user, price) => {
+const insertListing = db => (book, user, price, condition) => {
   return db.listing.create({
     bid: book.bid,
     sid: user.uid,
     created: moment().format(),
-    price: price
+    price: price,
+    condition: condition
   });
 };
 
