@@ -49,6 +49,24 @@ module.exports = function(sequelize, DataTypes) {
       imageurl: {
         type: DataTypes.STRING(200),
         allowNull: true
+      },
+      bookRating: {
+        type: DataTypes.INTEGER(11),
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
+        references: {
+          model: 'book',
+          key: 'rating'
+        }
+      },
+      userRating: {
+        type: DataTypes.INTEGER(11),
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
+        references: {
+          model: 'user',
+          key: 'rating'
+        }
       }
     },
     {

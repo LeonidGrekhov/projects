@@ -8,7 +8,7 @@ const fs = require('fs');
 
 router.post('/api/listing/create', (request, response) => {
   const { book, user, price, condition } = request.body;
-  return Listing.insertListing(book, user, price)
+  return Listing.insertListing(book, user, price, condition)
     .then(Listing => {
       console.log(Listing);
       response.json(Listing);
@@ -19,7 +19,7 @@ router.post('/api/listing/create', (request, response) => {
     });
 });
 
-router.post('/api/listing/edit/price', (request, response) => {
+router.put('/api/listing/edit/price', (request, response) => {
   const listingId = request.body.lid;
   const price = request.body.price;
 
@@ -35,7 +35,7 @@ router.post('/api/listing/edit/price', (request, response) => {
     });
 });
 
-router.post('/api/listing/edit/condition', (request, response) => {
+router.put('/api/listing/edit/condition', (request, response) => {
   const listingId = request.body.lid;
   const condition = request.body.condition;
 

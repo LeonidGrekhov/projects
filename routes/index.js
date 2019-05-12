@@ -3,6 +3,7 @@ const AuthRoute = require('./Auth');
 const DefaultRoute = require('./Default');
 const SearchRoute = require('./Search');
 const ListingRoute = require('./Listing');
+const RatingRoute = require('./Rating');
 
 if (process.env.LOCAL_SERVER) {
   router.use((_, response, next) => {
@@ -20,6 +21,7 @@ if (process.env.LOCAL_SERVER) {
 router.use(AuthRoute);
 router.use(SearchRoute);
 router.use(ListingRoute);
+router.use(RatingRoute);
 router.use(DefaultRoute);
 
 module.exports = router;
