@@ -10,7 +10,6 @@ router.post('/api/listing/create', (request, response) => {
   const { book, user, price, condition } = request.body;
   return Listing.insertListing(book, user, price, condition)
     .then(Listing => {
-      console.log(Listing);
       response.json(Listing);
     })
     .catch(error => {
@@ -56,7 +55,6 @@ router.post('/api/listing/delete', (request, response) => {
   const listingId = request.body.lid;
   return Listing.deleteLisitng(listingId)
     .then(Listing => {
-      console.log(Listing);
       response.json(Listing);
     })
     .catch(error => {
