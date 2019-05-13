@@ -6,6 +6,12 @@ const fs = require('fs');
   '/Users/vismaypatel/Desktop/Software Engineering/TheBookProject/csc648-sp19-team244/database/api/2.png'
 );*/
 
+router.get('/api/book/:bid/list/:lid', ({ params: { lid } }, response) => {
+  return Listing.findListingByLID(parseInt(lid))
+    .then(data => response.json(data))
+    .catch(error => response.json(error));
+});
+
 router.post('/api/listing/create', (request, response) => {
   const { book, user, price, condition } = request.body;
   return Listing.insertListing(book, user, price, condition)

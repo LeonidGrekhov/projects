@@ -2,31 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { Listing as ListingAPI } from '../../api';
-
-let debug = true;
-
-let bookJson = {
-  data: {
-    title: 'book1',
-    isbn: '111-111-111',
-    authors: ['Adam Bob', 'Calvin Dan'],
-    rating: 2.5,
-    description: 'nothing, you are on debug mode',
-    pictureurl:
-      'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-  }
-};
-
-let listingJson = {
-  data: {
-    seller: 'dummy seller name',
-    rating: 0.4,
-    condition: 'new',
-    price: 11.09,
-    description: 'I bought the wrong book, and I missed the return deadline.'
-  }
-};
+import { BookInfo as BookInfoAPI, Listing as ListingAPI } from '../../api';
 
 class Listing extends Component {
   constructor(props) {
@@ -41,19 +17,16 @@ class Listing extends Component {
   }
 
   componentDidMount = () => {
-    if (debug) {
-      this.setState({
-        bookData: bookJson.data,
-        listData: listingJson.data,
-        renderReady: true
-      });
-    } else {
-      ListingAPI.getBookInfo(this.state.bid).then(bookData =>
-        ListingAPI.getListingInfo(this.state.lid).then(listData =>
-          this.setState({ bookData, listData, renderReady: true })
-        )
-      );
-    }
+    BookInfoAPI.getBookInfo(this.state.bid).then(bookData =>
+      ListingAPI.getListingInfo(this.state.bid, this.state.lid).then(
+        listData => {
+          if (bookData && listData) {
+            this.setState({ bookData, listData, renderReady: true });
+          }
+          console.log(listData);
+        }
+      )
+    );
   };
 
   bodyContent = () => (
@@ -93,12 +66,7 @@ class Listing extends Component {
         </div>
         <div className="col mt-3">
           <h1>{this.state.bookData.title}</h1>
-          <h5>
-            author(s):{' '}
-            {this.state.bookData.authors.map((author, i) => (
-              <span key={i}>{(0 === i ? ' ' : ', ') + author}</span>
-            ))}
-          </h5>
+          <h5>author(s): {this.state.bookData.author}</h5>
           <span>isbn: {this.state.bookData.isbn}</span>
           <br />
           <div className="row">
