@@ -50,6 +50,7 @@ package-lock.json
 
 # dotenv environment variables file
 .env
+sendgrid.env
 
 # DS_Store files
 .DS_STORE
