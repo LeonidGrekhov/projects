@@ -6,8 +6,6 @@ import logo from './logo.svg';
 import './NavBar.css';
 import cartLogo from './shoppingCart.svg';
 
-let debugUser = false;
-
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -29,28 +27,7 @@ class Navbar extends Component {
   }
 
   componentDidMount = () => {
-    if (debugUser) {
-      this.setState({
-        user: {
-          firstname: 'Rob'
-        }
-      });
-    } else {
-      Auth.getLogin().then(response => {
-        if (response.ok) {
-          response.text().then(promise => {
-            promise = JSON.parse(promise);
-            if (promise.firstname) {
-              this.setState({
-                user: {
-                  firstname: promise.firstname
-                }
-              });
-            }
-          });
-        }
-      });
-    }
+    Auth.getLogin().then(user => this.setState({ user }));
   };
 
   onChange = event => {
@@ -232,7 +209,8 @@ class Navbar extends Component {
         0
       </button>
     );
-    if (this.state.user) {
+    const { user } = this.state;
+    if (user) {
       return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <a className="navbar-brand" href="/">
@@ -272,16 +250,22 @@ class Navbar extends Component {
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuLink"
                 >
-                  <a className="dropdown-item" href="/user/1">
+                  <a className="dropdown-item" href={`/user/${user.uid}`}>
                     User Profile
                   </a>
-                  <a className="dropdown-item" href="/user/1/listing">
+                  <a
+                    className="dropdown-item"
+                    href={`/user/${user.uid}/listing`}
+                  >
                     Create a listing
                   </a>
                   <a className="dropdown-item" href="/transaction">
                     Transaction history
                   </a>
-                  <a className="dropdown-item" href="/user/1/report">
+                  <a
+                    className="dropdown-item"
+                    href={`/user/${user.uid}/report`}
+                  >
                     User Report
                   </a>
                 </div>
