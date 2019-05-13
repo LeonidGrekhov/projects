@@ -6,18 +6,36 @@ const fs = require('fs');
   '/Users/vismaypatel/Desktop/Software Engineering/TheBookProject/csc648-sp19-team244/database/api/2.png'
 );*/
 
-router.post('/api/listing/create', (request, response) => {
-  const { book, user, price, condition } = request.body;
-  return Listing.insertListing(book, user, price, condition)
-    .then(Listing => {
-      console.log(Listing);
-      response.json(Listing);
-    })
-    .catch(error => {
-      console.log(error);
-      response.json(error);
-    });
+router.delete('/api/user/:uid/listing/:lid', ({ params: { lid } }, response) =>
+  Listing.deleteListing(parseInt(lid)).then(data => response.json(data))
+);
+
+router.get('/api/book/:bid/list/:lid', ({ params: { lid } }, response) => {
+  return Listing.findListingByLID(parseInt(lid))
+    .then(data => response.json(data))
+    .catch(error => response.json(error));
 });
+
+router.put(
+  '/api/user/:uid/listing/',
+  (
+    { body: { bid, price, condition, updateLid }, params: { uid } },
+    response
+  ) => {
+    if (updateLid) {
+      return Listing.updateListing(
+        parseInt(parseInt(updateLid)),
+        price,
+        condition
+      )
+        .then(data => response.json(data))
+        .catch(error => response.json(error));
+    }
+    return Listing.createListing(parseInt(uid), parseInt(bid), price, condition)
+      .then(data => response.json(data))
+      .catch(error => response.json(error));
+  }
+);
 
 router.put('/api/listing/edit/price', (request, response) => {
   const listingId = request.body.lid;
@@ -56,7 +74,6 @@ router.post('/api/listing/delete', (request, response) => {
   const listingId = request.body.lid;
   return Listing.deleteLisitng(listingId)
     .then(Listing => {
-      console.log(Listing);
       response.json(Listing);
     })
     .catch(error => {

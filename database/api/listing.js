@@ -8,6 +8,15 @@ const S3 = new AWS.S3({
   secretAccessKey: 'qrbxPXO1ovS9UQpo+pdFc7He05j/z5Yk3oOJOz5u'
 });
 
+const createListing = db => (uid, bid, price, condition) =>
+  db.listing.create({
+    bid,
+    sid: uid,
+    created: moment().format(),
+    price,
+    condition
+  });
+
 const insertListing = db => (book, user, price, condition) => {
   return db.listing.create({
     bid: book.bid,
@@ -17,6 +26,16 @@ const insertListing = db => (book, user, price, condition) => {
     condition: condition
   });
 };
+
+const updateListing = db => (lid, price, condition) =>
+  db.listing.update(
+    {
+      price,
+      condition,
+      updated: moment().format()
+    },
+    { where: { lid } }
+  );
 
 //Deleting a listing
 const deleteListing = db => lid => {
@@ -42,13 +61,20 @@ const findListingByBIDS = db => bids => {
   });
 };
 
-const findListingByLID = db => lid => {
-  return db.listing.findOne({
-    where: {
-      lid
-    }
-  });
-};
+const findListingByLID = db => lid =>
+  db.listing
+    .findOne({
+      where: {
+        lid
+      }
+    })
+    .then(list =>
+      db.user
+        .findByPk(list.sid, { attributes: ['firstname', 'lastname'] })
+        .then(seller => {
+          return { list, seller };
+        })
+    );
 
 const editPrice = db => (lid, price) => {
   return db.listing.update(
@@ -135,7 +161,9 @@ const uploadListingImage = db => (lid, streamData, filename, extension) => {
 };
 
 module.exports = db => ({
+  createListing: createListing(db),
   insertListing: insertListing(db),
+  updateListing: updateListing(db),
   deleteListing: deleteListing(db),
   findListingByBID: findListingByBID(db),
   findListingByBIDS: findListingByBIDS(db),
