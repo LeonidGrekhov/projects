@@ -51,13 +51,20 @@ const findListingByBIDS = db => bids => {
   });
 };
 
-const findListingByLID = db => lid => {
-  return db.listing.findOne({
-    where: {
-      lid
-    }
-  });
-};
+const findListingByLID = db => lid =>
+  db.listing
+    .findOne({
+      where: {
+        lid
+      }
+    })
+    .then(list =>
+      db.user
+        .findByPk(list.sid, { attributes: ['firstname', 'lastname'] })
+        .then(seller => {
+          return { list, seller };
+        })
+    );
 
 const editPrice = db => (lid, price) => {
   return db.listing.update(

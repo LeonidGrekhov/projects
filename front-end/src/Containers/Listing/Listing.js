@@ -18,14 +18,13 @@ class Listing extends Component {
 
   componentDidMount = () => {
     BookInfoAPI.getBookInfo(this.state.bid).then(bookData =>
-      ListingAPI.getListingInfo(this.state.bid, this.state.lid).then(
-        listData => {
-          if (bookData && listData) {
-            this.setState({ bookData, listData, renderReady: true });
-          }
-          console.log(listData);
+      ListingAPI.getListingInfo(this.state.bid, this.state.lid).then(data => {
+        if (bookData && data) {
+          let listData = data.list;
+          listData.seller = data.seller;
+          this.setState({ bookData, listData: listData, renderReady: true });
         }
-      )
+      })
     );
   };
 
@@ -92,7 +91,12 @@ class Listing extends Component {
       <div className="row my-3">
         <div className="col-1" />
         <div className="col">
-          <h5>Seller: {this.state.listData.seller}</h5>
+          <h5>
+            Seller:{' '}
+            {this.state.listData.seller.firstname +
+              ' ' +
+              this.state.listData.seller.lastname}
+          </h5>
           <div className="row">
             <div className="col-1">rating:</div>
             <div className="col-1">
