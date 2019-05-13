@@ -98,7 +98,7 @@ class CreateUserListing extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    UserListingAPI.putListing(
+    UserListingAPI.putListingInfo(
       this.state.uid,
       this.state.bookData.bid,
       this.state.userPrice,

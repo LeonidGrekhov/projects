@@ -9,7 +9,7 @@ const RatingRoute = require('./Rating');
 if (process.env.LOCAL_SERVER) {
   router.use((_, response, next) => {
     response.header('Access-Control-Allow-Origin', 'http://localhost:4000');
-    response.header('Access-Control-Allow-Methods', 'GET, POST, PUT');
+    response.header('Access-Control-Allow-Methods', 'DELETE, GET, POST, PUT');
     response.header(
       'Access-Control-Allow-Headers',
       'Origin, X-Requested-With, Content-Type, Accept'

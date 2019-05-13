@@ -27,6 +27,16 @@ const insertListing = db => (book, user, price, condition) => {
   });
 };
 
+const updateListing = db => (lid, price, condition) =>
+  db.listing.update(
+    {
+      price,
+      condition,
+      updated: moment().format()
+    },
+    { where: { lid } }
+  );
+
 //Deleting a listing
 const deleteListing = db => lid => {
   return db.listing.destroy({ where: { lid } });
@@ -153,6 +163,7 @@ const uploadListingImage = db => (lid, streamData, filename, extension) => {
 module.exports = db => ({
   createListing: createListing(db),
   insertListing: insertListing(db),
+  updateListing: updateListing(db),
   deleteListing: deleteListing(db),
   findListingByBID: findListingByBID(db),
   findListingByBIDS: findListingByBIDS(db),
