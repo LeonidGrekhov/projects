@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 import './UserListing.css';
+
+import { BookInfo, Search, UserListing as UserListingAPI } from '../../api';
+
 let debug = true;
 
 let titleSuggestion = ['Once upon'];
@@ -72,7 +75,36 @@ class UserListing extends Component {
         )
       });
     } else {
-      // api
+      Search.getSearchByTitle(event.target.value).then(({ data: books }) => {
+        this.setState({
+          search: event.target.value,
+          searchSuggestion: (
+            <ul>
+              {books.map((book, i) => {
+                if (
+                  '' !== event.target.value &&
+                  book.title
+                    .toLowerCase()
+                    .includes(event.target.value.toLowerCase())
+                ) {
+                  return (
+                    <li
+                      key={i}
+                      onClick={this.onSuggestion}
+                      value={book.title}
+                      bookid={book.id}
+                    >
+                      {book.title}
+                    </li>
+                  );
+                } else {
+                  return <div key={i} />;
+                }
+              })}
+            </ul>
+          )
+        });
+      });
     }
   };
 
@@ -109,16 +141,51 @@ class UserListing extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
+    UserListingAPI.postUserListing(
+      this.state.bookData,
+      this.state.listData,
+      this.state.userDescription,
+      this.state.userPrice,
+      this.state.UserListing
+    ).then(response => {
+      if (response.ok) {
+        window.location = `/book/${this.state.bookData.id}/list/${
+          this.state.lid
+        }`;
+      } else {
+        console.log(response);
+      }
+    });
   };
+
+  /*
+onSubmit = event => {
+    event.preventDefault();
+    Auth.postRegister(
+      this.state.firstname,
+      this.state.lastname,
+      this.state.email,
+      this.state.password
+    ).then(response => {
+      if (response.ok) {
+        window.location = '/';
+      } else {
+        console.log(response);
+      }
+    });
+  };
+*/
 
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
 
   onSuggestion = event => {
-    event.target.getAttribute('value');
     if (debug) {
       this.setState({ bookData: BookJson });
     } else {
+      let bid = event.target.getAttribute('bookid');
+      // to do
       // api
+      BookInfo.getBookInfo(bid).then(bookData => this.setState({ bookData }));
     }
   };
 
@@ -165,6 +232,7 @@ class UserListing extends Component {
                   <input
                     id="file-upload"
                     type="file"
+                    accept=".jpg,.jpeg,.png"
                     onChange={this.onImageUpload}
                     style={{ display: 'none' }}
                   />
