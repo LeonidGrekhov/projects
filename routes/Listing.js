@@ -18,6 +18,15 @@ router.post('/api/listing/create', (request, response) => {
     });
 });
 
+router.put(
+  '/api/user/:uid/listing/',
+  ({ body: { bid, price, condition }, params: { uid } }, response) => {
+    return Listing.createListing(parseInt(uid), parseInt(bid), price, condition)
+      .then(data => response.json(data))
+      .catch(error => response.json(error));
+  }
+);
+
 router.put('/api/listing/edit/price', (request, response) => {
   const listingId = request.body.lid;
   const price = request.body.price;
