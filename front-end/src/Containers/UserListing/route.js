@@ -1,9 +1,9 @@
-import UserListingAPI from './UserListing';
+import CreateUserListing from './UserListing';
 
 export default [
   {
-    path: '/user/:uid/listing/:lid',
+    path: '/user/:uid/listing',
     exact: true,
-    component: UserListingAPI
+    component: CreateUserListing
   }
 ];

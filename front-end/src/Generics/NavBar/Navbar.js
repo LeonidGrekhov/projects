@@ -275,7 +275,7 @@ class Navbar extends Component {
                   <a className="dropdown-item" href="/user/1">
                     User Profile
                   </a>
-                  <a className="dropdown-item" href="/user/1/listing/1">
+                  <a className="dropdown-item" href="/user/1/listing">
                     Create a listing
                   </a>
                   <a className="dropdown-item" href="/transaction">

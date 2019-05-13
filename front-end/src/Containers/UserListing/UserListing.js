@@ -5,12 +5,12 @@ import './UserListing.css';
 
 import { BookInfo, Search, UserListing as UserListingAPI } from '../../api';
 
-class UserListing extends Component {
+class CreateUserListing extends Component {
   constructor(props) {
     super(props);
     this.state = {
       uid: props.match.params.uid,
-      lid: props.match.params.lid,
+      bid: null,
       showSideBar: false,
       search: '',
       searchSuggestion: <ul />,
@@ -24,15 +24,10 @@ class UserListing extends Component {
       listerImageCapacity: 5,
       renderReady: false
     };
-    this.onShowOrHide = this.onShowOrHide.bind(this);
   }
 
   componentDidMount = () => {
     this.setState({ renderReady: true });
-  };
-
-  autoCompleteSearch = event => {
-    console.log(event);
   };
 
   onChange = event =>
@@ -103,20 +98,13 @@ class UserListing extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    UserListingAPI.postUserListing(
-      this.state.bookData,
-      this.state.listData,
-      this.state.userDescription,
+    UserListingAPI.putListing(
+      this.state.uid,
+      this.state.bookData.bid,
       this.state.userPrice,
-      this.state.UserListing
-    ).then(response => {
-      if (response.ok) {
-        window.location = `/book/${this.state.bookData.id}/list/${
-          this.state.lid
-        }`;
-      } else {
-        console.log(response);
-      }
+      this.state.bookCondition
+    ).then(({ bid, lid }) => {
+      window.location = `/book/${bid}/list/${lid}`;
     });
   };
 
@@ -271,9 +259,6 @@ class UserListing extends Component {
             >
               Sell
             </button>
-            <h1>
-              User id: {this.state.uid} Transaction id:{this.state.lid}
-            </h1>
           </div>
         </div>
       </div>
@@ -312,4 +297,4 @@ class UserListing extends Component {
   }
 }
 
-export default UserListing;
+export default CreateUserListing;
