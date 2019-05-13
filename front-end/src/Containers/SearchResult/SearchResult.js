@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { Search } from '../../api';
+import { BookInfo, Search } from '../../api';
 
 import './SearchResults.css';
 
@@ -290,14 +290,23 @@ class SearchResult extends Component {
       );
     }
   };
-
+  onClickImg = event => {
+    event.preventDefault();
+    window.location = `/book/${event.target.getAttribute('bookid')}`;
+  };
   result = data =>
     0 !== data.length ? (
       data.map((book, i) => (
         <div className="container" key={i}>
           <div className="row mt-3">
             <div className="col-3 text-center">
-              <img src={book.pictureurl} className="img-fluid" alt="fluid" />
+              <img
+                src={book.pictureurl}
+                className="img-fluid"
+                alt="fluid"
+                bookid={book.id}
+                onClick={this.onClickImg}
+              />
             </div>
 
             <div className="col-md-4">

@@ -2,66 +2,57 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 import './UserListing.css';
-let debug = true;
 
-let titleSuggestion = ['Once upon'];
+import { BookInfo, Search, UserListing as UserListingAPI } from '../../api';
 
-let BookJson = {
-  BookTitle: 'Once upon',
-  Description:
-    'In this eye-opening book, renowned economist and bestselling author Tyler Cowen explains that phenomenon: High earners are taking ever more advantage of machine intelligence in data analysis and achieving ever-better results. Meanwhile, low earners who haven’t committed to learning, to making the most of new technologies, have poor prospects. Nearly every business sector relies less and less on manual labor, and this fact is forever changing the world of work and wages. A steady, secure life somewhere in the middle—average—is over. With The Great Stagnation, Cowen explained why median wages stagnated over the last four decades; in Average Is Over he reveals the essential nature of the new economy, identifies the best path forward for workers and entrepreneurs, and provides readers with actionable advice to make the most of the new economic landscape. It is a challenging and sober must-read but ultimately exciting, good news. In debates about our nation’s economic future, it will be impossible to ignore.”',
-  pictureurl: 'https://rheasupdo.files.wordpress.com/2015/08/img_5998.jpg'
-};
-
-class UserListing extends Component {
+class CreateUserListing extends Component {
   constructor(props) {
     super(props);
     this.state = {
       uid: props.match.params.uid,
-      lid: props.match.params.lid,
+      bid: null,
       showSideBar: false,
       search: '',
       searchSuggestion: <ul />,
       bookData: null,
       userDescription: '',
-      userPrice: null,
+      userPrice: 0,
       listData: null,
-      bookCondition: null,
+      bookCondition: 'Book Condition',
       listerImages: [],
       listerImageDisplayIndex: null,
       listerImageCapacity: 5,
       renderReady: false
     };
-    this.onShowOrHide = this.onShowOrHide.bind(this);
   }
 
   componentDidMount = () => {
-    if (debug) {
-      this.setState({ renderReady: true });
-    }
-  };
-
-  autoCompleteSearch = event => {
-    console.log(event);
+    this.setState({ renderReady: true });
   };
 
   onChange = event =>
     this.setState({ [event.target.name]: event.target.value });
 
   onChangeSearch = event => {
-    if (debug) {
+    let search = event.target.value;
+    Search.getSearchByTitle(search).then(({ data: books }) => {
       this.setState({
-        search: event.target.value,
+        search,
         searchSuggestion: (
           <ul>
-            {titleSuggestion.map((title, i) => {
+            {books.map((book, i) => {
               if (
-                '' !== event.target.value &&
-                title.toLowerCase().includes(event.target.value.toLowerCase())
+                '' !== search &&
+                book.title.toLowerCase().includes(search.toLowerCase())
               ) {
                 return (
-                  <li key={i} onClick={this.onSuggestion} value={title}>
-                    {title}
+                  <li
+                    key={i}
+                    onClick={this.onSuggestion}
+                    value={book.title}
+                    bookid={book.bid}
+                  >
+                    {book.title}
                   </li>
                 );
               } else {
@@ -71,9 +62,7 @@ class UserListing extends Component {
           </ul>
         )
       });
-    } else {
-      // api
-    }
+    });
   };
 
   onImageUpload = event => {
@@ -109,24 +98,28 @@ class UserListing extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
+    UserListingAPI.putListingInfo(
+      this.state.uid,
+      this.state.bookData.bid,
+      this.state.userPrice,
+      this.state.bookCondition
+    ).then(({ bid, lid }) => {
+      window.location = `/book/${bid}/list/${lid}`;
+    });
   };
 
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
 
   onSuggestion = event => {
-    event.target.getAttribute('value');
-    if (debug) {
-      this.setState({ bookData: BookJson });
-    } else {
-      // api
-    }
+    let bid = event.target.getAttribute('bookid');
+    BookInfo.getBookInfo(bid).then(bookData => this.setState({ bookData }));
   };
 
   renderSearch = () => (
     <>
       <form>
         <div className="form-group">
-          <div>Search</div>
+          <div>Type in the book title you want to sell</div>
           <input
             value={this.state.search}
             onChange={this.onChangeSearch}
@@ -156,8 +149,8 @@ class UserListing extends Component {
                 <div className="col-6">
                   <p>Upload up to 5 images of the book you wish to sell.</p>
                   <label
-                    for="file-upload"
-                    class="img-btn-plus"
+                    htmlFor="file-upload"
+                    className="img-btn-plus"
                     style={{ display: 'inline-block' }}
                   >
                     +
@@ -165,11 +158,12 @@ class UserListing extends Component {
                   <input
                     id="file-upload"
                     type="file"
+                    accept=".jpg,.jpeg,.png"
                     onChange={this.onImageUpload}
                     style={{ display: 'none' }}
                   />
                   <button
-                    class="img-btn-minus"
+                    className="img-btn-minus"
                     onClick={this.onImageRemove}
                     style={{ marginRight: '15px', display: 'inline-block' }}
                   >
@@ -178,6 +172,7 @@ class UserListing extends Component {
                   current image:
                   {
                     <img
+                      alt="cover"
                       className="img-fluid"
                       src={
                         this.state.listerImages[
@@ -192,7 +187,7 @@ class UserListing extends Component {
                   <div className="row">
                     {this.state.listerImages.map((image, i) => (
                       <div className="UploadedImage" key={i}>
-                        <img className="img-fluid" src={image} />
+                        <img alt="cover" className="img-fluid" src={image} />
                       </div>
                     ))}
                   </div>
@@ -205,10 +200,12 @@ class UserListing extends Component {
           <div>
             <form>
               <div className="col">
-                <div className="text-default">Title: {BookJson.BookTitle}</div>
+                <div className="text-default">
+                  Title: {this.state.bookData.title}
+                </div>
                 <br />
                 <div className="text-default">
-                  Description: {BookJson.Description}
+                  Description: {this.state.bookData.description}
                 </div>
                 <br />
                 <div className="form-group">
@@ -224,19 +221,24 @@ class UserListing extends Component {
                     onChange={this.onChange}
                   />
                 </div>
+                Book Condition:
                 <select
                   className="custom-select"
+                  name="bookCondition"
                   value={this.state.bookCondition}
                   onChange={this.onChange}
                 >
-                  <option selected>Book Condition</option>
-                  <option value="1">New</option>
-                  <option value="2">Fair</option>
-                  <option value="3">Used(no missing pages)</option>
-                  <option value="2">Missing pages</option>
-                  <option value="3">Bad</option>
+                  <option value="Book Condition">Book Condition</option>
+                  <option value="New">New</option>
+                  <option value="Fair">Fair</option>
+                  <option value="Used(no missing pages)">
+                    Used(no missing pages)
+                  </option>
+                  <option value="Missing pages">Missing pages</option>
+                  <option value="Bad">Bad</option>
                 </select>
                 <div className="form-group">
+                  Price:
                   <textarea
                     rows="1"
                     type="userPrice"
@@ -257,9 +259,6 @@ class UserListing extends Component {
             >
               Sell
             </button>
-            <h1>
-              User id: {this.state.uid} Transaction id:{this.state.lid}
-            </h1>
           </div>
         </div>
       </div>
@@ -298,4 +297,4 @@ class UserListing extends Component {
   }
 }
 
-export default UserListing;
+export default CreateUserListing;

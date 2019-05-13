@@ -19,7 +19,7 @@ class TermsOfService extends Component {
           noSideBar={!this.state.showSideBar}
           content={
             <div className="container-fluid h-100 main-Page">
-              <div className="row text-center float-load justify-content-center">
+              <div className="row text-center text-white float-load justify-content-center">
                 <div className="big-Text mt-4">Terms Of Service</div>
                 <p className="m-4">
                   <h2>Welcome to Litlister.com</h2>
