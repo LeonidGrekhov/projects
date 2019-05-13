@@ -2,112 +2,10 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { BookInfo, Search } from '../../api';
+import { BookInfo, Search, Auth, Listing } from '../../api';
 
 import './SearchResults.css';
 
-let debug = false;
-let json = {
-  data: [
-    {
-      title: 'book1',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book2',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book3',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book4',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book5',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book6',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book7',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book8',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book9',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    },
-    {
-      title: 'book10',
-      description: 'nothing',
-      pictureurl:
-        'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-    }
-  ]
-};
-let bookJson = {
-  data: {
-    title: 'book1',
-    isbn: '111-111-111',
-    authors: ['Adam Bob', 'Calvin Dan'],
-    rating: 2.5,
-    description: 'nothing, you are on debug mode',
-    pictureurl:
-      'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-  }
-};
-
-let listJson = {
-  data: [
-    {
-      lid: 1,
-      name: 'Eric Fin',
-      rating: 4.9,
-      condition: 'brand new',
-      price: 24.99
-    },
-    {
-      lid: 2,
-      name: 'George Harry',
-      rating: 4.2,
-      condition: 'brand new',
-      price: 24.99
-    },
-    {
-      lid: 3,
-      name: 'Ivan John',
-      rating: 4.2,
-      condition: 'used',
-      price: 34.5
-    }
-  ]
-};
 class SearchResult extends Component {
   constructor(props) {
     super(props);
@@ -141,38 +39,43 @@ class SearchResult extends Component {
   }
 
   componentDidMount = () => {
-    this.state.search(this.state.query, this.state.page).then(response =>
-      response.text().then(result => {
-        result = JSON.parse(result);
-        this.setState({
-          data: result.data,
-          pageCount: result.pageCount
+    this.state
+      .search(this.state.query, this.state.page)
+      .then(({ data, pageCount }) => {
+        console.log(data);
+        Auth.getLogin().then(loggedIn => {
+          if (loggedIn) {
+            Promise.all(data.map(book => Listing.getListInfo(book.bid))).then(
+              listData => {
+                console.log(listData);
+                this.setState({
+                  data,
+                  listData,
+                  pageCount
+                });
+              }
+            );
+          } else {
+            this.setState({
+              data,
+              pageCount: pageCount
+            });
+          }
         });
-      })
-    );
+      });
   };
 
   bodyContent = () => {
-    if (debug) {
+    if (null === this.state.pageCount) {
+      return <Generics.Body.Loading />;
+    } else {
       return (
         <div className="container mt-4">
-          {this.pagination(this.state.page, 9)}
-          {this.result(json.data)}
-          {this.pagination(this.state.page, 9)}
+          {this.pagination(this.state.page, this.state.pageCount)}
+          {this.result(this.state.data)}
+          {this.pagination(this.state.page, this.state.pageCount)}
         </div>
       );
-    } else {
-      if (null === this.state.pageCount) {
-        return <Generics.Body.Loading />;
-      } else {
-        return (
-          <div className="container mt-4">
-            {this.pagination(this.state.page, this.state.pageCount)}
-            {this.result(this.state.data)}
-            {this.pagination(this.state.page, this.state.pageCount)}
-          </div>
-        );
-      }
     }
   };
 
@@ -267,8 +170,9 @@ class SearchResult extends Component {
 
   onPageChange = event => {
     event.preventDefault();
-    if (debug) {
-      this.setState({ page: parseInt(event.target.name) });
+
+    let page = parseInt(event.target.name);
+    this.state.search(this.state.query, page).then(result => {
       window.history.pushState(
         {
           html: document.innerHTML,
@@ -277,18 +181,11 @@ class SearchResult extends Component {
         '',
         `./${event.target.name}`
       );
-    } else {
-      let page = parseInt(event.target.name);
-      this.state.search(this.state.query, page).then(response =>
-        response.text().then(result => {
-          result = JSON.parse(result);
-          this.setState({
-            data: result.data,
-            page
-          });
-        })
-      );
-    }
+      this.setState({
+        data: result.data,
+        page
+      });
+    });
   };
   onClickImg = event => {
     event.preventDefault();
@@ -409,12 +306,14 @@ class SearchResult extends Component {
                   </p>
                 </div>
               </div>
-              {listJson.data.map((list, i) => {
+              {this.state.listData[i].Listings.map((list, i) => {
                 return (
                   <div
                     className="row justify-content-md-center"
                     key={i}
-                    onClick={_ => (window.location = `./list/${list.lid}`)}
+                    onClick={_ =>
+                      (window.location = `/book/${book.bid}/list/${list.lid}`)
+                    }
                   >
                     <div className="col col-3 border">{list.name}</div>
                     <div className="col col-3 border">
