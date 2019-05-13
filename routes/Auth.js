@@ -101,7 +101,7 @@ router.post(
   }
 );
 
-router.get('/verification', (req, res) => {
+router.get('/api/verification', (req, res) => {
   const { token, email } = req.query;
   return Auth.findUserByEmail(email)
     .then(user => {
