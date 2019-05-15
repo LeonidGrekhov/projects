@@ -3,6 +3,7 @@ const authInit = require('./auth');
 const bookInit = require('./book');
 const searchInit = require('./search');
 const listingInit = require('./listing');
+const meetingInit = require('./meeting');
 const ratingInit = require('./rating');
 
 module.exports = {
@@ -10,5 +11,6 @@ module.exports = {
   Book: bookInit(db),
   Search: searchInit(db),
   Listing: listingInit(db),
+  Meeting: meetingInit(db),
   Rating: ratingInit(db)
 };
