@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define(
+  const Listing = sequelize.define(
     'listing',
     {
       lid: {
@@ -74,4 +74,15 @@ module.exports = function(sequelize, DataTypes) {
       timestamps: false
     }
   );
+  Listing.associate = db => {
+    Listing.belongsTo(db.book, {
+      as: 'book',
+      foreignKey: 'bid'
+    });
+    Listing.belongsTo(db.user, {
+      as: 'user',
+      foreignKey: 'sid'
+    });
+  };
+  return Listing;
 };

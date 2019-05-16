@@ -4,38 +4,31 @@
     ,
     function(e, t, a) {
       'use strict';
-      var n = a(12),
+      var n = a(11),
         r = a(3),
-        o = a(6),
-        l = a(4),
-        i = a(5),
+        o = a(5),
+        i = a(4),
+        l = a(6),
         s = a(2),
         c = a(0),
         m = a.n(c),
         u = a(8),
-        d = a(47),
+        d = a(45),
         p = a.n(d),
-        g = (a(123), a(75)),
+        g = (a(124), a(76)),
         h = a.n(g),
-        f = !1,
-        b = (function(e) {
+        f = (function(e) {
           function t(e) {
             var a;
             return (
               Object(r.a)(this, t),
               ((a = Object(o.a)(
                 this,
-                Object(l.a)(t).call(this, e)
+                Object(i.a)(t).call(this, e)
               )).componentDidMount = function() {
-                f
-                  ? a.setState({ user: { firstname: 'Rob' } })
-                  : u.b.getLogin().then(function(e) {
-                      e.ok &&
-                        e.text().then(function(e) {
-                          (e = JSON.parse(e)).firstname &&
-                            a.setState({ user: { firstname: e.firstname } });
-                        });
-                    });
+                u.b.getLogin().then(function(e) {
+                  return a.setState({ user: e });
+                });
               }),
               (a.onChange = function(e) {
                 a.setState(Object(n.a)({}, e.target.name, e.target.value));
@@ -233,7 +226,7 @@
                       return (window.location = 'user/1/cart');
                     }
                   }),
-                  l = m.a.createElement(
+                  i = m.a.createElement(
                     'button',
                     {
                       variant: 'primary',
@@ -245,8 +238,9 @@
                     },
                     ' ',
                     '0'
-                  );
-                return a.state.user
+                  ),
+                  l = a.state.user;
+                return l
                   ? m.a.createElement(
                       'nav',
                       {
@@ -317,14 +311,17 @@
                               },
                               m.a.createElement(
                                 'a',
-                                { className: 'dropdown-item', href: '/user/1' },
+                                {
+                                  className: 'dropdown-item',
+                                  href: '/user/'.concat(l.uid)
+                                },
                                 'User Profile'
                               ),
                               m.a.createElement(
                                 'a',
                                 {
                                   className: 'dropdown-item',
-                                  href: '/user/1/listing/1'
+                                  href: '/user/'.concat(l.uid, '/listing')
                                 },
                                 'Create a listing'
                               ),
@@ -340,7 +337,7 @@
                                 'a',
                                 {
                                   className: 'dropdown-item',
-                                  href: '/user/1/report'
+                                  href: '/user/'.concat(l.uid, '/report')
                                 },
                                 'User Report'
                               )
@@ -348,7 +345,7 @@
                           ),
                           n,
                           o,
-                          l
+                          i
                         )
                       )
                     )
@@ -428,19 +425,19 @@
               a
             );
           }
-          return Object(i.a)(t, e), t;
+          return Object(l.a)(t, e), t;
         })(c.Component),
-        E = a(9),
-        v = (function(e) {
+        b = a(9),
+        E = (function(e) {
           function t() {
             return (
               Object(r.a)(this, t),
-              Object(o.a)(this, Object(l.a)(t).apply(this, arguments))
+              Object(o.a)(this, Object(i.a)(t).apply(this, arguments))
             );
           }
           return (
-            Object(i.a)(t, e),
-            Object(E.a)(t, [
+            Object(l.a)(t, e),
+            Object(b.a)(t, [
               {
                 key: 'render',
                 value: function() {
@@ -451,7 +448,7 @@
             t
           );
         })(c.Component),
-        y = (a(124),
+        v = (a(125),
         {
           data: [
             {
@@ -481,16 +478,16 @@
             }
           ]
         }),
-        w = (function(e) {
+        y = (function(e) {
           function t() {
             var e, a;
             Object(r.a)(this, t);
-            for (var n = arguments.length, i = new Array(n), s = 0; s < n; s++)
-              i[s] = arguments[s];
+            for (var n = arguments.length, l = new Array(n), s = 0; s < n; s++)
+              l[s] = arguments[s];
             return (
               ((a = Object(o.a)(
                 this,
-                (e = Object(l.a)(t)).call.apply(e, [this].concat(i))
+                (e = Object(i.a)(t)).call.apply(e, [this].concat(l))
               )).onSearchMacro = function(e) {
                 return (window.location = '/search/'.concat(
                   e.target.name,
@@ -501,8 +498,8 @@
             );
           }
           return (
-            Object(i.a)(t, e),
-            Object(E.a)(t, [
+            Object(l.a)(t, e),
+            Object(b.a)(t, [
               {
                 key: 'render',
                 value: function() {
@@ -523,7 +520,7 @@
                       'ul',
                       { className: 'list-unstyled components' },
                       m.a.createElement('p', null, 'Deparments'),
-                      y.data.map(function(t, a) {
+                      v.data.map(function(t, a) {
                         return m.a.createElement(
                           'li',
                           { key: a },
@@ -576,16 +573,16 @@
             t
           );
         })(c.Component),
-        N = (function(e) {
+        w = (function(e) {
           function t() {
             var e, a;
             Object(r.a)(this, t);
-            for (var n = arguments.length, i = new Array(n), s = 0; s < n; s++)
-              i[s] = arguments[s];
+            for (var n = arguments.length, l = new Array(n), s = 0; s < n; s++)
+              l[s] = arguments[s];
             return (
               ((a = Object(o.a)(
                 this,
-                (e = Object(l.a)(t)).call.apply(e, [this].concat(i))
+                (e = Object(i.a)(t)).call.apply(e, [this].concat(l))
               )).render = function() {
                 return m.a.createElement(
                   'div',
@@ -614,22 +611,22 @@
               a
             );
           }
-          return Object(i.a)(t, e), t;
+          return Object(l.a)(t, e), t;
         })(c.Component),
-        k = a(48),
-        j = a.n(k),
-        C = a(49),
-        S = a.n(C),
-        O = (function(e) {
+        N = a(46),
+        k = a.n(N),
+        C = a(47),
+        j = a.n(C),
+        S = (function(e) {
           function t() {
             var e, a;
             Object(r.a)(this, t);
-            for (var n = arguments.length, i = new Array(n), s = 0; s < n; s++)
-              i[s] = arguments[s];
+            for (var n = arguments.length, l = new Array(n), s = 0; s < n; s++)
+              l[s] = arguments[s];
             return (
               ((a = Object(o.a)(
                 this,
-                (e = Object(l.a)(t)).call.apply(e, [this].concat(i))
+                (e = Object(i.a)(t)).call.apply(e, [this].concat(l))
               )).render = function() {
                 for (
                   var e = [],
@@ -656,7 +653,7 @@
                             }
                           },
                           m.a.createElement('img', {
-                            src: S.a,
+                            src: j.a,
                             width: n,
                             alt: 'star filled'
                           })
@@ -677,7 +674,7 @@
                             }
                           },
                           m.a.createElement('img', {
-                            src: j.a,
+                            src: k.a,
                             width: n,
                             alt: 'star'
                           })
@@ -695,7 +692,7 @@
                             'div',
                             null,
                             m.a.createElement('img', {
-                              src: S.a,
+                              src: j.a,
                               width: n,
                               alt: 'star filled',
                               style: {
@@ -710,7 +707,7 @@
                             'div',
                             { style: { position: 'relative', bottom: '50%' } },
                             m.a.createElement('img', {
-                              src: j.a,
+                              src: k.a,
                               width: n,
                               alt: 'star',
                               style: {
@@ -737,22 +734,22 @@
               a
             );
           }
-          return Object(i.a)(t, e), t;
+          return Object(l.a)(t, e), t;
         })(c.Component),
         x = (function(e) {
           function t(e) {
             var a;
             return (
               Object(r.a)(this, t),
-              ((a = Object(o.a)(this, Object(l.a)(t).call(this, e))).state = {
+              ((a = Object(o.a)(this, Object(i.a)(t).call(this, e))).state = {
                 showSideBar: !e.noSideBar
               }),
               a
             );
           }
           return (
-            Object(i.a)(t, e),
-            Object(E.a)(t, [
+            Object(l.a)(t, e),
+            Object(b.a)(t, [
               {
                 key: 'componentWillReceiveProps',
                 value: function(e) {
@@ -775,7 +772,7 @@
                         m.a.createElement(
                           'div',
                           { className: 'col-2 p-0' },
-                          m.a.createElement(w, null)
+                          m.a.createElement(y, null)
                         ),
                       m.a.createElement(
                         'div',
@@ -790,19 +787,19 @@
             t
           );
         })(c.Component);
-      (x.Loading = N), (x.RatingStar = O);
+      (x.Loading = w), (x.RatingStar = S);
       var D = x,
-        B = (a(125), a(160)),
+        O = (a(126), a(161)),
         I = (function(e) {
           function t(e) {
             return (
               Object(r.a)(this, t),
-              Object(o.a)(this, Object(l.a)(t).call(this, e))
+              Object(o.a)(this, Object(i.a)(t).call(this, e))
             );
           }
           return (
-            Object(i.a)(t, e),
-            Object(E.a)(t, [
+            Object(l.a)(t, e),
+            Object(b.a)(t, [
               {
                 key: 'render',
                 value: function() {
@@ -818,7 +815,7 @@
                       'div',
                       { className: 'd-inline  m-2', key: t },
                       m.a.createElement(
-                        B.a,
+                        O.a,
                         { to: '/'.concat(e) },
                         m.a.createElement(
                           'span',
@@ -869,7 +866,7 @@
             t
           );
         })(c.Component);
-      t.a = { NavBar: b, Header: v, Body: D, Footer: I };
+      t.a = { NavBar: f, Header: E, Body: D, Footer: I };
     },
     ,
     ,
@@ -879,11 +876,11 @@
     ,
     function(e, t, a) {
       'use strict';
-      var n = a(74),
+      var n = a(75),
         r = a.n(n),
-        o = a(35),
-        l = a.n(o),
-        i = r.a.connect(l.a),
+        o = a(32),
+        i = a.n(o),
+        l = r.a.connect(i.a),
         s = function(e) {
           return e.json();
         },
@@ -894,7 +891,7 @@
               : 'post';
           return fetch(
             (function(e) {
-              return ''.concat(l.a, '/api').concat(e);
+              return ''.concat(i.a, '/api').concat(e);
             })(e),
             (function() {
               var e =
@@ -914,7 +911,7 @@
         },
         m = {
           getLogin: function() {
-            return c('/login', {}, 'get');
+            return c('/login', {}, 'get').then(s);
           },
           getRegister: function() {
             return c('/register', {}, 'get');
@@ -991,14 +988,11 @@
           }
         },
         d = {
-          getBookInfo: function(e) {
-            return c('book/'.concat(e), {}, 'get').then(s);
-          },
           getListInfo: function(e) {
             return c('/book/'.concat(e, '/list'), {}, 'get').then(s);
           },
           getListingInfo: function(e, t) {
-            return c('/book/'.concat(e, '/list/').concat(t)).then(s);
+            return c('/book/'.concat(e, '/list/').concat(t), {}, 'get').then(s);
           }
         },
         p = {
@@ -1007,13 +1001,21 @@
               '/search/author/'.concat(e, '/page/').concat(t),
               {},
               'get'
-            );
+            ).then(s);
           },
           getSearchByIsbn: function(e, t) {
-            return c('/search/isbn/'.concat(e, '/page/').concat(t), {}, 'get');
+            return c(
+              '/search/isbn/'.concat(e, '/page/').concat(t),
+              {},
+              'get'
+            ).then(s);
           },
           getSearchByTitle: function(e, t) {
-            return c('/search/title/'.concat(e, '/page/').concat(t), {}, 'get');
+            return c(
+              '/search/title/'.concat(e, '/page/').concat(t),
+              {},
+              'get'
+            ).then(s);
           }
         },
         g = {
@@ -1054,9 +1056,32 @@
               a = e.data;
             return c('/transaction/'.concat(t), { data: a });
           }
+        },
+        f = {
+          deleteListingInfo: function(e, t) {
+            return c('/user/'.concat(e, '/listing/').concat(t), {}, 'delete');
+          },
+          getListInfo: function(e) {
+            return c('/book/'.concat(e, '/list'), {}, 'get').then(s);
+          },
+          getListingInfo: function(e, t) {
+            return c('/book/'.concat(e, '/list/').concat(t), {}, 'get').then(s);
+          },
+          putListingInfo: function(e, t, a, n, r) {
+            return c(
+              '/user/'.concat(e, '/listing'),
+              { bid: t, price: a, condition: n, updateLid: r },
+              'put'
+            ).then(s);
+          }
+        },
+        b = {
+          getBookInfo: function(e) {
+            return c('/book/'.concat(e), {}, 'get').then(s);
+          }
         };
-      a.d(t, 'g', function() {
-        return i;
+      a.d(t, 'i', function() {
+        return l;
       }),
         a.d(t, 'a', function() {
           return u;
@@ -1064,17 +1089,23 @@
         a.d(t, 'b', function() {
           return m;
         }),
-        a.d(t, 'c', function() {
+        a.d(t, 'd', function() {
           return d;
         }),
-        a.d(t, 'd', function() {
+        a.d(t, 'e', function() {
           return p;
         }),
-        a.d(t, 'f', function() {
+        a.d(t, 'g', function() {
           return g;
         }),
-        a.d(t, 'e', function() {
+        a.d(t, 'f', function() {
           return h;
+        }),
+        a.d(t, 'h', function() {
+          return f;
+        }),
+        a.d(t, 'c', function() {
+          return b;
         });
     },
     ,
@@ -1102,35 +1133,35 @@
     ,
     function(e, t, a) {
       var n = {
-        './About': 31,
+        './About': 28,
         './About.css': 65,
-        './About.js': 31,
-        './AboutPerson': 32,
-        './AboutPerson.js': 32,
+        './About.js': 28,
+        './AboutPerson': 29,
+        './AboutPerson.js': 29,
         './Edwin Menjivar': 66,
-        './Edwin Menjivar.jpg': 131,
+        './Edwin Menjivar.jpg': 132,
         './Edwin Menjivar.json': 66,
-        './Icons/gear_white.svg': 36,
+        './Icons/gear_white.svg': 33,
         './Jesus Garnica': 67,
         './Jesus Garnica.json': 67,
         './John Mendoza': 68,
         './John Mendoza.json': 68,
         './Leonid Grekhov': 69,
-        './Leonid Grekhov.jpg': 132,
+        './Leonid Grekhov.jpg': 133,
         './Leonid Grekhov.json': 69,
         './Michael Winata': 70,
         './Michael Winata.json': 70,
         './Vismay Patel': 71,
         './Vismay Patel.json': 71,
-        './VismayPatel.jpg': 133,
-        './alpha.png': 134,
-        './jesusGarnica.jpg': 135,
-        './john.jpg': 136,
+        './VismayPatel.jpg': 134,
+        './alpha.png': 135,
+        './jesusGarnica.jpg': 136,
+        './john.jpg': 137,
         './members': 15,
         './members.js': 15,
-        './michael winata.jpg': 137,
-        './route': 30,
-        './route.js': 30
+        './michael winata.jpg': 138,
+        './route': 27,
+        './route.js': 27
       };
       function r(e) {
         var t = o(e);
@@ -1151,15 +1182,6 @@
         (e.exports = r),
         (r.id = 21);
     },
-    function(e, t, a) {
-      e.exports = a.p + 'static/media/theIntelligentInvestor.c54f98a0.jpeg';
-    },
-    function(e, t, a) {
-      e.exports = a.p + 'static/media/CollegePhysics.cdeb5759.jpeg';
-    },
-    function(e, t, a) {
-      e.exports = a.p + 'static/media/CollegeAlgebra.f2689056.jpeg';
-    },
     ,
     ,
     ,
@@ -1168,8 +1190,8 @@
     function(e, t, a) {
       'use strict';
       a.r(t);
-      var n = a(31),
-        r = a(32);
+      var n = a(28),
+        r = a(29);
       t.default = [
         { path: '/about', exact: !0, component: n.default },
         { path: '/about/:person', exact: !0, component: r.default }
@@ -1180,13 +1202,13 @@
       a.r(t);
       var n = a(3),
         r = a(9),
-        o = a(6),
-        l = a(4),
-        i = a(5),
+        o = a(5),
+        i = a(4),
+        l = a(6),
         s = a(2),
         c = a(0),
         m = a.n(c),
-        u = (a(65), a(36)),
+        u = (a(65), a(33)),
         d = a.n(u),
         p = a(1),
         g = a(15),
@@ -1197,7 +1219,7 @@
               Object(n.a)(this, t),
               ((r = Object(o.a)(
                 this,
-                Object(l.a)(t).call(this, e)
+                Object(i.a)(t).call(this, e)
               )).teamCards = function() {
                 return m.a.createElement(
                   m.a.Fragment,
@@ -1247,7 +1269,7 @@
             );
           }
           return (
-            Object(i.a)(t, e),
+            Object(l.a)(t, e),
             Object(r.a)(t, [
               {
                 key: 'render',
@@ -1312,7 +1334,7 @@
                             'We are made to fight against expensive books and save you money.'
                           ),
                           m.a.createElement(
-                            'p',
+                            'h4',
                             { className: 'p-5' },
                             'We are college students helping others fight against rising prices of textbooks. College is expensive enough so we wanted to create something to bring the pain to greedy publishers.'
                           )
@@ -1355,7 +1377,7 @@
                           'div',
                           { className: 'row about-box' },
                           m.a.createElement(
-                            'p',
+                            'h4',
                             { className: 'p-5 text-center' },
                             'We have only one goal and that is to set you up with your books for the coming semester. Do not stress about that one really expensive textbook. We will help you find a great deal on it.'
                           )
@@ -1371,7 +1393,7 @@
                             'Meet the team.'
                           ),
                           m.a.createElement(
-                            'p',
+                            'h4',
                             { className: 'p-5' },
                             'We are college students helping others fight against rising prices of textbooks. College is expensive enough so we wanted to create something to bring the pain to greedy publishers.'
                           )
@@ -1401,28 +1423,28 @@
       a.r(t);
       var n = a(3),
         r = a(9),
-        o = a(6),
-        l = a(4),
-        i = a(5),
+        o = a(5),
+        i = a(4),
+        l = a(6),
         s = a(0),
         c = a.n(s),
-        m = a(161),
-        u = a(160),
+        m = a(162),
+        u = a(161),
         d = (function(e) {
           function t(e) {
             var r;
             Object(n.a)(this, t),
-              (r = Object(o.a)(this, Object(l.a)(t).call(this, e)));
-            var i = e.match.params.person;
+              (r = Object(o.a)(this, Object(i.a)(t).call(this, e)));
+            var l = e.match.params.person;
             try {
-              r.state = { profile: a(21)('./' + i) };
+              r.state = { profile: a(21)('./' + l) };
             } catch (s) {
               r.state = { fail: !0 };
             }
             return r;
           }
           return (
-            Object(i.a)(t, e),
+            Object(l.a)(t, e),
             Object(r.a)(t, [
               {
                 key: 'render',
@@ -1525,7 +1547,7 @@
     function(e, t, a) {
       'use strict';
       a.r(t);
-      var n = a(34);
+      var n = a(31);
       t.default = [{ path: '/Team', exact: !0, component: n.default }];
     },
     function(e, t, a) {
@@ -1533,14 +1555,14 @@
       a.r(t);
       var n = a(3),
         r = a(9),
-        o = a(6),
-        l = a(4),
-        i = a(5),
+        o = a(5),
+        i = a(4),
+        l = a(6),
         s = a(2),
         c = a(0),
         m = a.n(c),
         u = a(1),
-        d = (a(72), a(15)),
+        d = (a(73), a(15)),
         p = (function(e) {
           function t(e) {
             var r;
@@ -1548,7 +1570,7 @@
               Object(n.a)(this, t),
               ((r = Object(o.a)(
                 this,
-                Object(l.a)(t).call(this, e)
+                Object(i.a)(t).call(this, e)
               )).teamCards = function() {
                 return m.a.createElement(
                   m.a.Fragment,
@@ -1601,7 +1623,7 @@
             );
           }
           return (
-            Object(i.a)(t, e),
+            Object(l.a)(t, e),
             Object(r.a)(t, [
               {
                 key: 'render',
@@ -1656,7 +1678,10 @@
     },
     ,
     function(e, t, a) {
-      e.exports = a.p + 'static/media/Socrates.23fe2d51.jpeg';
+      e.exports = a.p + 'static/media/theIntelligentInvestor.c54f98a0.jpeg';
+    },
+    function(e, t, a) {
+      e.exports = a.p + 'static/media/CollegePhysics.cdeb5759.jpeg';
     },
     ,
     ,
@@ -1674,6 +1699,12 @@
     },
     function(e, t, a) {
       e.exports = a.p + 'static/media/star-outline-filled.253379f4.svg';
+    },
+    function(e, t, a) {
+      e.exports = a.p + 'static/media/Socrates.23fe2d51.jpeg';
+    },
+    function(e, t, a) {
+      e.exports = a.p + 'static/media/CollegeAlgebra.f2689056.jpeg';
     },
     ,
     ,
@@ -1758,6 +1789,7 @@
       };
     },
     function(e, t, a) {},
+    function(e, t, a) {},
     ,
     ,
     function(e, t, a) {
@@ -1788,7 +1820,7 @@
     ,
     ,
     function(e, t, a) {
-      e.exports = a(159);
+      e.exports = a(160);
     },
     ,
     ,
@@ -1859,7 +1891,6 @@
     function(e, t, a) {},
     function(e, t, a) {},
     function(e, t, a) {},
-    function(e, t, a) {},
     ,
     function(e, t, a) {},
     function(e, t, a) {},
@@ -1867,15 +1898,15 @@
       var n = {
         './Edwin Menjivar.jpg': 146,
         './Leonid Grekhov.jpg': 147,
-        './Team': 34,
-        './Team.css': 72,
-        './Team.js': 34,
+        './Team': 31,
+        './Team.css': 73,
+        './Team.js': 31,
         './VismayPatel.jpg': 148,
         './jesusGarnica.jpg': 149,
         './john.jpg': 150,
         './michael winata.jpg': 151,
-        './route': 33,
-        './route.js': 33
+        './route': 30,
+        './route.js': 30
       };
       function r(e) {
         var t = o(e);
@@ -1921,27 +1952,28 @@
     ,
     function(e, t, a) {},
     function(e, t, a) {},
+    function(e, t, a) {},
     function(e, t, a) {
       'use strict';
       a.r(t);
-      a(87);
-      var n = a(46),
+      a(88);
+      var n = a(44),
         r = a.n(n),
-        o = a(73),
-        l = (a(88), a(89), a(0)),
-        i = a.n(l),
+        o = a(74),
+        i = (a(89), a(90), a(0)),
+        l = a.n(i),
         s = a(14),
         c = a.n(s),
-        m = a(164),
-        u = a(85),
+        m = a(165),
+        u = a(86),
         d = a(10),
         p = a(3),
         g = a(9),
-        h = a(6),
+        h = a(5),
         f = a(4),
-        b = a(5),
+        b = a(6),
         E = a(1),
-        v = (a(128), a(76)),
+        v = (a(129), a(77)),
         y = a.n(v),
         w = [
           {
@@ -1963,65 +1995,287 @@
                   {
                     key: 'render',
                     value: function() {
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         null,
-                        i.a.createElement(E.a.NavBar, null),
-                        i.a.createElement(E.a.Body, {
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Body, {
                           noSideBar: !this.state.showSideBar,
-                          content: i.a.createElement(
+                          content: l.a.createElement(
                             'div',
                             {
                               className:
                                 'container-fluid h-100  main-body align-items-center d-flex justify-content-center'
                             },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'row  justify-content-center ' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { id: 'big-text' },
                                 'Whoops. Sorry but we could not find what you are looking for.'
                               ),
-                              i.a.createElement('img', {
+                              l.a.createElement('img', {
                                 className: 'img-fluid  w-100',
                                 src: y.a
                               })
                             )
                           )
                         }),
-                        i.a.createElement(E.a.Footer, null)
+                        l.a.createElement(E.a.Footer, null)
                       );
                     }
                   }
                 ]),
                 t
               );
-            })(l.Component)
+            })(i.Component)
           }
         ],
         N = a(2),
-        k = (a(129), a(77)),
-        j = a.n(k),
-        C = a(78),
-        S = a.n(C),
-        O = a(79),
-        x = a.n(O),
-        D = a(80),
-        B = a.n(D),
-        I = a(81),
-        L = a.n(I),
-        R = a(82),
-        A = a.n(R),
-        U = a(22),
-        T = a.n(U),
-        M = a(23),
-        W = a.n(M),
-        F = a(38),
-        P = a.n(F),
-        H = a(24),
+        k = (a(130), a(78)),
+        C = a.n(k),
+        j = a(79),
+        S = a.n(j),
+        x = a(80),
+        D = a.n(x),
+        O = a(81),
+        I = a.n(O),
+        B = a(82),
+        L = a.n(B),
+        R = a(83),
+        U = a.n(R),
+        A = a(35),
+        T = a.n(A),
+        M = a(36),
+        F = a.n(M),
+        W = a(48),
+        P = a.n(W),
+        H = a(49),
         z = a.n(H),
-        q = [
+        q = !0,
+        G = [
+          { pic: T.a },
+          { pic: F.a },
+          { pic: P.a },
+          { pic: z.a },
+          { pic: T.a },
+          { pic: F.a },
+          { pic: P.a },
+          { pic: z.a },
+          { pic: T.a },
+          { pic: F.a }
+        ],
+        V = (function(e) {
+          function t(e) {
+            var a;
+            return (
+              Object(p.a)(this, t),
+              ((a = Object(h.a)(
+                this,
+                Object(f.a)(t).call(this, e)
+              )).componentDidMount = function() {
+                var e = a.initializeAnimationData(G, 150),
+                  t = setInterval(a.animate, 1e3 / 30);
+                a.setState({ data: G, intervalId: t, animationData: e });
+              }),
+              (a.componentWillUnmount = function() {
+                clearInterval(a.state.intervalId);
+              }),
+              (a.initializeAnimationData = function(e, t) {
+                var n = {};
+                return (
+                  (n.covers = e.map(function(e) {
+                    return e.pic;
+                  })),
+                  (n.picHeights = [400, 400, 400, 400, 400, 400, 400]),
+                  (n.paddingRightResets = [
+                    2050,
+                    1650,
+                    1250,
+                    850,
+                    450,
+                    50,
+                    -350
+                  ]),
+                  (n.paddingRights = n.paddingRightResets),
+                  (n.paddingRightDelta = [0, 0, 0, 0, 0, 0, 0]),
+                  (n.paddingRightAnimationDelta = 4),
+                  (n.picHeightAnimationDelta = 20),
+                  (n.shiftFrame = t),
+                  (n.shiftSpeed = 400 / n.shiftFrame),
+                  (n.shiftFrameIndex = 0),
+                  (n.coverStartingIndex = 0),
+                  (n.coverMaxIndex = 9),
+                  (n.picIndices = [0, 1, 2, 3, 4, 5, 6].map(function(e) {
+                    var t = e + n.coverStartingIndex;
+                    return t > n.coverMaxIndex && (t -= n.coverMaxIndex + 1), t;
+                  })),
+                  (n.pics = [0, 1, 2, 3, 4, 5, 6].map(function(e) {
+                    return l.a.createElement(
+                      'div',
+                      {
+                        key: e,
+                        style: {
+                          float: 'right',
+                          paddingTop: ''.concat(
+                            (550 - n.picHeights[e]) / 2,
+                            'px'
+                          ),
+                          paddingBottom: ''.concat(
+                            (550 - n.picHeights[e]) / 2,
+                            'px'
+                          ),
+                          right: ''.concat(
+                            n.paddingRights[e] - n.paddingRightDelta[e],
+                            'px'
+                          ),
+                          position: 'absolute'
+                        }
+                      },
+                      l.a.createElement('img', {
+                        carouselindex: e,
+                        src: n.covers[n.picIndices[e]],
+                        alt: 'cover',
+                        style: { height: ''.concat(n.picHeights[e], 'px') },
+                        onClick: a.onClick,
+                        onMouseEnter: a.onEnter,
+                        onMouseLeave: a.onLeave
+                      })
+                    );
+                  })),
+                  n
+                );
+              }),
+              (a.animate = function() {
+                var e = a.state.animationData,
+                  t = a.state.animationEnter,
+                  n = a.state.animationLeave;
+                0 ===
+                  t.filter(function(e) {
+                    return e;
+                  }).length &&
+                  ((e.shiftFrameIndex += 1),
+                  e.shiftFrameIndex === e.shiftFrame
+                    ? ((e.shiftFrameIndex = 0),
+                      (e.paddingRights = e.paddingRightResets),
+                      e.coverStartingIndex === e.coverMaxIndex
+                        ? (e.coverStartingIndex = 0)
+                        : (e.coverStartingIndex += 1),
+                      (e.picIndices = [0, 1, 2, 3, 4, 5, 6].map(function(t) {
+                        var a = t + e.coverStartingIndex;
+                        return (
+                          a > e.coverMaxIndex && (a -= e.coverMaxIndex + 1), a
+                        );
+                      })))
+                    : (e.paddingRights = e.paddingRights.map(function(t) {
+                        return t + e.shiftSpeed;
+                      }))),
+                  [0, 1, 2, 3, 4, 5, 6].forEach(function(r) {
+                    t[r] &&
+                      500 > e.picHeights[r] &&
+                      ((e.picHeights[r] += e.picHeightAnimationDelta),
+                      (e.paddingRightDelta[r] += e.paddingRightAnimationDelta)),
+                      n[r] &&
+                        400 < e.picHeights[r] &&
+                        ((e.picHeights[r] -= e.picHeightAnimationDelta),
+                        (e.paddingRightDelta[r] -=
+                          e.paddingRightAnimationDelta)),
+                      (e.pics[r] = l.a.createElement(
+                        'div',
+                        {
+                          key: r,
+                          style: {
+                            float: 'right',
+                            paddingTop: ''.concat(
+                              (550 - e.picHeights[r]) / 2,
+                              'px'
+                            ),
+                            paddingBottom: ''.concat(
+                              (550 - e.picHeights[r]) / 2,
+                              'px'
+                            ),
+                            right: ''.concat(
+                              e.paddingRights[r] - e.paddingRightDelta[r],
+                              'px'
+                            ),
+                            position: 'absolute'
+                          }
+                        },
+                        l.a.createElement('img', {
+                          carouselindex: r,
+                          src: e.covers[e.picIndices[r]],
+                          alt: 'cover',
+                          style: { height: ''.concat(e.picHeights[r], 'px') },
+                          onClick: a.onClick,
+                          onMouseEnter: a.onEnter,
+                          onMouseLeave: a.onLeave
+                        })
+                      ));
+                  }),
+                  a.setState({ animationData: e });
+              }),
+              (a.onClick = function(e) {
+                window.location = q
+                  ? '/book/1'
+                  : 'book/'.concat(e.target.getAttribute('bookid'));
+              }),
+              (a.onEnter = function(e) {
+                var t = a.state.animationEnter,
+                  n = a.state.animationLeave,
+                  r = parseInt(e.target.getAttribute('carouselindex'));
+                (t[r] = !0),
+                  (n[r] = !1),
+                  a.setState({ animationEnter: t, animationLeave: n });
+              }),
+              (a.onLeave = function(e) {
+                var t = a.state.animationEnter,
+                  n = a.state.animationLeave,
+                  r = parseInt(e.target.getAttribute('carouselindex'));
+                (t[r] = !1),
+                  (n[r] = !0),
+                  a.setState({ animationEnter: t, animationLeave: n });
+              }),
+              (a.state = {
+                currentCount: 100,
+                intervalId: null,
+                data: [],
+                animationData: [],
+                animationEnter: [!1, !1, !1, !1],
+                animationLeave: [!1, !1, !1, !1],
+                showSideBar: !1
+              }),
+              a
+            );
+          }
+          return (
+            Object(b.a)(t, e),
+            Object(g.a)(t, [
+              {
+                key: 'render',
+                value: function() {
+                  return l.a.createElement(
+                    'div',
+                    {
+                      style: {
+                        height: '550px',
+                        width: '100%',
+                        overflow: 'hidden'
+                      }
+                    },
+                    l.a.createElement(
+                      'div',
+                      { style: { position: 'relative' } },
+                      this.state.animationData.pics
+                    )
+                  );
+                }
+              }
+            ]),
+            t
+          );
+        })(i.Component),
+        _ = [
           {
             path: '/',
             exact: !0,
@@ -2049,284 +2303,182 @@
                   {
                     key: 'render',
                     value: function() {
-                      var e = [T.a, W.a, P.a, z.a],
-                        t = [W.a, P.a, z.a, T.a],
-                        a = [P.a, z.a, T.a, W.a],
-                        n = function(e) {
-                          return e.map(function(e, t) {
-                            return i.a.createElement(
-                              'div',
-                              { className: 'carousel-item', key: t },
-                              i.a.createElement('img', {
-                                id: 'bookImage',
-                                className: 'd-block',
-                                src: e,
-                                alt: 'book'
-                              })
-                            );
-                          });
-                        };
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         null,
-                        i.a.createElement(E.a.NavBar, null),
-                        i.a.createElement(E.a.Header, null),
-                        i.a.createElement(E.a.Body, {
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
                           noSideBar: !this.state.showSideBar,
-                          content: i.a.createElement(
+                          content: l.a.createElement(
                             'div',
                             { className: 'container-fluid' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
-                              { className: 'row justify-content-center' },
-                              i.a.createElement(
+                              {
+                                id: 'bookGallery',
+                                className:
+                                  'row flex-fill py-5  justify-content-center'
+                              },
+                              l.a.createElement(V, null)
+                            ),
+                            l.a.createElement(
+                              'div',
+                              {
+                                id: 'intro1',
+                                className:
+                                  'row flex-fill p-5 justify-content-center'
+                              },
+                              l.a.createElement(
                                 'div',
-                                {
-                                  id: 'bookGallery',
-                                  className:
-                                    'row flex-fill py-5  justify-content-center'
-                                },
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-3' },
-                                  i.a.createElement(
-                                    'div',
-                                    {
-                                      className: 'carousel slide',
-                                      'data-ride': 'carousel'
-                                    },
-                                    i.a.createElement(
-                                      'div',
-                                      { className: 'carousel-inner' },
-                                      i.a.createElement(
-                                        'div',
-                                        { className: 'carousel-item active' },
-                                        i.a.createElement('img', {
-                                          id: 'bookImage',
-                                          className: 'd-block',
-                                          src: z.a,
-                                          alt: 'First slide'
-                                        })
-                                      ),
-                                      n(e)
-                                    )
-                                  )
-                                ),
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-3' },
-                                  i.a.createElement(
-                                    'div',
-                                    {
-                                      className: 'carousel slide',
-                                      'data-ride': 'carousel'
-                                    },
-                                    i.a.createElement(
-                                      'div',
-                                      { className: 'carousel-inner' },
-                                      i.a.createElement(
-                                        'div',
-                                        { className: 'carousel-item active' },
-                                        i.a.createElement('img', {
-                                          id: 'bookImage',
-                                          className: 'd-block',
-                                          src: T.a,
-                                          alt: 'First slide'
-                                        })
-                                      ),
-                                      n(t)
-                                    )
-                                  )
-                                ),
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-3' },
-                                  i.a.createElement(
-                                    'div',
-                                    {
-                                      className: 'carousel slide ',
-                                      'data-ride': 'carousel'
-                                    },
-                                    i.a.createElement(
-                                      'div',
-                                      { className: 'carousel-inner ' },
-                                      i.a.createElement(
-                                        'div',
-                                        { className: 'carousel-item  active' },
-                                        i.a.createElement('img', {
-                                          id: 'bookImage',
-                                          className: 'd-block',
-                                          src: W.a,
-                                          alt: 'First slide'
-                                        })
-                                      ),
-                                      n(a)
-                                    )
-                                  )
-                                )
+                                { className: 'col-1 mx-auto mr-1' },
+                                l.a.createElement('img', {
+                                  className: 'd-block',
+                                  src: C.a,
+                                  alt: 'Third slide'
+                                })
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
-                                {
-                                  id: 'intro1',
-                                  className:
-                                    'row flex-fill p-5 justify-content-center'
-                                },
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-1 mx-auto mr-1' },
-                                  i.a.createElement('img', {
-                                    className: 'd-block',
-                                    src: j.a,
-                                    alt: 'Third slide'
-                                  })
-                                ),
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-8 mx-auto' },
-                                  i.a.createElement(
-                                    'h2',
-                                    null,
-                                    'LitLister is the future of buying and selling books for college students. Selling your old textbooks has never been faster or easier.'
-                                  )
-                                )
-                              ),
-                              i.a.createElement(
-                                'div',
-                                {
-                                  id: 'intro2',
-                                  className:
-                                    'row flex-fill pt-3 justify-content-center'
-                                },
-                                i.a.createElement(
-                                  'h1',
+                                { className: 'col-8 mx-auto' },
+                                l.a.createElement(
+                                  'h2',
                                   null,
-                                  'Safe. Fast. Easy.'
+                                  'LitLister is the future of buying and selling books for college students. Selling your old textbooks has never been faster or easier.'
                                 )
-                              ),
-                              i.a.createElement(
+                              )
+                            ),
+                            l.a.createElement(
+                              'div',
+                              {
+                                id: 'intro2',
+                                className:
+                                  'row flex-fill pt-3 justify-content-center'
+                              },
+                              l.a.createElement('h1', null, 'Safe. Fast. Easy.')
+                            ),
+                            l.a.createElement(
+                              'div',
+                              {
+                                id: 'intro2',
+                                className:
+                                  'row flex-fill mt-0 pb-2 justify-content-center'
+                              },
+                              l.a.createElement(
                                 'div',
                                 {
-                                  id: 'intro2',
                                   className:
-                                    'row flex-fill mt-0 pb-2 justify-content-center'
+                                    'col-2 mx-auto  justify-content-center'
                                 },
-                                i.a.createElement(
-                                  'div',
-                                  {
-                                    className:
-                                      'col-2 mx-auto  justify-content-center'
-                                  },
-                                  i.a.createElement('img', {
-                                    className: 'mx-auto',
-                                    src: S.a,
-                                    alt: 'book'
-                                  }),
-                                  i.a.createElement(
-                                    'h3',
-                                    null,
-                                    'List your book for sale on our site. You can either sell it at a set price or sell it as an auction.'
-                                  )
-                                ),
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-2 mx-auto' },
-                                  i.a.createElement('img', {
-                                    className: 'mx-auto',
-                                    src: x.a,
-                                    alt: 'chat'
-                                  }),
-                                  i.a.createElement(
-                                    'h3',
-                                    null,
-                                    'After your book has been bought, choose a place on campus to meet.'
-                                  )
-                                ),
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-2 mx-auto' },
-                                  i.a.createElement('img', {
-                                    className: 'mx-auto',
-                                    src: B.a,
-                                    alt: 'map'
-                                  }),
-                                  i.a.createElement(
-                                    'h3',
-                                    null,
-                                    'Exchange books and take a small convenient code given by your buyer to prove they have it.'
-                                  )
-                                ),
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-2 mx-auto' },
-                                  i.a.createElement('img', {
-                                    className: 'mx-auto',
-                                    src: L.a,
-                                    alt: 'thumb'
-                                  }),
-                                  i.a.createElement(
-                                    'h3',
-                                    null,
-                                    'Go home happy. There is no need to handle cash or anything. We handle the entire payment process online to make sure you get paid.'
-                                  )
-                                )
-                              ),
-                              i.a.createElement(
-                                'div',
-                                {
-                                  id: 'intro3',
-                                  className:
-                                    'row flex-fill py-3 justify-content-center'
-                                },
-                                i.a.createElement(
-                                  'h1',
+                                l.a.createElement('img', {
+                                  className: 'mx-auto',
+                                  src: S.a,
+                                  alt: 'book'
+                                }),
+                                l.a.createElement(
+                                  'h3',
                                   null,
-                                  'Buying has never. been. easier.'
+                                  'List your book for sale on our site. You can either sell it at a set price or sell it as an auction.'
                                 )
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
-                                {
-                                  id: 'intro3',
-                                  className:
-                                    'row flex-fill p-3 justify-content-center'
-                                },
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-2' },
-                                  i.a.createElement('img', {
-                                    className: 'mx-auto',
-                                    src: A.a,
-                                    alt: 'shield'
-                                  })
-                                ),
-                                i.a.createElement(
-                                  'div',
-                                  { className: 'col-8 align-middle my-auto' },
-                                  i.a.createElement(
-                                    'h3',
-                                    null,
-                                    'Buy books with ease. We handle the payment process. We also make sure you get the book you bought. We provide a moneyback guarantee with every purchase.'
-                                  )
+                                { className: 'col-2 mx-auto' },
+                                l.a.createElement('img', {
+                                  className: 'mx-auto',
+                                  src: D.a,
+                                  alt: 'chat'
+                                }),
+                                l.a.createElement(
+                                  'h3',
+                                  null,
+                                  'After your book has been bought, choose a place on campus to meet.'
+                                )
+                              ),
+                              l.a.createElement(
+                                'div',
+                                { className: 'col-2 mx-auto' },
+                                l.a.createElement('img', {
+                                  className: 'mx-auto',
+                                  src: I.a,
+                                  alt: 'map'
+                                }),
+                                l.a.createElement(
+                                  'h3',
+                                  null,
+                                  'Exchange books and take a small convenient code given by your buyer to prove they have it.'
+                                )
+                              ),
+                              l.a.createElement(
+                                'div',
+                                { className: 'col-2 mx-auto' },
+                                l.a.createElement('img', {
+                                  className: 'mx-auto',
+                                  src: L.a,
+                                  alt: 'thumb'
+                                }),
+                                l.a.createElement(
+                                  'h3',
+                                  null,
+                                  'Go home happy. There is no need to handle cash or anything. We handle the entire payment process online to make sure you get paid.'
+                                )
+                              )
+                            ),
+                            l.a.createElement(
+                              'div',
+                              {
+                                id: 'intro3',
+                                className:
+                                  'row flex-fill py-3 justify-content-center'
+                              },
+                              l.a.createElement(
+                                'h1',
+                                null,
+                                'Buying has never. been. easier.'
+                              )
+                            ),
+                            l.a.createElement(
+                              'div',
+                              {
+                                id: 'intro3',
+                                className:
+                                  'row flex-fill p-3 justify-content-center'
+                              },
+                              l.a.createElement(
+                                'div',
+                                { className: 'col-2' },
+                                l.a.createElement('img', {
+                                  className: 'mx-auto',
+                                  src: U.a,
+                                  alt: 'shield'
+                                })
+                              ),
+                              l.a.createElement(
+                                'div',
+                                { className: 'col-8 align-middle my-auto' },
+                                l.a.createElement(
+                                  'h3',
+                                  null,
+                                  'Buy books with ease. We handle the payment process. We also make sure you get the book you bought. We provide a moneyback guarantee with every purchase.'
                                 )
                               )
                             )
                           )
                         }),
-                        i.a.createElement(E.a.Footer, null)
+                        l.a.createElement(E.a.Footer, null)
                       );
                     }
                   }
                 ]),
                 t
               );
-            })(l.Component)
+            })(i.Component)
           }
         ],
-        G = a(30),
-        _ = a(12),
-        J = a(8),
-        V = [
+        J = a(27),
+        Y = a(11),
+        Q = a(8),
+        X = [
           {
             path: '/register',
             exact: !0,
@@ -2339,16 +2491,16 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    J.b.getRegister().then(function(e) {
+                    Q.b.getRegister().then(function(e) {
                       e.ok || (window.location = '/');
                     });
                   }),
                   (a.onChange = function(e) {
-                    a.setState(Object(_.a)({}, e.target.name, e.target.value));
+                    a.setState(Object(Y.a)({}, e.target.name, e.target.value));
                   }),
                   (a.onSubmit = function(e) {
                     e.preventDefault(),
-                      J.b
+                      Q.b
                         .postRegister(
                           a.state.firstname,
                           a.state.lastname,
@@ -2363,28 +2515,28 @@
                     a.setState({ tosCheckbox: !a.state.tosCheckbox });
                   }),
                   (a.render = function() {
-                    return i.a.createElement(
+                    return l.a.createElement(
                       'div',
                       null,
-                      i.a.createElement(E.a.NavBar, null),
-                      i.a.createElement(E.a.Body, {
+                      l.a.createElement(E.a.NavBar, null),
+                      l.a.createElement(E.a.Body, {
                         noSideBar: !a.state.showSideBar,
-                        content: i.a.createElement(
+                        content: l.a.createElement(
                           'div',
                           {
                             className: 'container',
                             style: { minHeight: '68vh', marginTop: '12vh' }
                           },
-                          i.a.createElement(
+                          l.a.createElement(
                             'form',
                             null,
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'form-group row' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'label',
                                   {
                                     className: 'col-sm-6',
@@ -2392,7 +2544,7 @@
                                   },
                                   'First Name'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'label',
                                   {
                                     className: 'col-sm-6',
@@ -2401,10 +2553,10 @@
                                   'Last Name'
                                 )
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'form-group row' },
-                                i.a.createElement('input', {
+                                l.a.createElement('input', {
                                   type: 'text',
                                   className: 'form-control col',
                                   id: 'form-first-name',
@@ -2417,7 +2569,7 @@
                                     marginRight: '1em'
                                   }
                                 }),
-                                i.a.createElement('input', {
+                                l.a.createElement('input', {
                                   type: 'text',
                                   className: 'form-control col',
                                   id: 'form-last-name',
@@ -2432,15 +2584,15 @@
                                 })
                               )
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 { htmlFor: 'form-email' },
                                 'Email address'
                               ),
-                              i.a.createElement('input', {
+                              l.a.createElement('input', {
                                 type: 'email',
                                 className: 'form-control',
                                 id: 'form-email',
@@ -2450,15 +2602,15 @@
                                 onChange: a.onChange
                               })
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 { htmlFor: 'form-password' },
                                 'Password'
                               ),
-                              i.a.createElement('input', {
+                              l.a.createElement('input', {
                                 type: 'password',
                                 className: 'form-control',
                                 id: 'form-password',
@@ -2468,10 +2620,10 @@
                                 onChange: a.onChange
                               })
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-check' },
-                              i.a.createElement('input', {
+                              l.a.createElement('input', {
                                 type: 'checkbox',
                                 className: 'form-check-input',
                                 id: 'exampleCheck1',
@@ -2481,7 +2633,7 @@
                                 checked: a.state.tosCheckbox,
                                 onChange: a.onTos
                               }),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 {
                                   className: 'form-check-label',
@@ -2490,7 +2642,7 @@
                                 'Read Terms of Service'
                               )
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'button',
                               {
                                 type: 'submit',
@@ -2500,7 +2652,7 @@
                               'Register'
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             {
                               className: 'modal fade',
@@ -2510,16 +2662,16 @@
                               'aria-labelledby': 'exampleModalLongTitle',
                               'aria-hidden': 'true'
                             },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'modal-dialog', role: 'document' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'modal-content' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'modal-header' },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'h5',
                                     {
                                       className: 'modal-title',
@@ -2527,7 +2679,7 @@
                                     },
                                     'Terms of Services'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'button',
                                     {
                                       type: 'button',
@@ -2535,116 +2687,116 @@
                                       'data-dismiss': 'modal',
                                       'aria-label': 'Close'
                                     },
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'span',
                                       { 'aria-hidden': 'true' },
                                       '\xd7'
                                     )
                                   )
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'modal-body' },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'h2',
                                     null,
                                     'Welcome to Litlister.com'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     "These terms and conditions outline the rules and regulations for the use of Litlister.com's Website."
                                   ),
                                   ' ',
-                                  i.a.createElement('br', null),
-                                  i.a.createElement(
+                                  l.a.createElement('br', null),
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     "By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Litlister.com's website if you do not accept all of the terms and conditions stated on this page."
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company\'s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client\'s needs in respect of provision of the Company\'s stated services/products, in accordance with and subject to, prevailing law of . Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.'
                                   ),
-                                  i.a.createElement('h2', null, 'Cookies'),
-                                  i.a.createElement(
+                                  l.a.createElement('h2', null, 'Cookies'),
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     "We employ the use of cookies. By using Litlister.com's website you consent to the use of cookies in accordance with Litlister.com's privacy policy."
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'Most of the modern day interactive web sites use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.'
                                   ),
-                                  i.a.createElement('h2', null, 'License'),
-                                  i.a.createElement(
+                                  l.a.createElement('h2', null, 'License'),
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     "Unless otherwise stated, Litlister.com and/or it's licensors own the intellectual property rights for all material on Litlister.com. All intellectual property rights are reserved. You may view and/or print pages from http://litlister.com for your own personal use subject to restrictions set in these terms and conditions."
                                   ),
-                                  i.a.createElement('p', null, 'You must not:'),
-                                  i.a.createElement(
+                                  l.a.createElement('p', null, 'You must not:'),
+                                  l.a.createElement(
                                     'ol',
                                     null,
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'Republish material from http://litlister.com'
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'Sell, rent or sub-license material from http://litlister.com'
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'Reproduce, duplicate or copy material from http://litlister.com'
                                     )
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'Redistribute content from Litlister.com (unless content is specifically made for redistribution).'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'h2',
                                     null,
                                     'Hyperlinking to our Content'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'ol',
                                     null,
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'The following organizations may link to our Web site without prior written approval:',
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'ol',
                                         null,
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'Government agencies;'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'Search engines;'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'News organizations;'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses; and'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.'
@@ -2652,52 +2804,52 @@
                                       )
                                     )
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'ol',
                                     { start: '2' },
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       "These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site."
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'We may consider and approve in our sole discretion other link requests from the following types of organizations:',
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'ol',
                                         null,
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile Association, AARP and Consumers Union;'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'dot.com community sites;'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'associations or other groups representing charities, including charity giving sites,'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'online directory distributors;'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'internet portals;'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'accounting, law and consulting firms whose primary clients are businesses; and'
                                         ),
-                                        i.a.createElement(
+                                        l.a.createElement(
                                           'li',
                                           null,
                                           'educational institutions and trade associations.'
@@ -2705,118 +2857,118 @@
                                       )
                                     )
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Litlister and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     "These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services; and (c) fits within the context of the linking party's site."
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to contact@litlister.com. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'Approved organizations may hyperlink to our Web site as follows:'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'ol',
                                     null,
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'By use of our corporate name; or'
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'By use of the uniform resource locator (Web address) being linked to; or'
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       "By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party's site."
                                     )
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     "No use of Litlister.com's logo or other artwork will be allowed for linking absent a trademark license agreement."
                                   ),
-                                  i.a.createElement('h2', null, 'Iframes'),
-                                  i.a.createElement(
+                                  l.a.createElement('h2', null, 'Iframes'),
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'Without prior approval and express written permission, you may not create frames around our Web pages or use other techniques that alter in any way the visual presentation or appearance of our Web site.'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'h2',
                                     null,
                                     'Reservation of Rights'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'h2',
                                     null,
                                     'Content Liability'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.'
                                   ),
-                                  i.a.createElement('h2', null, 'Disclaimer'),
-                                  i.a.createElement(
+                                  l.a.createElement('h2', null, 'Disclaimer'),
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill). Nothing in this disclaimer will:'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'ol',
                                     null,
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'limit or exclude our or your liability for death or personal injury resulting from negligence;'
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'limit or exclude our or your liability for fraud or fraudulent misrepresentation;'
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'limit any of our or your liabilities in any way that is not permitted under applicable law; or'
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'li',
                                       null,
                                       'exclude any of our or your liabilities that may not be excluded under applicable law.'
                                     )
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer or in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'To the extent that the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.'
                                   ),
-                                  i.a.createElement('p', null),
-                                  i.a.createElement(
+                                  l.a.createElement('p', null),
+                                  l.a.createElement(
                                     'button',
                                     {
                                       type: 'button',
@@ -2825,7 +2977,7 @@
                                     },
                                     'Close'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'button',
                                     {
                                       type: 'button',
@@ -2840,7 +2992,7 @@
                           )
                         )
                       }),
-                      i.a.createElement(E.a.Footer, null)
+                      l.a.createElement(E.a.Footer, null)
                     );
                   }),
                   (a.state = {
@@ -2857,10 +3009,10 @@
                 );
               }
               return Object(b.a)(t, e), t;
-            })(l.Component)
+            })(i.Component)
           }
         ],
-        Y = (a(138),
+        Z = (a(139),
         [
           {
             path: '/Contact',
@@ -2883,53 +3035,46 @@
                   {
                     key: 'render',
                     value: function() {
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         null,
-                        i.a.createElement(E.a.NavBar, null),
-                        i.a.createElement(E.a.Header, null),
-                        i.a.createElement(E.a.Body, {
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
                           noSideBar: !this.state.showSideBar,
-                          content: i.a.createElement(
+                          content: l.a.createElement(
                             'div',
-                            { className: 'container-fluid h-100 main-Page' },
-                            i.a.createElement(
+                            {
+                              className:
+                                'container-fluid h-100 d-flex align-items-center justify-content-center main-body'
+                            },
+                            l.a.createElement(
                               'div',
-                              {
-                                className:
-                                  'row text-center float-load justify-content-center'
-                              },
-                              i.a.createElement(
+                              { className: 'row justify-content-center p-4' },
+                              l.a.createElement(
                                 'div',
-                                { className: 'big-Text mt-4' },
+                                { className: 'big-Text' },
                                 'Have Any Questions?'
                               ),
-                              i.a.createElement(
-                                'p',
-                                { className: 'm-4' },
-                                'If you have any questions or suggestions for us feel free to shoot us an email at',
-                                i.a.createElement(
-                                  'b',
-                                  null,
-                                  ' contact@litlister.com'
-                                ),
-                                i.a.createElement('br', null),
-                                'We will get back to you as soon as we can.'
+                              l.a.createElement(
+                                'h5',
+                                { style: { color: 'white' }, className: 'm-4' },
+                                'If you have any questions or suggestions for us feel free to shoot us an email at contact@litlister.com. We will get back to you as soon as we can.'
                               )
                             )
                           )
                         }),
-                        i.a.createElement(E.a.Footer, null)
+                        l.a.createElement(E.a.Footer, null)
                       );
                     }
                   }
                 ]),
                 t
               );
-            })(l.Component)
+            })(i.Component)
           }
         ]),
-        Q = (a(139),
+        K = (a(140),
         [
           {
             path: '/terms of service',
@@ -2952,130 +3097,130 @@
                   {
                     key: 'render',
                     value: function() {
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         null,
-                        i.a.createElement(E.a.NavBar, null),
-                        i.a.createElement(E.a.Header, null),
-                        i.a.createElement(E.a.Body, {
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
                           noSideBar: !this.state.showSideBar,
-                          content: i.a.createElement(
+                          content: l.a.createElement(
                             'div',
                             { className: 'container-fluid h-100 main-Page' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               {
                                 className:
-                                  'row text-center float-load justify-content-center'
+                                  'row text-center text-white float-load justify-content-center'
                               },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'big-Text mt-4' },
                                 'Terms Of Service'
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'p',
                                 { className: 'm-4' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'h2',
                                   null,
                                   'Welcome to Litlister.com'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   "These terms and conditions outline the rules and regulations for the use of Litlister.com's Website."
                                 ),
                                 ' ',
-                                i.a.createElement('br', null),
-                                i.a.createElement(
+                                l.a.createElement('br', null),
+                                l.a.createElement(
                                   'p',
                                   null,
                                   "By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Litlister.com's website if you do not accept all of the terms and conditions stated on this page."
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company\'s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client\'s needs in respect of provision of the Company\'s stated services/products, in accordance with and subject to, prevailing law of . Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.'
                                 ),
-                                i.a.createElement('h2', null, 'Cookies'),
-                                i.a.createElement(
+                                l.a.createElement('h2', null, 'Cookies'),
+                                l.a.createElement(
                                   'p',
                                   null,
                                   "We employ the use of cookies. By using Litlister.com's website you consent to the use of cookies in accordance with Litlister.com's privacy policy."
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'Most of the modern day interactive web sites use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.'
                                 ),
-                                i.a.createElement('h2', null, 'License'),
-                                i.a.createElement(
+                                l.a.createElement('h2', null, 'License'),
+                                l.a.createElement(
                                   'p',
                                   null,
                                   "Unless otherwise stated, Litlister.com and/or it's licensors own the intellectual property rights for all material on Litlister.com. All intellectual property rights are reserved. You may view and/or print pages from http://litlister.com for your own personal use subject to restrictions set in these terms and conditions."
                                 ),
-                                i.a.createElement('p', null, 'You must not:'),
-                                i.a.createElement(
+                                l.a.createElement('p', null, 'You must not:'),
+                                l.a.createElement(
                                   'ol',
                                   null,
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'Republish material from http://litlister.com'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'Sell, rent or sub-license material from http://litlister.com'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'Reproduce, duplicate or copy material from http://litlister.com'
                                   )
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'Redistribute content from Litlister.com (unless content is specifically made for redistribution).'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'h2',
                                   null,
                                   'Hyperlinking to our Content'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'ol',
                                   null,
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'The following organizations may link to our Web site without prior written approval:',
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'ol',
                                       null,
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'Government agencies;'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'Search engines;'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'News organizations;'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses; and'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.'
@@ -3083,52 +3228,52 @@
                                     )
                                   )
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'ol',
                                   { start: '2' },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     "These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site."
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'We may consider and approve in our sole discretion other link requests from the following types of organizations:',
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'ol',
                                       null,
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile Association, AARP and Consumers Union;'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'dot.com community sites;'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'associations or other groups representing charities, including charity giving sites,'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'online directory distributors;'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'internet portals;'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'accounting, law and consulting firms whose primary clients are businesses; and'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'li',
                                         null,
                                         'educational institutions and trade associations.'
@@ -3136,133 +3281,133 @@
                                     )
                                   )
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Litlister and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   "These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services; and (c) fits within the context of the linking party's site."
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to contact@litlister.com. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'Approved organizations may hyperlink to our Web site as follows:'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'ol',
                                   null,
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'By use of our corporate name; or'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'By use of the uniform resource locator (Web address) being linked to; or'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     "By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party's site."
                                   )
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   "No use of Litlister.com's logo or other artwork will be allowed for linking absent a trademark license agreement."
                                 ),
-                                i.a.createElement('h2', null, 'Iframes'),
-                                i.a.createElement(
+                                l.a.createElement('h2', null, 'Iframes'),
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'Without prior approval and express written permission, you may not create frames around our Web pages or use other techniques that alter in any way the visual presentation or appearance of our Web site.'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'h2',
                                   null,
                                   'Reservation of Rights'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'h2',
                                   null,
                                   'Content Liability'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.'
                                 ),
-                                i.a.createElement('h2', null, 'Disclaimer'),
-                                i.a.createElement(
+                                l.a.createElement('h2', null, 'Disclaimer'),
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill). Nothing in this disclaimer will:'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'ol',
                                   null,
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'limit or exclude our or your liability for death or personal injury resulting from negligence;'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'limit or exclude our or your liability for fraud or fraudulent misrepresentation;'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'limit any of our or your liabilities in any way that is not permitted under applicable law; or'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'li',
                                     null,
                                     'exclude any of our or your liabilities that may not be excluded under applicable law.'
                                   )
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer or in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   null,
                                   'To the extent that the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.'
                                 ),
-                                i.a.createElement('p', null)
+                                l.a.createElement('p', null)
                               )
                             )
                           )
                         }),
-                        i.a.createElement(E.a.Footer, null)
+                        l.a.createElement(E.a.Footer, null)
                       );
                     }
                   }
                 ]),
                 t
               );
-            })(l.Component)
+            })(i.Component)
           }
         ]),
-        X = (a(140), !1),
-        Z = {
+        $ = (a(141), !1),
+        ee = {
           data: [
             {
               title: 'book1',
@@ -3326,7 +3471,7 @@
             }
           ]
         },
-        K = {
+        te = {
           data: [
             {
               lid: 1,
@@ -3351,7 +3496,7 @@
             }
           ]
         },
-        $ = (function(e) {
+        ae = (function(e) {
           function t(e) {
             var a;
             Object(p.a)(this, t),
@@ -3367,17 +3512,17 @@
                 });
               }),
               (a.bodyContent = function() {
-                return X
-                  ? i.a.createElement(
+                return $
+                  ? l.a.createElement(
                       'div',
                       { className: 'container mt-4' },
                       a.pagination(a.state.page, 9),
-                      a.result(Z.data),
+                      a.result(ee.data),
                       a.pagination(a.state.page, 9)
                     )
                   : null === a.state.pageCount
-                  ? i.a.createElement(E.a.Body.Loading, null)
-                  : i.a.createElement(
+                  ? l.a.createElement(E.a.Body.Loading, null)
+                  : l.a.createElement(
                       'div',
                       { className: 'container mt-4' },
                       a.pagination(a.state.page, a.state.pageCount),
@@ -3390,10 +3535,10 @@
                 if (null === a.state.data || 0 === a.state.data.length)
                   return !1;
                 for (
-                  var n = i.a.createElement(
+                  var n = l.a.createElement(
                       'li',
                       { className: 'page-item active' },
-                      i.a.createElement(
+                      l.a.createElement(
                         'a',
                         { className: 'page-link', href: '# ' },
                         e
@@ -3401,10 +3546,10 @@
                     ),
                     r =
                       1 !== e &&
-                      i.a.createElement(
+                      l.a.createElement(
                         'li',
                         { className: 'page-item' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'a',
                           {
                             className: 'page-link',
@@ -3417,10 +3562,10 @@
                       ),
                     o =
                       e !== t &&
-                      i.a.createElement(
+                      l.a.createElement(
                         'li',
                         { className: 'page-item' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'a',
                           {
                             className: 'page-link',
@@ -3431,7 +3576,7 @@
                           'Next'
                         )
                       ),
-                    l = e - 1,
+                    i = e - 1,
                     s = t - e,
                     c = [],
                     m = [],
@@ -3439,12 +3584,12 @@
                   u < 0;
                   u++
                 )
-                  l + u < 0 ||
+                  i + u < 0 ||
                     c.push(
-                      i.a.createElement(
+                      l.a.createElement(
                         'li',
                         { key: e + u, className: 'page-item' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'a',
                           {
                             className: 'page-link',
@@ -3459,10 +3604,10 @@
                 for (var d = 1; d < 5; d++)
                   s - d < 0 ||
                     m.push(
-                      i.a.createElement(
+                      l.a.createElement(
                         'li',
                         { key: e + d, className: 'page-item' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'a',
                           {
                             className: 'page-link',
@@ -3474,10 +3619,10 @@
                         )
                       )
                     );
-                return i.a.createElement(
+                return l.a.createElement(
                   'nav',
                   { 'aria-label': 'Page navigation' },
-                  i.a.createElement(
+                  l.a.createElement(
                     'ul',
                     { className: 'pagination justify-content-center' },
                     r,
@@ -3489,7 +3634,7 @@
                 );
               }),
               (a.onPageChange = function(e) {
-                if ((e.preventDefault(), X))
+                if ((e.preventDefault(), $))
                   a.setState({ page: parseInt(e.target.name) }),
                     window.history.pushState(
                       { html: document.innerHTML, pageTitle: document.title },
@@ -3506,40 +3651,48 @@
                   });
                 }
               }),
+              (a.onClickImg = function(e) {
+                e.preventDefault(),
+                  (window.location = '/book/'.concat(
+                    e.target.getAttribute('bookid')
+                  ));
+              }),
               (a.result = function(e) {
                 return 0 !== e.length
                   ? e.map(function(e, t) {
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         { className: 'container', key: t },
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'row mt-3' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-3 text-center' },
-                            i.a.createElement('img', {
+                            l.a.createElement('img', {
                               src: e.pictureurl,
                               className: 'img-fluid',
-                              alt: 'fluid'
+                              alt: 'fluid',
+                              bookid: e.id,
+                              onClick: a.onClickImg
                             })
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-md-4' },
-                            i.a.createElement('h3', null, e.title),
-                            i.a.createElement(
+                            l.a.createElement('h3', null, e.title),
+                            l.a.createElement(
                               'span',
                               null,
                               'author(s): ',
                               e.author
                             ),
-                            i.a.createElement('br', null),
-                            i.a.createElement('span', null, 'isbn: ', e.isbn),
-                            i.a.createElement(
+                            l.a.createElement('br', null),
+                            l.a.createElement('span', null, 'isbn: ', e.isbn),
+                            l.a.createElement(
                               'div',
                               { id: 'summary' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'p',
                                 {
                                   className: 'collapse',
@@ -3547,7 +3700,7 @@
                                 },
                                 e.description
                               ),
-                              i.a.createElement('a', {
+                              l.a.createElement('a', {
                                 className: 'collapsed',
                                 'data-toggle': 'collapse',
                                 href: '#collapseSummary',
@@ -3556,16 +3709,16 @@
                               })
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-md-5' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               {
                                 className:
                                   'row justify-content-md-center text-white'
                               },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 {
                                   className: 'col col-3 border',
@@ -3576,7 +3729,7 @@
                                   onClick: a.onColumnClick,
                                   name: 'name'
                                 },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   {
                                     className: 'text-white text-center mt-2',
@@ -3590,7 +3743,7 @@
                                   'Name'
                                 )
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 {
                                   className: 'col col-3 border',
@@ -3598,7 +3751,7 @@
                                   onClick: a.onColumnClick,
                                   name: 'rating'
                                 },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   {
                                     className: 'text-white text-center mt-2',
@@ -3612,7 +3765,7 @@
                                   'Rating'
                                 )
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 {
                                   className: 'col col-3 border',
@@ -3620,7 +3773,7 @@
                                   onClick: a.onColumnClick,
                                   name: 'condition'
                                 },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   {
                                     className: 'text-white text-center mt-2',
@@ -3634,7 +3787,7 @@
                                   'Condition'
                                 )
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 {
                                   className: 'col col-2 border',
@@ -3645,7 +3798,7 @@
                                   onClick: a.onColumnClick,
                                   name: 'price'
                                 },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   {
                                     className: 'text-white text-center mt-2',
@@ -3660,8 +3813,8 @@
                                 )
                               )
                             ),
-                            K.data.map(function(e, t) {
-                              return i.a.createElement(
+                            te.data.map(function(e, t) {
+                              return l.a.createElement(
                                 'div',
                                 {
                                   className: 'row justify-content-md-center',
@@ -3672,46 +3825,46 @@
                                     ));
                                   }
                                 },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'col col-3 border' },
                                   e.name
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'col col-3 border' },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'div',
                                     { className: 'row' },
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'div',
                                       {
                                         className: 'col col-8',
                                         style: { margin: '0 auto' }
                                       },
-                                      i.a.createElement(E.a.Body.RatingStar, {
+                                      l.a.createElement(E.a.Body.RatingStar, {
                                         rating: e.rating,
                                         dimension: 8
                                       })
                                     )
                                   )
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'col col-3 border' },
                                   e.condition
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'col col-2 border' },
                                   e.price
                                 )
                               );
                             }),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'row' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'button',
                                 {
                                   type: 'submit',
@@ -3731,28 +3884,28 @@
                         )
                       );
                     })
-                  : i.a.createElement(
+                  : l.a.createElement(
                       'div',
                       { className: 'container mt-3' },
-                      i.a.createElement('br', null),
-                      i.a.createElement('h2', null, 'no result :('),
-                      i.a.createElement('br', null)
+                      l.a.createElement('br', null),
+                      l.a.createElement('h2', null, 'no result :('),
+                      l.a.createElement('br', null)
                     );
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
-                  i.a.createElement(E.a.NavBar, {
+                  l.a.createElement(E.a.NavBar, {
                     category: a.state.category,
                     query: a.state.query
                   }),
-                  i.a.createElement(E.a.Header, null),
-                  i.a.createElement(E.a.Body, {
+                  l.a.createElement(E.a.Header, null),
+                  l.a.createElement(E.a.Body, {
                     noSideBar: !a.state.showSideBar,
                     content: a.bodyContent()
                   }),
-                  i.a.createElement(E.a.Footer, null)
+                  l.a.createElement(E.a.Footer, null)
                 );
               }),
               (a.state = {
@@ -3767,20 +3920,20 @@
             var n = a.props.match.params,
               r = n.author,
               o = n.isbn,
-              l = n.title;
+              i = n.title;
             return (
               r
                 ? ((a.state.category = 'author'),
-                  (a.state.search = J.d.getSearchByAuthor),
+                  (a.state.search = Q.e.getSearchByAuthor),
                   (a.state.query = r))
                 : o
                 ? ((a.state.category = 'isbn'),
-                  (a.state.search = J.d.getSearchByIsbn),
+                  (a.state.search = Q.e.getSearchByIsbn),
                   (a.state.query = o))
-                : l &&
+                : i &&
                   ((a.state.category = 'title'),
-                  (a.state.search = J.d.getSearchByTitle),
-                  (a.state.query = l)),
+                  (a.state.search = Q.e.getSearchByTitle),
+                  (a.state.query = i)),
               (a.bodyContent = a.bodyContent.bind(Object(N.a)(Object(N.a)(a)))),
               (a.pagination = a.pagination.bind(Object(N.a)(Object(N.a)(a)))),
               (a.onPageChange = a.onPageChange.bind(
@@ -3791,23 +3944,31 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        ee = [
+        })(i.Component),
+        ne = [
           {
             path: '/search/author/:author/page/:page',
             exact: !0,
-            component: $
+            component: ae
           },
-          { path: '/search/isbn/:isbn/page/:page', exact: !0, component: $ },
-          { path: '/search/title/:title/page/:page', exact: !0, component: $ }
+          { path: '/search/isbn/:isbn/page/:page', exact: !0, component: ae },
+          { path: '/search/title/:title/page/:page', exact: !0, component: ae }
         ],
-        te = 'Once upon',
-        ae =
-          'In this eye-opening book, renowned economist and bestselling author Tyler Cowen explains that phenomenon: High earners are taking ever more advantage of machine intelligence in data analysis and achieving ever-better results. Meanwhile, low earners who haven\u2019t committed to learning, to making the most of new technologies, have poor prospects. Nearly every business sector relies less and less on manual labor, and this fact is forever changing the world of work and wages. A steady, secure life somewhere in the middle\u2014average\u2014is over. With The Great Stagnation, Cowen explained why median wages stagnated over the last four decades; in Average Is Over he reveals the essential nature of the new economy, identifies the best path forward for workers and entrepreneurs, and provides readers with actionable advice to make the most of the new economic landscape. It is a challenging and sober must-read but ultimately exciting, good news. In debates about our nation\u2019s economic future, it will be impossible to ignore.\u201d',
-        ne = 'Seller@mail.sfsu.edu',
-        re = 'used',
-        oe = '$8.99',
-        le = [
+        re = !0,
+        oe = {
+          id: 1,
+          BookTitle: 'Once upon',
+          Description:
+            'In this eye-opening book, renowned economist and bestselling author Tyler Cowen explains that phenomenon: High earners are taking ever more advantage of machine intelligence in data analysis and achieving ever-better results. Meanwhile, low earners who haven\u2019t committed to learning, to making the most of new technologies, have poor prospects. Nearly every business sector relies less and less on manual labor, and this fact is forever changing the world of work and wages. A steady, secure life somewhere in the middle\u2014average\u2014is over. With The Great Stagnation, Cowen explained why median wages stagnated over the last four decades; in Average Is Over he reveals the essential nature of the new economy, identifies the best path forward for workers and entrepreneurs, and provides readers with actionable advice to make the most of the new economic landscape. It is a challenging and sober must-read but ultimately exciting, good news. In debates about our nation\u2019s economic future, it will be impossible to ignore.\u201d',
+          author: 'James May',
+          isbn: '12321332223232',
+          SellerInfo: 'Seller@mail.sfsu.edu',
+          SellerDescription: 'used',
+          SellerPrice: '$8.99',
+          pictureurl:
+            'https://rheasupdo.files.wordpress.com/2015/08/img_5998.jpg'
+        },
+        ie = [
           {
             path: '/book/:bid',
             exact: !0,
@@ -3822,7 +3983,29 @@
                   )).onShowOrHide = function(e) {
                     return a.setState({ showSideBar: !a.state.showSideBar });
                   }),
-                  (a.state = { showSideBar: !0 }),
+                  (a.componentDidMount = function() {
+                    re
+                      ? a.setState({ bookData: oe, renderReady: !0 })
+                      : Q.b.getLogin().then(function(e) {
+                          return Q.c.getBookInfo(a.state.bid).then(function(t) {
+                            return a.setState({ bookData: t, guest: e });
+                          });
+                        });
+                  }),
+                  (a.onSubmit = function(e) {
+                    e.preventDefault(),
+                      (window.location = '/book/'.concat(
+                        a.state.bookData.id,
+                        '/list'
+                      ));
+                  }),
+                  (a.state = {
+                    bid: e.match.params.bid,
+                    bookData: null,
+                    guest: !0,
+                    showSideBar: !0,
+                    renderReady: !1
+                  }),
                   (a.onShowOrHide = a.onShowOrHide.bind(
                     Object(N.a)(Object(N.a)(a))
                   )),
@@ -3835,108 +4018,95 @@
                   {
                     key: 'render',
                     value: function() {
-                      var e = i.a.createElement(
-                        'div',
-                        null,
-                        i.a.createElement('br', null),
-                        i.a.createElement(
-                          'div',
-                          { className: 'container' },
-                          i.a.createElement(
+                      var e = this.state.renderReady
+                        ? l.a.createElement(
                             'div',
-                            { className: 'row' },
-                            i.a.createElement(
+                            null,
+                            l.a.createElement('br', null),
+                            l.a.createElement(
                               'div',
-                              { className: 'col-6' },
-                              i.a.createElement('img', {
-                                className: 'd-block w-100',
-                                src:
-                                  'https://rheasupdo.files.wordpress.com/2015/08/img_5998.jpg',
-                                alt: 'placeholder'
-                              })
-                            ),
-                            i.a.createElement(
-                              'div',
-                              { className: 'col-6' },
-                              i.a.createElement(
+                              { className: 'container' },
+                              l.a.createElement(
                                 'div',
-                                { className: 'text-default' },
-                                'Title: ',
-                                te
-                              ),
-                              i.a.createElement('br', null),
-                              i.a.createElement(
-                                'div',
-                                { className: 'text-default' },
-                                'Description: ',
-                                ae
-                              ),
-                              i.a.createElement('br', null),
-                              i.a.createElement(
-                                'div',
-                                { className: 'text-default' },
-                                'SellerInfo: ',
-                                ne
-                              ),
-                              i.a.createElement('br', null),
-                              i.a.createElement(
-                                'div',
-                                { className: 'text-default' },
-                                'Book State: ',
-                                re
-                              ),
-                              i.a.createElement('br', null),
-                              i.a.createElement(
-                                'div',
-                                { className: 'text-default' },
-                                'Price: ',
-                                oe
-                              ),
-                              i.a.createElement('br', null),
-                              i.a.createElement(
-                                'button',
-                                {
-                                  type: 'submit',
-                                  className: 'btn btn-primary',
-                                  onClick: this.onSubmit
-                                },
-                                'Buy'
+                                { className: 'row' },
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'col-6' },
+                                  l.a.createElement('img', {
+                                    className: 'd-block w-100',
+                                    style: { paddingBottom: '20px' },
+                                    src: this.state.bookData.pictureurl,
+                                    alt: 'placeholder'
+                                  })
+                                ),
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'col-6' },
+                                  l.a.createElement(
+                                    'div',
+                                    { className: 'text-default' },
+                                    'Title: ',
+                                    this.state.bookData.BookTitle
+                                  ),
+                                  l.a.createElement('br', null),
+                                  l.a.createElement(
+                                    'div',
+                                    { className: 'text-default' },
+                                    'Author: ',
+                                    this.state.bookData.author
+                                  ),
+                                  l.a.createElement('br', null),
+                                  l.a.createElement(
+                                    'div',
+                                    { className: 'text-default' },
+                                    'Isbn: ',
+                                    this.state.bookData.isbn
+                                  ),
+                                  l.a.createElement('br', null),
+                                  l.a.createElement(
+                                    'div',
+                                    { className: 'text-default' },
+                                    'Description: ',
+                                    this.state.bookData.Description
+                                  ),
+                                  this.state.guest &&
+                                    l.a.createElement(
+                                      'button',
+                                      {
+                                        type: 'submit',
+                                        className: 'btn btn-primary',
+                                        onClick: this.onSubmit
+                                      },
+                                      'Go to Listings'
+                                    )
+                                )
                               )
                             )
                           )
-                        )
-                      );
-                      return i.a.createElement(
+                        : l.a.createElement(E.a.Body.Loading, null);
+                      return l.a.createElement(
                         'div',
                         null,
-                        i.a.createElement(E.a.NavBar, null),
-                        i.a.createElement(E.a.Header, null),
-                        i.a.createElement(E.a.Body, {
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
                           noSideBar: !this.state.showSideBar,
                           content: e
                         }),
-                        i.a.createElement(E.a.Footer, null)
+                        l.a.createElement(E.a.Footer, null)
                       );
                     }
                   }
                 ]),
                 t
               );
-            })(l.Component)
+            })(i.Component)
           }
         ],
-        ie = (a(141), !0),
-        se = ['Once upon'],
-        ce = {
-          BookTitle: 'Once upon',
-          Description:
-            'In this eye-opening book, renowned economist and bestselling author Tyler Cowen explains that phenomenon: High earners are taking ever more advantage of machine intelligence in data analysis and achieving ever-better results. Meanwhile, low earners who haven\u2019t committed to learning, to making the most of new technologies, have poor prospects. Nearly every business sector relies less and less on manual labor, and this fact is forever changing the world of work and wages. A steady, secure life somewhere in the middle\u2014average\u2014is over. With The Great Stagnation, Cowen explained why median wages stagnated over the last four decades; in Average Is Over he reveals the essential nature of the new economy, identifies the best path forward for workers and entrepreneurs, and provides readers with actionable advice to make the most of the new economic landscape. It is a challenging and sober must-read but ultimately exciting, good news. In debates about our nation\u2019s economic future, it will be impossible to ignore.\u201d',
-          pictureurl:
-            'https://rheasupdo.files.wordpress.com/2015/08/img_5998.jpg'
-        },
-        me = [
+        le = (a(72),
+        [
           {
-            path: '/user/:uid/listing/:lid',
+            path: '/user/:uid/listing',
             exact: !0,
             component: (function(e) {
               function t(e) {
@@ -3947,50 +4117,53 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    ie && a.setState({ renderReady: !0 });
-                  }),
-                  (a.autoCompleteSearch = function(e) {
-                    console.log(e);
+                    a.setState({ renderReady: !0 });
                   }),
                   (a.onChange = function(e) {
                     return a.setState(
-                      Object(_.a)({}, e.target.name, e.target.value)
+                      Object(Y.a)({}, e.target.name, e.target.value)
                     );
                   }),
                   (a.onChangeSearch = function(e) {
-                    ie &&
+                    var t = e.target.value;
+                    Q.e.getSearchByTitle(t).then(function(e) {
+                      var n = e.data;
                       a.setState({
-                        search: e.target.value,
-                        searchSuggestion: i.a.createElement(
+                        search: t,
+                        searchSuggestion: l.a.createElement(
                           'ul',
                           null,
-                          se.map(function(t, n) {
-                            return '' !== e.target.value &&
-                              t
-                                .toLowerCase()
-                                .includes(e.target.value.toLowerCase())
-                              ? i.a.createElement(
+                          n.map(function(e, n) {
+                            return '' !== t &&
+                              e.title.toLowerCase().includes(t.toLowerCase())
+                              ? l.a.createElement(
                                   'li',
-                                  { key: n, onClick: a.onSuggestion, value: t },
-                                  t
+                                  {
+                                    key: n,
+                                    onClick: a.onSuggestion,
+                                    value: e.title,
+                                    bookid: e.bid
+                                  },
+                                  e.title
                                 )
-                              : i.a.createElement('div', { key: n });
+                              : l.a.createElement('div', { key: n });
                           })
                         )
                       });
+                    });
                   }),
                   (a.onImageUpload = function(e) {
                     var t = a.state,
                       n = t.listerImages,
                       r = t.listerImageCapacity,
                       o = n,
-                      l = 0;
+                      i = 0;
                     o.length < r &&
                       (o.push(URL.createObjectURL(e.target.files[0])),
-                      (l = o.length - 1)),
+                      (i = o.length - 1)),
                       a.setState({
                         listerImages: o,
-                        listerImageDisplayIndex: l
+                        listerImageDisplayIndex: i
                       });
                   }),
                   (a.onImageRemove = function(e) {
@@ -4013,27 +4186,47 @@
                         : a.setState({ listerImages: o }));
                   }),
                   (a.onSubmit = function(e) {
-                    e.preventDefault();
+                    e.preventDefault(),
+                      Q.h
+                        .putListingInfo(
+                          a.state.uid,
+                          a.state.bookData.bid,
+                          a.state.userPrice,
+                          a.state.bookCondition
+                        )
+                        .then(function(e) {
+                          var t = e.bid,
+                            a = e.lid;
+                          window.location = '/book/'
+                            .concat(t, '/list/')
+                            .concat(a);
+                        });
                   }),
                   (a.onShowOrHide = function(e) {
                     return a.setState({ showSideBar: !a.state.showSideBar });
                   }),
                   (a.onSuggestion = function(e) {
-                    e.target.getAttribute('value'),
-                      ie && a.setState({ bookData: ce });
+                    var t = e.target.getAttribute('bookid');
+                    Q.c.getBookInfo(t).then(function(e) {
+                      return a.setState({ bookData: e });
+                    });
                   }),
                   (a.renderSearch = function() {
-                    return i.a.createElement(
-                      i.a.Fragment,
+                    return l.a.createElement(
+                      l.a.Fragment,
                       null,
-                      i.a.createElement(
+                      l.a.createElement(
                         'form',
                         null,
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'form-group' },
-                          i.a.createElement('div', null, 'Search'),
-                          i.a.createElement('input', {
+                          l.a.createElement(
+                            'div',
+                            null,
+                            'Type in the book title you want to sell'
+                          ),
+                          l.a.createElement('input', {
                             value: a.state.search,
                             onChange: a.onChangeSearch,
                             name: 'search',
@@ -4045,58 +4238,59 @@
                     );
                   }),
                   (a.renderListingForm = function() {
-                    return i.a.createElement(
-                      i.a.Fragment,
+                    return l.a.createElement(
+                      l.a.Fragment,
                       null,
-                      i.a.createElement('br', null),
-                      i.a.createElement(
+                      l.a.createElement('br', null),
+                      l.a.createElement(
                         'div',
                         { className: 'row' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'col-6' },
-                          i.a.createElement('img', {
+                          l.a.createElement('img', {
                             className: 'd-block w-100',
                             src: a.state.bookData.pictureurl,
                             alt: 'placeholder'
                           }),
-                          i.a.createElement('br', null),
-                          i.a.createElement(
+                          l.a.createElement('br', null),
+                          l.a.createElement(
                             'div',
                             { className: 'row' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'row' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'col-6' },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'p',
                                     null,
                                     'Upload up to 5 images of the book you wish to sell.'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'label',
                                     {
-                                      for: 'file-upload',
-                                      class: 'img-btn-plus',
+                                      htmlFor: 'file-upload',
+                                      className: 'img-btn-plus',
                                       style: { display: 'inline-block' }
                                     },
                                     '+'
                                   ),
-                                  i.a.createElement('input', {
+                                  l.a.createElement('input', {
                                     id: 'file-upload',
                                     type: 'file',
+                                    accept: '.jpg,.jpeg,.png',
                                     onChange: a.onImageUpload,
                                     style: { display: 'none' }
                                   }),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'button',
                                     {
-                                      class: 'img-btn-minus',
+                                      className: 'img-btn-minus',
                                       onClick: a.onImageRemove,
                                       style: {
                                         marginRight: '15px',
@@ -4106,7 +4300,8 @@
                                     '-'
                                   ),
                                   'current image:',
-                                  i.a.createElement('img', {
+                                  l.a.createElement('img', {
+                                    alt: 'cover',
                                     className: 'img-fluid',
                                     src:
                                       a.state.listerImages[
@@ -4114,17 +4309,18 @@
                                       ]
                                   })
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'col-6' },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'div',
                                     { className: 'row' },
                                     a.state.listerImages.map(function(e, t) {
-                                      return i.a.createElement(
+                                      return l.a.createElement(
                                         'div',
                                         { className: 'UploadedImage', key: t },
-                                        i.a.createElement('img', {
+                                        l.a.createElement('img', {
+                                          alt: 'cover',
                                           className: 'img-fluid',
                                           src: e
                                         })
@@ -4136,41 +4332,41 @@
                             )
                           )
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'col-6' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             null,
-                            i.a.createElement(
+                            l.a.createElement(
                               'form',
                               null,
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'col' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'text-default' },
                                   'Title: ',
-                                  ce.BookTitle
+                                  a.state.bookData.title
                                 ),
-                                i.a.createElement('br', null),
-                                i.a.createElement(
+                                l.a.createElement('br', null),
+                                l.a.createElement(
                                   'div',
                                   { className: 'text-default' },
                                   'Description: ',
-                                  ce.Description
+                                  a.state.bookData.description
                                 ),
-                                i.a.createElement('br', null),
-                                i.a.createElement(
+                                l.a.createElement('br', null),
+                                l.a.createElement(
                                   'div',
                                   { className: 'form-group' },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'label',
                                     { htmlFor: 'form' },
                                     'User description:'
                                   ),
-                                  i.a.createElement('textarea', {
+                                  l.a.createElement('textarea', {
                                     rows: '4',
                                     type: 'userDescription',
                                     className: 'form-control',
@@ -4181,48 +4377,51 @@
                                     onChange: a.onChange
                                   })
                                 ),
-                                i.a.createElement(
+                                'Book Condition:',
+                                l.a.createElement(
                                   'select',
                                   {
                                     className: 'custom-select',
+                                    name: 'bookCondition',
                                     value: a.state.bookCondition,
                                     onChange: a.onChange
                                   },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'option',
-                                    { selected: !0 },
+                                    { value: 'Book Condition' },
                                     'Book Condition'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'option',
-                                    { value: '1' },
+                                    { value: 'New' },
                                     'New'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'option',
-                                    { value: '2' },
+                                    { value: 'Fair' },
                                     'Fair'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'option',
-                                    { value: '3' },
+                                    { value: 'Used(no missing pages)' },
                                     'Used(no missing pages)'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'option',
-                                    { value: '2' },
+                                    { value: 'Missing pages' },
                                     'Missing pages'
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'option',
-                                    { value: '3' },
+                                    { value: 'Bad' },
                                     'Bad'
                                   )
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'form-group' },
-                                  i.a.createElement('textarea', {
+                                  'Price:',
+                                  l.a.createElement('textarea', {
                                     rows: '1',
                                     type: 'userPrice',
                                     className: 'form-control',
@@ -4235,7 +4434,7 @@
                                 )
                               )
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'button',
                               {
                                 type: 'submit',
@@ -4243,14 +4442,6 @@
                                 onClick: a.onSubmit
                               },
                               'Sell'
-                            ),
-                            i.a.createElement(
-                              'h1',
-                              null,
-                              'User id: ',
-                              a.state.uid,
-                              ' Transaction id:',
-                              a.state.lid
                             )
                           )
                         )
@@ -4259,23 +4450,20 @@
                   }),
                   (a.state = {
                     uid: e.match.params.uid,
-                    lid: e.match.params.lid,
+                    bid: null,
                     showSideBar: !1,
                     search: '',
-                    searchSuggestion: i.a.createElement('ul', null),
+                    searchSuggestion: l.a.createElement('ul', null),
                     bookData: null,
                     userDescription: '',
-                    userPrice: null,
+                    userPrice: 0,
                     listData: null,
-                    bookCondition: null,
+                    bookCondition: 'Book Condition',
                     listerImages: [],
                     listerImageDisplayIndex: null,
                     listerImageCapacity: 5,
                     renderReady: !1
                   }),
-                  (a.onShowOrHide = a.onShowOrHide.bind(
-                    Object(N.a)(Object(N.a)(a))
-                  )),
                   a
                 );
               }
@@ -4285,17 +4473,17 @@
                   {
                     key: 'render',
                     value: function() {
-                      var e = i.a.createElement(
-                        i.a.Fragment,
+                      var e = l.a.createElement(
+                        l.a.Fragment,
                         null,
                         this.state.renderReady
-                          ? i.a.createElement(
+                          ? l.a.createElement(
                               'div',
                               null,
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'container' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'row-1' },
                                   this.state.bookData
@@ -4304,29 +4492,405 @@
                                 )
                               )
                             )
-                          : i.a.createElement(E.a.Body.Loading, null)
+                          : l.a.createElement(E.a.Body.Loading, null)
                       );
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         null,
-                        i.a.createElement(E.a.NavBar, null),
-                        i.a.createElement(E.a.Header, null),
-                        i.a.createElement(E.a.Body, {
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
                           noSideBar: !this.state.showSideBar,
                           content: e
                         }),
-                        i.a.createElement(E.a.Footer, null)
+                        l.a.createElement(E.a.Footer, null)
                       );
                     }
                   }
                 ]),
                 t
               );
-            })(l.Component)
+            })(i.Component)
+          },
+          {
+            path: '/user/:uid/listing/:lid',
+            exact: !0,
+            component: (function(e) {
+              function t(e) {
+                var a;
+                return (
+                  Object(p.a)(this, t),
+                  ((a = Object(h.a)(
+                    this,
+                    Object(f.a)(t).call(this, e)
+                  )).componentDidMount = function() {
+                    Q.h.getListingInfo(1, a.state.lid).then(function(e) {
+                      var t = e.list;
+                      t &&
+                        Q.c.getBookInfo(t.bid).then(function(e) {
+                          a.setState({
+                            bookData: e,
+                            listData: t,
+                            bookCondition: t.condition,
+                            userPrice: t.price,
+                            renderReady: !0
+                          });
+                        });
+                    });
+                  }),
+                  (a.onChange = function(e) {
+                    return a.setState(
+                      Object(Y.a)({}, e.target.name, e.target.value)
+                    );
+                  }),
+                  (a.onImageUpload = function(e) {
+                    var t = a.state,
+                      n = t.listerImages,
+                      r = t.listerImageCapacity,
+                      o = n,
+                      i = 0;
+                    o.length < r &&
+                      (o.push(URL.createObjectURL(e.target.files[0])),
+                      (i = o.length - 1)),
+                      a.setState({
+                        listerImages: o,
+                        listerImageDisplayIndex: i
+                      });
+                  }),
+                  (a.onImageRemove = function(e) {
+                    var t = a.state,
+                      n = t.listerImages,
+                      r = t.listerImageDisplayIndex,
+                      o = n;
+                    0 < o.length &&
+                      (o.pop(),
+                      0 === o.length
+                        ? a.setState({
+                            listerImages: o,
+                            listerImageDisplayIndex: null
+                          })
+                        : r === o.length
+                        ? a.setState({
+                            listerImages: o,
+                            listerImageDisplayIndex: r - 1
+                          })
+                        : a.setState({ listerImages: o }));
+                  }),
+                  (a.onUpdate = function(e) {
+                    e.preventDefault(),
+                      Q.h
+                        .putListingInfo(
+                          a.state.uid,
+                          a.state.bookData.bid,
+                          a.state.userPrice,
+                          a.state.bookCondition,
+                          a.state.lid
+                        )
+                        .then(function(e) {
+                          var t = e.bid,
+                            a = e.lid;
+                          window.location = '/book/'
+                            .concat(t, '/list/')
+                            .concat(a);
+                        });
+                  }),
+                  (a.onDelete = function(e) {
+                    e.preventDefault(),
+                      Q.h
+                        .deleteListingInfo(a.state.uid, a.state.lid)
+                        .then(function(e) {
+                          return (window.location = '/');
+                        });
+                  }),
+                  (a.onShowOrHide = function(e) {
+                    return a.setState({ showSideBar: !a.state.showSideBar });
+                  }),
+                  (a.renderListingForm = function() {
+                    return l.a.createElement(
+                      l.a.Fragment,
+                      null,
+                      l.a.createElement('br', null),
+                      l.a.createElement(
+                        'div',
+                        { className: 'row' },
+                        l.a.createElement(
+                          'div',
+                          { className: 'col-6' },
+                          l.a.createElement('img', {
+                            className: 'd-block w-100',
+                            src: a.state.bookData.pictureurl,
+                            alt: 'placeholder'
+                          }),
+                          l.a.createElement('br', null),
+                          l.a.createElement(
+                            'div',
+                            { className: 'row' },
+                            l.a.createElement(
+                              'div',
+                              { className: 'form-group' },
+                              l.a.createElement(
+                                'div',
+                                { className: 'row' },
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'col-6' },
+                                  l.a.createElement(
+                                    'p',
+                                    null,
+                                    'Upload up to 5 images of the book you wish to sell.'
+                                  ),
+                                  l.a.createElement(
+                                    'label',
+                                    {
+                                      htmlFor: 'file-upload',
+                                      className: 'img-btn-plus',
+                                      style: { display: 'inline-block' }
+                                    },
+                                    '+'
+                                  ),
+                                  l.a.createElement('input', {
+                                    id: 'file-upload',
+                                    type: 'file',
+                                    accept: '.jpg,.jpeg,.png',
+                                    onChange: a.onImageUpload,
+                                    style: { display: 'none' }
+                                  }),
+                                  l.a.createElement(
+                                    'button',
+                                    {
+                                      className: 'img-btn-minus',
+                                      onClick: a.onImageRemove,
+                                      style: {
+                                        marginRight: '15px',
+                                        display: 'inline-block'
+                                      }
+                                    },
+                                    '-'
+                                  ),
+                                  'current image:',
+                                  l.a.createElement('img', {
+                                    alt: 'cover',
+                                    className: 'img-fluid',
+                                    src:
+                                      a.state.listerImages[
+                                        a.state.listerImageDisplayIndex
+                                      ]
+                                  })
+                                ),
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'col-6' },
+                                  l.a.createElement(
+                                    'div',
+                                    { className: 'row' },
+                                    a.state.listerImages.map(function(e, t) {
+                                      return l.a.createElement(
+                                        'div',
+                                        { className: 'UploadedImage', key: t },
+                                        l.a.createElement('img', {
+                                          alt: 'cover',
+                                          className: 'img-fluid',
+                                          src: e
+                                        })
+                                      );
+                                    })
+                                  )
+                                )
+                              )
+                            )
+                          )
+                        ),
+                        l.a.createElement(
+                          'div',
+                          { className: 'col-6' },
+                          l.a.createElement(
+                            'div',
+                            null,
+                            l.a.createElement(
+                              'form',
+                              null,
+                              l.a.createElement(
+                                'div',
+                                { className: 'col' },
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'text-default' },
+                                  'Title: ',
+                                  a.state.bookData.title
+                                ),
+                                l.a.createElement('br', null),
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'text-default' },
+                                  'Description: ',
+                                  a.state.bookData.description
+                                ),
+                                l.a.createElement('br', null),
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'form-group' },
+                                  l.a.createElement(
+                                    'label',
+                                    { htmlFor: 'form' },
+                                    'User description:'
+                                  ),
+                                  l.a.createElement('textarea', {
+                                    rows: '4',
+                                    type: 'userDescription',
+                                    className: 'form-control',
+                                    id: 'form-userDescription',
+                                    placeholder: 'Enter book description',
+                                    name: 'userDescription',
+                                    value: a.state.userDescription,
+                                    onChange: a.onChange
+                                  })
+                                ),
+                                'Book Condition:',
+                                l.a.createElement(
+                                  'select',
+                                  {
+                                    className: 'custom-select',
+                                    name: 'bookCondition',
+                                    value: a.state.bookCondition,
+                                    onChange: a.onChange
+                                  },
+                                  l.a.createElement(
+                                    'option',
+                                    { value: 'Book Condition' },
+                                    'Book Condition'
+                                  ),
+                                  l.a.createElement(
+                                    'option',
+                                    { value: 'New' },
+                                    'New'
+                                  ),
+                                  l.a.createElement(
+                                    'option',
+                                    { value: 'Fair' },
+                                    'Fair'
+                                  ),
+                                  l.a.createElement(
+                                    'option',
+                                    { value: 'Used(no missing pages)' },
+                                    'Used(no missing pages)'
+                                  ),
+                                  l.a.createElement(
+                                    'option',
+                                    { value: 'Missing pages' },
+                                    'Missing pages'
+                                  ),
+                                  l.a.createElement(
+                                    'option',
+                                    { value: 'Bad' },
+                                    'Bad'
+                                  )
+                                ),
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'form-group' },
+                                  'Price:',
+                                  l.a.createElement('textarea', {
+                                    rows: '1',
+                                    type: 'userPrice',
+                                    className: 'form-control',
+                                    id: 'form-userPrice',
+                                    placeholder: 'Enter price',
+                                    name: 'userPrice',
+                                    value: a.state.userPrice,
+                                    onChange: a.onChange
+                                  })
+                                )
+                              )
+                            ),
+                            l.a.createElement(
+                              'button',
+                              {
+                                type: 'submit',
+                                className: 'btn btn-primary',
+                                onClick: a.onUpdate
+                              },
+                              'Update'
+                            ),
+                            l.a.createElement(
+                              'button',
+                              {
+                                type: 'submit',
+                                className: 'btn btn-danger',
+                                style: { float: 'right' },
+                                onClick: a.onDelete
+                              },
+                              'Delete'
+                            )
+                          )
+                        )
+                      )
+                    );
+                  }),
+                  (a.state = {
+                    uid: e.match.params.uid,
+                    lid: e.match.params.lid,
+                    bid: null,
+                    showSideBar: !1,
+                    bookData: null,
+                    userDescription: '',
+                    userPrice: 0,
+                    listData: null,
+                    bookCondition: 'Book Condition',
+                    listerImages: [],
+                    listerImageDisplayIndex: null,
+                    listerImageCapacity: 5,
+                    renderReady: !1
+                  }),
+                  a
+                );
+              }
+              return (
+                Object(b.a)(t, e),
+                Object(g.a)(t, [
+                  {
+                    key: 'render',
+                    value: function() {
+                      var e = l.a.createElement(
+                        l.a.Fragment,
+                        null,
+                        this.state.renderReady
+                          ? l.a.createElement(
+                              'div',
+                              null,
+                              l.a.createElement(
+                                'div',
+                                { className: 'container' },
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'row-1' },
+                                  this.state.bookData &&
+                                    this.renderListingForm()
+                                )
+                              )
+                            )
+                          : l.a.createElement(E.a.Body.Loading, null)
+                      );
+                      return l.a.createElement(
+                        'div',
+                        null,
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
+                          noSideBar: !this.state.showSideBar,
+                          content: e
+                        }),
+                        l.a.createElement(E.a.Footer, null)
+                      );
+                    }
+                  }
+                ]),
+                t
+              );
+            })(i.Component)
           }
-        ],
-        ue = a(83),
-        de = (a(142),
+        ]),
+        se = a(84),
+        ce = (a(142),
         (function(e) {
           function t(e) {
             var a;
@@ -4339,7 +4903,7 @@
                 a.setState({ logData: e.logData });
               }),
               (a.componentDidMount = function() {
-                a.ps = new ue.a(c.a.findDOMNode(Object(N.a)(Object(N.a)(a))));
+                a.ps = new se.a(c.a.findDOMNode(Object(N.a)(Object(N.a)(a))));
                 var e = c.a.findDOMNode(Object(N.a)(Object(N.a)(a)))
                   .clientHeight;
                 (c.a.findDOMNode(Object(N.a)(Object(N.a)(a))).scrollTop = e),
@@ -4355,11 +4919,11 @@
                   a.ps.update();
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   { className: 'border' },
                   a.state.logData.map(function(e, t) {
-                    return i.a.createElement(
+                    return l.a.createElement(
                       'p',
                       { className: 'text-dark mx-4', key: t },
                       ' ',
@@ -4374,9 +4938,9 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component)),
-        pe = (a(143), !0),
-        ge = {
+        })(i.Component)),
+        me = (a(143), !0),
+        ue = {
           bookData: {
             title: 'book1',
             isbn: '111-111-111',
@@ -4410,7 +4974,7 @@
             'bob: get f-ed'
           ]
         },
-        he = (function(e) {
+        de = (function(e) {
           function t(e) {
             var a;
             return (
@@ -4419,10 +4983,10 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                if (pe) {
-                  var e = ge.bookData,
-                    t = ge.listData,
-                    n = ge.logData;
+                if (me) {
+                  var e = ue.bookData,
+                    t = ue.listData,
+                    n = ue.logData;
                   a.setState({
                     bookData: e,
                     listData: t,
@@ -4432,8 +4996,8 @@
                 } else {
                   var r = a.state,
                     o = r.uid,
-                    l = r.cid;
-                  J.f.getUserChatLog({ uid: o, cid: l }).then(function(e) {
+                    i = r.cid;
+                  Q.g.getUserChatLog({ uid: o, cid: i }).then(function(e) {
                     var t = e.bookData,
                       n = e.listData,
                       r = e.logData;
@@ -4447,104 +5011,104 @@
                 }
               }),
               (a.onChange = function(e) {
-                a.setState(Object(_.a)({}, e.target.name, e.target.value));
+                a.setState(Object(Y.a)({}, e.target.name, e.target.value));
               }),
               (a.onMessageReceived = function(e) {
                 var t = a.state.logData;
                 t.push(e), a.setState({ logData: t });
               }),
               (a.onSubmit = function(e) {
-                if ((e.preventDefault(), pe)) {
+                if ((e.preventDefault(), me)) {
                   var t = a.state,
                     n = t.logData,
                     r = t.message;
                   n.push(r), a.setState({ logData: n, message: '' });
                 } else {
                   var o = a.state,
-                    l = o.uid,
-                    i = o.cid,
+                    i = o.uid,
+                    l = o.cid,
                     s = o.message;
-                  J.f.postUserChatLog({ uid: l, cid: i, message: s }),
+                  Q.g.postUserChatLog({ uid: i, cid: l, message: s }),
                     a.setState({ message: '' });
                 }
               }),
               (a.bodyContent = function() {
-                return i.a.createElement(
-                  i.a.Fragment,
+                return l.a.createElement(
+                  l.a.Fragment,
                   null,
                   a.state.renderReady
-                    ? i.a.createElement(
-                        i.a.Fragment,
+                    ? l.a.createElement(
+                        l.a.Fragment,
                         null,
                         a.itemInfo(),
                         a.chatContainer()
                       )
-                    : i.a.createElement(E.a.Body.Loading, null)
+                    : l.a.createElement(E.a.Body.Loading, null)
                 );
               }),
               (a.itemInfo = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   { className: 'row my-4' },
-                  i.a.createElement('div', { className: 'col-1' }),
-                  i.a.createElement(
+                  l.a.createElement('div', { className: 'col-1' }),
+                  l.a.createElement(
                     'div',
                     { className: 'col' },
-                    i.a.createElement('h1', null, 'Book Information'),
-                    i.a.createElement(
+                    l.a.createElement('h1', null, 'Book Information'),
+                    l.a.createElement(
                       'div',
                       { className: 'row mt-3' },
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'col-3' },
-                        i.a.createElement('img', {
+                        l.a.createElement('img', {
                           className: 'img-fluid',
                           src: a.state.bookData.pictureurl,
                           alt: 'cover'
                         })
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'col mt-3' },
-                        i.a.createElement('h1', null, a.state.bookData.title),
-                        i.a.createElement(
+                        l.a.createElement('h1', null, a.state.bookData.title),
+                        l.a.createElement(
                           'h5',
                           null,
                           'author(s):',
                           ' ',
                           a.state.bookData.authors.map(function(e, t) {
-                            return i.a.createElement(
+                            return l.a.createElement(
                               'span',
                               { key: t },
                               (0 === t ? ' ' : ', ') + e
                             );
                           })
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'span',
                           null,
                           'isbn: ',
                           a.state.bookData.isbn
                         ),
-                        i.a.createElement('br', null),
-                        i.a.createElement(
+                        l.a.createElement('br', null),
+                        l.a.createElement(
                           'div',
                           { className: 'row' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-2' },
                             'rating:'
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-2' },
-                            i.a.createElement(E.a.Body.RatingStar, {
+                            l.a.createElement(E.a.Body.RatingStar, {
                               rating: a.state.bookData.rating,
                               dimension: 12
                             })
                           )
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'h6',
                           null,
                           a.state.bookData.description
@@ -4552,105 +5116,105 @@
                       )
                     )
                   ),
-                  i.a.createElement(
+                  l.a.createElement(
                     'div',
                     { className: 'col' },
-                    i.a.createElement('h1', null, 'Listing Information'),
-                    i.a.createElement(
+                    l.a.createElement('h1', null, 'Listing Information'),
+                    l.a.createElement(
                       'div',
                       { className: 'row my-3' },
-                      i.a.createElement('div', { className: 'col-1' }),
-                      i.a.createElement(
+                      l.a.createElement('div', { className: 'col-1' }),
+                      l.a.createElement(
                         'div',
                         { className: 'col' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'h5',
                           null,
                           'Seller: ',
                           a.state.listData.seller
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'row' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-2' },
                             'rating:'
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-2' },
-                            i.a.createElement(E.a.Body.RatingStar, {
+                            l.a.createElement(E.a.Body.RatingStar, {
                               rating: a.state.listData.rating,
                               dimension: 12
                             })
                           )
                         ),
-                        i.a.createElement('br', null),
-                        i.a.createElement(
+                        l.a.createElement('br', null),
+                        l.a.createElement(
                           'h6',
                           null,
                           'condition: ',
                           a.state.listData.condition
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'h6',
                           null,
                           'price: ',
                           a.state.listData.price
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'h6',
                           null,
                           'description: ',
                           a.state.listData.description
                         )
                       ),
-                      i.a.createElement('div', { className: 'col-2' })
+                      l.a.createElement('div', { className: 'col-2' })
                     )
                   ),
-                  i.a.createElement('div', { className: 'col-1' })
+                  l.a.createElement('div', { className: 'col-1' })
                 );
               }),
               (a.chatContainer = function() {
-                return i.a.createElement(
-                  i.a.Fragment,
+                return l.a.createElement(
+                  l.a.Fragment,
                   null,
-                  i.a.createElement(
+                  l.a.createElement(
                     'div',
                     { className: 'row m-4' },
-                    i.a.createElement('div', { className: 'col-1' }),
-                    i.a.createElement(
+                    l.a.createElement('div', { className: 'col-1' }),
+                    l.a.createElement(
                       'div',
                       { className: 'col' },
-                      i.a.createElement('h1', null, 'ChatLog')
+                      l.a.createElement('h1', null, 'ChatLog')
                     )
                   ),
-                  i.a.createElement(
+                  l.a.createElement(
                     'div',
                     { className: 'row m-4' },
-                    i.a.createElement('div', { className: 'col-1' }),
-                    i.a.createElement(
+                    l.a.createElement('div', { className: 'col-1' }),
+                    l.a.createElement(
                       'div',
                       { className: 'col' },
-                      i.a.createElement(de, { logData: a.state.logData })
+                      l.a.createElement(ce, { logData: a.state.logData })
                     ),
-                    i.a.createElement('div', { className: 'col-1' })
+                    l.a.createElement('div', { className: 'col-1' })
                   ),
-                  i.a.createElement(
+                  l.a.createElement(
                     'div',
                     { className: 'row m-4' },
-                    i.a.createElement('div', { className: 'col-1' }),
-                    i.a.createElement(
+                    l.a.createElement('div', { className: 'col-1' }),
+                    l.a.createElement(
                       'div',
                       { className: 'col' },
-                      i.a.createElement(
+                      l.a.createElement(
                         'form',
                         null,
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'input-group' },
-                          i.a.createElement('input', {
+                          l.a.createElement('input', {
                             type: 'text',
                             className:
                               'form-control litlister-remove-focus-outline',
@@ -4659,10 +5223,10 @@
                             value: a.state.message,
                             onChange: a.onChange
                           }),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'input-group-append' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'button',
                               {
                                 className:
@@ -4675,20 +5239,20 @@
                         )
                       )
                     ),
-                    i.a.createElement('div', { className: 'col-1' })
+                    l.a.createElement('div', { className: 'col-1' })
                   )
                 );
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
-                  i.a.createElement(E.a.NavBar, null),
-                  i.a.createElement(E.a.Body, {
+                  l.a.createElement(E.a.NavBar, null),
+                  l.a.createElement(E.a.Body, {
                     noSideBar: !a.state.showSideBar,
                     content: a.bodyContent()
                   }),
-                  i.a.createElement(E.a.Footer, null)
+                  l.a.createElement(E.a.Footer, null)
                 );
               }),
               (a.state = {
@@ -4700,7 +5264,7 @@
                 message: '',
                 renderReady: !1
               }),
-              J.g.on(
+              Q.i.on(
                 ''.concat(a.state.cid, ':messageReceived'),
                 a.onMessageReceived
               ),
@@ -4708,9 +5272,9 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        fe = !0,
-        be = {
+        })(i.Component),
+        pe = !0,
+        ge = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -4721,7 +5285,7 @@
             sellerInfo: {}
           }
         },
-        Ee = (function(e) {
+        he = (function(e) {
           function t(e) {
             var a;
             return (
@@ -4730,14 +5294,14 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                fe
+                pe
                   ? a.setState({
                       renderReady: !0,
-                      firstname: be.data.generalInfo.firstname,
-                      lastname: be.data.generalInfo.lastname,
-                      email: be.data.generalInfo.email
+                      firstname: ge.data.generalInfo.firstname,
+                      lastname: ge.data.generalInfo.lastname,
+                      email: ge.data.generalInfo.email
                     })
-                  : J.f
+                  : Q.g
                       .getUserConfiguration(a.props.match.params.uid)
                       .then(function(e) {
                         return a.setState({
@@ -4750,34 +5314,34 @@
               }),
               (a.bodyContent = function() {
                 return a.state.renderReady
-                  ? i.a.createElement(
+                  ? l.a.createElement(
                       'div',
                       { className: 'row' },
-                      i.a.createElement('div', { className: 'col-2' }),
-                      i.a.createElement(
+                      l.a.createElement('div', { className: 'col-2' }),
+                      l.a.createElement(
                         'div',
                         { className: 'col' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'form',
                           { className: 'm-4' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('h1', null, 'User Configuration')
+                            l.a.createElement('h1', null, 'User Configuration')
                           ),
-                          i.a.createElement('br', null),
-                          i.a.createElement(
+                          l.a.createElement('br', null),
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('h2', null, 'General Info')
+                            l.a.createElement('h2', null, 'General Info')
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group row' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 {
                                   className: 'col-sm-6',
@@ -4785,7 +5349,7 @@
                                 },
                                 'First Name'
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 {
                                   className: 'col-sm-6',
@@ -4794,10 +5358,10 @@
                                 'Last Name'
                               )
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group row' },
-                              i.a.createElement('input', {
+                              l.a.createElement('input', {
                                 type: 'text',
                                 className: 'form-control col',
                                 id: 'form-first-name',
@@ -4807,7 +5371,7 @@
                                 onChange: a.onChange,
                                 style: { marginLeft: '1em', marginRight: '1em' }
                               }),
-                              i.a.createElement('input', {
+                              l.a.createElement('input', {
                                 type: 'text',
                                 className: 'form-control col',
                                 id: 'form-last-name',
@@ -4819,15 +5383,15 @@
                               })
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'label',
                               { htmlFor: 'form-email' },
                               'Email address'
                             ),
-                            i.a.createElement('input', {
+                            l.a.createElement('input', {
                               type: 'email',
                               className: 'form-control',
                               id: 'form-email',
@@ -4837,17 +5401,17 @@
                               onChange: a.onChange
                             })
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('h2', null, 'Buyer Info')
+                            l.a.createElement('h2', null, 'Buyer Info')
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('h2', null, 'Seller Info')
+                            l.a.createElement('h2', null, 'Seller Info')
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'button',
                             {
                               type: 'submit',
@@ -4858,16 +5422,16 @@
                           )
                         )
                       ),
-                      i.a.createElement('div', { className: 'col-2' })
+                      l.a.createElement('div', { className: 'col-2' })
                     )
-                  : i.a.createElement(E.a.Body.Loading, null);
+                  : l.a.createElement(E.a.Body.Loading, null);
               }),
               (a.onChange = function(e) {
-                a.setState(Object(_.a)({}, e.target.name, e.target.value));
+                a.setState(Object(Y.a)({}, e.target.name, e.target.value));
               }),
               (a.onSubmit = function(e) {
                 e.preventDefault(),
-                  J.f
+                  Q.g
                     .postUserConfiguration({
                       uid: a.props.match.params.uid,
                       configuration: {
@@ -4885,15 +5449,15 @@
                     });
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
-                  i.a.createElement(E.a.NavBar, null),
-                  i.a.createElement(E.a.Body, {
+                  l.a.createElement(E.a.NavBar, null),
+                  l.a.createElement(E.a.Body, {
                     noSideBar: !a.state.showSideBar,
                     content: a.bodyContent()
                   }),
-                  i.a.createElement(E.a.Footer, null)
+                  l.a.createElement(E.a.Footer, null)
                 );
               }),
               (a.state = {
@@ -4910,9 +5474,9 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        ve = !0,
-        ye = {
+        })(i.Component),
+        fe = !0,
+        be = {
           profileData: {
             firstname: 'Bob',
             lastname: 'Ross',
@@ -4954,7 +5518,7 @@
             { rid: 3, title: 'eitnieuyn69384', time: '18:22 21-03-2019' }
           ]
         },
-        we = (function(e) {
+        Ee = (function(e) {
           function t(e) {
             var a;
             return (
@@ -4963,19 +5527,19 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                if (ve)
+                if (fe)
                   a.setState({
-                    chatListData: ye.chatListData,
-                    profileData: ye.profileData,
-                    reportListData: ye.reportListData,
+                    chatListData: be.chatListData,
+                    profileData: be.profileData,
+                    reportListData: be.reportListData,
                     display: 'Profile'
                   });
                 else {
                   var e = a.state.uid;
-                  J.f.getUserProfile(e).then(function(t) {
+                  Q.g.getUserProfile(e).then(function(t) {
                     t.error
                       ? (window.location = '/404')
-                      : J.f.getUserChatList(e).then(function(e) {
+                      : Q.g.getUserChatList(e).then(function(e) {
                           return a.setState({
                             chatListData: e,
                             profileData: t,
@@ -4987,11 +5551,11 @@
               }),
               (a.bodyContent = function() {
                 var e = a.state.guest;
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
                   a.state.display
-                    ? i.a.createElement(
+                    ? l.a.createElement(
                         'div',
                         {
                           className: 'container',
@@ -5001,11 +5565,11 @@
                             paddingBottom: '8vh'
                           }
                         },
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'row' },
                           a.profileSideBar({ guest: e }),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             {
                               className: 'col',
@@ -5016,15 +5580,15 @@
                           )
                         )
                       )
-                    : i.a.createElement(E.a.Body.Loading, null)
+                    : l.a.createElement(E.a.Body.Loading, null)
                 );
               }),
               (a.profileSideBar = function(e) {
                 var t = e.guest;
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   { className: 'col-3', style: { marginTop: '2em' } },
-                  i.a.createElement('img', {
+                  l.a.createElement('img', {
                     src: a.state.profileData.pictureurl,
                     className: 'img-fluid img-thumbnail',
                     alt: 'profile',
@@ -5034,10 +5598,10 @@
                       borderBottomRightRadius: '0'
                     }
                   }),
-                  i.a.createElement(
+                  l.a.createElement(
                     'ul',
                     { className: 'list-group' },
-                    i.a.createElement(
+                    l.a.createElement(
                       'li',
                       {
                         className: 'list-group-item text-center',
@@ -5047,7 +5611,7 @@
                           borderTopRightRadius: '0'
                         }
                       },
-                      i.a.createElement(
+                      l.a.createElement(
                         'h3',
                         null,
                         a.state.profileData.firstname,
@@ -5057,7 +5621,7 @@
                       a.state.profileData.rating &&
                         a.displayRating(a.state.profileData.rating)
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'button',
                       {
                         type: 'button',
@@ -5065,10 +5629,10 @@
                         name: 'Message',
                         onClick: a.onMessage
                       },
-                      i.a.createElement('i', { className: 'fa fa-envelope' }),
+                      l.a.createElement('i', { className: 'fa fa-envelope' }),
                       ' Message'
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'button',
                       {
                         type: 'button',
@@ -5076,10 +5640,10 @@
                         name: 'Review',
                         onClick: a.onReview
                       },
-                      i.a.createElement('i', { className: 'fa fa-star' }),
+                      l.a.createElement('i', { className: 'fa fa-star' }),
                       ' Review'
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'button',
                       {
                         type: 'button',
@@ -5087,44 +5651,44 @@
                         name: 'Listing',
                         onClick: a.onListing
                       },
-                      i.a.createElement('i', { className: 'fa fa-list' }),
+                      l.a.createElement('i', { className: 'fa fa-list' }),
                       ' Listing'
                     ),
                     t
-                      ? i.a.createElement(
+                      ? l.a.createElement(
                           'button',
                           {
                             type: 'button',
                             className: 'list-group-item list-group-item-action',
                             onClick: a.onReport
                           },
-                          i.a.createElement('i', { className: 'fa fa-flag' }),
+                          l.a.createElement('i', { className: 'fa fa-flag' }),
                           ' Report'
                         )
-                      : i.a.createElement(
+                      : l.a.createElement(
                           'button',
                           {
                             type: 'button',
                             className: 'list-group-item list-group-item-action',
                             onClick: a.onConfigure
                           },
-                          i.a.createElement('i', { className: 'fa fa-cogs' }),
+                          l.a.createElement('i', { className: 'fa fa-cogs' }),
                           ' Configure'
                         )
                   )
                 );
               }),
               (a.userNavigation = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'ul',
                   { className: 'nav justify-content-center nav-tabs' },
                   ['Profile', 'Message', 'Review', 'Listing', 'Report'].map(
                     function(e, t) {
                       return a.state.display === e
-                        ? i.a.createElement(
+                        ? l.a.createElement(
                             'li',
                             { key: t, className: 'nav-item' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'a',
                               {
                                 className: 'nav-link active',
@@ -5135,10 +5699,10 @@
                               e
                             )
                           )
-                        : i.a.createElement(
+                        : l.a.createElement(
                             'li',
                             { key: t, className: 'nav-item' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'a',
                               {
                                 className: 'nav-link',
@@ -5159,29 +5723,29 @@
                   n = t.display,
                   r = t.profileData,
                   o = t.chatListData,
-                  l = t.reportListData,
+                  i = t.reportListData,
                   s = t.uid;
                 return 'Profile' === n
-                  ? i.a.createElement(
-                      i.a.Fragment,
+                  ? l.a.createElement(
+                      l.a.Fragment,
                       null,
-                      i.a.createElement('br', null),
-                      i.a.createElement('h2', null, 'Profile'),
-                      i.a.createElement('div', null, r.description)
+                      l.a.createElement('br', null),
+                      l.a.createElement('h2', null, 'Profile'),
+                      l.a.createElement('div', null, r.description)
                     )
                   : 'Message' === n
-                  ? i.a.createElement(
+                  ? l.a.createElement(
                       'div',
                       null,
-                      i.a.createElement('br', null),
+                      l.a.createElement('br', null),
                       o.map(function(e, t) {
-                        return i.a.createElement(
+                        return l.a.createElement(
                           'div',
                           { className: 'row', key: t },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { class: 'col' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               {
                                 className: 'card',
@@ -5191,20 +5755,20 @@
                                     .concat(e.cid));
                                 }
                               },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'card-body' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'h5',
                                   { className: 'card-title' },
                                   e.sender
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   { className: 'card-text text-dark' },
                                   e.time
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   { className: 'card-text' },
                                   e.lastMessage
@@ -5216,32 +5780,32 @@
                       })
                     )
                   : 'Review' === n
-                  ? i.a.createElement(
+                  ? l.a.createElement(
                       'div',
                       null,
-                      i.a.createElement('br', null),
+                      l.a.createElement('br', null),
                       'to do'
                     )
                   : 'Listing' === n
-                  ? i.a.createElement(
+                  ? l.a.createElement(
                       'div',
                       null,
-                      i.a.createElement('br', null),
+                      l.a.createElement('br', null),
                       'to do'
                     )
                   : 'Report' === n
-                  ? i.a.createElement(
+                  ? l.a.createElement(
                       'div',
                       null,
-                      i.a.createElement('br', null),
-                      l.map(function(e, t) {
-                        return i.a.createElement(
+                      l.a.createElement('br', null),
+                      i.map(function(e, t) {
+                        return l.a.createElement(
                           'div',
                           { className: 'row', key: t },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { class: 'col' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               {
                                 className: 'card',
@@ -5251,15 +5815,15 @@
                                     .concat(e.rid));
                                 }
                               },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'card-body' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'h5',
                                   { className: 'card-title' },
                                   e.title
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'p',
                                   { className: 'card-text text-dark' },
                                   e.time
@@ -5273,11 +5837,11 @@
                   : void 0;
               }),
               (a.displayRating = function(e) {
-                return i.a.createElement(
+                return l.a.createElement(
                   'span',
                   null,
-                  i.a.createElement('br', null),
-                  i.a.createElement(E.a.Body.RatingStar, { rating: e })
+                  l.a.createElement('br', null),
+                  l.a.createElement(E.a.Body.RatingStar, { rating: e })
                 );
               }),
               (a.onUserNavigation = function(e) {
@@ -5303,15 +5867,15 @@
                 e.preventDefault();
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
-                  i.a.createElement(E.a.NavBar, null),
-                  i.a.createElement(E.a.Body, {
+                  l.a.createElement(E.a.NavBar, null),
+                  l.a.createElement(E.a.Body, {
                     noSideBar: !a.state.showSideBar,
                     content: a.bodyContent()
                   }),
-                  i.a.createElement(E.a.Footer, null)
+                  l.a.createElement(E.a.Footer, null)
                 );
               }),
               (a.state = {
@@ -5356,9 +5920,9 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        Ne = !0,
-        ke = {
+        })(i.Component),
+        ve = !0,
+        ye = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -5369,11 +5933,11 @@
             sellerInfo: {}
           }
         },
-        je = {
+        we = {
           title: 'this guy is a scammer',
           description: 'Hey, this guy scammed me on a different website.'
         },
-        Ce = (function(e) {
+        Ne = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5382,14 +5946,14 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                Ne
+                ve
                   ? a.setState({
                       renderReady: !0,
-                      userInfo: ke.data.generalInfo,
-                      reportTitle: je.title,
-                      reportDescription: je.description
+                      userInfo: ye.data.generalInfo,
+                      reportTitle: we.title,
+                      reportDescription: we.description
                     })
-                  : J.f
+                  : Q.g
                       .getUserConfiguration(a.props.match.params.uid)
                       .then(function(e) {
                         return a.setState({
@@ -5402,29 +5966,29 @@
               }),
               (a.bodyContent = function() {
                 return a.state.renderReady
-                  ? i.a.createElement(
+                  ? l.a.createElement(
                       'div',
                       { className: 'row', style: { marginRight: '0' } },
-                      i.a.createElement('div', { className: 'col-2' }),
-                      i.a.createElement(
+                      l.a.createElement('div', { className: 'col-2' }),
+                      l.a.createElement(
                         'div',
                         { className: 'col' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'form',
                           { className: 'm-4' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('h2', null, 'User Report')
+                            l.a.createElement('h2', null, 'User Report')
                           ),
-                          i.a.createElement('br', null),
-                          i.a.createElement(
+                          l.a.createElement('br', null),
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group row' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 {
                                   className: 'col-sm-6',
@@ -5432,7 +5996,7 @@
                                 },
                                 'Target User'
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 {
                                   className: 'col-sm-6',
@@ -5441,64 +6005,64 @@
                                 'Target Listing'
                               )
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group row' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 { className: 'col-sm-6' },
                                 'Anon123'
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 { className: 'col-sm-6' },
                                 '-'
                               )
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('label', null, 'Title'),
-                            i.a.createElement('br', null),
-                            i.a.createElement(
+                            l.a.createElement('label', null, 'Title'),
+                            l.a.createElement('br', null),
+                            l.a.createElement(
                               'label',
                               null,
                               a.state.reportTitle
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('label', null, 'Description'),
-                            i.a.createElement('br', null),
-                            i.a.createElement(
+                            l.a.createElement('label', null, 'Description'),
+                            l.a.createElement('br', null),
+                            l.a.createElement(
                               'label',
                               null,
                               a.state.reportDescription
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('label', null, 'Report Status'),
-                            i.a.createElement('br', null),
-                            i.a.createElement(
+                            l.a.createElement('label', null, 'Report Status'),
+                            l.a.createElement('br', null),
+                            l.a.createElement(
                               'button',
                               { className: 'btn btn-danger' },
                               'Closed'
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'label',
                               null,
                               'Report Resolution'
                             ),
-                            i.a.createElement('br', null),
-                            i.a.createElement(
+                            l.a.createElement('br', null),
+                            l.a.createElement(
                               'label',
                               null,
                               a.state.reportResolution
@@ -5506,16 +6070,16 @@
                           )
                         )
                       ),
-                      i.a.createElement('div', { className: 'col-2' })
+                      l.a.createElement('div', { className: 'col-2' })
                     )
-                  : i.a.createElement(E.a.Body.Loading, null);
+                  : l.a.createElement(E.a.Body.Loading, null);
               }),
               (a.onChange = function(e) {
-                a.setState(Object(_.a)({}, e.target.name, e.target.value));
+                a.setState(Object(Y.a)({}, e.target.name, e.target.value));
               }),
               (a.onSubmit = function(e) {
                 e.preventDefault(),
-                  J.f
+                  Q.g
                     .postUserConfiguration({
                       uid: a.props.match.params.uid,
                       configuration: {
@@ -5533,15 +6097,15 @@
                     });
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
-                  i.a.createElement(E.a.NavBar, null),
-                  i.a.createElement(E.a.Body, {
+                  l.a.createElement(E.a.NavBar, null),
+                  l.a.createElement(E.a.Body, {
                     noSideBar: !a.state.showSideBar,
                     content: a.bodyContent()
                   }),
-                  i.a.createElement(E.a.Footer, null)
+                  l.a.createElement(E.a.Footer, null)
                 );
               }),
               (a.state = {
@@ -5561,9 +6125,9 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        Se = !0,
-        Oe = {
+        })(i.Component),
+        ke = !0,
+        Ce = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -5574,7 +6138,7 @@
             sellerInfo: {}
           }
         },
-        xe = (function(e) {
+        je = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5583,12 +6147,12 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                Se
+                ke
                   ? a.setState({
                       renderReady: !0,
-                      userInfo: Oe.data.generalInfo
+                      userInfo: Ce.data.generalInfo
                     })
-                  : J.f
+                  : Q.g
                       .getUserConfiguration(a.props.match.params.uid)
                       .then(function(e) {
                         return a.setState({
@@ -5601,29 +6165,29 @@
               }),
               (a.bodyContent = function() {
                 return a.state.renderReady
-                  ? i.a.createElement(
+                  ? l.a.createElement(
                       'div',
                       { className: 'row', style: { marginRight: '0' } },
-                      i.a.createElement('div', { className: 'col-2' }),
-                      i.a.createElement(
+                      l.a.createElement('div', { className: 'col-2' }),
+                      l.a.createElement(
                         'div',
                         { className: 'col' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'form',
                           { className: 'm-4' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('h2', null, 'User Report')
+                            l.a.createElement('h2', null, 'User Report')
                           ),
-                          i.a.createElement('br', null),
-                          i.a.createElement(
+                          l.a.createElement('br', null),
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group row' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 {
                                   className: 'col-sm-6',
@@ -5631,7 +6195,7 @@
                                 },
                                 'Target User'
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'label',
                                 {
                                   className: 'col-sm-6',
@@ -5640,10 +6204,10 @@
                                 'Target Listing'
                               )
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group row' },
-                              i.a.createElement('input', {
+                              l.a.createElement('input', {
                                 type: 'text',
                                 className: 'form-control col',
                                 id: 'form-first-name',
@@ -5653,7 +6217,7 @@
                                 onChange: a.onChange,
                                 style: { marginLeft: '1em', marginRight: '1em' }
                               }),
-                              i.a.createElement('input', {
+                              l.a.createElement('input', {
                                 type: 'text',
                                 className: 'form-control col',
                                 id: 'form-last-name',
@@ -5665,11 +6229,11 @@
                               })
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('label', null, 'Title'),
-                            i.a.createElement('input', {
+                            l.a.createElement('label', null, 'Title'),
+                            l.a.createElement('input', {
                               type: 'text',
                               className: 'form-control',
                               placeholder: 'Enter report title',
@@ -5678,11 +6242,11 @@
                               onChange: a.onChange
                             })
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'form-group' },
-                            i.a.createElement('label', null, 'Description'),
-                            i.a.createElement('textarea', {
+                            l.a.createElement('label', null, 'Description'),
+                            l.a.createElement('textarea', {
                               row: '3',
                               type: 'text',
                               className: 'form-control',
@@ -5692,7 +6256,7 @@
                               onChange: a.onChange
                             })
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'button',
                             {
                               type: 'submit',
@@ -5703,16 +6267,16 @@
                           )
                         )
                       ),
-                      i.a.createElement('div', { className: 'col-2' })
+                      l.a.createElement('div', { className: 'col-2' })
                     )
-                  : i.a.createElement(E.a.Body.Loading, null);
+                  : l.a.createElement(E.a.Body.Loading, null);
               }),
               (a.onChange = function(e) {
-                a.setState(Object(_.a)({}, e.target.name, e.target.value));
+                a.setState(Object(Y.a)({}, e.target.name, e.target.value));
               }),
               (a.onSubmit = function(e) {
                 e.preventDefault(),
-                  J.f
+                  Q.g
                     .postUserConfiguration({
                       uid: a.props.match.params.uid,
                       configuration: {
@@ -5730,15 +6294,15 @@
                     });
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
-                  i.a.createElement(E.a.NavBar, null),
-                  i.a.createElement(E.a.Body, {
+                  l.a.createElement(E.a.NavBar, null),
+                  l.a.createElement(E.a.Body, {
                     noSideBar: !a.state.showSideBar,
                     content: a.bodyContent()
                   }),
-                  i.a.createElement(E.a.Footer, null)
+                  l.a.createElement(E.a.Footer, null)
                 );
               }),
               (a.state = {
@@ -5755,14 +6319,14 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        De = (a(144),
+        })(i.Component),
+        Se = (a(144),
         [
-          { path: '/user/:uid', exact: !0, component: we },
-          { path: '/user/:uid/chat/:cid', exact: !0, component: he },
-          { path: '/user/:uid/configuration', exact: !0, component: Ee },
-          { path: '/user/:uid/report', exact: !0, component: xe },
-          { path: '/user/:uid/report/:rid', exact: !0, component: Ce },
+          { path: '/user/:uid', exact: !0, component: Ee },
+          { path: '/user/:uid/chat/:cid', exact: !0, component: de },
+          { path: '/user/:uid/configuration', exact: !0, component: he },
+          { path: '/user/:uid/report', exact: !0, component: je },
+          { path: '/user/:uid/report/:rid', exact: !0, component: Ne },
           {
             path: '/user/:uid/cart',
             exact: !0,
@@ -5784,47 +6348,47 @@
                   {
                     key: 'render',
                     value: function() {
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         null,
-                        i.a.createElement(E.a.NavBar, null),
-                        i.a.createElement(E.a.Header, null),
-                        i.a.createElement(E.a.Body, {
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
                           noSideBar: !this.state.showSideBar,
-                          content: i.a.createElement(
+                          content: l.a.createElement(
                             'div',
                             { className: 'row p-4 h-100 ' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'col' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'h1',
                                 null,
                                 'Your Shopping Cart'
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'h3',
                                 { className: 'm-4' },
                                 'Nothing so far!'
                               )
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'col-4 justify-content-center' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'cartTotalBox p-3' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'h3',
                                   null,
                                   'Your Cart Total:'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'h4',
                                   { className: 'mb-4' },
                                   '$0.00'
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'button',
                                   { className: 'btn btn-primary' },
                                   'Proceed To Checkout'
@@ -5833,40 +6397,18 @@
                             )
                           )
                         }),
-                        i.a.createElement(E.a.Footer, null)
+                        l.a.createElement(E.a.Footer, null)
                       );
                     }
                   }
                 ]),
                 t
               );
-            })(l.Component)
+            })(i.Component)
           }
         ]),
-        Be = a(33),
-        Ie = !0,
-        Le = {
-          data: {
-            title: 'book1',
-            isbn: '111-111-111',
-            authors: ['Adam Bob', 'Calvin Dan'],
-            rating: 2.5,
-            description: 'nothing, you are on debug mode',
-            pictureurl:
-              'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-          }
-        },
-        Re = {
-          data: {
-            seller: 'dummy seller name',
-            rating: 0.4,
-            condition: 'new',
-            price: 11.09,
-            description:
-              'I bought the wrong book, and I missed the return deadline.'
-          }
-        },
-        Ae = (function(e) {
+        xe = a(30),
+        De = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5875,48 +6417,48 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                Ie
-                  ? a.setState({
-                      bookData: Le.data,
-                      listData: Re.data,
-                      renderReady: !0
-                    })
-                  : J.c.getBookInfo(a.state.bid).then(function(e) {
-                      return J.c.getListingInfo(a.state.lid).then(function(t) {
-                        return a.setState({
-                          bookData: e,
-                          listData: t,
-                          renderReady: !0
-                        });
-                      });
+                Q.c.getBookInfo(a.state.bid).then(function(e) {
+                  return Q.d
+                    .getListingInfo(a.state.bid, a.state.lid)
+                    .then(function(t) {
+                      if (e && t) {
+                        var n = t.list;
+                        (n.seller = t.seller),
+                          a.setState({
+                            bookData: e,
+                            listData: n,
+                            renderReady: !0
+                          });
+                      }
                     });
+                });
               }),
               (a.bodyContent = function() {
-                return i.a.createElement(
-                  i.a.Fragment,
+                return l.a.createElement(
+                  l.a.Fragment,
                   null,
                   a.state.renderReady
-                    ? i.a.createElement(
-                        i.a.Fragment,
+                    ? l.a.createElement(
+                        l.a.Fragment,
                         null,
                         a.addToCart(),
                         a.bookInfo(),
                         a.listInfo()
                       )
-                    : i.a.createElement(E.a.Body.Loading, null)
+                    : l.a.createElement(E.a.Body.Loading, null)
                 );
               }),
               (a.addToCart = function() {
-                return i.a.createElement(
-                  i.a.Fragment,
+                return l.a.createElement(
+                  l.a.Fragment,
                   null,
-                  i.a.createElement(
+                  l.a.createElement(
                     'button',
                     { className: 'btn btn-warning float-right mr-5' },
-                    i.a.createElement(
+                    l.a.createElement(
                       'h4',
                       null,
-                      i.a.createElement('i', {
+                      l.a.createElement('i', {
                         className: 'fa fa-shopping-cart'
                       }),
                       ' Add To Cart'
@@ -5925,66 +6467,59 @@
                 );
               }),
               (a.bookInfo = function() {
-                return i.a.createElement(
-                  i.a.Fragment,
+                return l.a.createElement(
+                  l.a.Fragment,
                   null,
-                  i.a.createElement('h1', null, 'Book Information'),
-                  i.a.createElement(
+                  l.a.createElement('h1', null, 'Book Information'),
+                  l.a.createElement(
                     'div',
                     { className: 'row mt-3' },
-                    i.a.createElement(
+                    l.a.createElement(
                       'div',
                       { className: 'col-3' },
-                      i.a.createElement('img', {
+                      l.a.createElement('img', {
                         className: 'img-fluid',
                         src: a.state.bookData.pictureurl,
                         alt: 'cover'
                       })
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'div',
                       { className: 'col mt-3' },
-                      i.a.createElement('h1', null, a.state.bookData.title),
-                      i.a.createElement(
+                      l.a.createElement('h1', null, a.state.bookData.title),
+                      l.a.createElement(
                         'h5',
                         null,
-                        'author(s):',
-                        ' ',
-                        a.state.bookData.authors.map(function(e, t) {
-                          return i.a.createElement(
-                            'span',
-                            { key: t },
-                            (0 === t ? ' ' : ', ') + e
-                          );
-                        })
+                        'author(s): ',
+                        a.state.bookData.author
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'span',
                         null,
                         'isbn: ',
                         a.state.bookData.isbn
                       ),
-                      i.a.createElement('br', null),
-                      i.a.createElement(
+                      l.a.createElement('br', null),
+                      l.a.createElement(
                         'div',
                         { className: 'row' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'col-1' },
                           'rating:'
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'col-1' },
-                          i.a.createElement(E.a.Body.RatingStar, {
+                          l.a.createElement(E.a.Body.RatingStar, {
                             rating: a.state.bookData.rating,
                             dimension: 12
                           })
                         )
                       ),
-                      i.a.createElement('br', null),
-                      i.a.createElement('br', null),
-                      i.a.createElement(
+                      l.a.createElement('br', null),
+                      l.a.createElement('br', null),
+                      l.a.createElement(
                         'h6',
                         null,
                         a.state.bookData.description
@@ -5994,71 +6529,74 @@
                 );
               }),
               (a.listInfo = function() {
-                return i.a.createElement(
-                  i.a.Fragment,
+                return l.a.createElement(
+                  l.a.Fragment,
                   null,
-                  i.a.createElement('h1', null, 'Listing Information'),
-                  i.a.createElement(
+                  l.a.createElement('h1', null, 'Listing Information'),
+                  l.a.createElement(
                     'div',
                     { className: 'row my-3' },
-                    i.a.createElement('div', { className: 'col-1' }),
-                    i.a.createElement(
+                    l.a.createElement('div', { className: 'col-1' }),
+                    l.a.createElement(
                       'div',
                       { className: 'col' },
-                      i.a.createElement(
+                      l.a.createElement(
                         'h5',
                         null,
-                        'Seller: ',
-                        a.state.listData.seller
+                        'Seller:',
+                        ' ',
+                        a.state.listData.seller.firstname +
+                          ' ' +
+                          a.state.listData.seller.lastname
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'row' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'col-1' },
                           'rating:'
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'col-1' },
-                          i.a.createElement(E.a.Body.RatingStar, {
+                          l.a.createElement(E.a.Body.RatingStar, {
                             rating: a.state.listData.rating,
                             dimension: 12
                           })
                         )
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'h6',
                         null,
                         'condition: ',
                         a.state.listData.condition
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'h6',
                         null,
                         'price: ',
                         a.state.listData.price
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'h6',
                         null,
                         'description: ',
                         a.state.listData.description
                       )
                     ),
-                    i.a.createElement('div', { className: 'col-2' })
+                    l.a.createElement('div', { className: 'col-2' })
                   )
                 );
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
-                  i.a.createElement(E.a.NavBar, null),
-                  i.a.createElement(E.a.Header, null),
-                  i.a.createElement(E.a.Body, { content: a.bodyContent() }),
-                  i.a.createElement(E.a.Footer, null)
+                  l.a.createElement(E.a.NavBar, null),
+                  l.a.createElement(E.a.Header, null),
+                  l.a.createElement(E.a.Body, { content: a.bodyContent() }),
+                  l.a.createElement(E.a.Footer, null)
                 );
               }),
               (a.state = {
@@ -6072,9 +6610,9 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        Ue = !0,
-        Te = {
+        })(i.Component),
+        Oe = !0,
+        Ie = {
           data: {
             title: 'book1',
             isbn: '111-111-111',
@@ -6085,7 +6623,7 @@
               'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
           }
         },
-        Me = {
+        Be = {
           data: [
             {
               lid: 1,
@@ -6110,7 +6648,7 @@
             }
           ]
         },
-        We = [
+        Le = [
           {
             path: '/book/:bid/list',
             exact: !0,
@@ -6123,16 +6661,16 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    Ue
+                    Oe
                       ? a.setState({
-                          bookData: Te.data,
-                          listData: Me.data,
+                          bookData: Ie.data,
+                          listData: Be.data,
                           renderReady: !0
                         })
-                      : J.c
+                      : Q.d
                           .getBookInfo(a.props.math.params.bid)
                           .then(function(e) {
-                            return J.c
+                            return Q.d
                               .getListInfo(a.props.match.params.bid)
                               .then(function(t) {
                                 return a.setState({
@@ -6145,75 +6683,75 @@
                   }),
                   (a.bodyContent = function() {
                     return a.state.renderReady
-                      ? i.a.createElement(
-                          i.a.Fragment,
+                      ? l.a.createElement(
+                          l.a.Fragment,
                           null,
                           a.bookInfo(),
                           a.listingListInfo()
                         )
-                      : i.a.createElement(i.a.Fragment, null, 'Loading Page');
+                      : l.a.createElement(l.a.Fragment, null, 'Loading Page');
                   }),
                   (a.bookInfo = function() {
-                    return i.a.createElement(
+                    return l.a.createElement(
                       'div',
                       { className: 'row mt-3' },
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'col-3' },
-                        i.a.createElement('img', {
+                        l.a.createElement('img', {
                           className: 'img-fluid',
                           src: a.state.bookData.pictureurl,
                           alt: 'cover'
                         })
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'col mt-3' },
-                        i.a.createElement(
+                        l.a.createElement(
                           'h1',
                           { className: 'text-dark' },
                           a.state.bookData.title
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'h5',
                           null,
                           'author(s):',
                           ' ',
                           a.state.bookData.authors.map(function(e, t) {
-                            return i.a.createElement(
+                            return l.a.createElement(
                               'span',
                               { key: t },
                               (0 === t ? ' ' : ', ') + e
                             );
                           })
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'span',
                           null,
                           'isbn: ',
                           a.state.bookData.isbn
                         ),
-                        i.a.createElement('br', null),
-                        i.a.createElement(
+                        l.a.createElement('br', null),
+                        l.a.createElement(
                           'div',
                           { className: 'row' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-1' },
                             'rating:'
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col-1' },
-                            i.a.createElement(E.a.Body.RatingStar, {
+                            l.a.createElement(E.a.Body.RatingStar, {
                               rating: a.state.bookData.rating,
                               dimension: 12
                             })
                           )
                         ),
-                        i.a.createElement('br', null),
-                        i.a.createElement('br', null),
-                        i.a.createElement(
+                        l.a.createElement('br', null),
+                        l.a.createElement('br', null),
+                        l.a.createElement(
                           'h6',
                           null,
                           a.state.bookData.description
@@ -6222,15 +6760,15 @@
                     );
                   }),
                   (a.listingListInfo = function() {
-                    return i.a.createElement(
-                      i.a.Fragment,
+                    return l.a.createElement(
+                      l.a.Fragment,
                       null,
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         {
                           className: 'row justify-content-md-center text-white'
                         },
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           {
                             className: 'col col-3 border',
@@ -6241,7 +6779,7 @@
                             onClick: a.onColumnClick,
                             name: 'name'
                           },
-                          i.a.createElement(
+                          l.a.createElement(
                             'p',
                             {
                               className: 'text-white text-center mt-2',
@@ -6256,7 +6794,7 @@
                             a.columnCaret('name')
                           )
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           {
                             className: 'col col-3 border',
@@ -6264,7 +6802,7 @@
                             onClick: a.onColumnClick,
                             name: 'rating'
                           },
-                          i.a.createElement(
+                          l.a.createElement(
                             'p',
                             {
                               className: 'text-white text-center mt-2',
@@ -6279,7 +6817,7 @@
                             a.columnCaret('rating')
                           )
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           {
                             className: 'col col-3 border',
@@ -6287,7 +6825,7 @@
                             onClick: a.onColumnClick,
                             name: 'condition'
                           },
-                          i.a.createElement(
+                          l.a.createElement(
                             'p',
                             {
                               className: 'text-white text-center mt-2',
@@ -6302,7 +6840,7 @@
                             a.columnCaret('condition')
                           )
                         ),
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           {
                             className: 'col col-2 border',
@@ -6313,7 +6851,7 @@
                             onClick: a.onColumnClick,
                             name: 'price'
                           },
-                          i.a.createElement(
+                          l.a.createElement(
                             'p',
                             {
                               className: 'text-white text-center mt-2',
@@ -6330,7 +6868,7 @@
                         )
                       ),
                       a.state.listData.map(function(e, t) {
-                        return i.a.createElement(
+                        return l.a.createElement(
                           'div',
                           {
                             className: 'row justify-content-md-center',
@@ -6341,58 +6879,58 @@
                               ));
                             }
                           },
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col col-3 border' },
                             e.name
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col col-3 border' },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'row' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 {
                                   className: 'col col-8',
                                   style: { margin: '0 auto' }
                                 },
-                                i.a.createElement(E.a.Body.RatingStar, {
+                                l.a.createElement(E.a.Body.RatingStar, {
                                   rating: e.rating
                                 })
                               )
                             )
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col col-3 border' },
                             e.condition
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'div',
                             { className: 'col col-2 border' },
                             e.price
                           )
                         );
                       }),
-                      i.a.createElement('div', { className: 'mb-4' })
+                      l.a.createElement('div', { className: 'mb-4' })
                     );
                   }),
                   (a.columnCaret = function(e) {
                     return e === a.state.listSortBy
                       ? 'asc' === a.state.listDirection
-                        ? i.a.createElement('i', {
+                        ? l.a.createElement('i', {
                             className: 'fa fa-caret-up',
                             'aria-hidden': 'true',
                             name: e
                           })
-                        : i.a.createElement('i', {
+                        : l.a.createElement('i', {
                             className: 'fa fa-caret-down',
                             'aria-hidden': 'true',
                             name: e
                           })
-                      : i.a.createElement(i.a.Fragment, null);
+                      : l.a.createElement(l.a.Fragment, null);
                   }),
                   (a.onColumnClick = function(e) {
                     var t = e.target.getAttribute('name');
@@ -6419,13 +6957,13 @@
                         });
                   }),
                   (a.render = function() {
-                    return i.a.createElement(
+                    return l.a.createElement(
                       'div',
                       null,
-                      i.a.createElement(E.a.NavBar, null),
-                      i.a.createElement(E.a.Header, null),
-                      i.a.createElement(E.a.Body, { content: a.bodyContent() }),
-                      i.a.createElement(E.a.Footer, null)
+                      l.a.createElement(E.a.NavBar, null),
+                      l.a.createElement(E.a.Header, null),
+                      l.a.createElement(E.a.Body, { content: a.bodyContent() }),
+                      l.a.createElement(E.a.Footer, null)
                     );
                   }),
                   (a.state = {
@@ -6453,12 +6991,12 @@
                 );
               }
               return Object(b.a)(t, e), t;
-            })(l.Component)
+            })(i.Component)
           },
-          { path: '/book/:bid/list/:lid', exact: !0, component: Ae }
+          { path: '/book/:bid/list/:lid', exact: !0, component: De }
         ],
-        Fe = !0,
-        Pe = {
+        Re = !0,
+        Ue = {
           adminData: {
             issues: [
               {
@@ -6555,7 +7093,7 @@
             }
           }
         },
-        He = [
+        Ae = [
           {
             path: '/admin/:aid',
             exact: !0,
@@ -6568,62 +7106,62 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    Fe
-                      ? a.setState({ adminData: Pe.adminData, renderReady: !0 })
-                      : J.a.getAdmin(a.state.aid).then(function(e) {
+                    Re
+                      ? a.setState({ adminData: Ue.adminData, renderReady: !0 })
+                      : Q.a.getAdmin(a.state.aid).then(function(e) {
                           return a.setState({ adminData: e, renderReady: !0 });
                         });
                   }),
                   (a.detailColumn = function() {
                     var e = a.state.selectedIssue;
                     return e
-                      ? i.a.createElement(
-                          i.a.Fragment,
+                      ? l.a.createElement(
+                          l.a.Fragment,
                           null,
-                          i.a.createElement('h1', null, 'Issue: #', e.iid),
-                          i.a.createElement('h4', null, 'Issue Description:'),
-                          i.a.createElement('h4', null, e.description),
-                          i.a.createElement('h2', null, 'Source:'),
-                          i.a.createElement(
+                          l.a.createElement('h1', null, 'Issue: #', e.iid),
+                          l.a.createElement('h4', null, 'Issue Description:'),
+                          l.a.createElement('h4', null, e.description),
+                          l.a.createElement('h2', null, 'Source:'),
+                          l.a.createElement(
                             'h4',
                             null,
-                            Pe.userInfo[e.sourceUser].profile.firstname,
+                            Ue.userInfo[e.sourceUser].profile.firstname,
                             ' ',
-                            Pe.userInfo[e.sourceUser].profile.lastname
+                            Ue.userInfo[e.sourceUser].profile.lastname
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'h4',
                             null,
-                            Pe.userInfo[e.sourceUser].profile.email
+                            Ue.userInfo[e.sourceUser].profile.email
                           ),
                           e.targetUser &&
-                            i.a.createElement(
-                              i.a.Fragment,
+                            l.a.createElement(
+                              l.a.Fragment,
                               null,
-                              i.a.createElement('h2', null, 'Target:'),
-                              i.a.createElement(
+                              l.a.createElement('h2', null, 'Target:'),
+                              l.a.createElement(
                                 'h4',
                                 null,
-                                Pe.userInfo[e.targetUser].profile.firstname,
+                                Ue.userInfo[e.targetUser].profile.firstname,
                                 ' ',
-                                Pe.userInfo[e.targetUser].profile.lastname
+                                Ue.userInfo[e.targetUser].profile.lastname
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'h4',
                                 null,
-                                Pe.userInfo[e.targetUser].profile.email
+                                Ue.userInfo[e.targetUser].profile.email
                               )
                             )
                         )
-                      : i.a.createElement(
-                          i.a.Fragment,
+                      : l.a.createElement(
+                          l.a.Fragment,
                           null,
                           'Select an issue'
                         );
                   }),
                   (a.issueColumn = function() {
                     return a.state.adminData.issues.map(function(e, t) {
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         {
                           className: 'card',
@@ -6632,32 +7170,32 @@
                             return a.setState({ selectedIssue: e });
                           }
                         },
-                        i.a.createElement(
+                        l.a.createElement(
                           'div',
                           { className: 'card-body' },
-                          i.a.createElement(
+                          l.a.createElement(
                             'h5',
                             { className: 'card-title' },
                             'Issue #',
                             e.iid
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'p',
                             { className: 'card-text text-dark' },
                             'source id:',
                             e.sourceUser
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'h5',
                             { className: 'card-title' },
                             e.title
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'h6',
                             { className: 'card-title' },
                             e.time
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'h6',
                             { className: 'card-title' },
                             'assignee: Admin123'
@@ -6669,18 +7207,18 @@
                   (a.resolutionColumn = function() {
                     var e = a.state.selectedIssue;
                     return e
-                      ? i.a.createElement(
-                          i.a.Fragment,
+                      ? l.a.createElement(
+                          l.a.Fragment,
                           null,
-                          i.a.createElement(
+                          l.a.createElement(
                             'h1',
                             null,
                             'Source: ',
-                            Pe.userInfo[e.sourceUser].profile.firstname,
+                            Ue.userInfo[e.sourceUser].profile.firstname,
                             ' ',
-                            Pe.userInfo[e.sourceUser].profile.lastname,
+                            Ue.userInfo[e.sourceUser].profile.lastname,
                             ' ',
-                            i.a.createElement(
+                            l.a.createElement(
                               'button',
                               {
                                 className: 'btn btn-danger',
@@ -6690,29 +7228,29 @@
                             ),
                             ' '
                           ),
-                          i.a.createElement(
+                          l.a.createElement(
                             'form',
                             null,
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group' },
-                              i.a.createElement('textarea', {
+                              l.a.createElement('textarea', {
                                 className: 'form-control',
                                 rows: '3',
                                 placeholder: 'Message to '
                                   .concat(
-                                    Pe.userInfo[e.sourceUser].profile.firstname,
+                                    Ue.userInfo[e.sourceUser].profile.firstname,
                                     ' '
                                   )
                                   .concat(
-                                    Pe.userInfo[e.sourceUser].profile.lastname
+                                    Ue.userInfo[e.sourceUser].profile.lastname
                                   )
                               })
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'form-group' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'button',
                                 { className: 'btn btn-primary' },
                                 'Send Message'
@@ -6720,18 +7258,18 @@
                             )
                           ),
                           e.targetUser &&
-                            i.a.createElement(
-                              i.a.Fragment,
+                            l.a.createElement(
+                              l.a.Fragment,
                               null,
-                              i.a.createElement(
+                              l.a.createElement(
                                 'h1',
                                 null,
                                 'Target: ',
-                                Pe.userInfo[e.targetUser].profile.firstname,
+                                Ue.userInfo[e.targetUser].profile.firstname,
                                 ' ',
-                                Pe.userInfo[e.targetUser].profile.lastname,
+                                Ue.userInfo[e.targetUser].profile.lastname,
                                 ' ',
-                                i.a.createElement(
+                                l.a.createElement(
                                   'button',
                                   {
                                     className: 'btn btn-danger',
@@ -6741,31 +7279,31 @@
                                 ),
                                 ' '
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'form',
                                 null,
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'form-group' },
-                                  i.a.createElement('textarea', {
+                                  l.a.createElement('textarea', {
                                     className: 'form-control',
                                     rows: '3',
                                     placeholder: 'Message to '
                                       .concat(
-                                        Pe.userInfo[e.targetUser].profile
+                                        Ue.userInfo[e.targetUser].profile
                                           .firstname,
                                         ' '
                                       )
                                       .concat(
-                                        Pe.userInfo[e.targetUser].profile
+                                        Ue.userInfo[e.targetUser].profile
                                           .lastname
                                       )
                                   })
                                 ),
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   { className: 'form-group' },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'button',
                                     { className: 'btn btn-primary' },
                                     'Send Message'
@@ -6774,47 +7312,47 @@
                               )
                             )
                         )
-                      : i.a.createElement(
-                          i.a.Fragment,
+                      : l.a.createElement(
+                          l.a.Fragment,
                           null,
                           'Select an issue'
                         );
                   }),
                   (a.render = function() {
                     return a.state.renderReady
-                      ? i.a.createElement(
-                          i.a.Fragment,
+                      ? l.a.createElement(
+                          l.a.Fragment,
                           null,
-                          i.a.createElement(E.a.NavBar, null),
-                          i.a.createElement(
+                          l.a.createElement(E.a.NavBar, null),
+                          l.a.createElement(
                             'div',
                             {
                               className: 'row mt-4',
                               style: { marginRight: '0' }
                             },
-                            i.a.createElement('div', { className: 'col-1' }),
-                            i.a.createElement(
+                            l.a.createElement('div', { className: 'col-1' }),
+                            l.a.createElement(
                               'div',
                               { className: 'col-2' },
-                              i.a.createElement('h2', null, 'Issues'),
+                              l.a.createElement('h2', null, 'Issues'),
                               a.issueColumn()
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'col-4' },
-                              i.a.createElement('h2', null, 'Details'),
+                              l.a.createElement('h2', null, 'Details'),
                               a.detailColumn()
                             ),
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'col-4' },
-                              i.a.createElement('h2', null, 'Resolution'),
+                              l.a.createElement('h2', null, 'Resolution'),
                               a.resolutionColumn()
                             ),
-                            i.a.createElement('div', { className: 'col-1' })
+                            l.a.createElement('div', { className: 'col-1' })
                           )
                         )
-                      : i.a.createElement(E.a.Body.Loading, null);
+                      : l.a.createElement(E.a.Body.Loading, null);
                   }),
                   (a.state = {
                     aid: e.match.params.aid,
@@ -6826,12 +7364,12 @@
                 );
               }
               return Object(b.a)(t, e), t;
-            })(l.Component)
+            })(i.Component)
           }
         ],
-        ze = a(19),
-        qe = !0,
-        Ge = (function(e) {
+        Te = a(19),
+        Me = !0,
+        Fe = (function(e) {
           function t(e) {
             var a;
             return (
@@ -6842,9 +7380,9 @@
               )).submit = function(e) {
                 a.props.stripe.createToken({ name: 'Name' }).then(function(e) {
                   var t = e.token;
-                  qe
+                  Me
                     ? a.setState({ complete: !0 })
-                    : J.e
+                    : Q.f
                         .postTransactionInfo({ tid: a.state.tid, data: t })
                         .then(function(e) {
                           e.ok
@@ -6859,17 +7397,17 @@
               }),
               (a.render = function() {
                 return a.state.complete
-                  ? i.a.createElement('h1', null, 'Purchase Complete')
-                  : i.a.createElement(
+                  ? l.a.createElement('h1', null, 'Purchase Complete')
+                  : l.a.createElement(
                       'div',
                       { className: 'checkout' },
-                      i.a.createElement(
+                      l.a.createElement(
                         'p',
                         null,
                         'Would you like to complete the purchase?'
                       ),
-                      i.a.createElement(ze.CardElement, null),
-                      i.a.createElement(
+                      l.a.createElement(Te.CardElement, null),
+                      l.a.createElement(
                         'button',
                         {
                           className: 'btn btn-success mt-4',
@@ -6885,10 +7423,10 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        _e = Object(ze.injectStripe)(Ge),
-        Je = !0,
-        Ve = {
+        })(i.Component),
+        We = Object(Te.injectStripe)(Fe),
+        Pe = !0,
+        He = {
           data: {
             error: null,
             bookData: {
@@ -6907,7 +7445,7 @@
             }
           }
         },
-        Ye = (function(e) {
+        ze = (function(e) {
           function t(e) {
             var a;
             return (
@@ -6916,9 +7454,9 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                Je
-                  ? a.setState({ transactionData: Ve.data, renderReady: !0 })
-                  : J.e.getTransactionInfo(a.state.tid).then(function(e) {
+                Pe
+                  ? a.setState({ transactionData: He.data, renderReady: !0 })
+                  : Q.f.getTransactionInfo(a.state.tid).then(function(e) {
                       return a.setState({
                         transactionData: e,
                         renderReady: !0
@@ -6928,42 +7466,42 @@
               (a.bodyContent = function() {
                 return a.state.renderReady
                   ? a.state.transactionData.error
-                    ? i.a.createElement(
+                    ? l.a.createElement(
                         'h1',
                         null,
                         a.state.transactionData.error
                       )
-                    : i.a.createElement(
-                        i.a.Fragment,
+                    : l.a.createElement(
+                        l.a.Fragment,
                         null,
                         a.transactionDetail(),
                         a.checkoutRow()
                       )
-                  : i.a.createElement(E.a.Body.Loading, null);
+                  : l.a.createElement(E.a.Body.Loading, null);
               }),
               (a.transactionDetail = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   { className: 'row my-4', style: { marginRight: '0' } },
-                  i.a.createElement('div', { className: 'col-1' }),
-                  i.a.createElement(
+                  l.a.createElement('div', { className: 'col-1' }),
+                  l.a.createElement(
                     'div',
                     { className: 'col-2' },
-                    i.a.createElement('img', {
+                    l.a.createElement('img', {
                       className: 'img-fluid',
                       src: a.state.transactionData.bookData.pictureurl,
                       alt: 'cover'
                     })
                   ),
-                  i.a.createElement(
+                  l.a.createElement(
                     'div',
                     { className: 'col-4' },
-                    i.a.createElement(
+                    l.a.createElement(
                       'h1',
                       null,
                       a.state.transactionData.bookData.title
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'h5',
                       null,
                       'author(s):',
@@ -6972,113 +7510,113 @@
                         e,
                         t
                       ) {
-                        return i.a.createElement(
+                        return l.a.createElement(
                           'span',
                           { key: t },
                           (0 === t ? ' ' : ', ') + e
                         );
                       })
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'span',
                       null,
                       'isbn: ',
                       a.state.transactionData.bookData.isbn
                     ),
-                    i.a.createElement('br', null),
-                    i.a.createElement(
+                    l.a.createElement('br', null),
+                    l.a.createElement(
                       'div',
                       { className: 'row', style: { marginRight: '0' } },
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'col-2' },
                         'rating:'
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'col-2' },
-                        i.a.createElement(E.a.Body.RatingStar, {
+                        l.a.createElement(E.a.Body.RatingStar, {
                           rating: a.state.transactionData.bookData.rating,
                           dimension: 12
                         })
                       )
                     )
                   ),
-                  i.a.createElement(
+                  l.a.createElement(
                     'div',
                     { className: 'col-4' },
-                    i.a.createElement(
+                    l.a.createElement(
                       'h5',
                       null,
                       'Seller: ',
                       a.state.transactionData.listData.seller
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'div',
                       { className: 'row', style: { marginRight: '0' } },
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'col-2' },
                         'rating:'
                       ),
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'col-2' },
-                        i.a.createElement(E.a.Body.RatingStar, {
+                        l.a.createElement(E.a.Body.RatingStar, {
                           rating: a.state.transactionData.listData.rating,
                           dimension: 12
                         })
                       )
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'h6',
                       null,
                       'condition: ',
                       a.state.transactionData.listData.condition
                     ),
-                    i.a.createElement(
+                    l.a.createElement(
                       'h6',
                       null,
                       'price: ',
                       a.state.transactionData.listData.price
                     )
                   ),
-                  i.a.createElement('div', { className: 'col-1' })
+                  l.a.createElement('div', { className: 'col-1' })
                 );
               }),
               (a.checkoutRow = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   { className: 'row my-4', style: { marginRight: '0' } },
-                  i.a.createElement('div', { className: 'col-2' }),
-                  i.a.createElement(
+                  l.a.createElement('div', { className: 'col-2' }),
+                  l.a.createElement(
                     'div',
                     { className: 'col' },
-                    i.a.createElement(
-                      ze.StripeProvider,
+                    l.a.createElement(
+                      Te.StripeProvider,
                       { apiKey: 'pk_test_TYooMQauvdEDq54NiTphI7jx' },
-                      i.a.createElement(
+                      l.a.createElement(
                         'div',
                         { className: 'example' },
-                        i.a.createElement(
-                          ze.Elements,
+                        l.a.createElement(
+                          Te.Elements,
                           null,
-                          i.a.createElement(_e, { tid: a.state.tid })
+                          l.a.createElement(We, { tid: a.state.tid })
                         )
                       )
                     )
                   ),
-                  i.a.createElement('div', { className: 'col-6' })
+                  l.a.createElement('div', { className: 'col-6' })
                 );
               }),
               (a.render = function() {
-                return i.a.createElement(
+                return l.a.createElement(
                   'div',
                   null,
-                  i.a.createElement(E.a.NavBar, null),
-                  i.a.createElement(E.a.Header, null),
-                  i.a.createElement(E.a.Body, { content: a.bodyContent() }),
-                  i.a.createElement(E.a.Footer, null)
+                  l.a.createElement(E.a.NavBar, null),
+                  l.a.createElement(E.a.Header, null),
+                  l.a.createElement(E.a.Body, { content: a.bodyContent() }),
+                  l.a.createElement(E.a.Footer, null)
                 );
               }),
               (a.state = {
@@ -7090,9 +7628,9 @@
             );
           }
           return Object(b.a)(t, e), t;
-        })(l.Component),
-        Qe = !0,
-        Xe = {
+        })(i.Component),
+        qe = !0,
+        Ge = {
           data: [
             {
               tid: 1,
@@ -7134,7 +7672,7 @@
             }
           ]
         },
-        Ze = [
+        Ve = [
           {
             path: '/transaction/',
             exact: !0,
@@ -7147,42 +7685,42 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    Qe &&
+                    qe &&
                       a.setState({
-                        transactionHistoryData: Xe.data,
+                        transactionHistoryData: Ge.data,
                         renderReady: !0
                       });
                   }),
                   (a.bodyContent = function() {
                     return a.state.renderReady
                       ? a.state.transactionHistoryData.error
-                        ? i.a.createElement(
+                        ? l.a.createElement(
                             'h1',
                             null,
                             a.state.transactionHistoryData.error
                           )
-                        : i.a.createElement(
-                            i.a.Fragment,
+                        : l.a.createElement(
+                            l.a.Fragment,
                             null,
-                            i.a.createElement(
+                            l.a.createElement(
                               'h1',
                               { className: 'text-dark pl-2' },
                               'Transaction History'
                             ),
                             a.transactionHistoryDetail()
                           )
-                      : i.a.createElement(E.a.Body.Loading, null);
+                      : l.a.createElement(E.a.Body.Loading, null);
                   }),
                   (a.transactionHistoryDetail = function() {
-                    return i.a.createElement(
-                      i.a.Fragment,
+                    return l.a.createElement(
+                      l.a.Fragment,
                       null,
                       a.state.transactionHistoryData.map(function(e, t) {
-                        return i.a.createElement(
+                        return l.a.createElement(
                           'div',
                           { className: 'row my-4 mr-0' },
-                          i.a.createElement('div', { className: 'col-1' }),
-                          i.a.createElement(
+                          l.a.createElement('div', { className: 'col-1' }),
+                          l.a.createElement(
                             'div',
                             {
                               className: 'card',
@@ -7192,10 +7730,10 @@
                                 ));
                               }
                             },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'card-body' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'h5',
                                 { className: 'card-title' },
                                 'Transaction: ',
@@ -7204,103 +7742,103 @@
                                 e.time,
                                 ')'
                               ),
-                              i.a.createElement(
+                              l.a.createElement(
                                 'p',
                                 { className: 'card-text text-dark' },
-                                i.a.createElement(
+                                l.a.createElement(
                                   'div',
                                   {
                                     className: 'row',
                                     style: { paddingLeft: '-15px' }
                                   },
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'div',
                                     { className: 'col-2' },
-                                    i.a.createElement('img', {
+                                    l.a.createElement('img', {
                                       className: 'img-fluid',
                                       src: e.bookData.pictureurl,
                                       alt: 'cover'
                                     })
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'div',
                                     { className: 'col-4' },
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'h1',
                                       { className: 'text-dark' },
                                       e.bookData.title
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'h5',
                                       null,
                                       'author(s):',
                                       ' ',
                                       e.bookData.authors.map(function(e, t) {
-                                        return i.a.createElement(
+                                        return l.a.createElement(
                                           'span',
                                           { key: t },
                                           (0 === t ? ' ' : ', ') + e
                                         );
                                       })
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'span',
                                       null,
                                       'isbn: ',
                                       e.bookData.isbn
                                     ),
-                                    i.a.createElement('br', null),
-                                    i.a.createElement(
+                                    l.a.createElement('br', null),
+                                    l.a.createElement(
                                       'div',
                                       { className: 'row  mr-0' },
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'div',
                                         { className: 'col-3' },
                                         'rating:'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'div',
                                         { className: 'col-2' },
-                                        i.a.createElement(E.a.Body.RatingStar, {
+                                        l.a.createElement(E.a.Body.RatingStar, {
                                           rating: e.bookData.rating,
                                           dimension: 10
                                         })
                                       )
                                     )
                                   ),
-                                  i.a.createElement(
+                                  l.a.createElement(
                                     'div',
                                     { className: 'col-4' },
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'h5',
                                       null,
                                       'Seller: ',
                                       e.listData.seller
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'div',
                                       { className: 'row  mr-0' },
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'div',
                                         { className: 'col-3' },
                                         'rating:'
                                       ),
-                                      i.a.createElement(
+                                      l.a.createElement(
                                         'div',
                                         { className: 'col-2' },
-                                        i.a.createElement(E.a.Body.RatingStar, {
+                                        l.a.createElement(E.a.Body.RatingStar, {
                                           rating: e.listData.rating,
                                           dimension: 10
                                         })
                                       )
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'h6',
                                       null,
                                       'condition: ',
                                       e.listData.condition
                                     ),
-                                    i.a.createElement(
+                                    l.a.createElement(
                                       'h6',
                                       null,
                                       'price: ',
@@ -7311,19 +7849,19 @@
                               )
                             )
                           ),
-                          i.a.createElement('div', { className: 'col-1' })
+                          l.a.createElement('div', { className: 'col-1' })
                         );
                       })
                     );
                   }),
                   (a.render = function() {
-                    return i.a.createElement(
+                    return l.a.createElement(
                       'div',
                       null,
-                      i.a.createElement(E.a.NavBar, null),
-                      i.a.createElement(E.a.Header, null),
-                      i.a.createElement(E.a.Body, { content: a.bodyContent() }),
-                      i.a.createElement(E.a.Footer, null)
+                      l.a.createElement(E.a.NavBar, null),
+                      l.a.createElement(E.a.Header, null),
+                      l.a.createElement(E.a.Body, { content: a.bodyContent() }),
+                      l.a.createElement(E.a.Footer, null)
                     );
                   }),
                   (a.state = {
@@ -7335,11 +7873,11 @@
                 );
               }
               return Object(b.a)(t, e), t;
-            })(l.Component)
+            })(i.Component)
           },
-          { path: '/transaction/:tid', exact: !0, component: Ye }
+          { path: '/transaction/:tid', exact: !0, component: ze }
         ],
-        Ke = (a(157),
+        _e = (a(157),
         [
           {
             path: '/Invest',
@@ -7362,60 +7900,267 @@
                   {
                     key: 'render',
                     value: function() {
-                      return i.a.createElement(
+                      return l.a.createElement(
                         'div',
                         null,
-                        i.a.createElement(E.a.NavBar, null),
-                        i.a.createElement(E.a.Header, null),
-                        i.a.createElement(E.a.Body, {
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
                           noSideBar: !this.state.showSideBar,
-                          content: i.a.createElement(
+                          content: l.a.createElement(
                             'div',
                             {
                               className:
                                 'container-fluid h-100 main-body d-flex align-items-center justify-content-center'
                             },
-                            i.a.createElement(
+                            l.a.createElement(
                               'div',
                               { className: 'row justify-content-center p-4' },
-                              i.a.createElement(
+                              l.a.createElement(
                                 'div',
                                 { className: 'big-text' },
                                 'Looking To Invest?'
                               ),
-                              i.a.createElement(
-                                'p',
-                                null,
+                              l.a.createElement(
+                                'h5',
+                                { style: { color: 'white' } },
                                 'We are currently preparing to work with investors so we can build the future together. Hold on tight while we prepare and set up and we will update this page soon.'
                               )
                             )
                           )
                         }),
-                        i.a.createElement(E.a.Footer, null)
+                        l.a.createElement(E.a.Footer, null)
                       );
                     }
                   }
                 ]),
                 t
               );
-            })(l.Component)
+            })(i.Component)
           }
         ]),
-        $e = [].concat(
-          Object(d.a)(q),
-          Object(d.a)(G.default),
-          Object(d.a)(V),
-          Object(d.a)(Y),
-          Object(d.a)(ee),
+        Je = (a(158), !0),
+        Ye = (function(e) {
+          function t(e) {
+            var a;
+            return (
+              Object(p.a)(this, t),
+              ((a = Object(h.a)(
+                this,
+                Object(f.a)(t).call(this, e)
+              )).submitButtonHandler = function() {
+                Je &&
+                  (console.log(a.state.commentInput),
+                  console.log(a.state.listingID));
+              }),
+              (a.onChangeInputText = function() {
+                a.setState({ commentInput: a.textInput.current.value });
+              }),
+              (a.onChangeRatingSelect = function(e) {
+                console.log(e);
+              }),
+              (a.textInput = l.a.createRef()),
+              (a.ratingInput = l.a.createRef()),
+              (a.state = {
+                listingID: a.props.ID,
+                commentInput: '',
+                ratingValue: 0
+              }),
+              a
+            );
+          }
+          return (
+            Object(b.a)(t, e),
+            Object(g.a)(t, [
+              {
+                key: 'componentDidMount',
+                value: function() {
+                  null == this.props.ID && this.setState({ listingID: -1 });
+                }
+              },
+              {
+                key: 'render',
+                value: function() {
+                  return l.a.createElement(
+                    'div',
+                    { className: 'container ' },
+                    l.a.createElement(
+                      'div',
+                      { className: 'row' },
+                      l.a.createElement('h5', null, 'Leave a comment.'),
+                      l.a.createElement('textarea', {
+                        onChange: this.onChangeInputText,
+                        ref: this.textInput,
+                        className: 'form-control',
+                        'aria-label': 'textarea'
+                      }),
+                      l.a.createElement(
+                        'button',
+                        {
+                          className: 'btn mt-2 btn-primary',
+                          onClick: this.submitButtonHandler
+                        },
+                        'Submit'
+                      )
+                    )
+                  );
+                }
+              }
+            ]),
+            t
+          );
+        })(i.Component),
+        Qe = !0,
+        Xe = {
+          data: {
+            title: 'Book Sample Title',
+            isbn: '111-111-111',
+            authors: ['Adam Bob', 'Calvin Dan'],
+            rating: 2.5,
+            description:
+              'Pretend there is a really good paragraph here about how amazing this books is.',
+            pictureurl:
+              'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
+          }
+        },
+        Ze = [
+          {
+            path: '/bookReview/:bid',
+            exact: !0,
+            component: (function(e) {
+              function t(e) {
+                var a;
+                return (
+                  Object(p.a)(this, t),
+                  ((a = Object(h.a)(
+                    this,
+                    Object(f.a)(t).call(this, e)
+                  )).componentDidMount = function() {
+                    Qe && a.setState({ bookData: Xe.data, renderReady: !0 });
+                  }),
+                  (a.state = {
+                    bookData: {
+                      showSideBar: !1,
+                      pictureurl: null,
+                      title: null,
+                      isbn: null,
+                      authors: null,
+                      description: null,
+                      rating: null
+                    }
+                  }),
+                  a
+                );
+              }
+              return (
+                Object(b.a)(t, e),
+                Object(g.a)(t, [
+                  {
+                    key: 'render',
+                    value: function() {
+                      return l.a.createElement(
+                        'div',
+                        null,
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Header, null),
+                        l.a.createElement(E.a.Body, {
+                          noSideBar: !this.state.showSideBar,
+                          content: l.a.createElement(
+                            'div',
+                            { className: 'container-fluid h-100 w-100' },
+                            l.a.createElement(
+                              'div',
+                              { className: 'row h-100 align-items-center' },
+                              l.a.createElement(
+                                'div',
+                                { className: 'col-sm-4  ' },
+                                l.a.createElement(
+                                  'div',
+                                  null,
+                                  l.a.createElement('img', {
+                                    src: this.state.bookData.pictureurl,
+                                    className: 'img-fluid',
+                                    alt: 'cover'
+                                  })
+                                )
+                              ),
+                              l.a.createElement(
+                                'div',
+                                { className: 'col-sm-8 p-4' },
+                                l.a.createElement(
+                                  'div',
+                                  null,
+                                  l.a.createElement(
+                                    'h1',
+                                    { className: '' },
+                                    this.state.bookData.title
+                                  )
+                                ),
+                                l.a.createElement(
+                                  'h5',
+                                  null,
+                                  'ISBN: ',
+                                  this.state.bookData.isbn
+                                ),
+                                l.a.createElement(
+                                  'div',
+                                  null,
+                                  l.a.createElement(
+                                    'h5',
+                                    { className: '' },
+                                    this.state.bookData.authors
+                                  )
+                                ),
+                                l.a.createElement(
+                                  'h5',
+                                  null,
+                                  'Rating: ',
+                                  this.state.bookData.rating
+                                ),
+                                l.a.createElement(
+                                  'div',
+                                  null,
+                                  l.a.createElement(
+                                    'h5',
+                                    null,
+                                    this.state.bookData.description
+                                  )
+                                ),
+                                l.a.createElement(
+                                  'div',
+                                  { className: 'mt-4' },
+                                  l.a.createElement(Ye, null)
+                                )
+                              )
+                            )
+                          )
+                        }),
+                        l.a.createElement(E.a.Footer, null)
+                      );
+                    }
+                  }
+                ]),
+                t
+              );
+            })(i.Component)
+          }
+        ],
+        Ke = [].concat(
+          Object(d.a)(_),
+          Object(d.a)(J.default),
+          Object(d.a)(X),
+          Object(d.a)(Z),
+          Object(d.a)(ne),
+          Object(d.a)(ie),
+          Object(d.a)(Se),
+          Object(d.a)(Le),
+          Object(d.a)(Ae),
           Object(d.a)(le),
-          Object(d.a)(De),
-          Object(d.a)(We),
-          Object(d.a)(He),
-          Object(d.a)(me),
+          Object(d.a)(Ve),
+          Object(d.a)(xe.default),
+          Object(d.a)(K),
+          Object(d.a)(_e),
           Object(d.a)(Ze),
-          Object(d.a)(Be.default),
-          Object(d.a)(Q),
-          Object(d.a)(Ke),
           Object(d.a)(w)
         );
       Boolean(
@@ -7425,14 +8170,14 @@
             /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
           )
       );
-      a(158);
+      a(159);
       null !== r.a &&
         null !== o.a &&
         (c.a.render(
-          i.a.createElement(
+          l.a.createElement(
             m.a,
             null,
-            i.a.createElement('div', null, Object(u.a)($e))
+            l.a.createElement('div', null, Object(u.a)(Ke))
           ),
           document.getElementById('root')
         ),
@@ -7442,6 +8187,6 @@
           }));
     }
   ],
-  [[86, 1, 2]]
+  [[87, 1, 2]]
 ]);
-//# sourceMappingURL=main.5f34b62e.chunk.js.map
+//# sourceMappingURL=main.477fd22a.chunk.js.map
