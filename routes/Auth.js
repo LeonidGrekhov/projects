@@ -37,6 +37,7 @@ router.post(
                   return response.json(error);
                 }
                 return response.json({
+                  uid: user.uid,
                   firstname: user.firstname,
                   lastname: user.lastname
                 });
