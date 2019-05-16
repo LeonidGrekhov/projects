@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define(
+  const book = sequelize.define(
     'book',
     {
       bid: {
@@ -43,4 +43,11 @@ module.exports = function(sequelize, DataTypes) {
       timestamps: false
     }
   );
+  book.associate = db => {
+    book.hasMany(db.listing, {
+      as: 'Listings',
+      foreignKey: 'bid'
+    });
+  };
+  return book;
 };

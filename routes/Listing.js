@@ -72,7 +72,7 @@ router.put('/api/listing/edit/condition', (request, response) => {
 //Delete listing request
 router.post('/api/listing/delete', (request, response) => {
   const listingId = request.body.lid;
-  return Listing.deleteLisitng(listingId)
+  return Listing.deleteListing(listingId)
     .then(Listing => {
       response.json(Listing);
     })

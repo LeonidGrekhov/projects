@@ -14,6 +14,7 @@ import AdminRoute from './Containers/Admin/route';
 import TransactionRoute from './Containers/Transaction/route';
 import InvestRoute from './Containers/Invest/route';
 import BookReview from './Containers/BookReview/route.js';
+import SellerReview from './Containers/SellerReview/route';
 const routes = [
   ...HomeRoute,
   ...AboutRoute,
@@ -30,6 +31,7 @@ const routes = [
   ...TermsOfServiceRoute,
   ...InvestRoute,
   ...BookReview,
+  ...SellerReview,
   // Place 404 last so that incase of no match,
   // 404 will be displayed
   ...Error404Route
