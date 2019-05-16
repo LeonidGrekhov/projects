@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Listing } = require('../database/api');
+const authenticated = require('./middlewares/authenticated');
+
 const fs = require('fs');
 
 /*const imageFileBuffer = fs.readFileSync(
@@ -8,6 +10,14 @@ const fs = require('fs');
 
 router.delete('/api/user/:uid/listing/:lid', ({ params: { lid } }, response) =>
   Listing.deleteListing(parseInt(lid)).then(data => response.json(data))
+);
+
+//delete a listing if user session exists and matches, sends ok
+router.delete(
+  '/api/list/:lid',
+  authenticated,
+  ({ params: { lid } }, response) =>
+    Listing.deleteListing(parseInt(lid)).then(data => response.sendStatus(200))
 );
 
 router.get('/api/book/:bid/list/:lid', ({ params: { lid } }, response) => {
