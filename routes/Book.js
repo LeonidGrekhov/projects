@@ -7,7 +7,7 @@ router.get('/api/book/:bid', ({ params: { bid } }, response) => {
     .catch(error => response.json(error));
 });
 
-router.post('/api/book/carousel', (request, response) => {
+router.get('/api/latestreleases', ({}, response) => {
   return Book.getBookDataCarousel()
     .then(data => response.json(data))
     .catch(error => response.json(error));
