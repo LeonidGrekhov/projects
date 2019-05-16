@@ -10,7 +10,25 @@ const addBook = db => (title, author, isbn, description, pictureurl, type) =>
     type
   });
 
+const getBookListings = db => bid =>
+  db.book.findByPk(bid, {
+    include: [
+      {
+        model: db.listing,
+        as: 'Listings',
+        include: [
+          {
+            model: db.user,
+            as: 'user',
+            attributes: ['uid', 'firstname', 'lastname']
+          }
+        ]
+      }
+    ]
+  });
+
 module.exports = db => ({
   getBookData: getBookData(db),
-  addBook: addBook(db)
+  addBook: addBook(db),
+  getBookListings: getBookListings(db)
 });

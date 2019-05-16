@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
           key: 'bid'
         }
       },
-      sid: {
+      uid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         onUpdate: 'cascade',
@@ -79,9 +79,9 @@ module.exports = function(sequelize, DataTypes) {
       as: 'book',
       foreignKey: 'bid'
     });
+    //Listing is the source model, user is the target
     Listing.belongsTo(db.user, {
-      as: 'user',
-      foreignKey: 'sid'
+      foreignKey: 'uid'
     });
   };
   return Listing;
