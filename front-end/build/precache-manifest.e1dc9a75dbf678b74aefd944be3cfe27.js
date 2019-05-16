@@ -4,8 +4,8 @@ self.__precacheManifest = [
     url: '/static/media/book_icon.baaa27c7.svg'
   },
   {
-    revision: '477fd22ab3a1c1d8d6a7',
-    url: '/static/css/main.5e489ca9.chunk.css'
+    revision: '07a1d13cc0b354aab3af',
+    url: '/static/css/main.01c7bbbe.chunk.css'
   },
   {
     revision: '42ac5946195a7306e2a5',
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     url: '/static/media/michael winata.3ef0fe7e.jpg'
   },
   {
-    revision: 'cec846b1dbbab2f9482b',
-    url: '/static/js/2.cec846b1.chunk.js'
+    revision: '8e62bc7325556a465105',
+    url: '/static/js/2.8e62bc73.chunk.js'
   },
   {
     revision: 'cd117e8dad3f86bc83056e0fdf3260d8',
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     url: '/static/media/money_icon.63b405cd.svg'
   },
   {
-    revision: '477fd22ab3a1c1d8d6a7',
-    url: '/static/js/main.477fd22a.chunk.js'
+    revision: '07a1d13cc0b354aab3af',
+    url: '/static/js/main.07a1d13c.chunk.js'
   },
   {
     revision: 'cdf858b8723a53430d3619ac3583a00a',
@@ -92,12 +92,12 @@ self.__precacheManifest = [
     url: '/static/media/fontawesome-webfont.fee66e71.woff'
   },
   {
-    revision: 'b06871f281fee6b241d60582ae9369b9',
-    url: '/static/media/fontawesome-webfont.b06871f2.ttf'
-  },
-  {
     revision: '674f50d287a8c48dc19ba404d20fe713',
     url: '/static/media/fontawesome-webfont.674f50d2.eot'
+  },
+  {
+    revision: 'b06871f281fee6b241d60582ae9369b9',
+    url: '/static/media/fontawesome-webfont.b06871f2.ttf'
   },
   {
     revision: '912ec66d7572ff821749319396470bde',
@@ -124,11 +124,11 @@ self.__precacheManifest = [
     url: '/static/media/john.ccf309ba.jpg'
   },
   {
-    revision: 'cec846b1dbbab2f9482b',
+    revision: '8e62bc7325556a465105',
     url: '/static/css/2.dd4fc322.chunk.css'
   },
   {
-    revision: '2b296b11af6b81330f31552f94471a76',
+    revision: 'ddc338bb2f28a8f7cf6d0a1ddd23aca3',
     url: '/index.html'
   }
 ];

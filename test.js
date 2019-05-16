@@ -1,9 +1,10 @@
-const { Book } = require('./database/api');
+const { Listing } = require('./database/api');
 
-return Book.getBookListings(1)
+return Listing.getListing(16)
   .then(data => {
-    for (const listing of data.Listings) {
-      console.log(listing.uid);
-    }
+    /*for (const user of data) {
+      console.log(user.uid);
+    }*/
+    console.log(data.user);
   })
   .catch(error => console.log(error));

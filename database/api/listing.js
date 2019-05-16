@@ -17,6 +17,8 @@ const createListing = db => (uid, bid, price, condition) =>
     condition
   });
 
+/* DEPPRECATED: possibly deprecated, and may be able to delete?
+See create listing above
 const insertListing = db => (book, user, price, condition) => {
   return db.listing.create({
     bid: book.bid,
@@ -26,6 +28,7 @@ const insertListing = db => (book, user, price, condition) => {
     condition: condition
   });
 };
+*/
 
 const updateListing = db => (lid, price, condition) =>
   db.listing.update(
@@ -61,21 +64,20 @@ const findListingByBIDS = db => bids => {
   });
 };
 
-const findListingByLID = db => lid =>
-  db.listing
-    .findOne({
-      where: {
-        lid
+// Retrieve a listing and its owner by pk
+const getListing = db => lid =>
+  db.listing.findByPk(lid, {
+    include: [
+      {
+        model: db.user,
+        as: 'user',
+        attributes: ['uid', 'firstname', 'lastname']
       }
-    })
-    .then(list =>
-      db.user
-        .findByPk(list.sid, { attributes: ['firstname', 'lastname'] })
-        .then(seller => {
-          return { list, seller };
-        })
-    );
+    ]
+  });
 
+/* DEPRECATED: The following two functions may be deprecated; see update
+methods above
 const editPrice = db => (lid, price) => {
   return db.listing.update(
     {
@@ -95,6 +97,7 @@ const editCondition = db => (lid, condition) => {
     { where: { lid } }
   );
 };
+*/
 
 //this function given promise support to S3.upload (AWS SDK function) which supports only callback
 function S3UploadPromiseWraper(params) {
@@ -162,13 +165,13 @@ const uploadListingImage = db => (lid, streamData, filename, extension) => {
 
 module.exports = db => ({
   createListing: createListing(db),
-  insertListing: insertListing(db),
+  //insertListing: insertListing(db),
   updateListing: updateListing(db),
   deleteListing: deleteListing(db),
   findListingByBID: findListingByBID(db),
   findListingByBIDS: findListingByBIDS(db),
-  findListingByLID: findListingByLID(db),
-  editPrice: editPrice(db),
-  editCondition: editCondition(db),
+  getListing: getListing(db),
+  //editPrice: editPrice(db),
+  //editCondition: editCondition(db),
   uploadListingImage: uploadListingImage(db)
 });

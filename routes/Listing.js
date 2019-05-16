@@ -4,28 +4,66 @@ const authenticated = require('./middlewares/authenticated');
 
 const fs = require('fs');
 
-/*const imageFileBuffer = fs.readFileSync(
-  '/Users/vismaypatel/Desktop/Software Engineering/TheBookProject/csc648-sp19-team244/database/api/2.png'
-);*/
-
+/* DEPRECATED: Mark for deletion? See delete route below
 router.delete('/api/user/:uid/listing/:lid', ({ params: { lid } }, response) =>
   Listing.deleteListing(parseInt(lid)).then(data => response.json(data))
 );
+*/
 
 //delete a listing if user session exists and matches, sends ok
 router.delete(
   '/api/list/:lid',
   authenticated,
   ({ params: { lid } }, response) =>
-    Listing.deleteListing(parseInt(lid)).then(data => response.sendStatus(200))
+    Listing.deleteListing(parseInt(lid))
+      .then(data => response.sendStatus(200))
+      .catch(error => response.json(error))
 );
 
+/* DEPRECATED: Mark for deletion? See get route below
 router.get('/api/book/:bid/list/:lid', ({ params: { lid } }, response) => {
   return Listing.findListingByLID(parseInt(lid))
     .then(data => response.json(data))
     .catch(error => response.json(error));
 });
+*/
 
+// Get listing data + seller data if lid and user session exists
+// User data can be accessed as data.user
+router.get(
+  '/api/list/:lid', //authenticated,
+  ({ params: { lid } }, response) =>
+    Listing.getListing(parseInt(lid))
+      .then(data => response.json(data))
+      .catch(error => response.json(error))
+);
+
+// Create a listing based on data in body and send listing data if user session
+// exists
+router.put(
+  '/api/list', //authenticated,
+  ({ params: { uid, bid, price, condition } }, response) => {
+    console.log(uid, bid, price, condition);
+    Listing.createListing(uid, bid, parseInt(price), condition)
+      .then(data => response.json(data))
+      .catch(error => console.log(error), response.json(null));
+  }
+);
+
+// Update a listing based on data in body and send listing data if user
+// session exists
+router.put(
+  '/api/list/:lid', //authenticated,
+  ({ params: { lid, price, condition } }, response) => {
+    console.log(lid, price, condition);
+    Listing.updateListing(lid, parseInt(price), condition)
+      .then(data => response.json(data))
+      .catch(error => console.log(error), response.json(null));
+  }
+);
+
+/* DEPERECATED: The following routes may be deprecated; see update
+route above
 router.put(
   '/api/user/:uid/listing/',
   (
@@ -79,7 +117,7 @@ router.put('/api/listing/edit/condition', (request, response) => {
     });
 });
 
-//Delete listing request
+ DEPRECATED: possibly deprecated? See listing delete route above
 router.post('/api/listing/delete', (request, response) => {
   const listingId = request.body.lid;
   return Listing.deleteListing(listingId)
@@ -91,6 +129,7 @@ router.post('/api/listing/delete', (request, response) => {
       response.json(error);
     });
 });
+*/
 
 router.post('/api/listing/uploadimage', (request, response) => {
   const listingId = request.body.lid;

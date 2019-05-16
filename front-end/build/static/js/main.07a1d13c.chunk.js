@@ -13,9 +13,9 @@
         c = a(0),
         m = a.n(c),
         u = a(8),
-        d = a(45),
+        d = a(46),
         p = a.n(d),
-        g = (a(124), a(76)),
+        g = (a(125), a(77)),
         h = a.n(g),
         f = (function(e) {
           function t(e) {
@@ -448,7 +448,7 @@
             t
           );
         })(c.Component),
-        v = (a(125),
+        v = (a(126),
         {
           data: [
             {
@@ -573,7 +573,7 @@
             t
           );
         })(c.Component),
-        w = (function(e) {
+        N = (function(e) {
           function t() {
             var e, a;
             Object(r.a)(this, t);
@@ -613,130 +613,8 @@
           }
           return Object(l.a)(t, e), t;
         })(c.Component),
-        N = a(46),
-        k = a.n(N),
-        C = a(47),
-        j = a.n(C),
-        S = (function(e) {
-          function t() {
-            var e, a;
-            Object(r.a)(this, t);
-            for (var n = arguments.length, l = new Array(n), s = 0; s < n; s++)
-              l[s] = arguments[s];
-            return (
-              ((a = Object(o.a)(
-                this,
-                (e = Object(i.a)(t)).call.apply(e, [this].concat(l))
-              )).render = function() {
-                for (
-                  var e = [],
-                    t = parseFloat(a.props.rating),
-                    n = a.props.dimension
-                      ? ''.concat(a.props.dimension, 'px')
-                      : '24px',
-                    r = 1;
-                  r < 6;
-                  r++
-                )
-                  r <= t
-                    ? e.push(
-                        m.a.createElement(
-                          'div',
-                          {
-                            className: 'col',
-                            key: r,
-                            style: {
-                              height: n,
-                              width: n,
-                              paddingLeft: '0',
-                              paddingRight: '1px'
-                            }
-                          },
-                          m.a.createElement('img', {
-                            src: j.a,
-                            width: n,
-                            alt: 'star filled'
-                          })
-                        )
-                      )
-                    : t - r <= -1
-                    ? e.push(
-                        m.a.createElement(
-                          'div',
-                          {
-                            className: 'col',
-                            key: r,
-                            style: {
-                              height: n,
-                              width: n,
-                              paddingLeft: '0',
-                              paddingRight: '1px'
-                            }
-                          },
-                          m.a.createElement('img', {
-                            src: k.a,
-                            width: n,
-                            alt: 'star'
-                          })
-                        )
-                      )
-                    : e.push(
-                        m.a.createElement(
-                          'div',
-                          {
-                            className: 'col',
-                            key: r + 100,
-                            style: { paddingLeft: '0', paddingRight: '1px' }
-                          },
-                          m.a.createElement(
-                            'div',
-                            null,
-                            m.a.createElement('img', {
-                              src: j.a,
-                              width: n,
-                              alt: 'star filled',
-                              style: {
-                                clipPath: 'inset(0 '.concat(
-                                  (-100 * (t - r)).toFixed(2),
-                                  '% 0 0)'
-                                )
-                              }
-                            })
-                          ),
-                          m.a.createElement(
-                            'div',
-                            { style: { position: 'relative', bottom: '50%' } },
-                            m.a.createElement('img', {
-                              src: k.a,
-                              width: n,
-                              alt: 'star',
-                              style: {
-                                clipPath: 'inset(0 0 0 '.concat(
-                                  (100 * (t - r + 1)).toFixed(2),
-                                  '%)'
-                                )
-                              }
-                            })
-                          )
-                        )
-                      );
-                return m.a.createElement(
-                  'span',
-                  {
-                    className: 'row',
-                    'data-toggle': 'tooltip',
-                    'data-placement': 'right',
-                    title: 'Rating: '.concat(t, ' / 5')
-                  },
-                  e
-                );
-              }),
-              a
-            );
-          }
-          return Object(l.a)(t, e), t;
-        })(c.Component),
-        x = (function(e) {
+        w = a(33),
+        k = (function(e) {
           function t(e) {
             var a;
             return (
@@ -787,10 +665,10 @@
             t
           );
         })(c.Component);
-      (x.Loading = w), (x.RatingStar = S);
-      var D = x,
-        O = (a(126), a(161)),
-        I = (function(e) {
+      (k.Loading = N), (k.RatingStar = w.a);
+      var C = k,
+        j = (a(127), a(163)),
+        S = (function(e) {
           function t(e) {
             return (
               Object(r.a)(this, t),
@@ -815,7 +693,7 @@
                       'div',
                       { className: 'd-inline  m-2', key: t },
                       m.a.createElement(
-                        O.a,
+                        j.a,
                         { to: '/'.concat(e) },
                         m.a.createElement(
                           'span',
@@ -866,7 +744,7 @@
             t
           );
         })(c.Component);
-      t.a = { NavBar: f, Header: E, Body: D, Footer: I };
+      t.a = { NavBar: f, Header: E, Body: C, Footer: S };
     },
     ,
     ,
@@ -876,7 +754,7 @@
     ,
     function(e, t, a) {
       'use strict';
-      var n = a(75),
+      var n = a(76),
         r = a.n(n),
         o = a(32),
         i = a.n(o),
@@ -1134,32 +1012,32 @@
     function(e, t, a) {
       var n = {
         './About': 28,
-        './About.css': 65,
+        './About.css': 66,
         './About.js': 28,
         './AboutPerson': 29,
         './AboutPerson.js': 29,
-        './Edwin Menjivar': 66,
-        './Edwin Menjivar.jpg': 132,
-        './Edwin Menjivar.json': 66,
-        './Icons/gear_white.svg': 33,
-        './Jesus Garnica': 67,
-        './Jesus Garnica.json': 67,
-        './John Mendoza': 68,
-        './John Mendoza.json': 68,
-        './Leonid Grekhov': 69,
-        './Leonid Grekhov.jpg': 133,
-        './Leonid Grekhov.json': 69,
-        './Michael Winata': 70,
-        './Michael Winata.json': 70,
-        './Vismay Patel': 71,
-        './Vismay Patel.json': 71,
-        './VismayPatel.jpg': 134,
-        './alpha.png': 135,
-        './jesusGarnica.jpg': 136,
-        './john.jpg': 137,
+        './Edwin Menjivar': 67,
+        './Edwin Menjivar.jpg': 133,
+        './Edwin Menjivar.json': 67,
+        './Icons/gear_white.svg': 34,
+        './Jesus Garnica': 68,
+        './Jesus Garnica.json': 68,
+        './John Mendoza': 69,
+        './John Mendoza.json': 69,
+        './Leonid Grekhov': 70,
+        './Leonid Grekhov.jpg': 134,
+        './Leonid Grekhov.json': 70,
+        './Michael Winata': 71,
+        './Michael Winata.json': 71,
+        './Vismay Patel': 72,
+        './Vismay Patel.json': 72,
+        './VismayPatel.jpg': 135,
+        './alpha.png': 136,
+        './jesusGarnica.jpg': 137,
+        './john.jpg': 138,
         './members': 15,
         './members.js': 15,
-        './michael winata.jpg': 138,
+        './michael winata.jpg': 139,
         './route': 27,
         './route.js': 27
       };
@@ -1208,7 +1086,7 @@
         s = a(2),
         c = a(0),
         m = a.n(c),
-        u = (a(65), a(33)),
+        u = (a(66), a(34)),
         d = a.n(u),
         p = a(1),
         g = a(15),
@@ -1428,8 +1306,8 @@
         l = a(6),
         s = a(0),
         c = a.n(s),
-        m = a(162),
-        u = a(161),
+        m = a(164),
+        u = a(163),
         d = (function(e) {
           function t(e) {
             var r;
@@ -1562,7 +1440,7 @@
         c = a(0),
         m = a.n(c),
         u = a(1),
-        d = (a(73), a(15)),
+        d = (a(74), a(15)),
         p = (function(e) {
           function t(e) {
             var r;
@@ -1584,7 +1462,7 @@
                         'div',
                         { className: 'border-0 team-card text-center ' },
                         m.a.createElement('img', {
-                          src: a(145)('./'.concat(n.picture)),
+                          src: a(146)('./'.concat(n.picture)),
                           className: 'img-fluid pb-2',
                           alt: '...'
                         }),
@@ -1672,6 +1550,139 @@
       Object({ NODE_ENV: 'production', PUBLIC_URL: '' })
         .REACT_APP_LOCAL_SERVER && (a = 'http://localhost:3000'),
         (e.exports = a);
+    },
+    function(e, t, a) {
+      'use strict';
+      var n = a(3),
+        r = a(5),
+        o = a(4),
+        i = a(6),
+        l = a(0),
+        s = a.n(l),
+        c = a(47),
+        m = a.n(c),
+        u = a(48),
+        d = a.n(u),
+        p = (function(e) {
+          function t() {
+            var e, a;
+            Object(n.a)(this, t);
+            for (var i = arguments.length, l = new Array(i), c = 0; c < i; c++)
+              l[c] = arguments[c];
+            return (
+              ((a = Object(r.a)(
+                this,
+                (e = Object(o.a)(t)).call.apply(e, [this].concat(l))
+              )).render = function() {
+                for (
+                  var e = [],
+                    t = parseFloat(a.props.rating),
+                    n = a.props.dimension
+                      ? ''.concat(a.props.dimension, 'px')
+                      : '24px',
+                    r = 1;
+                  r < 6;
+                  r++
+                )
+                  r <= t
+                    ? e.push(
+                        s.a.createElement(
+                          'div',
+                          {
+                            className: 'col',
+                            key: r,
+                            style: {
+                              height: n,
+                              width: n,
+                              paddingLeft: '0',
+                              paddingRight: '1px'
+                            }
+                          },
+                          s.a.createElement('img', {
+                            src: d.a,
+                            width: n,
+                            alt: 'star filled'
+                          })
+                        )
+                      )
+                    : t - r <= -1
+                    ? e.push(
+                        s.a.createElement(
+                          'div',
+                          {
+                            className: 'col',
+                            key: r,
+                            style: {
+                              height: n,
+                              width: n,
+                              paddingLeft: '0',
+                              paddingRight: '1px'
+                            }
+                          },
+                          s.a.createElement('img', {
+                            src: m.a,
+                            width: n,
+                            alt: 'star'
+                          })
+                        )
+                      )
+                    : e.push(
+                        s.a.createElement(
+                          'div',
+                          {
+                            className: 'col',
+                            key: r + 100,
+                            style: { paddingLeft: '0', paddingRight: '1px' }
+                          },
+                          s.a.createElement(
+                            'div',
+                            null,
+                            s.a.createElement('img', {
+                              src: d.a,
+                              width: n,
+                              alt: 'star filled',
+                              style: {
+                                clipPath: 'inset(0 '.concat(
+                                  (-100 * (t - r)).toFixed(2),
+                                  '% 0 0)'
+                                )
+                              }
+                            })
+                          ),
+                          s.a.createElement(
+                            'div',
+                            { style: { position: 'relative', bottom: '50%' } },
+                            s.a.createElement('img', {
+                              src: m.a,
+                              width: n,
+                              alt: 'star',
+                              style: {
+                                clipPath: 'inset(0 0 0 '.concat(
+                                  (100 * (t - r + 1)).toFixed(2),
+                                  '%)'
+                                )
+                              }
+                            })
+                          )
+                        )
+                      );
+                return s.a.createElement(
+                  'span',
+                  {
+                    className: 'row',
+                    'data-toggle': 'tooltip',
+                    'data-placement': 'right',
+                    title: 'Rating: '.concat(t, ' / 5')
+                  },
+                  e
+                );
+              }),
+              a
+            );
+          }
+          return Object(i.a)(t, e), t;
+        })(l.Component);
+      t.a = p;
     },
     function(e, t, a) {
       e.exports = a.p + 'static/media/gear_white.cd117e8d.svg';
@@ -1820,7 +1831,7 @@
     ,
     ,
     function(e, t, a) {
-      e.exports = a(160);
+      e.exports = a(162);
     },
     ,
     ,
@@ -1896,15 +1907,15 @@
     function(e, t, a) {},
     function(e, t, a) {
       var n = {
-        './Edwin Menjivar.jpg': 146,
-        './Leonid Grekhov.jpg': 147,
+        './Edwin Menjivar.jpg': 147,
+        './Leonid Grekhov.jpg': 148,
         './Team': 31,
-        './Team.css': 73,
+        './Team.css': 74,
         './Team.js': 31,
-        './VismayPatel.jpg': 148,
-        './jesusGarnica.jpg': 149,
-        './john.jpg': 150,
-        './michael winata.jpg': 151,
+        './VismayPatel.jpg': 149,
+        './jesusGarnica.jpg': 150,
+        './john.jpg': 151,
+        './michael winata.jpg': 152,
         './route': 30,
         './route.js': 30
       };
@@ -1925,7 +1936,7 @@
       }),
         (r.resolve = o),
         (e.exports = r),
-        (r.id = 145);
+        (r.id = 146);
     },
     function(e, t, a) {
       e.exports = a.p + 'static/media/Edwin Menjivar.9a7e20e8.jpg';
@@ -1953,19 +1964,20 @@
     function(e, t, a) {},
     function(e, t, a) {},
     function(e, t, a) {},
+    function(e, t, a) {},
     function(e, t, a) {
       'use strict';
       a.r(t);
-      a(88);
-      var n = a(44),
+      a(89);
+      var n = a(45),
         r = a.n(n),
-        o = a(74),
-        i = (a(89), a(90), a(0)),
+        o = a(75),
+        i = (a(90), a(91), a(0)),
         l = a.n(i),
         s = a(14),
         c = a.n(s),
-        m = a(165),
-        u = a(86),
+        m = a(167),
+        u = a(87),
         d = a(10),
         p = a(3),
         g = a(9),
@@ -1973,9 +1985,9 @@
         f = a(4),
         b = a(6),
         E = a(1),
-        v = (a(129), a(77)),
+        v = (a(130), a(78)),
         y = a.n(v),
-        w = [
+        N = [
           {
             component: (function(e) {
               function t(e) {
@@ -2032,26 +2044,26 @@
             })(i.Component)
           }
         ],
-        N = a(2),
-        k = (a(130), a(78)),
+        w = a(2),
+        k = (a(131), a(79)),
         C = a.n(k),
-        j = a(79),
+        j = a(80),
         S = a.n(j),
-        x = a(80),
+        x = a(81),
         D = a.n(x),
-        O = a(81),
+        O = a(82),
         I = a.n(O),
-        B = a(82),
+        B = a(83),
         L = a.n(B),
-        R = a(83),
+        R = a(84),
         U = a.n(R),
-        A = a(35),
+        A = a(36),
         T = a.n(A),
-        M = a(36),
+        M = a(37),
         F = a.n(M),
-        W = a(48),
+        W = a(49),
         P = a.n(W),
-        H = a(49),
+        H = a(50),
         z = a.n(H),
         q = !0,
         G = [
@@ -2292,7 +2304,7 @@
                   }),
                   (a.state = { showSideBar: !1 }),
                   (a.onShowOrHide = a.onShowOrHide.bind(
-                    Object(N.a)(Object(N.a)(a))
+                    Object(w.a)(Object(w.a)(a))
                   )),
                   a
                 );
@@ -3003,8 +3015,8 @@
                     password: '',
                     tosCheckbox: !1
                   }),
-                  (a.onChange = a.onChange.bind(Object(N.a)(Object(N.a)(a)))),
-                  (a.onSubmit = a.onSubmit.bind(Object(N.a)(Object(N.a)(a)))),
+                  (a.onChange = a.onChange.bind(Object(w.a)(Object(w.a)(a)))),
+                  (a.onSubmit = a.onSubmit.bind(Object(w.a)(Object(w.a)(a)))),
                   a
                 );
               }
@@ -3012,7 +3024,7 @@
             })(i.Component)
           }
         ],
-        Z = (a(139),
+        Z = (a(140),
         [
           {
             path: '/Contact',
@@ -3074,7 +3086,7 @@
             })(i.Component)
           }
         ]),
-        K = (a(140),
+        K = (a(141),
         [
           {
             path: '/terms of service',
@@ -3406,97 +3418,8 @@
             })(i.Component)
           }
         ]),
-        $ = (a(141), !1),
-        ee = {
-          data: [
-            {
-              title: 'book1',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book2',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book3',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book4',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book5',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book6',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book7',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book8',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book9',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            },
-            {
-              title: 'book10',
-              description: 'nothing',
-              pictureurl:
-                'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-            }
-          ]
-        },
-        te = {
-          data: [
-            {
-              lid: 1,
-              name: 'Eric Fin',
-              rating: 4.9,
-              condition: 'brand new',
-              price: 24.99
-            },
-            {
-              lid: 2,
-              name: 'George Harry',
-              rating: 4.2,
-              condition: 'brand new',
-              price: 24.99
-            },
-            {
-              lid: 3,
-              name: 'Ivan John',
-              rating: 4.2,
-              condition: 'used',
-              price: 34.5
-            }
-          ]
-        },
-        ae = (function(e) {
+        $ = (a(142),
+        (function(e) {
           function t(e) {
             var a;
             Object(p.a)(this, t),
@@ -3505,22 +3428,29 @@
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
                 a.state.search(a.state.query, a.state.page).then(function(e) {
-                  return e.text().then(function(e) {
-                    (e = JSON.parse(e)),
-                      a.setState({ data: e.data, pageCount: e.pageCount });
-                  });
+                  var t = e.data,
+                    n = e.pageCount;
+                  console.log(t),
+                    Q.b.getLogin().then(function(e) {
+                      e
+                        ? Promise.all(
+                            t.map(function(e) {
+                              return Q.d.getListInfo(e.bid);
+                            })
+                          ).then(function(e) {
+                            console.log(e),
+                              a.setState({
+                                data: t,
+                                listData: e,
+                                pageCount: n
+                              });
+                          })
+                        : a.setState({ data: t, pageCount: n });
+                    });
                 });
               }),
               (a.bodyContent = function() {
-                return $
-                  ? l.a.createElement(
-                      'div',
-                      { className: 'container mt-4' },
-                      a.pagination(a.state.page, 9),
-                      a.result(ee.data),
-                      a.pagination(a.state.page, 9)
-                    )
-                  : null === a.state.pageCount
+                return null === a.state.pageCount
                   ? l.a.createElement(E.a.Body.Loading, null)
                   : l.a.createElement(
                       'div',
@@ -3634,22 +3564,16 @@
                 );
               }),
               (a.onPageChange = function(e) {
-                if ((e.preventDefault(), $))
-                  a.setState({ page: parseInt(e.target.name) }),
-                    window.history.pushState(
-                      { html: document.innerHTML, pageTitle: document.title },
-                      '',
-                      './'.concat(e.target.name)
-                    );
-                else {
-                  var t = parseInt(e.target.name);
-                  a.state.search(a.state.query, t).then(function(e) {
-                    return e.text().then(function(e) {
-                      (e = JSON.parse(e)),
-                        a.setState({ data: e.data, page: t });
-                    });
-                  });
-                }
+                e.preventDefault();
+                var t = parseInt(e.target.name);
+                a.state.search(a.state.query, t).then(function(n) {
+                  window.history.pushState(
+                    { html: document.innerHTML, pageTitle: document.title },
+                    '',
+                    './'.concat(e.target.name)
+                  ),
+                    a.setState({ data: n.data, page: t });
+                });
               }),
               (a.onClickImg = function(e) {
                 e.preventDefault(),
@@ -3813,22 +3737,22 @@
                                 )
                               )
                             ),
-                            te.data.map(function(e, t) {
+                            a.state.listData[t].Listings.map(function(t, a) {
                               return l.a.createElement(
                                 'div',
                                 {
                                   className: 'row justify-content-md-center',
-                                  key: t,
-                                  onClick: function(t) {
-                                    return (window.location = './list/'.concat(
-                                      e.lid
-                                    ));
+                                  key: a,
+                                  onClick: function(a) {
+                                    return (window.location = '/book/'
+                                      .concat(e.bid, '/list/')
+                                      .concat(t.lid));
                                   }
                                 },
                                 l.a.createElement(
                                   'div',
                                   { className: 'col col-3 border' },
-                                  e.name
+                                  t.name
                                 ),
                                 l.a.createElement(
                                   'div',
@@ -3843,7 +3767,7 @@
                                         style: { margin: '0 auto' }
                                       },
                                       l.a.createElement(E.a.Body.RatingStar, {
-                                        rating: e.rating,
+                                        rating: t.rating,
                                         dimension: 8
                                       })
                                     )
@@ -3852,12 +3776,12 @@
                                 l.a.createElement(
                                   'div',
                                   { className: 'col col-3 border' },
-                                  e.condition
+                                  t.condition
                                 ),
                                 l.a.createElement(
                                   'div',
                                   { className: 'col col-2 border' },
-                                  e.price
+                                  t.price
                                 )
                               );
                             }),
@@ -3934,28 +3858,28 @@
                   ((a.state.category = 'title'),
                   (a.state.search = Q.e.getSearchByTitle),
                   (a.state.query = i)),
-              (a.bodyContent = a.bodyContent.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.pagination = a.pagination.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.bodyContent = a.bodyContent.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.pagination = a.pagination.bind(Object(w.a)(Object(w.a)(a)))),
               (a.onPageChange = a.onPageChange.bind(
-                Object(N.a)(Object(N.a)(a))
+                Object(w.a)(Object(w.a)(a))
               )),
-              (a.result = a.result.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.result = a.result.bind(Object(w.a)(Object(w.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
-        })(i.Component),
-        ne = [
+        })(i.Component)),
+        ee = [
           {
             path: '/search/author/:author/page/:page',
             exact: !0,
-            component: ae
+            component: $
           },
-          { path: '/search/isbn/:isbn/page/:page', exact: !0, component: ae },
-          { path: '/search/title/:title/page/:page', exact: !0, component: ae }
+          { path: '/search/isbn/:isbn/page/:page', exact: !0, component: $ },
+          { path: '/search/title/:title/page/:page', exact: !0, component: $ }
         ],
-        re = !0,
-        oe = {
+        te = !0,
+        ae = {
           id: 1,
           BookTitle: 'Once upon',
           Description:
@@ -3968,7 +3892,7 @@
           pictureurl:
             'https://rheasupdo.files.wordpress.com/2015/08/img_5998.jpg'
         },
-        ie = [
+        ne = [
           {
             path: '/book/:bid',
             exact: !0,
@@ -3984,8 +3908,8 @@
                     return a.setState({ showSideBar: !a.state.showSideBar });
                   }),
                   (a.componentDidMount = function() {
-                    re
-                      ? a.setState({ bookData: oe, renderReady: !0 })
+                    te
+                      ? a.setState({ bookData: ae, renderReady: !0 })
                       : Q.b.getLogin().then(function(e) {
                           return Q.c.getBookInfo(a.state.bid).then(function(t) {
                             return a.setState({ bookData: t, guest: e });
@@ -4007,7 +3931,7 @@
                     renderReady: !1
                   }),
                   (a.onShowOrHide = a.onShowOrHide.bind(
-                    Object(N.a)(Object(N.a)(a))
+                    Object(w.a)(Object(w.a)(a))
                   )),
                   a
                 );
@@ -4103,7 +4027,7 @@
             })(i.Component)
           }
         ],
-        le = (a(72),
+        re = (a(73),
         [
           {
             path: '/user/:uid/listing',
@@ -4889,8 +4813,8 @@
             })(i.Component)
           }
         ]),
-        se = a(84),
-        ce = (a(142),
+        oe = a(85),
+        ie = (a(143),
         (function(e) {
           function t(e) {
             var a;
@@ -4903,18 +4827,18 @@
                 a.setState({ logData: e.logData });
               }),
               (a.componentDidMount = function() {
-                a.ps = new se.a(c.a.findDOMNode(Object(N.a)(Object(N.a)(a))));
-                var e = c.a.findDOMNode(Object(N.a)(Object(N.a)(a)))
+                a.ps = new oe.a(c.a.findDOMNode(Object(w.a)(Object(w.a)(a))));
+                var e = c.a.findDOMNode(Object(w.a)(Object(w.a)(a)))
                   .clientHeight;
-                (c.a.findDOMNode(Object(N.a)(Object(N.a)(a))).scrollTop = e),
+                (c.a.findDOMNode(Object(w.a)(Object(w.a)(a))).scrollTop = e),
                   a.ps.update(),
-                  c.a.findDOMNode(Object(N.a)(Object(N.a)(a))).scrollTo(0, e);
+                  c.a.findDOMNode(Object(w.a)(Object(w.a)(a))).scrollTo(0, e);
               }),
               (a.componentDidUpdate = function(e) {
                 (c.a.findDOMNode(
-                  Object(N.a)(Object(N.a)(a))
+                  Object(w.a)(Object(w.a)(a))
                 ).scrollTop = c.a.findDOMNode(
-                  Object(N.a)(Object(N.a)(a))
+                  Object(w.a)(Object(w.a)(a))
                 ).scrollHeight),
                   a.ps.update();
               }),
@@ -4939,8 +4863,8 @@
           }
           return Object(b.a)(t, e), t;
         })(i.Component)),
-        me = (a(143), !0),
-        ue = {
+        le = (a(144), !0),
+        se = {
           bookData: {
             title: 'book1',
             isbn: '111-111-111',
@@ -4974,7 +4898,7 @@
             'bob: get f-ed'
           ]
         },
-        de = (function(e) {
+        ce = (function(e) {
           function t(e) {
             var a;
             return (
@@ -4983,10 +4907,10 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                if (me) {
-                  var e = ue.bookData,
-                    t = ue.listData,
-                    n = ue.logData;
+                if (le) {
+                  var e = se.bookData,
+                    t = se.listData,
+                    n = se.logData;
                   a.setState({
                     bookData: e,
                     listData: t,
@@ -5018,7 +4942,7 @@
                 t.push(e), a.setState({ logData: t });
               }),
               (a.onSubmit = function(e) {
-                if ((e.preventDefault(), me)) {
+                if ((e.preventDefault(), le)) {
                   var t = a.state,
                     n = t.logData,
                     r = t.message;
@@ -5197,7 +5121,7 @@
                     l.a.createElement(
                       'div',
                       { className: 'col' },
-                      l.a.createElement(ce, { logData: a.state.logData })
+                      l.a.createElement(ie, { logData: a.state.logData })
                     ),
                     l.a.createElement('div', { className: 'col-1' })
                   ),
@@ -5273,8 +5197,8 @@
           }
           return Object(b.a)(t, e), t;
         })(i.Component),
-        pe = !0,
-        ge = {
+        me = !0,
+        ue = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -5285,7 +5209,7 @@
             sellerInfo: {}
           }
         },
-        he = (function(e) {
+        de = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5294,12 +5218,12 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                pe
+                me
                   ? a.setState({
                       renderReady: !0,
-                      firstname: ge.data.generalInfo.firstname,
-                      lastname: ge.data.generalInfo.lastname,
-                      email: ge.data.generalInfo.email
+                      firstname: ue.data.generalInfo.firstname,
+                      lastname: ue.data.generalInfo.lastname,
+                      email: ue.data.generalInfo.email
                     })
                   : Q.g
                       .getUserConfiguration(a.props.match.params.uid)
@@ -5467,16 +5391,16 @@
                 email: '',
                 renderReady: !1
               }),
-              (a.bodyContent = a.bodyContent.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onChange = a.onChange.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onSubmit = a.onSubmit.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.bodyContent = a.bodyContent.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onChange = a.onChange.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onSubmit = a.onSubmit.bind(Object(w.a)(Object(w.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(i.Component),
-        fe = !0,
-        be = {
+        pe = !0,
+        ge = {
           profileData: {
             firstname: 'Bob',
             lastname: 'Ross',
@@ -5518,7 +5442,7 @@
             { rid: 3, title: 'eitnieuyn69384', time: '18:22 21-03-2019' }
           ]
         },
-        Ee = (function(e) {
+        he = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5527,11 +5451,11 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                if (fe)
+                if (pe)
                   a.setState({
-                    chatListData: be.chatListData,
-                    profileData: be.profileData,
-                    reportListData: be.reportListData,
+                    chatListData: ge.chatListData,
+                    profileData: ge.profileData,
+                    reportListData: ge.reportListData,
                     display: 'Profile'
                   });
                 else {
@@ -5896,33 +5820,33 @@
                 },
                 renderReady: !1
               }),
-              (a.bodyContent = a.bodyContent.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.bodyContent = a.bodyContent.bind(Object(w.a)(Object(w.a)(a)))),
               (a.profileSideBar = a.profileSideBar.bind(
-                Object(N.a)(Object(N.a)(a))
+                Object(w.a)(Object(w.a)(a))
               )),
               (a.userNavigation = a.userNavigation.bind(
-                Object(N.a)(Object(N.a)(a))
+                Object(w.a)(Object(w.a)(a))
               )),
-              (a.userContent = a.userContent.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.userContent = a.userContent.bind(Object(w.a)(Object(w.a)(a)))),
               (a.displayRating = a.displayRating.bind(
-                Object(N.a)(Object(N.a)(a))
+                Object(w.a)(Object(w.a)(a))
               )),
               (a.onUserNavigation = a.onUserNavigation.bind(
-                Object(N.a)(Object(N.a)(a))
+                Object(w.a)(Object(w.a)(a))
               )),
-              (a.onProfile = a.onProfile.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onMessage = a.onMessage.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onReview = a.onReview.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onListing = a.onListing.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onReport = a.onReport.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onConfigure = a.onConfigure.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.onProfile = a.onProfile.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onMessage = a.onMessage.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onReview = a.onReview.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onListing = a.onListing.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onReport = a.onReport.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onConfigure = a.onConfigure.bind(Object(w.a)(Object(w.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(i.Component),
-        ve = !0,
-        ye = {
+        fe = !0,
+        be = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -5933,11 +5857,11 @@
             sellerInfo: {}
           }
         },
-        we = {
+        Ee = {
           title: 'this guy is a scammer',
           description: 'Hey, this guy scammed me on a different website.'
         },
-        Ne = (function(e) {
+        ve = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5946,12 +5870,12 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                ve
+                fe
                   ? a.setState({
                       renderReady: !0,
-                      userInfo: ye.data.generalInfo,
-                      reportTitle: we.title,
-                      reportDescription: we.description
+                      userInfo: be.data.generalInfo,
+                      reportTitle: Ee.title,
+                      reportDescription: Ee.description
                     })
                   : Q.g
                       .getUserConfiguration(a.props.match.params.uid)
@@ -6119,15 +6043,15 @@
                   'user Anon123 is now banned, thank you for your report',
                 renderReady: !1
               }),
-              (a.bodyContent = a.bodyContent.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onSubmit = a.onSubmit.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.bodyContent = a.bodyContent.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onSubmit = a.onSubmit.bind(Object(w.a)(Object(w.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(i.Component),
-        ke = !0,
-        Ce = {
+        ye = !0,
+        Ne = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -6138,7 +6062,7 @@
             sellerInfo: {}
           }
         },
-        je = (function(e) {
+        we = (function(e) {
           function t(e) {
             var a;
             return (
@@ -6147,10 +6071,10 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                ke
+                ye
                   ? a.setState({
                       renderReady: !0,
-                      userInfo: Ce.data.generalInfo
+                      userInfo: Ne.data.generalInfo
                     })
                   : Q.g
                       .getUserConfiguration(a.props.match.params.uid)
@@ -6313,20 +6237,20 @@
                 reportDescription: null,
                 renderReady: !1
               }),
-              (a.bodyContent = a.bodyContent.bind(Object(N.a)(Object(N.a)(a)))),
-              (a.onSubmit = a.onSubmit.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.bodyContent = a.bodyContent.bind(Object(w.a)(Object(w.a)(a)))),
+              (a.onSubmit = a.onSubmit.bind(Object(w.a)(Object(w.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(i.Component),
-        Se = (a(144),
+        ke = (a(145),
         [
-          { path: '/user/:uid', exact: !0, component: Ee },
-          { path: '/user/:uid/chat/:cid', exact: !0, component: de },
-          { path: '/user/:uid/configuration', exact: !0, component: he },
-          { path: '/user/:uid/report', exact: !0, component: je },
-          { path: '/user/:uid/report/:rid', exact: !0, component: Ne },
+          { path: '/user/:uid', exact: !0, component: he },
+          { path: '/user/:uid/chat/:cid', exact: !0, component: ce },
+          { path: '/user/:uid/configuration', exact: !0, component: de },
+          { path: '/user/:uid/report', exact: !0, component: we },
+          { path: '/user/:uid/report/:rid', exact: !0, component: ve },
           {
             path: '/user/:uid/cart',
             exact: !0,
@@ -6407,8 +6331,8 @@
             })(i.Component)
           }
         ]),
-        xe = a(30),
-        De = (function(e) {
+        Ce = a(30),
+        je = (function(e) {
           function t(e) {
             var a;
             return (
@@ -6611,8 +6535,8 @@
           }
           return Object(b.a)(t, e), t;
         })(i.Component),
-        Oe = !0,
-        Ie = {
+        Se = !0,
+        xe = {
           data: {
             title: 'book1',
             isbn: '111-111-111',
@@ -6623,7 +6547,7 @@
               'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
           }
         },
-        Be = {
+        De = {
           data: [
             {
               lid: 1,
@@ -6648,7 +6572,7 @@
             }
           ]
         },
-        Le = [
+        Oe = [
           {
             path: '/book/:bid/list',
             exact: !0,
@@ -6661,10 +6585,10 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    Oe
+                    Se
                       ? a.setState({
-                          bookData: Ie.data,
-                          listData: Be.data,
+                          bookData: xe.data,
+                          listData: De.data,
                           renderReady: !0
                         })
                       : Q.d
@@ -6975,17 +6899,17 @@
                     renderReady: !1
                   }),
                   (a.bodyContent = a.bodyContent.bind(
-                    Object(N.a)(Object(N.a)(a))
+                    Object(w.a)(Object(w.a)(a))
                   )),
-                  (a.bookInfo = a.bookInfo.bind(Object(N.a)(Object(N.a)(a)))),
+                  (a.bookInfo = a.bookInfo.bind(Object(w.a)(Object(w.a)(a)))),
                   (a.listingListInfo = a.listingListInfo.bind(
-                    Object(N.a)(Object(N.a)(a))
+                    Object(w.a)(Object(w.a)(a))
                   )),
                   (a.columnCaret = a.columnCaret.bind(
-                    Object(N.a)(Object(N.a)(a))
+                    Object(w.a)(Object(w.a)(a))
                   )),
                   (a.onColumnClick = a.onColumnClick.bind(
-                    Object(N.a)(Object(N.a)(a))
+                    Object(w.a)(Object(w.a)(a))
                   )),
                   a
                 );
@@ -6993,10 +6917,10 @@
               return Object(b.a)(t, e), t;
             })(i.Component)
           },
-          { path: '/book/:bid/list/:lid', exact: !0, component: De }
+          { path: '/book/:bid/list/:lid', exact: !0, component: je }
         ],
-        Re = !0,
-        Ue = {
+        Ie = !0,
+        Be = {
           adminData: {
             issues: [
               {
@@ -7093,7 +7017,7 @@
             }
           }
         },
-        Ae = [
+        Le = [
           {
             path: '/admin/:aid',
             exact: !0,
@@ -7106,8 +7030,8 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    Re
-                      ? a.setState({ adminData: Ue.adminData, renderReady: !0 })
+                    Ie
+                      ? a.setState({ adminData: Be.adminData, renderReady: !0 })
                       : Q.a.getAdmin(a.state.aid).then(function(e) {
                           return a.setState({ adminData: e, renderReady: !0 });
                         });
@@ -7125,14 +7049,14 @@
                           l.a.createElement(
                             'h4',
                             null,
-                            Ue.userInfo[e.sourceUser].profile.firstname,
+                            Be.userInfo[e.sourceUser].profile.firstname,
                             ' ',
-                            Ue.userInfo[e.sourceUser].profile.lastname
+                            Be.userInfo[e.sourceUser].profile.lastname
                           ),
                           l.a.createElement(
                             'h4',
                             null,
-                            Ue.userInfo[e.sourceUser].profile.email
+                            Be.userInfo[e.sourceUser].profile.email
                           ),
                           e.targetUser &&
                             l.a.createElement(
@@ -7142,14 +7066,14 @@
                               l.a.createElement(
                                 'h4',
                                 null,
-                                Ue.userInfo[e.targetUser].profile.firstname,
+                                Be.userInfo[e.targetUser].profile.firstname,
                                 ' ',
-                                Ue.userInfo[e.targetUser].profile.lastname
+                                Be.userInfo[e.targetUser].profile.lastname
                               ),
                               l.a.createElement(
                                 'h4',
                                 null,
-                                Ue.userInfo[e.targetUser].profile.email
+                                Be.userInfo[e.targetUser].profile.email
                               )
                             )
                         )
@@ -7214,9 +7138,9 @@
                             'h1',
                             null,
                             'Source: ',
-                            Ue.userInfo[e.sourceUser].profile.firstname,
+                            Be.userInfo[e.sourceUser].profile.firstname,
                             ' ',
-                            Ue.userInfo[e.sourceUser].profile.lastname,
+                            Be.userInfo[e.sourceUser].profile.lastname,
                             ' ',
                             l.a.createElement(
                               'button',
@@ -7239,11 +7163,11 @@
                                 rows: '3',
                                 placeholder: 'Message to '
                                   .concat(
-                                    Ue.userInfo[e.sourceUser].profile.firstname,
+                                    Be.userInfo[e.sourceUser].profile.firstname,
                                     ' '
                                   )
                                   .concat(
-                                    Ue.userInfo[e.sourceUser].profile.lastname
+                                    Be.userInfo[e.sourceUser].profile.lastname
                                   )
                               })
                             ),
@@ -7265,9 +7189,9 @@
                                 'h1',
                                 null,
                                 'Target: ',
-                                Ue.userInfo[e.targetUser].profile.firstname,
+                                Be.userInfo[e.targetUser].profile.firstname,
                                 ' ',
-                                Ue.userInfo[e.targetUser].profile.lastname,
+                                Be.userInfo[e.targetUser].profile.lastname,
                                 ' ',
                                 l.a.createElement(
                                   'button',
@@ -7290,12 +7214,12 @@
                                     rows: '3',
                                     placeholder: 'Message to '
                                       .concat(
-                                        Ue.userInfo[e.targetUser].profile
+                                        Be.userInfo[e.targetUser].profile
                                           .firstname,
                                         ' '
                                       )
                                       .concat(
-                                        Ue.userInfo[e.targetUser].profile
+                                        Be.userInfo[e.targetUser].profile
                                           .lastname
                                       )
                                   })
@@ -7367,9 +7291,9 @@
             })(i.Component)
           }
         ],
-        Te = a(19),
-        Me = !0,
-        Fe = (function(e) {
+        Re = a(19),
+        Ue = !0,
+        Ae = (function(e) {
           function t(e) {
             var a;
             return (
@@ -7380,7 +7304,7 @@
               )).submit = function(e) {
                 a.props.stripe.createToken({ name: 'Name' }).then(function(e) {
                   var t = e.token;
-                  Me
+                  Ue
                     ? a.setState({ complete: !0 })
                     : Q.f
                         .postTransactionInfo({ tid: a.state.tid, data: t })
@@ -7406,7 +7330,7 @@
                         null,
                         'Would you like to complete the purchase?'
                       ),
-                      l.a.createElement(Te.CardElement, null),
+                      l.a.createElement(Re.CardElement, null),
                       l.a.createElement(
                         'button',
                         {
@@ -7418,15 +7342,15 @@
                     );
               }),
               (a.state = { tid: e.tid, complete: !1 }),
-              (a.submit = a.submit.bind(Object(N.a)(Object(N.a)(a)))),
+              (a.submit = a.submit.bind(Object(w.a)(Object(w.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(i.Component),
-        We = Object(Te.injectStripe)(Fe),
-        Pe = !0,
-        He = {
+        Te = Object(Re.injectStripe)(Ae),
+        Me = !0,
+        Fe = {
           data: {
             error: null,
             bookData: {
@@ -7445,7 +7369,7 @@
             }
           }
         },
-        ze = (function(e) {
+        We = (function(e) {
           function t(e) {
             var a;
             return (
@@ -7454,8 +7378,8 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                Pe
-                  ? a.setState({ transactionData: He.data, renderReady: !0 })
+                Me
+                  ? a.setState({ transactionData: Fe.data, renderReady: !0 })
                   : Q.f.getTransactionInfo(a.state.tid).then(function(e) {
                       return a.setState({
                         transactionData: e,
@@ -7593,15 +7517,15 @@
                     'div',
                     { className: 'col' },
                     l.a.createElement(
-                      Te.StripeProvider,
+                      Re.StripeProvider,
                       { apiKey: 'pk_test_TYooMQauvdEDq54NiTphI7jx' },
                       l.a.createElement(
                         'div',
                         { className: 'example' },
                         l.a.createElement(
-                          Te.Elements,
+                          Re.Elements,
                           null,
-                          l.a.createElement(We, { tid: a.state.tid })
+                          l.a.createElement(Te, { tid: a.state.tid })
                         )
                       )
                     )
@@ -7629,8 +7553,8 @@
           }
           return Object(b.a)(t, e), t;
         })(i.Component),
-        qe = !0,
-        Ge = {
+        Pe = !0,
+        He = {
           data: [
             {
               tid: 1,
@@ -7672,7 +7596,7 @@
             }
           ]
         },
-        Ve = [
+        ze = [
           {
             path: '/transaction/',
             exact: !0,
@@ -7685,9 +7609,9 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    qe &&
+                    Pe &&
                       a.setState({
-                        transactionHistoryData: Ge.data,
+                        transactionHistoryData: He.data,
                         renderReady: !0
                       });
                   }),
@@ -7875,9 +7799,9 @@
               return Object(b.a)(t, e), t;
             })(i.Component)
           },
-          { path: '/transaction/:tid', exact: !0, component: ze }
+          { path: '/transaction/:tid', exact: !0, component: We }
         ],
-        _e = (a(157),
+        qe = (a(158),
         [
           {
             path: '/Invest',
@@ -7939,8 +7863,8 @@
             })(i.Component)
           }
         ]),
-        Je = (a(158), !0),
-        Ye = (function(e) {
+        Ge = (a(159), !0),
+        Ve = (function(e) {
           function t(e) {
             var a;
             return (
@@ -7949,7 +7873,7 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).submitButtonHandler = function() {
-                Je &&
+                Ge &&
                   (console.log(a.state.commentInput),
                   console.log(a.state.listingID));
               }),
@@ -8010,8 +7934,8 @@
             t
           );
         })(i.Component),
-        Qe = !0,
-        Xe = {
+        _e = !0,
+        Je = {
           data: {
             title: 'Book Sample Title',
             isbn: '111-111-111',
@@ -8023,7 +7947,7 @@
               'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
           }
         },
-        Ze = [
+        Ye = [
           {
             path: '/bookReview/:bid',
             exact: !0,
@@ -8036,7 +7960,7 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    Qe && a.setState({ bookData: Xe.data, renderReady: !0 });
+                    _e && a.setState({ bookData: Je.data, renderReady: !0 });
                   }),
                   (a.state = {
                     bookData: {
@@ -8129,7 +8053,7 @@
                                 l.a.createElement(
                                   'div',
                                   { className: 'mt-4' },
-                                  l.a.createElement(Ye, null)
+                                  l.a.createElement(Ve, null)
                                 )
                               )
                             )
@@ -8145,23 +8069,170 @@
             })(i.Component)
           }
         ],
-        Ke = [].concat(
+        Qe = (a(160), a(33)),
+        Xe = !0,
+        Ze = (function(e) {
+          function t(e) {
+            var a;
+            return (
+              Object(p.a)(this, t),
+              ((a = Object(h.a)(
+                this,
+                Object(f.a)(t).call(this, e)
+              )).componentDidMount = function() {
+                Xe &&
+                  a.setState({
+                    sellerName: 'superUser92',
+                    commentText:
+                      'This seller is great. Always on time. Transactions are always quick too',
+                    ratingValue: 4.2
+                  });
+              }),
+              (a.state = { sellerName: '', commentText: '', ratingValue: 0 }),
+              a
+            );
+          }
+          return (
+            Object(b.a)(t, e),
+            Object(g.a)(t, [
+              {
+                key: 'render',
+                value: function() {
+                  return l.a.createElement(
+                    'div',
+                    {
+                      className: 'container p-2 bg-white ',
+                      id: 'CommentContainer'
+                    },
+                    l.a.createElement(
+                      'div',
+                      { className: 'row ' },
+                      l.a.createElement(
+                        'div',
+                        { className: 'px-5 py-2 mb-3 w-10' },
+                        l.a.createElement(Qe.a, {
+                          rating: this.state.ratingValue,
+                          dimension: 12
+                        })
+                      ),
+                      l.a.createElement(
+                        'div',
+                        { className: 'col' },
+                        l.a.createElement('h4', null, this.state.sellerName),
+                        l.a.createElement('h5', null, this.state.commentText)
+                      )
+                    )
+                  );
+                }
+              }
+            ]),
+            t
+          );
+        })(i.Component),
+        Ke = !0,
+        $e = [
+          {
+            path: '/SellerReview/:sid',
+            exact: !0,
+            component: (function(e) {
+              function t(e) {
+                var a;
+                return (
+                  Object(p.a)(this, t),
+                  ((a = Object(h.a)(
+                    this,
+                    Object(f.a)(t).call(this, e)
+                  )).componentDidMount = function() {
+                    Ke &&
+                      a.setState({
+                        sellerName: 'superUser92',
+                        sellerRating: 4.2,
+                        ratingsCount: 213
+                      });
+                  }),
+                  (a.state = {
+                    showSideBar: !1,
+                    sellerName: '',
+                    sellerRating: 0,
+                    ratingsCount: 0
+                  }),
+                  a
+                );
+              }
+              return (
+                Object(b.a)(t, e),
+                Object(g.a)(t, [
+                  {
+                    key: 'render',
+                    value: function() {
+                      return l.a.createElement(
+                        'div',
+                        null,
+                        l.a.createElement(E.a.NavBar, null),
+                        l.a.createElement(E.a.Body, {
+                          noSideBar: !this.state.showSideBar,
+                          content: l.a.createElement(
+                            'div',
+                            { className: 'container-fluid' },
+                            l.a.createElement(
+                              'div',
+                              {
+                                className:
+                                  'row p-5 justify-content-center align-items-center '
+                              },
+                              l.a.createElement(
+                                'div',
+                                { className: 'col-sm-8' },
+                                l.a.createElement(
+                                  'h1',
+                                  null,
+                                  this.state.sellerName
+                                ),
+                                l.a.createElement(
+                                  'h5',
+                                  null,
+                                  'Rating: ',
+                                  this.state.sellerRating,
+                                  '/5 (',
+                                  this.state.ratingsCount,
+                                  ' Reviews)'
+                                ),
+                                l.a.createElement('h5', null, 'Comments:'),
+                                l.a.createElement(Ze, null),
+                                l.a.createElement(Ze, null),
+                                l.a.createElement(Ze, null)
+                              )
+                            )
+                          )
+                        }),
+                        l.a.createElement(E.a.Footer, null)
+                      );
+                    }
+                  }
+                ]),
+                t
+              );
+            })(i.Component)
+          }
+        ],
+        et = [].concat(
           Object(d.a)(_),
           Object(d.a)(J.default),
           Object(d.a)(X),
           Object(d.a)(Z),
+          Object(d.a)(ee),
           Object(d.a)(ne),
-          Object(d.a)(ie),
-          Object(d.a)(Se),
+          Object(d.a)(ke),
+          Object(d.a)(Oe),
           Object(d.a)(Le),
-          Object(d.a)(Ae),
-          Object(d.a)(le),
-          Object(d.a)(Ve),
-          Object(d.a)(xe.default),
+          Object(d.a)(re),
+          Object(d.a)(ze),
+          Object(d.a)(Ce.default),
           Object(d.a)(K),
-          Object(d.a)(_e),
-          Object(d.a)(Ze),
-          Object(d.a)(w)
+          Object(d.a)(qe),
+          Object(d.a)(Ye),
+          Object(d.a)($e),
+          Object(d.a)(N)
         );
       Boolean(
         'localhost' === window.location.hostname ||
@@ -8170,14 +8241,14 @@
             /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
           )
       );
-      a(159);
+      a(161);
       null !== r.a &&
         null !== o.a &&
         (c.a.render(
           l.a.createElement(
             m.a,
             null,
-            l.a.createElement('div', null, Object(u.a)(Ke))
+            l.a.createElement('div', null, Object(u.a)(et))
           ),
           document.getElementById('root')
         ),
@@ -8187,6 +8258,6 @@
           }));
     }
   ],
-  [[87, 1, 2]]
+  [[88, 1, 2]]
 ]);
-//# sourceMappingURL=main.477fd22a.chunk.js.map
+//# sourceMappingURL=main.07a1d13c.chunk.js.map
