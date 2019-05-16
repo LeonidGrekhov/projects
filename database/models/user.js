@@ -59,5 +59,11 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'user'
     }
   );
+  User.associate = db => {
+    User.hasMany(db.listing, {
+      as: 'Listings',
+      foreignKey: 'sid'
+    });
+  };
   return User;
 };
