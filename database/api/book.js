@@ -11,7 +11,7 @@ const addBook = db => (title, author, isbn, description, pictureurl, type) =>
   });
 
 //Recomendations for carousel returns 5 books from the database
-const getBookDataCarousel = db => () => {
+const getLatestReleases = db => () => {
   return db.book.findAll({ limit: 5, order: [['bid', 'DESC']] });
 };
 
@@ -36,5 +36,5 @@ module.exports = db => ({
   getBookData: getBookData(db),
   addBook: addBook(db),
   getBookListings: getBookListings(db),
-  getBookDataCarousel: getBookDataCarousel(db)
+  getLatestReleases: getLatestReleases(db)
 });

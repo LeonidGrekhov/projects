@@ -1,4 +1,3 @@
 module.exports = (_, response) => {
-  const { uid, firstname } = response.locals.user;
-  return response.json({ uid, firstname });
+  const { uid, firstname, lastname } = response.locals.user;
 };
