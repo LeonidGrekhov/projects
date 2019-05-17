@@ -44,6 +44,8 @@ class SearchResult extends Component {
       .then(({ data, pageCount }) => {
         console.log(data);
         Auth.getLogin().then(loggedIn => {
+          console.log('here');
+          console.log('loggedin?', loggedIn);
           if (loggedIn) {
             Promise.all(data.map(book => Listing.getListInfo(book.bid))).then(
               listData => {
@@ -306,31 +308,29 @@ class SearchResult extends Component {
                   </p>
                 </div>
               </div>
-              {this.state.listData[i].Listings.map((list, i) => {
-                return (
-                  <div
-                    className="row justify-content-md-center"
-                    key={i}
-                    onClick={_ =>
-                      (window.location = `/book/${book.bid}/list/${list.lid}`)
-                    }
-                  >
-                    <div className="col col-3 border">{list.name}</div>
-                    <div className="col col-3 border">
-                      <div className="row">
-                        <div className="col col-8" style={{ margin: '0 auto' }}>
-                          <Generics.Body.RatingStar
-                            rating={list.rating}
-                            dimension={8}
-                          />
-                        </div>
+              {this.state.listData[i].Listings.map((list, i) => (
+                <div
+                  className="row justify-content-md-center"
+                  key={i}
+                  onClick={_ =>
+                    (window.location = `/book/${book.bid}/list/${list.lid}`)
+                  }
+                >
+                  <div className="col col-3 border">{list.name}</div>
+                  <div className="col col-3 border">
+                    <div className="row">
+                      <div className="col col-8" style={{ margin: '0 auto' }}>
+                        <Generics.Body.RatingStar
+                          rating={list.rating}
+                          dimension={8}
+                        />
                       </div>
                     </div>
-                    <div className="col col-3 border">{list.condition}</div>
-                    <div className="col col-2 border">{list.price}</div>
                   </div>
-                );
-              })}
+                  <div className="col col-3 border">{list.condition}</div>
+                  <div className="col col-2 border">{list.price}</div>
+                </div>
+              ))}
               <div className="row">
                 <button
                   type="submit"
