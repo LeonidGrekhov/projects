@@ -11,21 +11,11 @@ const S3 = new AWS.S3({
 const createListing = db => (uid, bid, price, condition) =>
   db.listing.create({
     bid,
-    sid: uid,
+    uid,
     created: moment().format(),
     price,
     condition
   });
-
-const insertListing = db => (book, user, price, condition) => {
-  return db.listing.create({
-    bid: book.bid,
-    sid: user.uid,
-    created: moment().format(),
-    price: price,
-    condition: condition
-  });
-};
 
 const updateListing = db => (lid, price, condition) =>
   db.listing.update(
@@ -61,40 +51,17 @@ const findListingByBIDS = db => bids => {
   });
 };
 
-const findListingByLID = db => lid =>
-  db.listing
-    .findOne({
-      where: {
-        lid
+// Retrieve a listing and its owner by pk
+const getListing = db => lid =>
+  db.listing.findByPk(lid, {
+    include: [
+      {
+        model: db.user,
+        as: 'user',
+        attributes: ['uid', 'firstname', 'lastname']
       }
-    })
-    .then(list =>
-      db.user
-        .findByPk(list.sid, { attributes: ['firstname', 'lastname'] })
-        .then(seller => {
-          return { list, seller };
-        })
-    );
-
-const editPrice = db => (lid, price) => {
-  return db.listing.update(
-    {
-      price: price,
-      updated: moment().format()
-    },
-    { where: { lid } }
-  );
-};
-
-const editCondition = db => (lid, condition) => {
-  return db.listing.update(
-    {
-      condition: condition,
-      updated: moment().format()
-    },
-    { where: { lid } }
-  );
-};
+    ]
+  });
 
 //this function given promise support to S3.upload (AWS SDK function) which supports only callback
 function S3UploadPromiseWraper(params) {
@@ -162,13 +129,10 @@ const uploadListingImage = db => (lid, streamData, filename, extension) => {
 
 module.exports = db => ({
   createListing: createListing(db),
-  insertListing: insertListing(db),
   updateListing: updateListing(db),
   deleteListing: deleteListing(db),
   findListingByBID: findListingByBID(db),
   findListingByBIDS: findListingByBIDS(db),
-  findListingByLID: findListingByLID(db),
-  editPrice: editPrice(db),
-  editCondition: editCondition(db),
+  getListing: getListing(db),
   uploadListingImage: uploadListingImage(db)
 });

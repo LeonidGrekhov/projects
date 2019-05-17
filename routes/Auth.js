@@ -27,9 +27,13 @@ router.post(
             .compare(password, user.password)
             .then(isEqual => {
               if (isEqual) {
+                //When credentials matched
                 return user;
+              } else {
+                //When credentials didn't match
+                Promise.reject(new Error('Invalid credentials.'));
+                return response.json(null);
               }
-              return Promise.reject(new Error('Invalid credentials.'));
             })
             .then(user =>
               request.login(user, error => {
@@ -44,7 +48,8 @@ router.post(
               })
             );
         } else {
-          response.json({ error: 'not found' });
+          //When user is not found
+          response.json(null);
         }
       })
       .catch(error => response.json(error));
@@ -53,6 +58,7 @@ router.post(
 
 router.post('/api/logout', authenticated, (request, response) => {
   request.logout();
+  //Same as sending reponse.status(200).send('OK')
   response.sendStatus(200);
 });
 
@@ -62,7 +68,8 @@ router.post('/api/logout', authenticated, (request, response) => {
   user in.
  */
 router.post(
-  '/api/register',
+  //previously /api/register
+  '/api/signup',
   notAuthenticated,
   emptyStringsToNull,
   (request, response) => {
@@ -85,9 +92,10 @@ router.post(
               sendVerificationEmail(user.email, verification.token);
               request.login(user, error => {
                 if (error) {
-                  return response.json(error);
+                  return response.json(null);
                 }
                 return response.json({
+                  uid: user.uid,
                   firstname: user.firstname,
                   lastname: user.lastname
                 });

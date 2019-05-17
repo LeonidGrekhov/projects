@@ -438,6 +438,9 @@ div.border > .text-dark {
   padding: 1.2rem;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
 }
+#CommentContainer {
+  background-color: #fff !important;
+}
 body,
 html,
 p {
@@ -464,4 +467,4 @@ a:hover {
   outline: none !important;
   box-shadow: none;
 }
-/*# sourceMappingURL=main.5e489ca9.chunk.css.map */
+/*# sourceMappingURL=main.01c7bbbe.chunk.css.map */
