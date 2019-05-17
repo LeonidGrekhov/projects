@@ -11,24 +11,11 @@ const S3 = new AWS.S3({
 const createListing = db => (uid, bid, price, condition) =>
   db.listing.create({
     bid,
-    sid: uid,
+    uid,
     created: moment().format(),
     price,
     condition
   });
-
-/* DEPPRECATED: possibly deprecated, and may be able to delete?
-See create listing above
-const insertListing = db => (book, user, price, condition) => {
-  return db.listing.create({
-    bid: book.bid,
-    sid: user.uid,
-    created: moment().format(),
-    price: price,
-    condition: condition
-  });
-};
-*/
 
 const updateListing = db => (lid, price, condition) =>
   db.listing.update(
@@ -75,29 +62,6 @@ const getListing = db => lid =>
       }
     ]
   });
-
-/* DEPRECATED: The following two functions may be deprecated; see update
-methods above
-const editPrice = db => (lid, price) => {
-  return db.listing.update(
-    {
-      price: price,
-      updated: moment().format()
-    },
-    { where: { lid } }
-  );
-};
-
-const editCondition = db => (lid, condition) => {
-  return db.listing.update(
-    {
-      condition: condition,
-      updated: moment().format()
-    },
-    { where: { lid } }
-  );
-};
-*/
 
 //this function given promise support to S3.upload (AWS SDK function) which supports only callback
 function S3UploadPromiseWraper(params) {
@@ -165,13 +129,10 @@ const uploadListingImage = db => (lid, streamData, filename, extension) => {
 
 module.exports = db => ({
   createListing: createListing(db),
-  //insertListing: insertListing(db),
   updateListing: updateListing(db),
   deleteListing: deleteListing(db),
   findListingByBID: findListingByBID(db),
   findListingByBIDS: findListingByBIDS(db),
   getListing: getListing(db),
-  //editPrice: editPrice(db),
-  //editCondition: editCondition(db),
   uploadListingImage: uploadListingImage(db)
 });
