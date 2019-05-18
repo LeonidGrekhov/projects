@@ -6,6 +6,7 @@ const init = server => {
   io.use(({ request }, next) => session(request, request.res, next));
   io.attach(server);
 };
+const userChatrooms = new Map();
 
 const userSockets = new Map();
 
