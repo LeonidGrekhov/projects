@@ -97,32 +97,17 @@ const deleteListing = db => lid => {
   return db.listing.destroy({ where: { lid } });
 };
 
-const findListingByBID = db => bid => {
-  return db.listing.findAll({
-    where: {
-      bid
-    }
-  });
-};
-
-const findListingByBIDS = db => bids => {
-  const Op = db.Sequelize.Op;
-  return db.listing.findAll({
-    where: {
-      bid: {
-        [Op.or]: bids
-      }
-    }
-  });
-};
-
 // Retrieve a listing and its owner by pk
 const getListing = db => lid =>
   db.listing.findByPk(lid, {
     include: [
       {
+        model: db.book,
+        as: 'Book'
+      },
+      {
         model: db.user,
-        as: 'user',
+        as: 'Seller',
         attributes: ['uid', 'firstname', 'lastname']
       }
     ]
@@ -132,7 +117,5 @@ module.exports = db => ({
   createListing: createListing(db),
   updateListing: updateListing(db),
   deleteListing: deleteListing(db),
-  findListingByBID: findListingByBID(db),
-  findListingByBIDS: findListingByBIDS(db),
   getListing: getListing(db)
 });

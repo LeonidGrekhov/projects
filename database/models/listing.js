@@ -76,11 +76,12 @@ module.exports = function(sequelize, DataTypes) {
   );
   Listing.associate = db => {
     Listing.belongsTo(db.book, {
-      as: 'book',
+      as: 'Book',
       foreignKey: 'bid'
     });
     //Listing is the source model, user is the target
     Listing.belongsTo(db.user, {
+      as: 'Seller',
       foreignKey: 'uid'
     });
   };

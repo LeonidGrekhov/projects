@@ -7,5 +7,7 @@ export default {
   getSearchByIsbn: (isbn, page) =>
     request(`/search/isbn/${isbn}/page/${page}`, {}, 'get').then(jsonify),
   getSearchByTitle: (title, page) =>
-    request(`/search/title/${title}/page/${page}`, {}, 'get').then(jsonify)
+    request(`/search/title/${title}/page/${page}`, {}, 'get').then(jsonify),
+  getAllSearchByTitle: title =>
+    request(`/search/title/${title}`, {}, 'get').then(jsonify)
 };

@@ -1,9 +1,9 @@
-import BookId from "./BookId";
+import BookInfo from './BookInfo';
 
 export default [
   {
-    path: "/book/:bid",
+    path: '/book/:bid',
     exact: true,
-    component: BookId
+    component: BookInfo
   }
 ];

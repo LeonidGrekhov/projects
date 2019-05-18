@@ -16,8 +16,7 @@ class About extends Component {
   }
   teamCards = () => (
     <>
-      {members.map((member, i) => {
-        let name = member;
+      {members.map((_, i) => {
         let profile = this.state.profiles[i];
         return (
           <div className="col-xl-3 col-md-6 mb-4" key={i}>
@@ -102,8 +101,14 @@ class About extends Component {
                 </div>
                 <div className="col-md-auto  m-auto ">
                   <div className="circle m-auto " id="gearBox">
-                    <img id="gearLogo2" width="80" height="80" src={gearLogo} />
-                    <img id="gearLogo" src={gearLogo} />
+                    <img
+                      id="gearLogo2"
+                      width="80"
+                      height="80"
+                      src={gearLogo}
+                      alt="gear"
+                    />
+                    <img id="gearLogo" src={gearLogo} alt="gear" />
                   </div>
                 </div>
               </div>

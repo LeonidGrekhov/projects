@@ -4,7 +4,7 @@ import Generics from '../../Generics';
 
 import { Auth } from '../../api';
 
-class Register extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,13 +15,11 @@ class Register extends Component {
       password: '',
       tosCheckbox: false
     };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount = () => {
-    Auth.getRegister().then(response => {
-      if (!response.ok) {
+    Auth.getLogin().then(userInfo => {
+      if (!userInfo) {
         window.location = '/';
       }
     });
@@ -33,16 +31,16 @@ class Register extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    Auth.postRegister(
+    Auth.postSignup(
       this.state.firstname,
       this.state.lastname,
       this.state.email,
       this.state.password
-    ).then(response => {
-      if (response.ok) {
+    ).then(userInfo => {
+      if (userInfo) {
         window.location = '/';
       } else {
-        console.log(response);
+        console.log('signup fail');
       }
     });
   };
@@ -455,4 +453,4 @@ class Register extends Component {
   );
 }
 
-export default Register;
+export default Signup;
