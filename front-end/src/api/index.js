@@ -6,7 +6,7 @@ import Search from './Search';
 import User from './User';
 import Transaction from './Transaction';
 import UserListing from './UserListing';
-import BookInfo from './BookInfo';
+import Book from './Book';
 export {
   socket,
   Admin,
@@ -16,5 +16,5 @@ export {
   User,
   Transaction,
   UserListing,
-  BookInfo
+  Book
 };
