@@ -15,7 +15,6 @@ class Home extends Component {
     this.state = {
       showSideBar: false
     };
-    this.onShowOrHide = this.onShowOrHide.bind(this);
   }
 
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });

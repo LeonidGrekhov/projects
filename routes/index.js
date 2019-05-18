@@ -4,6 +4,7 @@ const BookRoute = require('./Book');
 const DefaultRoute = require('./Default');
 const SearchRoute = require('./Search');
 const ListingRoute = require('./Listing');
+const MeetingRoute = require('./Meeting');
 const RatingRoute = require('./Rating');
 
 if (process.env.LOCAL_SERVER) {
@@ -23,6 +24,7 @@ router.use(AuthRoute);
 router.use(BookRoute);
 router.use(SearchRoute);
 router.use(ListingRoute);
+router.use(MeetingRoute);
 router.use(RatingRoute);
 router.use(DefaultRoute);
 

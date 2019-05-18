@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Generics from '../../Generics';
 import './UserListing.css';
 
-import { BookInfo, Search, UserListing as UserListingAPI } from '../../api';
+import { Book, Search, Listing } from '../../api';
 
 class CreateUserListing extends Component {
   constructor(props) {
@@ -35,7 +35,8 @@ class CreateUserListing extends Component {
 
   onChangeSearch = event => {
     let search = event.target.value;
-    Search.getSearchByTitle(search).then(({ data: books }) => {
+    Search.getAllSearchByTitle(search).then(books => {
+      console.log(books);
       this.setState({
         search,
         searchSuggestion: (
@@ -98,7 +99,7 @@ class CreateUserListing extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    UserListingAPI.putListingInfo(
+    Listing.putListCreate(
       this.state.uid,
       this.state.bookData.bid,
       this.state.userPrice,
@@ -112,7 +113,7 @@ class CreateUserListing extends Component {
 
   onSuggestion = event => {
     let bid = event.target.getAttribute('bookid');
-    BookInfo.getBookInfo(bid).then(bookData => this.setState({ bookData }));
+    Book.getBook(bid).then(bookData => this.setState({ bookData }));
   };
 
   renderSearch = () => (

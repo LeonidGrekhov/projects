@@ -5,14 +5,11 @@ const { Auth } = require('../database/api');
 
 const authenticated = require('./middlewares/authenticated');
 const notAuthenticated = require('./middlewares/notAuthenticated');
-const sendStatusOk = require('./middlewares/sendStatusOk');
 const emptyStringsToNull = require('./middlewares/emptyStringsToNull');
 const sendUserIdAndUserName = require('./middlewares/sendUserIdAndUserName');
 const sendVerificationEmail = require('./middlewares/sendgridemailhelper');
 
 router.get('/api/login', authenticated, sendUserIdAndUserName);
-
-router.get('/api/register', notAuthenticated, sendStatusOk);
 
 router.post(
   '/api/login',
@@ -27,9 +24,13 @@ router.post(
             .compare(password, user.password)
             .then(isEqual => {
               if (isEqual) {
+                //When credentials matched
                 return user;
+              } else {
+                //When credentials didn't match
+                Promise.reject(new Error('Invalid credentials.'));
+                return response.json(null);
               }
-              return Promise.reject(new Error('Invalid credentials.'));
             })
             .then(user =>
               request.login(user, error => {
@@ -37,13 +38,15 @@ router.post(
                   return response.json(error);
                 }
                 return response.json({
+                  uid: user.uid,
                   firstname: user.firstname,
                   lastname: user.lastname
                 });
               })
             );
         } else {
-          response.json({ error: 'not found' });
+          //When user is not found
+          response.json(null);
         }
       })
       .catch(error => response.json(error));
@@ -52,6 +55,7 @@ router.post(
 
 router.post('/api/logout', authenticated, (request, response) => {
   request.logout();
+  //Same as sending reponse.status(200).send('OK')
   response.sendStatus(200);
 });
 
@@ -61,7 +65,8 @@ router.post('/api/logout', authenticated, (request, response) => {
   user in.
  */
 router.post(
-  '/api/register',
+  //previously /api/register
+  '/api/signup',
   notAuthenticated,
   emptyStringsToNull,
   (request, response) => {
@@ -84,9 +89,10 @@ router.post(
               sendVerificationEmail(user.email, verification.token);
               request.login(user, error => {
                 if (error) {
-                  return response.json(error);
+                  return response.json(null);
                 }
                 return response.json({
+                  uid: user.uid,
                   firstname: user.firstname,
                   lastname: user.lastname
                 });
@@ -101,8 +107,8 @@ router.post(
   }
 );
 
-router.get('/api/verification', (req, res) => {
-  const { token, email } = req.query;
+router.put('/api/verification', (req, res) => {
+  const { email } = req.query;
   return Auth.findUserByEmail(email)
     .then(user => {
       console.log('User found');
@@ -110,7 +116,7 @@ router.get('/api/verification', (req, res) => {
         return res.status(202).json('Email Already Verified');
 
       return Auth.verifyUser(email)
-        .then(user => {
+        .then(_ => {
           return res.json(`User with ${email} verified!`);
         })
         .catch(e => {

@@ -4,8 +4,8 @@ self.__precacheManifest = [
     url: '/static/media/book_icon.baaa27c7.svg'
   },
   {
-    revision: '5f34b62eeff92a157b98',
-    url: '/static/css/main.cc2c2eb0.chunk.css'
+    revision: '07a1d13cc0b354aab3af',
+    url: '/static/css/main.01c7bbbe.chunk.css'
   },
   {
     revision: '42ac5946195a7306e2a5',
@@ -16,8 +16,12 @@ self.__precacheManifest = [
     url: '/static/media/michael winata.3ef0fe7e.jpg'
   },
   {
-    revision: '60db624e3251a2c5a99f',
-    url: '/static/js/2.60db624e.chunk.js'
+    revision: '8e62bc7325556a465105',
+    url: '/static/js/2.8e62bc73.chunk.js'
+  },
+  {
+    revision: 'cd117e8dad3f86bc83056e0fdf3260d8',
+    url: '/static/media/gear_white.cd117e8d.svg'
   },
   {
     revision: 'c54f98a0e8e57a52691ed32fb8ac783d',
@@ -26,18 +30,6 @@ self.__precacheManifest = [
   {
     revision: 'cdeb575964eff5f01a5c0edd09f52a91',
     url: '/static/media/CollegePhysics.cdeb5759.jpeg'
-  },
-  {
-    revision: 'f26890564a8b02a44b3ecbd2c21b2409',
-    url: '/static/media/CollegeAlgebra.f2689056.jpeg'
-  },
-  {
-    revision: 'cd117e8dad3f86bc83056e0fdf3260d8',
-    url: '/static/media/gear_white.cd117e8d.svg'
-  },
-  {
-    revision: '23fe2d514e361a4e01d8a6505787cc29',
-    url: '/static/media/Socrates.23fe2d51.jpeg'
   },
   {
     revision: 'e391515f93c6cce93520f26efc544ca1',
@@ -52,6 +44,14 @@ self.__precacheManifest = [
     url: '/static/media/star-outline-filled.253379f4.svg'
   },
   {
+    revision: '23fe2d514e361a4e01d8a6505787cc29',
+    url: '/static/media/Socrates.23fe2d51.jpeg'
+  },
+  {
+    revision: 'f26890564a8b02a44b3ecbd2c21b2409',
+    url: '/static/media/CollegeAlgebra.f2689056.jpeg'
+  },
+  {
     revision: 'b68598085cf9bd7c0298ad28ecd1f72f',
     url: '/static/media/shoppingCart.b6859808.svg'
   },
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     url: '/static/media/money_icon.63b405cd.svg'
   },
   {
-    revision: '5f34b62eeff92a157b98',
-    url: '/static/js/main.5f34b62e.chunk.js'
+    revision: '07a1d13cc0b354aab3af',
+    url: '/static/js/main.07a1d13c.chunk.js'
   },
   {
     revision: 'cdf858b8723a53430d3619ac3583a00a',
@@ -124,11 +124,11 @@ self.__precacheManifest = [
     url: '/static/media/john.ccf309ba.jpg'
   },
   {
-    revision: '60db624e3251a2c5a99f',
+    revision: '8e62bc7325556a465105',
     url: '/static/css/2.dd4fc322.chunk.css'
   },
   {
-    revision: '797c148c17f1e7a2cba449f46053b0a8',
+    revision: 'ddc338bb2f28a8f7cf6d0a1ddd23aca3',
     url: '/index.html'
   }
 ];

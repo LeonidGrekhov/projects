@@ -1,8 +1,5 @@
-const chatHandler = require('./chatHandler');
-//import chatHandler from './chatHandler';
+const ChatHandler = require('./chat');
 
-// export default {
-//   chatHandler
-// };
-
-module.exports = chatHandler;
+module.exports = {
+  ChatHandler
+};

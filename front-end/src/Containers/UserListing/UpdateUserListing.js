@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Generics from '../../Generics';
 import './UserListing.css';
 
-import { BookInfo, Search, UserListing as UserListingAPI } from '../../api';
+import { Book, Listing } from '../../api';
 
 class CreateUserListing extends Component {
   constructor(props) {
@@ -26,21 +26,19 @@ class CreateUserListing extends Component {
   }
 
   componentDidMount = () => {
-    UserListingAPI.getListingInfo(1, this.state.lid).then(
-      ({ list: listData }) => {
-        if (listData) {
-          BookInfo.getBookInfo(listData.bid).then(bookData => {
-            this.setState({
-              bookData,
-              listData,
-              bookCondition: listData.condition,
-              userPrice: listData.price,
-              renderReady: true
-            });
+    Listing.getList(this.state.lid).then(({ list: listData }) => {
+      if (listData) {
+        Book.getBook(listData.bid).then(bookData => {
+          this.setState({
+            bookData,
+            listData,
+            bookCondition: listData.condition,
+            userPrice: listData.price,
+            renderReady: true
           });
-        }
+        });
       }
-    );
+    });
   };
 
   onChange = event =>
@@ -79,7 +77,7 @@ class CreateUserListing extends Component {
   };
   onUpdate = event => {
     event.preventDefault();
-    UserListingAPI.putListingInfo(
+    Listing.putListUpdate(
       this.state.uid,
       this.state.bookData.bid,
       this.state.userPrice,
@@ -92,9 +90,7 @@ class CreateUserListing extends Component {
 
   onDelete = event => {
     event.preventDefault();
-    UserListingAPI.deleteListingInfo(this.state.uid, this.state.lid).then(
-      _ => (window.location = '/')
-    );
+    Listing.deleteList(this.state.lid).then(_ => (window.location = '/'));
   };
 
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
