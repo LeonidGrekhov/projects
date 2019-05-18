@@ -34,12 +34,13 @@ router.get('/api/list/:lid', authenticated, ({ params: { lid } }, response) => {
 router.put(
   '/api/list',
   authenticated,
-  ({ body: { uid, bid, price, condition } }, response) => {
+  ({ body: { uid, bid, price, condition, pic } }, response) => {
     return Listing.createListing(
       parseInt(uid),
       parseInt(bid),
       parseInt(price),
-      condition
+      condition,
+      pic
     )
       .then(data => {
         return response.json(data);
@@ -55,34 +56,19 @@ router.put(
 router.put(
   '/api/list/:lid',
   authenticated,
-  ({ params: { lid }, body: { price, condition } }, response) => {
-    return Listing.updateListing(lid, parseInt(price), condition).then(data => {
-      return Listing.getListing(lid)
-        .then(updatedData => {
-          return response.json(updatedData);
-        })
-        .catch(_ => {
-          return response.json(null);
-        });
-    });
+  ({ params: { lid }, body: { price, condition, pic } }, response) => {
+    return Listing.updateListing(lid, parseInt(price), condition, pic).then(
+      data => {
+        return Listing.getListing(lid)
+          .then(updatedData => {
+            return response.json(updatedData);
+          })
+          .catch(_ => {
+            return response.json(null);
+          });
+      }
+    );
   }
 );
-
-// Upload an image to a listing
-router.post('/api/listing/uploadimage', (request, response) => {
-  const listingId = request.body.lid;
-  const filename = request.body.filename;
-  const extension = request.body.extension;
-  const streamData = request.body.streamData;
-
-  //calling a function with test buffer - imageFileBuffer
-  return Listing.uploadListingImage(listingId, streamData, filename, extension)
-    .then(data => {
-      response.json(data);
-    })
-    .catch(error => {
-      response.json(error);
-    });
-});
 
 module.exports = router;
