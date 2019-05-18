@@ -134,6 +134,5 @@ module.exports = db => ({
   deleteListing: deleteListing(db),
   findListingByBID: findListingByBID(db),
   findListingByBIDS: findListingByBIDS(db),
-  getListing: getListing(db),
-  uploadListingImage: uploadListingImage(db)
+  getListing: getListing(db)
 });
