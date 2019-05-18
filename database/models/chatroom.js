@@ -1,8 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
-  const chatRoom = sequelize.define(
-    'chatRoom',
+  const chatroom = sequelize.define(
+    'chatroom',
     {
-      idchatRoom: {
+      crid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         primaryKey: true,
@@ -10,9 +10,18 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     {
-      tableName: 'chatRoom',
+      tableName: 'chatroom',
       timestamps: false
     }
   );
-  return chatRoom;
+  chatroom.associate = db => {
+    chatroom.hasMany(db.chatlog, {
+      as: 'Chatlogs',
+      foreignKey: 'crid'
+    });
+    chatroom.hasMany(db.chat, {
+      foreignKey: 'crid'
+    });
+  };
+  return chatroom;
 };

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  const chatLog = sequelize.define(
-    'chatLog',
+  const chatlog = sequelize.define(
+    'chatlog',
     {
       logid: {
         type: DataTypes.INTEGER(11),
@@ -11,23 +11,23 @@ module.exports = function(sequelize, DataTypes) {
       message: {
         type: DataTypes.STRING(500)
       },
-      idchatRoom: {
+      crid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         onUpdate: 'cascade',
         onDelete: 'cascade',
-        references: { model: 'chatRoom', key: 'idchatRoom' }
+        references: { model: 'chatroom', key: 'crid' }
       }
     },
     {
-      tableName: 'chatLog',
+      tableName: 'chatlog',
       timestamps: false
     }
   );
-  chatLog.associate = db => {
-    chatLog.hasOne(db.chatRoom, {
-      foreignKey: 'idchatRoom'
+  chatlog.associate = db => {
+    chatlog.belongsTo(db.chatroom, {
+      foreignKey: 'crid'
     });
   };
-  return chatLog;
+  return chatlog;
 };

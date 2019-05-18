@@ -2,32 +2,32 @@ module.exports = function(sequelize, DataTypes) {
   const chat = sequelize.define(
     'chat',
     {
-      idchat: {
+      cid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
       },
-      user1: {
+      rid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         onUpdate: 'cascade',
         onDelete: 'cascade',
         references: { model: 'user', key: 'uid' }
       },
-      user2: {
+      uid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         onUpdate: 'cascade',
         onDelete: 'cascade',
         references: { model: 'user', key: 'uid' }
       },
-      chatRoomid: {
+      crid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         onUpdate: 'cascade',
         onDelete: 'cascade',
-        references: { model: 'chatRoom', key: 'idchatRoom' }
+        references: { model: 'chatroom', key: 'crid' }
       }
     },
     {
@@ -36,11 +36,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   );
   chat.associate = db => {
-    chat.hasMany(db.user, {
+    chat.belongsTo(db.user, {
       foreignKey: 'uid'
     });
-    chat.hasOne(db.chatRoom, {
-      foreignKey: 'idchatRoom'
+    chat.belongsTo(db.chatroom, {
+      foreignKey: 'crid'
     });
   };
   return chat;
