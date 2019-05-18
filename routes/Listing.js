@@ -10,7 +10,7 @@ router.delete(
   authenticated,
   ({ params: { lid } }, response) => {
     return Listing.deleteListing(parseInt(lid))
-      .then(data => response.sendStatus(200))
+      .then(_ => response.sendStatus(200))
       .catch(error => {
         return response.json(error);
       });
@@ -44,7 +44,7 @@ router.put(
       .then(data => {
         return response.json(data);
       })
-      .catch(error => {
+      .catch(_ => {
         return response.json(null);
       });
   }
@@ -61,7 +61,7 @@ router.put(
         .then(updatedData => {
           return response.json(updatedData);
         })
-        .catch(error => {
+        .catch(_ => {
           return response.json(null);
         });
     });

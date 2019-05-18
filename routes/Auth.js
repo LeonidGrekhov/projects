@@ -108,7 +108,7 @@ router.post(
 );
 
 router.put('/api/verification', (req, res) => {
-  const { token, email } = req.query;
+  const { email } = req.query;
   return Auth.findUserByEmail(email)
     .then(user => {
       console.log('User found');
@@ -116,7 +116,7 @@ router.put('/api/verification', (req, res) => {
         return res.status(202).json('Email Already Verified');
 
       return Auth.verifyUser(email)
-        .then(user => {
+        .then(_ => {
           return res.json(`User with ${email} verified!`);
         })
         .catch(e => {
