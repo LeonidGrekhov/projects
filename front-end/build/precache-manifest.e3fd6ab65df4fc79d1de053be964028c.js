@@ -4,7 +4,7 @@ self.__precacheManifest = [
     url: '/static/media/book_icon.baaa27c7.svg'
   },
   {
-    revision: '07a1d13cc0b354aab3af',
+    revision: 'a9a724ae7fece560e517',
     url: '/static/css/main.01c7bbbe.chunk.css'
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     url: '/static/media/michael winata.3ef0fe7e.jpg'
   },
   {
-    revision: '8e62bc7325556a465105',
-    url: '/static/js/2.8e62bc73.chunk.js'
+    revision: 'abeb96a04811e7d5500d',
+    url: '/static/js/2.abeb96a0.chunk.js'
   },
   {
     revision: 'cd117e8dad3f86bc83056e0fdf3260d8',
@@ -64,8 +64,8 @@ self.__precacheManifest = [
     url: '/static/media/money_icon.63b405cd.svg'
   },
   {
-    revision: '07a1d13cc0b354aab3af',
-    url: '/static/js/main.07a1d13c.chunk.js'
+    revision: 'a9a724ae7fece560e517',
+    url: '/static/js/main.a9a724ae.chunk.js'
   },
   {
     revision: 'cdf858b8723a53430d3619ac3583a00a',
@@ -124,11 +124,11 @@ self.__precacheManifest = [
     url: '/static/media/john.ccf309ba.jpg'
   },
   {
-    revision: '8e62bc7325556a465105',
+    revision: 'abeb96a04811e7d5500d',
     url: '/static/css/2.dd4fc322.chunk.css'
   },
   {
-    revision: 'ddc338bb2f28a8f7cf6d0a1ddd23aca3',
+    revision: 'c5df7cc3d5a371c800be703b3a4acf78',
     url: '/index.html'
   }
 ];
