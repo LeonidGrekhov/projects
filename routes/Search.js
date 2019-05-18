@@ -83,41 +83,4 @@ router.get('/api/search/isbn/:isbnString/page/:page', (request, response) => {
     });
 });
 
-// Return a book and a single listing
-router.get('/api/book/:bid/listing/:lid', (req, res) => {
-  const { bid, lid } = req.params;
-  return Search.findBookByID(bid)
-    .then(book => {
-      return Listing.findListingByLID(lid)
-        .then(listing => {
-          return res.json({ book, listing });
-        })
-        .catch(e => {
-          return res.json(e);
-        });
-    })
-    .catch(e => {
-      return res.json(e);
-    });
-});
-
-// Return a book and multiple listings
-router.get('/api/book/:bid/list/', (req, res) => {
-  const { bid } = req.params;
-
-  return Search.findBookByID(bid)
-    .then(book => {
-      return Listing.findListingByBID(bid)
-        .then(Listings => {
-          return res.json({ book, Listings });
-        })
-        .catch(e => {
-          return res.json(e);
-        });
-    })
-    .catch(e => {
-      return res.json(e);
-    });
-});
-
 module.exports = router;
