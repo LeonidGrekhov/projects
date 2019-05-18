@@ -5,14 +5,11 @@ const { Auth } = require('../database/api');
 
 const authenticated = require('./middlewares/authenticated');
 const notAuthenticated = require('./middlewares/notAuthenticated');
-const sendStatusOk = require('./middlewares/sendStatusOk');
 const emptyStringsToNull = require('./middlewares/emptyStringsToNull');
 const sendUserIdAndUserName = require('./middlewares/sendUserIdAndUserName');
 const sendVerificationEmail = require('./middlewares/sendgridemailhelper');
 
 router.get('/api/login', authenticated, sendUserIdAndUserName);
-
-router.get('/api/register', notAuthenticated, sendStatusOk);
 
 router.post(
   '/api/login',
