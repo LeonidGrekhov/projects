@@ -38,10 +38,7 @@ router.get('/api/search/title/:title/page/:page', (request, response) => {
   if (request.isAuthenticated()) {
     Search.findBookWithListing(title, 'title', page)
       .then(data => response.json(data))
-      .catch(_ => {
-        console.log(_);
-        response.json(null);
-      });
+      .catch(_ => response.json(null));
   } else {
     Search.findBookWithoutListing(title, 'title', page)
       .then(data => response.json(data))

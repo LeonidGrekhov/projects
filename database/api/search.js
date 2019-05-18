@@ -27,7 +27,6 @@ const findBookWithListing = db => (query, column, page) =>
 
 const findBookWithoutListing = db => (query, column, page) =>
   db.book.findAndCountAll({
-    distinct: true,
     where: {
       [db.Sequelize.Op.or]: query.split(' ').map(str => ({
         [column]: {
