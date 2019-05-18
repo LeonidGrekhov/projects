@@ -5,14 +5,11 @@ const { Auth } = require('../database/api');
 
 const authenticated = require('./middlewares/authenticated');
 const notAuthenticated = require('./middlewares/notAuthenticated');
-const sendStatusOk = require('./middlewares/sendStatusOk');
 const emptyStringsToNull = require('./middlewares/emptyStringsToNull');
 const sendUserIdAndUserName = require('./middlewares/sendUserIdAndUserName');
 const sendVerificationEmail = require('./middlewares/sendgridemailhelper');
 
 router.get('/api/login', authenticated, sendUserIdAndUserName);
-
-router.get('/api/register', notAuthenticated, sendStatusOk);
 
 router.post(
   '/api/login',
@@ -111,7 +108,7 @@ router.post(
 );
 
 router.put('/api/verification', (req, res) => {
-  const { token, email } = req.query;
+  const { email } = req.query;
   return Auth.findUserByEmail(email)
     .then(user => {
       console.log('User found');
@@ -119,7 +116,7 @@ router.put('/api/verification', (req, res) => {
         return res.status(202).json('Email Already Verified');
 
       return Auth.verifyUser(email)
-        .then(user => {
+        .then(_ => {
           return res.json(`User with ${email} verified!`);
         })
         .catch(e => {

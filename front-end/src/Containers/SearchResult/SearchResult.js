@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { BookInfo, Search, Auth, Listing } from '../../api';
+import { Search } from '../../api';
 
 import './SearchResults.css';
 
@@ -11,7 +11,7 @@ class SearchResult extends Component {
     super(props);
     this.state = {
       showSideBar: true,
-      data: null,
+      result: null,
       page: parseInt(this.props.match.params.page),
       pageCount: null,
       category: null,
@@ -32,39 +32,16 @@ class SearchResult extends Component {
       this.state.search = Search.getSearchByTitle;
       this.state.query = title;
     }
-    this.bodyContent = this.bodyContent.bind(this);
-    this.pagination = this.pagination.bind(this);
-    this.onPageChange = this.onPageChange.bind(this);
-    this.result = this.result.bind(this);
   }
 
   componentDidMount = () => {
-    this.state
-      .search(this.state.query, this.state.page)
-      .then(({ data, pageCount }) => {
-        console.log(data);
-        Auth.getLogin().then(loggedIn => {
-          console.log('here');
-          console.log('loggedin?', loggedIn);
-          if (loggedIn) {
-            Promise.all(data.map(book => Listing.getListInfo(book.bid))).then(
-              listData => {
-                console.log(listData);
-                this.setState({
-                  data,
-                  listData,
-                  pageCount
-                });
-              }
-            );
-          } else {
-            this.setState({
-              data,
-              pageCount: pageCount
-            });
-          }
-        });
+    this.state.search(this.state.query, this.state.page).then(data => {
+      console.log(data.rows);
+      this.setState({
+        result: data.rows,
+        pageCount: Math.ceil(data.count / 5)
       });
+    });
   };
 
   bodyContent = () => {
@@ -74,7 +51,7 @@ class SearchResult extends Component {
       return (
         <div className="container mt-4">
           {this.pagination(this.state.page, this.state.pageCount)}
-          {this.result(this.state.data)}
+          {this.result(this.state.result)}
           {this.pagination(this.state.page, this.state.pageCount)}
         </div>
       );
@@ -85,7 +62,7 @@ class SearchResult extends Component {
     if (null === pageCount) {
       return false;
     }
-    if (null === this.state.data || 0 === this.state.data.length) {
+    if (null === this.state.result || 0 === this.state.result.length) {
       return false;
     }
     let currentPage = (
@@ -172,8 +149,7 @@ class SearchResult extends Component {
 
   onPageChange = event => {
     event.preventDefault();
-
-    let page = parseInt(event.target.name);
+    const page = parseInt(event.target.getAttribute('name'));
     this.state.search(this.state.query, page).then(result => {
       window.history.pushState(
         {
@@ -181,21 +157,24 @@ class SearchResult extends Component {
           pageTitle: document.title
         },
         '',
-        `./${event.target.name}`
+        `./${page}`
       );
+      console.log(result);
       this.setState({
-        data: result.data,
+        result: result.rows,
         page
       });
     });
   };
-  onClickImg = event => {
+
+  onBookClick = event => {
     event.preventDefault();
     window.location = `/book/${event.target.getAttribute('bookid')}`;
   };
-  result = data =>
-    0 !== data.length ? (
-      data.map((book, i) => (
+
+  result = result =>
+    0 !== result.length ? (
+      result.map((book, i) => (
         <div className="container" key={i}>
           <div className="row mt-3">
             <div className="col-3 text-center">
@@ -203,8 +182,8 @@ class SearchResult extends Component {
                 src={book.pictureurl}
                 className="img-fluid"
                 alt="fluid"
-                bookid={book.id}
-                onClick={this.onClickImg}
+                bookid={book.bid}
+                onClick={this.onBookClick}
               />
             </div>
 
@@ -224,126 +203,147 @@ class SearchResult extends Component {
                   href="#collapseSummary"
                   aria-expanded="false"
                   aria-controls="collapseSummary"
-                />
+                >
+                  {''}
+                </a>
               </div>
             </div>
-            <div className="col-md-5">
-              <div className="row justify-content-md-center text-white">
-                <div
-                  className="col col-3 border"
-                  style={{
-                    backgroundColor: '#9370DB',
-                    borderTopLeftRadius: '0.5em'
-                  }}
-                  onClick={this.onColumnClick}
-                  name={'name'}
-                >
-                  <p
-                    className="text-white text-center mt-2"
-                    name={'name'}
-                    style={{
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none'
-                    }}
-                  >
-                    Name
-                  </p>
-                </div>
-                <div
-                  className="col col-3 border"
-                  style={{ backgroundColor: '#9370DB' }}
-                  onClick={this.onColumnClick}
-                  name={'rating'}
-                >
-                  <p
-                    className="text-white text-center mt-2"
-                    name={'rating'}
-                    style={{
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none'
-                    }}
-                  >
-                    Rating
-                  </p>
-                </div>
-                <div
-                  className="col col-3 border"
-                  style={{ backgroundColor: '#9370DB' }}
-                  onClick={this.onColumnClick}
-                  name={'condition'}
-                >
-                  <p
-                    className="text-white text-center mt-2"
-                    name={'condition'}
-                    style={{
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none'
-                    }}
-                  >
-                    Condition
-                  </p>
-                </div>
-                <div
-                  className="col col-2 border"
-                  style={{
-                    backgroundColor: '#9370DB',
-                    borderTopRightRadius: '0.5em'
-                  }}
-                  onClick={this.onColumnClick}
-                  name={'price'}
-                >
-                  <p
-                    className="text-white text-center mt-2"
-                    name={'price'}
-                    style={{
-                      WebkitUserSelect: 'none',
-                      MozUserSelect: 'none',
-                      msUserSelect: 'none'
-                    }}
-                  >
-                    Price
-                  </p>
-                </div>
-              </div>
-              {this.state.listData[i].Listings.map((list, i) => (
-                <div
-                  className="row justify-content-md-center"
-                  key={i}
-                  onClick={_ =>
-                    (window.location = `/book/${book.bid}/list/${list.lid}`)
-                  }
-                >
-                  <div className="col col-3 border">{list.name}</div>
-                  <div className="col col-3 border">
-                    <div className="row">
-                      <div className="col col-8" style={{ margin: '0 auto' }}>
-                        <Generics.Body.RatingStar
-                          rating={list.rating}
-                          dimension={8}
-                        />
+            {book.Listings && (
+              <div className="col-md-5">
+                {0 === book.Listings.length ? (
+                  'No listing avaiable'
+                ) : (
+                  <>
+                    <div className="row justify-content-md-center text-white">
+                      <div
+                        className="col col-3 border"
+                        style={{
+                          backgroundColor: '#9370DB',
+                          borderTopLeftRadius: '0.5em'
+                        }}
+                        onClick={this.onColumnClick}
+                        name={'name'}
+                      >
+                        <p
+                          className="text-white text-center mt-2"
+                          name={'name'}
+                          style={{
+                            WebkitUserSelect: 'none',
+                            MozUserSelect: 'none',
+                            msUserSelect: 'none'
+                          }}
+                        >
+                          Name
+                        </p>
+                      </div>
+                      <div
+                        className="col col-3 border"
+                        style={{ backgroundColor: '#9370DB' }}
+                        onClick={this.onColumnClick}
+                        name={'rating'}
+                      >
+                        <p
+                          className="text-white text-center mt-2"
+                          name={'rating'}
+                          style={{
+                            WebkitUserSelect: 'none',
+                            MozUserSelect: 'none',
+                            msUserSelect: 'none'
+                          }}
+                        >
+                          Rating
+                        </p>
+                      </div>
+                      <div
+                        className="col col-3 border"
+                        style={{ backgroundColor: '#9370DB' }}
+                        onClick={this.onColumnClick}
+                        name={'condition'}
+                      >
+                        <p
+                          className="text-white text-center mt-2"
+                          name={'condition'}
+                          style={{
+                            WebkitUserSelect: 'none',
+                            MozUserSelect: 'none',
+                            msUserSelect: 'none'
+                          }}
+                        >
+                          Condition
+                        </p>
+                      </div>
+                      <div
+                        className="col col-2 border"
+                        style={{
+                          backgroundColor: '#9370DB',
+                          borderTopRightRadius: '0.5em'
+                        }}
+                        onClick={this.onColumnClick}
+                        name={'price'}
+                      >
+                        <p
+                          className="text-white text-center mt-2"
+                          name={'price'}
+                          style={{
+                            WebkitUserSelect: 'none',
+                            MozUserSelect: 'none',
+                            msUserSelect: 'none'
+                          }}
+                        >
+                          Price
+                        </p>
                       </div>
                     </div>
-                  </div>
-                  <div className="col col-3 border">{list.condition}</div>
-                  <div className="col col-2 border">{list.price}</div>
-                </div>
-              ))}
-              <div className="row">
-                <button
-                  type="submit"
-                  className="btn btn-primary ml-3 mt-2"
-                  onClick={event =>
-                    (window.location = `/book/${event.target.value}/list`)
-                  }
-                  value={book.bid}
-                >
-                  See More Listings
-                </button>
+                    {book.Listings.slice(0, 3).map((list, i) => (
+                      <div
+                        className="row justify-content-md-center"
+                        key={i}
+                        onClick={_ =>
+                          (window.location = `/book/${book.bid}/list/${
+                            list.lid
+                          }`)
+                        }
+                      >
+                        <div className="col col-3 border">
+                          {list.Seller.firstname + ' ' + list.Seller.lastname}
+                        </div>
+                        <div className="col col-3 border">
+                          <div className="row">
+                            <div
+                              className="col col-8"
+                              style={{ margin: '0 auto' }}
+                            >
+                              <Generics.Body.RatingStar
+                                rating={list.rating}
+                                dimension={8}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col col-3 border">{list.condition}</div>
+                        <div className="col col-2 border">{list.price}</div>
+                      </div>
+                    ))}
+                    {3 < book.Listings.length && (
+                      <div className="row">
+                        <button
+                          type="submit"
+                          className="btn btn-primary ml-3 mt-2"
+                          onClick={event =>
+                            (window.location = `/book/${
+                              event.target.value
+                            }/list`)
+                          }
+                          value={book.bid}
+                        >
+                          See More Listings
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
-            </div>
+            )}
           </div>
         </div>
       ))

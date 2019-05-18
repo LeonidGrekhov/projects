@@ -14,9 +14,8 @@ class Team extends Component {
   }
   teamCards = () => (
     <>
-      {members.map((member, i) => {
-        let name = member;
-        let profile = this.state.profiles[i];
+      {members.map((_, i) => {
+        const profile = this.state.profiles[i];
         return (
           <div className="col-xl-3 col-md-6 mb-4" key={i}>
             <div className="border-0 team-card text-center ">

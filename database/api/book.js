@@ -24,7 +24,7 @@ const getBookListings = db => bid =>
         include: [
           {
             model: db.user,
-            as: 'user',
+            as: 'Seller',
             attributes: ['uid', 'firstname', 'lastname']
           }
         ]

@@ -2,47 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { Listing } from '../../api';
-
-let debug = true;
-
-let bookJson = {
-  data: {
-    title: 'book1',
-    isbn: '111-111-111',
-    authors: ['Adam Bob', 'Calvin Dan'],
-    rating: 2.5,
-    description: 'nothing, you are on debug mode',
-    pictureurl:
-      'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
-  }
-};
-
-let listJson = {
-  data: [
-    {
-      lid: 1,
-      name: 'Eric Fin',
-      rating: 4.9,
-      condition: 'brand new',
-      price: 24.99
-    },
-    {
-      lid: 2,
-      name: 'George Harry',
-      rating: 4.2,
-      condition: 'brand new',
-      price: 24.99
-    },
-    {
-      lid: 3,
-      name: 'Ivan John',
-      rating: 4.2,
-      condition: 'used',
-      price: 34.5
-    }
-  ]
-};
+import { Book } from '../../api';
 
 class ListingList extends Component {
   constructor(props) {
@@ -50,33 +10,16 @@ class ListingList extends Component {
     this.state = {
       bid: props.match.params.bid,
       bookData: null,
-      listData: null,
       listSortBy: 'rating',
       listDirection: 'asc',
       renderReady: false
     };
-    this.bodyContent = this.bodyContent.bind(this);
-    this.bookInfo = this.bookInfo.bind(this);
-    this.listingListInfo = this.listingListInfo.bind(this);
-    this.columnCaret = this.columnCaret.bind(this);
-    this.onColumnClick = this.onColumnClick.bind(this);
   }
 
-  componentDidMount = () => {
-    if (debug) {
-      this.setState({
-        bookData: bookJson.data,
-        listData: listJson.data,
-        renderReady: true
-      });
-    } else {
-      Listing.getBookInfo(this.props.math.params.bid).then(bookData =>
-        Listing.getListInfo(this.props.match.params.bid).then(listData =>
-          this.setState({ bookData, listData, renderReady: true })
-        )
-      );
-    }
-  };
+  componentDidMount = () =>
+    Book.getBookList(this.state.bid).then(bookData =>
+      this.setState({ bookData, renderReady: true })
+    );
 
   bodyContent = () =>
     this.state.renderReady ? (
@@ -99,12 +42,7 @@ class ListingList extends Component {
       </div>
       <div className="col mt-3">
         <h1 className="text-dark">{this.state.bookData.title}</h1>
-        <h5>
-          author(s):{' '}
-          {this.state.bookData.authors.map((author, i) => (
-            <span key={i}>{(0 === i ? ' ' : ', ') + author}</span>
-          ))}
-        </h5>
+        <h5>author(s):{' ' + this.state.bookData.author}</h5>
         <span>isbn: {this.state.bookData.isbn}</span>
         <br />
         <div className="row">
@@ -199,14 +137,16 @@ class ListingList extends Component {
           </p>
         </div>
       </div>
-      {this.state.listData.map((list, i) => {
+      {this.state.bookData.Listings.map((list, i) => {
         return (
           <div
             className="row justify-content-md-center"
             key={i}
             onClick={_ => (window.location = `./list/${list.lid}`)}
           >
-            <div className="col col-3 border">{list.name}</div>
+            <div className="col col-3 border">
+              {list.Seller.firstname + ' ' + list.Seller.lastname}
+            </div>
             <div className="col col-3 border">
               <div className="row">
                 <div className="col col-8" style={{ margin: '0 auto' }}>
@@ -235,24 +175,28 @@ class ListingList extends Component {
     );
 
   onColumnClick = event => {
+    let bookData = this.state.bookData;
     let name = event.target.getAttribute('name');
     if (name === this.state.listSortBy) {
       if ('asc' === this.state.listDirection) {
+        bookData.Listings = bookData.Listings.sort((a, b) => a[name] < b[name]);
         this.setState({
           listDirection: 'dsc',
-          listData: this.state.listData.sort((a, b) => a[name] < b[name])
+          bookData
         });
       } else {
+        bookData.Listings = bookData.Listings.sort((a, b) => a[name] > b[name]);
         this.setState({
           listDirection: 'asc',
-          listData: this.state.listData.sort((a, b) => a[name] > b[name])
+          bookData
         });
       }
     } else {
+      bookData.Listings = bookData.Listings.sort((a, b) => a[name] > b[name]);
       this.setState({
         listSortBy: name,
         listDirection: 'asc',
-        listData: this.state.listData.sort((a, b) => a[name] > b[name])
+        bookData
       });
     }
   };

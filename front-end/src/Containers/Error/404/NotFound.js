@@ -22,7 +22,11 @@ class NotFound extends Component {
                 <div id="big-text">
                   Whoops. Sorry but we could not find what you are looking for.
                 </div>
-                <img className="img-fluid  w-100" src={questionMark} />
+                <img
+                  className="img-fluid  w-100"
+                  src={questionMark}
+                  alt="questionMark"
+                />
               </div>
             </div>
           }

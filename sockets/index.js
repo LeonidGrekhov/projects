@@ -1,18 +1,29 @@
 const io = require('socket.io')();
+const session = require('../database/config/session');
+const { ChatHandler } = require('./handlers');
 
 const init = server => {
-  io.use(({ request }, next) => {
-    // setup express session config for socket
-    // session(request, request.res, next);
-  });
-
+  io.use(({ request }, next) => session(request, request.res, next));
   io.attach(server);
 };
 
+const userSockets = new Map();
+
 io.on('connection', socket => {
-  socket.on('disconnect', () => {});
+  try {
+    if (socket.request.session.passport) {
+      const {
+        user: { uid }
+      } = socket.request.session.passport;
+      userSockets.set(uid, socket);
+      socket.on('disconnect', () => userSockets.delete(uid));
+    }
+  } catch (error) {
+    console.log('Socket Error:', error);
+  }
 });
 
 module.exports = {
-  init
+  init,
+  Chat: ChatHandler(userSockets)
 };
