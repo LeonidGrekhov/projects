@@ -1,6 +1,6 @@
 const io = require('socket.io')();
 const session = require('../database/config/session');
-import { ChatHandler } from './handlers';
+const { ChatHandler } = require('./handlers');
 
 const init = server => {
   io.use(({ request }, next) => session(request, request.res, next));
