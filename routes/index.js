@@ -6,6 +6,7 @@ const SearchRoute = require('./Search');
 const ListingRoute = require('./Listing');
 const MeetingRoute = require('./Meeting');
 const RatingRoute = require('./Rating');
+const ChatRoute = require('./Chat');
 
 if (process.env.LOCAL_SERVER) {
   router.use((_, response, next) => {
@@ -26,6 +27,7 @@ router.use(SearchRoute);
 router.use(ListingRoute);
 router.use(MeetingRoute);
 router.use(RatingRoute);
+router.use(ChatRoute);
 router.use(DefaultRoute);
 
 module.exports = router;
