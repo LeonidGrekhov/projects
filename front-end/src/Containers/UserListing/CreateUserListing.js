@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Generics from '../../Generics';
+import GoogleMap from './GoogleMap';
 import './UserListing.css';
 
 import { Book, Search, Listing } from '../../api';
@@ -216,17 +217,8 @@ class CreateUserListing extends Component {
                 </div>
                 <br />
                 <div className="form-group">
-                  <label htmlFor="form">User description:</label>
-                  <textarea
-                    rows="4"
-                    type="userDescription"
-                    className="form-control"
-                    id="form-userDescription"
-                    placeholder="Enter book description"
-                    name="userDescription"
-                    value={this.state.userDescription}
-                    onChange={this.onChange}
-                  />
+                  <label>Meeting Point:</label>
+                  <GoogleMap />
                 </div>
                 Book Condition:
                 <select
