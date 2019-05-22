@@ -47,6 +47,7 @@ router.put(
       .then(chatroom => chatroom.getChats({ where: { uid } }))
       .then(chats => {
         ChatSocket.emit(uid, chats[0].rid, crid, log);
+        response.sendStatus(200);
       })
       .catch(error => response.json(error));
   }
