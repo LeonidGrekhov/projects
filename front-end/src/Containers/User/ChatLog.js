@@ -8,12 +8,12 @@ class ChatLog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logData: props.logData
+      chatLogData: props.chatLogs
     };
   }
 
   componentWillReceiveProps = props => {
-    this.setState({ logData: props.logData });
+    this.setState({ chatLogData: props.chatLogs });
   };
 
   componentDidMount = () => {
@@ -34,7 +34,7 @@ class ChatLog extends Component {
   render = () => {
     return (
       <div className="border">
-        {this.state.logData.map((message, i) => (
+        {this.state.logData.map(({ message }, i) => (
           <p className="text-dark mx-4" key={i}>
             {' '}
             {message}{' '}

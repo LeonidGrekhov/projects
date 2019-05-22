@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { User } from '../../api';
+import { Chat } from '../../api';
 
-let debug = true;
 let json = {
   profileData: {
     firstname: 'Bob',
@@ -90,25 +89,43 @@ class Profile extends Component {
   }
 
   componentDidMount = () => {
-    if (debug) {
-      this.setState({
-        chatListData: json.chatListData,
-        profileData: json.profileData,
-        reportListData: json.reportListData,
-        display: 'Profile'
-      });
-    } else {
-      let { uid } = this.state;
-      User.getUserProfile(uid).then(profileData => {
-        if (profileData.error) {
-          window.location = '/404';
-        } else {
-          User.getUserChatList(uid).then(chatListData =>
-            this.setState({ chatListData, profileData, display: 'Profile' })
-          );
-        }
-      });
-    }
+    Chat.getUserChats().then(chats => {
+      if (chats.length) {
+        Promise.all(
+          chats
+            .map(chat => Chat.getChatroom(chat.crid))
+            .then(chatrooms => {
+              let chatListData = chatrooms.map(chatroom => {
+                return {
+                  cid: chatroom.Chat.cid,
+                  sender:
+                    chatroom.Chat.Receiver.firstname +
+                    ' ' +
+                    chatroom.Chat.Receiver.lastname,
+                  lastMessage: chatroom.Chatlogs.length
+                    ? chatroom.Chatlogs[chatroom.Chatlogs.length - 1].split(
+                        ':'
+                      )[1]
+                    : ''
+                };
+              });
+              this.setState({
+                chatListData,
+                profileData: json.profileData,
+                reportListData: json.reportListData,
+                display: 'Profile'
+              });
+            })
+        );
+      } else {
+        this.setState({
+          chatListData: [],
+          profileData: json.profileData,
+          reportListData: json.reportListData,
+          display: 'Profile'
+        });
+      }
+    });
   };
 
   bodyContent = () => {
@@ -284,7 +301,6 @@ class Profile extends Component {
                 >
                   <div className="card-body">
                     <h5 className="card-title">{chat.sender}</h5>
-                    <p className="card-text text-dark">{chat.time}</p>
                     <p className="card-text">{chat.lastMessage}</p>
                   </div>
                 </div>

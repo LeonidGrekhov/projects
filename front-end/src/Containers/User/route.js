@@ -12,7 +12,7 @@ export default [
     component: UserProfile
   },
   {
-    path: '/user/:uid/chat/:cid',
+    path: '/chatroom/:crid',
     exact: true,
     component: UserChat
   },
