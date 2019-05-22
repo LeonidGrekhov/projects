@@ -7,18 +7,40 @@ import { Book, Search, Listing } from '../../api';
 
 const meetingPointsJson = [
   {
-    name: 'Conference Services',
-    lat: 37.7236693,
-    lng: -122.4834738,
-    title: 'Conference Services',
-    info: `Towers at Centennial Square Jr. Suites - State University, 798 Font Blvd, San Francisco, CA 94132`
+    name: 'Malcome X Plaze',
+    lat: 37.7221622,
+    lng: -122.4788561,
+    title: 'Malcome X Plaza',
+    info: `1650 Holloway Ave, San Francisco, CA 94132 `
   },
   {
-    name: 'meetingPoint2',
-    lat: 57.7236693,
-    lng: -142.4834738,
-    title: 'meeting point 2',
-    info: 'meeting point infoooooooooooooooooooooooooooooo - aaaa - qqqqq'
+    name: 'J. Paul Leonard Library',
+    lat: 37.720929,
+    lng: -122.476856,
+    title: 'J. Paul Leonard Library',
+    info:
+      '1630 Holloway Avenue, San Francisco, CA 94132, United States of America'
+  },
+  {
+    name: 'Student Services',
+    lat: 37.7236197,
+    lng: -122.4812626,
+    title: 'Student Services ',
+    info: `1600 Holloway Ave, San Francisco, CA 94132`
+  },
+  {
+    name: 'University Police Station',
+    lat: 37.7259304,
+    lng: -122.4820684,
+    title: 'University Police Station',
+    info: `100 N State Dr, San Francisco, CA 94132`
+  },
+  {
+    name: 'Thornton Hall',
+    lat: 37.723724,
+    lng: -122.4791161,
+    title: 'Thornton Hall',
+    info: `17 20th Ave, San Francisco, CA 94132`
   }
 ];
 
