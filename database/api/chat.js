@@ -12,7 +12,7 @@ const getChatroom = db => crid =>
       },
       {
         model: db.chat,
-        as: Chat,
+        as: 'Chat',
         include: [
           {
             model: db.user,
