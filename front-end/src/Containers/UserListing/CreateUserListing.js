@@ -40,7 +40,7 @@ class CreateUserListing extends Component {
       meetingPoints: null,
       listerImages: [],
       listerImageDisplayIndex: null,
-      listerImageCapacity: 5,
+      listerImageCapacity: 1,
       renderReady: false
     };
   }
