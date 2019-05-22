@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    revision: 'baaa27c7373ca27891cc33a5f1e72885',
-    url: '/static/media/book_icon.baaa27c7.svg'
+    revision: 'af68bfde159342714b714e42b1b7758c',
+    url: '/static/media/book_icon.af68bfde.svg'
   },
   {
-    revision: 'a9a724ae7fece560e517',
-    url: '/static/css/main.01c7bbbe.chunk.css'
+    revision: '0c228f171f611a208ee0',
+    url: '/static/css/main.c4ad7c3c.chunk.css'
   },
   {
     revision: '42ac5946195a7306e2a5',
@@ -16,12 +16,12 @@ self.__precacheManifest = [
     url: '/static/media/michael winata.3ef0fe7e.jpg'
   },
   {
-    revision: 'abeb96a04811e7d5500d',
-    url: '/static/js/2.abeb96a0.chunk.js'
+    revision: 'bf43f0d88364ca9797a4',
+    url: '/static/js/2.bf43f0d8.chunk.js'
   },
   {
-    revision: 'cd117e8dad3f86bc83056e0fdf3260d8',
-    url: '/static/media/gear_white.cd117e8d.svg'
+    revision: '5659a16a85128a04d101bbb334d05741',
+    url: '/static/media/gear_white.5659a16a.svg'
   },
   {
     revision: 'c54f98a0e8e57a52691ed32fb8ac783d',
@@ -32,16 +32,16 @@ self.__precacheManifest = [
     url: '/static/media/CollegePhysics.cdeb5759.jpeg'
   },
   {
-    revision: 'e391515f93c6cce93520f26efc544ca1',
-    url: '/static/media/logo.e391515f.svg'
+    revision: '7d528012397efa152f055ef9cf6068bc',
+    url: '/static/media/logo.7d528012.svg'
   },
   {
-    revision: '7f10b5965d521060797f17a24d3c1d56',
-    url: '/static/media/star-outline.7f10b596.svg'
+    revision: '27859bb7a53576c24b403a9752ede78f',
+    url: '/static/media/star-outline.27859bb7.svg'
   },
   {
-    revision: '253379f4097400f671fefb52b421327b',
-    url: '/static/media/star-outline-filled.253379f4.svg'
+    revision: '5ed6acb600672526fda3af36d889ab0a',
+    url: '/static/media/star-outline-filled.5ed6acb6.svg'
   },
   {
     revision: '23fe2d514e361a4e01d8a6505787cc29',
@@ -52,36 +52,36 @@ self.__precacheManifest = [
     url: '/static/media/CollegeAlgebra.f2689056.jpeg'
   },
   {
-    revision: 'b68598085cf9bd7c0298ad28ecd1f72f',
-    url: '/static/media/shoppingCart.b6859808.svg'
+    revision: '69728e1fdf9c7a1cacf959f16466c3cf',
+    url: '/static/media/shoppingCart.69728e1f.svg'
   },
   {
-    revision: '54cff9d23032bb4f6640dec73bbc2cc9',
-    url: '/static/media/question_mark.54cff9d2.svg'
+    revision: '346089fb82fbff0e09b6bacaf2960370',
+    url: '/static/media/question_mark.346089fb.svg'
   },
   {
-    revision: '63b405cdf3f7eac7747b1cb8b752c094',
-    url: '/static/media/money_icon.63b405cd.svg'
+    revision: 'd9282da1264dcae19b0451322add23d8',
+    url: '/static/media/money_icon.d9282da1.svg'
   },
   {
-    revision: 'a9a724ae7fece560e517',
-    url: '/static/js/main.a9a724ae.chunk.js'
+    revision: '0c228f171f611a208ee0',
+    url: '/static/js/main.0c228f17.chunk.js'
   },
   {
-    revision: 'cdf858b8723a53430d3619ac3583a00a',
-    url: '/static/media/chat_icon.cdf858b8.svg'
+    revision: '820b45edb9bcf45281c1f4e669002386',
+    url: '/static/media/chat_icon.820b45ed.svg'
   },
   {
-    revision: 'e49b07f077723ab4229d515146c162c7',
-    url: '/static/media/map_icon.e49b07f0.svg'
+    revision: 'dfeedef425df3926c546ad67e15b6e54',
+    url: '/static/media/map_icon.dfeedef4.svg'
   },
   {
-    revision: '945f1fe5354fdb861d76ef4673f380e2',
-    url: '/static/media/thumbs_up.945f1fe5.svg'
+    revision: 'c2e65d8b8d49271fde3f1aab4d183948',
+    url: '/static/media/thumbs_up.c2e65d8b.svg'
   },
   {
-    revision: 'a7860448ee1a721b2605e727fd58f91a',
-    url: '/static/media/shield_icon.a7860448.svg'
+    revision: 'b6bab0cceed2f6c506270da4a2db1830',
+    url: '/static/media/shield_icon.b6bab0cc.svg'
   },
   {
     revision: 'af7ae505a9eed503f8b8e6982036873e',
@@ -124,11 +124,11 @@ self.__precacheManifest = [
     url: '/static/media/john.ccf309ba.jpg'
   },
   {
-    revision: 'abeb96a04811e7d5500d',
-    url: '/static/css/2.dd4fc322.chunk.css'
+    revision: 'bf43f0d88364ca9797a4',
+    url: '/static/css/2.e5e5ed86.chunk.css'
   },
   {
-    revision: 'c5df7cc3d5a371c800be703b3a4acf78',
+    revision: '7fab1eab80629e506ccd4a632226406e',
     url: '/index.html'
   }
 ];

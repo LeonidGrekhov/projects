@@ -15,7 +15,7 @@
         u = a(8),
         d = a(46),
         p = a.n(d),
-        g = (a(125), a(77)),
+        g = (a(123), a(76)),
         h = a.n(g),
         f = (function(e) {
           function t(e) {
@@ -448,7 +448,7 @@
             t
           );
         })(c.Component),
-        v = (a(126),
+        v = (a(124),
         {
           data: [
             {
@@ -613,7 +613,7 @@
           }
           return Object(i.a)(t, e), t;
         })(c.Component),
-        w = a(33),
+        w = a(34),
         k = (function(e) {
           function t(e) {
             var a;
@@ -667,7 +667,7 @@
         })(c.Component);
       (k.Loading = N), (k.RatingStar = w.a);
       var C = k,
-        j = (a(127), a(163)),
+        j = (a(125), a(161)),
         S = (function(e) {
           function t() {
             return (
@@ -754,9 +754,9 @@
     ,
     function(e, t, a) {
       'use strict';
-      var n = a(76),
+      var n = a(75),
         r = a.n(n),
-        o = a(32),
+        o = a(33),
         l = a.n(o),
         i = r.a.connect(l.a),
         s = function(e) {
@@ -1011,37 +1011,38 @@
     ,
     ,
     ,
+    ,
     function(e, t, a) {
       var n = {
-        './About': 28,
-        './About.css': 66,
-        './About.js': 28,
-        './AboutPerson': 29,
-        './AboutPerson.js': 29,
-        './Edwin Menjivar': 67,
-        './Edwin Menjivar.jpg': 133,
-        './Edwin Menjivar.json': 67,
-        './Icons/gear_white.svg': 34,
-        './Jesus Garnica': 68,
-        './Jesus Garnica.json': 68,
-        './John Mendoza': 69,
-        './John Mendoza.json': 69,
-        './Leonid Grekhov': 70,
-        './Leonid Grekhov.jpg': 134,
-        './Leonid Grekhov.json': 70,
-        './Michael Winata': 71,
-        './Michael Winata.json': 71,
-        './Vismay Patel': 72,
-        './Vismay Patel.json': 72,
-        './VismayPatel.jpg': 135,
-        './alpha.png': 136,
-        './jesusGarnica.jpg': 137,
-        './john.jpg': 138,
+        './About': 29,
+        './About.css': 65,
+        './About.js': 29,
+        './AboutPerson': 30,
+        './AboutPerson.js': 30,
+        './Edwin Menjivar': 66,
+        './Edwin Menjivar.jpg': 131,
+        './Edwin Menjivar.json': 66,
+        './Icons/gear_white.svg': 35,
+        './Jesus Garnica': 67,
+        './Jesus Garnica.json': 67,
+        './John Mendoza': 68,
+        './John Mendoza.json': 68,
+        './Leonid Grekhov': 69,
+        './Leonid Grekhov.jpg': 132,
+        './Leonid Grekhov.json': 69,
+        './Michael Winata': 70,
+        './Michael Winata.json': 70,
+        './Vismay Patel': 71,
+        './Vismay Patel.json': 71,
+        './VismayPatel.jpg': 133,
+        './alpha.png': 134,
+        './jesusGarnica.jpg': 135,
+        './john.jpg': 136,
         './members': 15,
         './members.js': 15,
-        './michael winata.jpg': 139,
-        './route': 27,
-        './route.js': 27
+        './michael winata.jpg': 137,
+        './route': 28,
+        './route.js': 28
       };
       function r(e) {
         var t = o(e);
@@ -1060,7 +1061,7 @@
       }),
         (r.resolve = o),
         (e.exports = r),
-        (r.id = 21);
+        (r.id = 22);
     },
     ,
     ,
@@ -1070,8 +1071,8 @@
     function(e, t, a) {
       'use strict';
       a.r(t);
-      var n = a(28),
-        r = a(29);
+      var n = a(29),
+        r = a(30);
       t.default = [
         { path: '/about', exact: !0, component: n.default },
         { path: '/about/:person', exact: !0, component: r.default }
@@ -1088,7 +1089,7 @@
         s = a(6),
         c = a(0),
         m = a.n(c),
-        u = (a(66), a(34)),
+        u = (a(65), a(35)),
         d = a.n(u),
         p = a(1),
         g = a(15),
@@ -1113,7 +1114,7 @@
                         'div',
                         { className: 'card border-0 ' },
                         m.a.createElement('img', {
-                          src: a(21)('./'.concat(n.picture)),
+                          src: a(22)('./'.concat(n.picture)),
                           className: 'card-img-top cover',
                           height: '250',
                           wdith: '200',
@@ -1141,7 +1142,7 @@
               (r.state = {
                 showSideBar: !1,
                 profiles: g.default.map(function(e) {
-                  return a(21)('./' + e);
+                  return a(22)('./' + e);
                 })
               }),
               (r.teamCards = r.teamCards.bind(Object(s.a)(Object(s.a)(r)))),
@@ -1200,7 +1201,7 @@
                                 attributeName: 'd',
                                 dur: '10s',
                                 values:
-                                  'M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z;\r M0 86.3149C316 86.315 444 159.155 884 51.1554C1324 -56.8446 1320.29 34.1214 1538 70.4063C1814 116.407 2156 188.408 2560 86.315V232.317L0 232.316V86.3149Z;\r M0 53.6584C158 11.0001 213 0 363 0C513 0 855.555 115.001 1154 115.001C1440 115.001 1626 -38.0004 2560 53.6585V199.66L0 199.66V53.6584Z;\r M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z;'
+                                  'M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z; M0 86.3149C316 86.315 444 159.155 884 51.1554C1324 -56.8446 1320.29 34.1214 1538 70.4063C1814 116.407 2156 188.408 2560 86.315V232.317L0 232.316V86.3149Z; M0 53.6584C158 11.0001 213 0 363 0C513 0 855.555 115.001 1154 115.001C1440 115.001 1626 -38.0004 2560 53.6585V199.66L0 199.66V53.6584Z; M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z;'
                               })
                             )
                           )
@@ -1310,8 +1311,8 @@
         i = a(5),
         s = a(0),
         c = a.n(s),
-        m = a(164),
-        u = a(163),
+        m = a(162),
+        u = a(161),
         d = (function(e) {
           function t(e) {
             var r;
@@ -1319,7 +1320,7 @@
               (r = Object(o.a)(this, Object(l.a)(t).call(this, e)));
             var i = e.match.params.person;
             try {
-              r.state = { profile: a(21)('./' + i) };
+              r.state = { profile: a(22)('./' + i) };
             } catch (s) {
               r.state = { fail: !0 };
             }
@@ -1361,7 +1362,7 @@
                               'div',
                               { className: 'col-3 text-center' },
                               c.a.createElement('img', {
-                                src: a(21)(
+                                src: a(22)(
                                   './'.concat(this.state.profile.picture)
                                 ),
                                 className: 'img-fluid',
@@ -1429,7 +1430,7 @@
     function(e, t, a) {
       'use strict';
       a.r(t);
-      var n = a(31);
+      var n = a(32);
       t.default = [{ path: '/Team', exact: !0, component: n.default }];
     },
     function(e, t, a) {
@@ -1444,7 +1445,7 @@
         c = a(0),
         m = a.n(c),
         u = a(1),
-        d = (a(74), a(15)),
+        d = (a(73), a(15)),
         p = (function(e) {
           function t(e) {
             var r;
@@ -1466,7 +1467,7 @@
                         'div',
                         { className: 'border-0 team-card text-center ' },
                         m.a.createElement('img', {
-                          src: a(146)('./'.concat(n.picture)),
+                          src: a(144)('./'.concat(n.picture)),
                           className: 'img-fluid pb-2',
                           alt: '...'
                         }),
@@ -1497,7 +1498,7 @@
               (r.state = {
                 showSideBar: !1,
                 profiles: d.default.map(function(e) {
-                  return a(21)('./' + e);
+                  return a(22)('./' + e);
                 })
               }),
               (r.teamCards = r.teamCards.bind(Object(s.a)(Object(s.a)(r)))),
@@ -1689,7 +1690,7 @@
       t.a = p;
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/gear_white.cd117e8d.svg';
+      e.exports = a.p + 'static/media/gear_white.5659a16a.svg';
     },
     ,
     function(e, t, a) {
@@ -1705,15 +1706,14 @@
     ,
     ,
     ,
-    ,
     function(e, t, a) {
-      e.exports = a.p + 'static/media/logo.e391515f.svg';
+      e.exports = a.p + 'static/media/logo.7d528012.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/star-outline.7f10b596.svg';
+      e.exports = a.p + 'static/media/star-outline.27859bb7.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/star-outline-filled.253379f4.svg';
+      e.exports = a.p + 'static/media/star-outline-filled.5ed6acb6.svg';
     },
     function(e, t, a) {
       e.exports = a.p + 'static/media/Socrates.23fe2d51.jpeg';
@@ -1721,7 +1721,6 @@
     function(e, t, a) {
       e.exports = a.p + 'static/media/CollegeAlgebra.f2689056.jpeg';
     },
-    ,
     ,
     ,
     ,
@@ -1808,36 +1807,35 @@
     ,
     ,
     function(e, t, a) {
-      e.exports = a.p + 'static/media/shoppingCart.b6859808.svg';
+      e.exports = a.p + 'static/media/shoppingCart.69728e1f.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/question_mark.54cff9d2.svg';
+      e.exports = a.p + 'static/media/question_mark.346089fb.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/money_icon.63b405cd.svg';
+      e.exports = a.p + 'static/media/money_icon.d9282da1.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/book_icon.baaa27c7.svg';
+      e.exports = a.p + 'static/media/book_icon.af68bfde.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/chat_icon.cdf858b8.svg';
+      e.exports = a.p + 'static/media/chat_icon.820b45ed.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/map_icon.e49b07f0.svg';
+      e.exports = a.p + 'static/media/map_icon.dfeedef4.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/thumbs_up.945f1fe5.svg';
+      e.exports = a.p + 'static/media/thumbs_up.c2e65d8b.svg';
     },
     function(e, t, a) {
-      e.exports = a.p + 'static/media/shield_icon.a7860448.svg';
+      e.exports = a.p + 'static/media/shield_icon.b6bab0cc.svg';
     },
     ,
     ,
     ,
     function(e, t, a) {
-      e.exports = a(162);
+      e.exports = a(160);
     },
-    ,
     ,
     ,
     ,
@@ -1911,17 +1909,17 @@
     function(e, t, a) {},
     function(e, t, a) {
       var n = {
-        './Edwin Menjivar.jpg': 147,
-        './Leonid Grekhov.jpg': 148,
-        './Team': 31,
-        './Team.css': 74,
-        './Team.js': 31,
-        './VismayPatel.jpg': 149,
-        './jesusGarnica.jpg': 150,
-        './john.jpg': 151,
-        './michael winata.jpg': 152,
-        './route': 30,
-        './route.js': 30
+        './Edwin Menjivar.jpg': 145,
+        './Leonid Grekhov.jpg': 146,
+        './Team': 32,
+        './Team.css': 73,
+        './Team.js': 32,
+        './VismayPatel.jpg': 147,
+        './jesusGarnica.jpg': 148,
+        './john.jpg': 149,
+        './michael winata.jpg': 150,
+        './route': 31,
+        './route.js': 31
       };
       function r(e) {
         var t = o(e);
@@ -1940,7 +1938,7 @@
       }),
         (r.resolve = o),
         (e.exports = r),
-        (r.id = 146);
+        (r.id = 144);
     },
     function(e, t, a) {
       e.exports = a.p + 'static/media/Edwin Menjivar.9a7e20e8.jpg';
@@ -1972,16 +1970,16 @@
     function(e, t, a) {
       'use strict';
       a.r(t);
-      a(89);
+      a(88);
       var n = a(45),
         r = a.n(n),
-        o = a(75),
-        l = (a(90), a(91), a(0)),
+        o = a(74),
+        l = (a(89), a(90), a(0)),
         i = a.n(l),
         s = a(14),
         c = a.n(s),
-        m = a(167),
-        u = a(87),
+        m = a(165),
+        u = a(86),
         d = a(10),
         p = a(2),
         g = a(9),
@@ -1989,7 +1987,7 @@
         f = a(3),
         b = a(5),
         E = a(1),
-        v = (a(130), a(78)),
+        v = (a(128), a(77)),
         y = a.n(v),
         N = [
           {
@@ -2049,21 +2047,21 @@
             })(l.Component)
           }
         ],
-        w = (a(131), a(79)),
+        w = (a(129), a(78)),
         k = a.n(w),
-        C = a(80),
+        C = a(79),
         j = a.n(C),
-        S = a(81),
+        S = a(80),
         x = a.n(S),
-        D = a(82),
+        D = a(81),
         O = a.n(D),
-        B = a(83),
+        B = a(82),
         I = a.n(B),
-        L = a(84),
+        L = a(83),
         R = a.n(L),
-        U = a(36),
+        U = a(37),
         A = a.n(U),
-        T = a(37),
+        T = a(38),
         M = a.n(T),
         F = a(49),
         W = a.n(F),
@@ -2488,7 +2486,7 @@
             })(l.Component)
           }
         ],
-        _ = a(27),
+        _ = a(28),
         Y = a(11),
         J = a(8),
         Q = [
@@ -3025,7 +3023,7 @@
             })(l.Component)
           }
         ],
-        X = (a(140),
+        X = (a(138),
         [
           {
             path: '/Contact',
@@ -3087,7 +3085,7 @@
             })(l.Component)
           }
         ]),
-        Z = (a(141),
+        Z = (a(139),
         [
           {
             path: '/terms of service',
@@ -3419,7 +3417,7 @@
             })(l.Component)
           }
         ]),
-        K = (a(142),
+        K = (a(140),
         (function(e) {
           function t(e) {
             var a;
@@ -4017,7 +4015,39 @@
             })(l.Component)
           }
         ],
-        te = (a(73),
+        te = 'AIzaSyCtVciksJFa09uouNEWwjwfh-x8efW_lko',
+        ae = (function(e) {
+          function t(e) {
+            var a;
+            return (
+              Object(p.a)(this, t),
+              ((a = Object(h.a)(
+                this,
+                Object(f.a)(t).call(this, e)
+              )).render = function() {
+                return i.a.createElement(
+                  i.a.Fragment,
+                  null,
+                  i.a.createElement('script', {
+                    src: 'https://maps.googleapis.com/maps/api/js?key='.concat(
+                      te,
+                      '&callback=googlemapstuff'
+                    ),
+                    async: !0,
+                    defer: !0
+                  })
+                );
+              }),
+              (a.state = { renderReady: !1 }),
+              (window.googlemapstuff = function(e) {
+                return console.log(e);
+              }),
+              a
+            );
+          }
+          return Object(b.a)(t, e), t;
+        })(l.Component),
+        ne = (a(72),
         [
           {
             path: '/user/:uid/listing',
@@ -4040,31 +4070,37 @@
                   }),
                   (a.onChangeSearch = function(e) {
                     var t = e.target.value;
-                    J.e.getAllSearchByTitle(t).then(function(e) {
-                      console.log(e),
-                        a.setState({
+                    null === t || '' === t
+                      ? a.setState({
                           search: t,
-                          searchSuggestion: i.a.createElement(
-                            'ul',
-                            null,
-                            e.map(function(e, n) {
-                              return '' !== t &&
-                                e.title.toLowerCase().includes(t.toLowerCase())
-                                ? i.a.createElement(
-                                    'li',
-                                    {
-                                      key: n,
-                                      onClick: a.onSuggestion,
-                                      value: e.title,
-                                      bookid: e.bid
-                                    },
-                                    e.title
-                                  )
-                                : i.a.createElement('div', { key: n });
-                            })
-                          )
+                          searchSuggestion: i.a.createElement('ul', null)
+                        })
+                      : J.e.getAllSearchByTitle(t).then(function(e) {
+                          a.setState({
+                            search: t,
+                            searchSuggestion: i.a.createElement(
+                              'ul',
+                              null,
+                              e.map(function(e, n) {
+                                return '' !== t &&
+                                  e.title
+                                    .toLowerCase()
+                                    .includes(t.toLowerCase())
+                                  ? i.a.createElement(
+                                      'li',
+                                      {
+                                        key: n,
+                                        onClick: a.onSuggestion,
+                                        value: e.title,
+                                        bookid: e.bid
+                                      },
+                                      e.title
+                                    )
+                                  : i.a.createElement('div', { key: n });
+                              })
+                            )
+                          });
                         });
-                    });
                   }),
                   (a.onImageUpload = function(e) {
                     var t = a.state,
@@ -4277,19 +4313,10 @@
                                   { className: 'form-group' },
                                   i.a.createElement(
                                     'label',
-                                    { htmlFor: 'form' },
-                                    'User description:'
+                                    null,
+                                    'Meeting Point:'
                                   ),
-                                  i.a.createElement('textarea', {
-                                    rows: '4',
-                                    type: 'userDescription',
-                                    className: 'form-control',
-                                    id: 'form-userDescription',
-                                    placeholder: 'Enter book description',
-                                    name: 'userDescription',
-                                    value: a.state.userDescription,
-                                    onChange: a.onChange
-                                  })
+                                  i.a.createElement(ae, null)
                                 ),
                                 'Book Condition:',
                                 i.a.createElement(
@@ -4801,9 +4828,9 @@
             })(l.Component)
           }
         ]),
-        ae = a(6),
-        ne = a(85),
-        re = (a(143),
+        re = a(6),
+        oe = a(84),
+        le = (a(141),
         (function(e) {
           function t(e) {
             var a;
@@ -4816,18 +4843,18 @@
                 a.setState({ logData: e.logData });
               }),
               (a.componentDidMount = function() {
-                a.ps = new ne.a(c.a.findDOMNode(Object(ae.a)(Object(ae.a)(a))));
-                var e = c.a.findDOMNode(Object(ae.a)(Object(ae.a)(a)))
+                a.ps = new oe.a(c.a.findDOMNode(Object(re.a)(Object(re.a)(a))));
+                var e = c.a.findDOMNode(Object(re.a)(Object(re.a)(a)))
                   .clientHeight;
-                (c.a.findDOMNode(Object(ae.a)(Object(ae.a)(a))).scrollTop = e),
+                (c.a.findDOMNode(Object(re.a)(Object(re.a)(a))).scrollTop = e),
                   a.ps.update(),
-                  c.a.findDOMNode(Object(ae.a)(Object(ae.a)(a))).scrollTo(0, e);
+                  c.a.findDOMNode(Object(re.a)(Object(re.a)(a))).scrollTo(0, e);
               }),
               (a.componentDidUpdate = function(e) {
                 (c.a.findDOMNode(
-                  Object(ae.a)(Object(ae.a)(a))
+                  Object(re.a)(Object(re.a)(a))
                 ).scrollTop = c.a.findDOMNode(
-                  Object(ae.a)(Object(ae.a)(a))
+                  Object(re.a)(Object(re.a)(a))
                 ).scrollHeight),
                   a.ps.update();
               }),
@@ -4852,8 +4879,8 @@
           }
           return Object(b.a)(t, e), t;
         })(l.Component)),
-        oe = (a(144), !0),
-        le = {
+        ie = (a(142), !0),
+        se = {
           bookData: {
             title: 'book1',
             isbn: '111-111-111',
@@ -4887,7 +4914,7 @@
             'bob: get f-ed'
           ]
         },
-        ie = (function(e) {
+        ce = (function(e) {
           function t(e) {
             var a;
             return (
@@ -4896,10 +4923,10 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                if (oe) {
-                  var e = le.bookData,
-                    t = le.listData,
-                    n = le.logData;
+                if (ie) {
+                  var e = se.bookData,
+                    t = se.listData,
+                    n = se.logData;
                   a.setState({
                     bookData: e,
                     listData: t,
@@ -4931,7 +4958,7 @@
                 t.push(e), a.setState({ logData: t });
               }),
               (a.onSubmit = function(e) {
-                if ((e.preventDefault(), oe)) {
+                if ((e.preventDefault(), ie)) {
                   var t = a.state,
                     n = t.logData,
                     r = t.message;
@@ -5110,7 +5137,7 @@
                     i.a.createElement(
                       'div',
                       { className: 'col' },
-                      i.a.createElement(re, { logData: a.state.logData })
+                      i.a.createElement(le, { logData: a.state.logData })
                     ),
                     i.a.createElement('div', { className: 'col-1' })
                   ),
@@ -5186,8 +5213,8 @@
           }
           return Object(b.a)(t, e), t;
         })(l.Component),
-        se = !0,
-        ce = {
+        me = !0,
+        ue = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -5198,7 +5225,7 @@
             sellerInfo: {}
           }
         },
-        me = (function(e) {
+        de = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5207,12 +5234,12 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                se
+                me
                   ? a.setState({
                       renderReady: !0,
-                      firstname: ce.data.generalInfo.firstname,
-                      lastname: ce.data.generalInfo.lastname,
-                      email: ce.data.generalInfo.email
+                      firstname: ue.data.generalInfo.firstname,
+                      lastname: ue.data.generalInfo.lastname,
+                      email: ue.data.generalInfo.email
                     })
                   : J.g
                       .getUserConfiguration(a.props.match.params.uid)
@@ -5381,17 +5408,17 @@
                 renderReady: !1
               }),
               (a.bodyContent = a.bodyContent.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
-              (a.onChange = a.onChange.bind(Object(ae.a)(Object(ae.a)(a)))),
-              (a.onSubmit = a.onSubmit.bind(Object(ae.a)(Object(ae.a)(a)))),
+              (a.onChange = a.onChange.bind(Object(re.a)(Object(re.a)(a)))),
+              (a.onSubmit = a.onSubmit.bind(Object(re.a)(Object(re.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(l.Component),
-        ue = !0,
-        de = {
+        pe = !0,
+        ge = {
           profileData: {
             firstname: 'Bob',
             lastname: 'Ross',
@@ -5433,7 +5460,7 @@
             { rid: 3, title: 'eitnieuyn69384', time: '18:22 21-03-2019' }
           ]
         },
-        pe = (function(e) {
+        he = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5442,11 +5469,11 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                if (ue)
+                if (pe)
                   a.setState({
-                    chatListData: de.chatListData,
-                    profileData: de.profileData,
-                    reportListData: de.reportListData,
+                    chatListData: ge.chatListData,
+                    profileData: ge.profileData,
+                    reportListData: ge.reportListData,
                     display: 'Profile'
                   });
                 else {
@@ -5812,38 +5839,38 @@
                 renderReady: !1
               }),
               (a.bodyContent = a.bodyContent.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
               (a.profileSideBar = a.profileSideBar.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
               (a.userNavigation = a.userNavigation.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
               (a.userContent = a.userContent.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
               (a.displayRating = a.displayRating.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
               (a.onUserNavigation = a.onUserNavigation.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
-              (a.onProfile = a.onProfile.bind(Object(ae.a)(Object(ae.a)(a)))),
-              (a.onMessage = a.onMessage.bind(Object(ae.a)(Object(ae.a)(a)))),
-              (a.onReview = a.onReview.bind(Object(ae.a)(Object(ae.a)(a)))),
-              (a.onListing = a.onListing.bind(Object(ae.a)(Object(ae.a)(a)))),
-              (a.onReport = a.onReport.bind(Object(ae.a)(Object(ae.a)(a)))),
+              (a.onProfile = a.onProfile.bind(Object(re.a)(Object(re.a)(a)))),
+              (a.onMessage = a.onMessage.bind(Object(re.a)(Object(re.a)(a)))),
+              (a.onReview = a.onReview.bind(Object(re.a)(Object(re.a)(a)))),
+              (a.onListing = a.onListing.bind(Object(re.a)(Object(re.a)(a)))),
+              (a.onReport = a.onReport.bind(Object(re.a)(Object(re.a)(a)))),
               (a.onConfigure = a.onConfigure.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(l.Component),
-        ge = !0,
-        he = {
+        fe = !0,
+        be = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -5854,11 +5881,11 @@
             sellerInfo: {}
           }
         },
-        fe = {
+        Ee = {
           title: 'this guy is a scammer',
           description: 'Hey, this guy scammed me on a different website.'
         },
-        be = (function(e) {
+        ve = (function(e) {
           function t(e) {
             var a;
             return (
@@ -5867,12 +5894,12 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                ge
+                fe
                   ? a.setState({
                       renderReady: !0,
-                      userInfo: he.data.generalInfo,
-                      reportTitle: fe.title,
-                      reportDescription: fe.description
+                      userInfo: be.data.generalInfo,
+                      reportTitle: Ee.title,
+                      reportDescription: Ee.description
                     })
                   : J.g
                       .getUserConfiguration(a.props.match.params.uid)
@@ -6041,16 +6068,16 @@
                 renderReady: !1
               }),
               (a.bodyContent = a.bodyContent.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
-              (a.onSubmit = a.onSubmit.bind(Object(ae.a)(Object(ae.a)(a)))),
+              (a.onSubmit = a.onSubmit.bind(Object(re.a)(Object(re.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(l.Component),
-        Ee = !0,
-        ve = {
+        ye = !0,
+        Ne = {
           data: {
             generalInfo: {
               firstname: 'Qwerty',
@@ -6061,7 +6088,7 @@
             sellerInfo: {}
           }
         },
-        ye = (function(e) {
+        we = (function(e) {
           function t(e) {
             var a;
             return (
@@ -6070,10 +6097,10 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                Ee
+                ye
                   ? a.setState({
                       renderReady: !0,
-                      userInfo: ve.data.generalInfo
+                      userInfo: Ne.data.generalInfo
                     })
                   : J.g
                       .getUserConfiguration(a.props.match.params.uid)
@@ -6237,21 +6264,21 @@
                 renderReady: !1
               }),
               (a.bodyContent = a.bodyContent.bind(
-                Object(ae.a)(Object(ae.a)(a))
+                Object(re.a)(Object(re.a)(a))
               )),
-              (a.onSubmit = a.onSubmit.bind(Object(ae.a)(Object(ae.a)(a)))),
+              (a.onSubmit = a.onSubmit.bind(Object(re.a)(Object(re.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(l.Component),
-        Ne = (a(145),
+        ke = (a(143),
         [
-          { path: '/user/:uid', exact: !0, component: pe },
-          { path: '/user/:uid/chat/:cid', exact: !0, component: ie },
-          { path: '/user/:uid/configuration', exact: !0, component: me },
-          { path: '/user/:uid/report', exact: !0, component: ye },
-          { path: '/user/:uid/report/:rid', exact: !0, component: be },
+          { path: '/user/:uid', exact: !0, component: he },
+          { path: '/user/:uid/chat/:cid', exact: !0, component: ce },
+          { path: '/user/:uid/configuration', exact: !0, component: de },
+          { path: '/user/:uid/report', exact: !0, component: we },
+          { path: '/user/:uid/report/:rid', exact: !0, component: ve },
           {
             path: '/user/:uid/cart',
             exact: !0,
@@ -6332,8 +6359,8 @@
             })(l.Component)
           }
         ]),
-        we = a(30),
-        ke = (function(e) {
+        Ce = a(31),
+        je = (function(e) {
           function t(e) {
             var a;
             return (
@@ -6521,7 +6548,7 @@
           }
           return Object(b.a)(t, e), t;
         })(l.Component),
-        Ce = [
+        Se = [
           {
             path: '/book/:bid/list',
             exact: !0,
@@ -6827,10 +6854,10 @@
               return Object(b.a)(t, e), t;
             })(l.Component)
           },
-          { path: '/book/:bid/list/:lid', exact: !0, component: ke }
+          { path: '/book/:bid/list/:lid', exact: !0, component: je }
         ],
-        je = !0,
-        Se = {
+        xe = !0,
+        De = {
           adminData: {
             issues: [
               {
@@ -6927,7 +6954,7 @@
             }
           }
         },
-        xe = [
+        Oe = [
           {
             path: '/admin/:aid',
             exact: !0,
@@ -6940,8 +6967,8 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    je
-                      ? a.setState({ adminData: Se.adminData, renderReady: !0 })
+                    xe
+                      ? a.setState({ adminData: De.adminData, renderReady: !0 })
                       : J.a.getAdmin(a.state.aid).then(function(e) {
                           return a.setState({ adminData: e, renderReady: !0 });
                         });
@@ -6959,14 +6986,14 @@
                           i.a.createElement(
                             'h4',
                             null,
-                            Se.userInfo[e.sourceUser].profile.firstname,
+                            De.userInfo[e.sourceUser].profile.firstname,
                             ' ',
-                            Se.userInfo[e.sourceUser].profile.lastname
+                            De.userInfo[e.sourceUser].profile.lastname
                           ),
                           i.a.createElement(
                             'h4',
                             null,
-                            Se.userInfo[e.sourceUser].profile.email
+                            De.userInfo[e.sourceUser].profile.email
                           ),
                           e.targetUser &&
                             i.a.createElement(
@@ -6976,14 +7003,14 @@
                               i.a.createElement(
                                 'h4',
                                 null,
-                                Se.userInfo[e.targetUser].profile.firstname,
+                                De.userInfo[e.targetUser].profile.firstname,
                                 ' ',
-                                Se.userInfo[e.targetUser].profile.lastname
+                                De.userInfo[e.targetUser].profile.lastname
                               ),
                               i.a.createElement(
                                 'h4',
                                 null,
-                                Se.userInfo[e.targetUser].profile.email
+                                De.userInfo[e.targetUser].profile.email
                               )
                             )
                         )
@@ -7048,9 +7075,9 @@
                             'h1',
                             null,
                             'Source: ',
-                            Se.userInfo[e.sourceUser].profile.firstname,
+                            De.userInfo[e.sourceUser].profile.firstname,
                             ' ',
-                            Se.userInfo[e.sourceUser].profile.lastname,
+                            De.userInfo[e.sourceUser].profile.lastname,
                             ' ',
                             i.a.createElement(
                               'button',
@@ -7073,11 +7100,11 @@
                                 rows: '3',
                                 placeholder: 'Message to '
                                   .concat(
-                                    Se.userInfo[e.sourceUser].profile.firstname,
+                                    De.userInfo[e.sourceUser].profile.firstname,
                                     ' '
                                   )
                                   .concat(
-                                    Se.userInfo[e.sourceUser].profile.lastname
+                                    De.userInfo[e.sourceUser].profile.lastname
                                   )
                               })
                             ),
@@ -7099,9 +7126,9 @@
                                 'h1',
                                 null,
                                 'Target: ',
-                                Se.userInfo[e.targetUser].profile.firstname,
+                                De.userInfo[e.targetUser].profile.firstname,
                                 ' ',
-                                Se.userInfo[e.targetUser].profile.lastname,
+                                De.userInfo[e.targetUser].profile.lastname,
                                 ' ',
                                 i.a.createElement(
                                   'button',
@@ -7124,12 +7151,12 @@
                                     rows: '3',
                                     placeholder: 'Message to '
                                       .concat(
-                                        Se.userInfo[e.targetUser].profile
+                                        De.userInfo[e.targetUser].profile
                                           .firstname,
                                         ' '
                                       )
                                       .concat(
-                                        Se.userInfo[e.targetUser].profile
+                                        De.userInfo[e.targetUser].profile
                                           .lastname
                                       )
                                   })
@@ -7201,9 +7228,9 @@
             })(l.Component)
           }
         ],
-        De = a(19),
-        Oe = !0,
-        Be = (function(e) {
+        Be = a(20),
+        Ie = !0,
+        Le = (function(e) {
           function t(e) {
             var a;
             return (
@@ -7214,7 +7241,7 @@
               )).submit = function(e) {
                 a.props.stripe.createToken({ name: 'Name' }).then(function(e) {
                   var t = e.token;
-                  Oe
+                  Ie
                     ? a.setState({ complete: !0 })
                     : J.f
                         .postTransactionInfo({ tid: a.state.tid, data: t })
@@ -7240,7 +7267,7 @@
                         null,
                         'Would you like to complete the purchase?'
                       ),
-                      i.a.createElement(De.CardElement, null),
+                      i.a.createElement(Be.CardElement, null),
                       i.a.createElement(
                         'button',
                         {
@@ -7252,15 +7279,15 @@
                     );
               }),
               (a.state = { tid: e.tid, complete: !1 }),
-              (a.submit = a.submit.bind(Object(ae.a)(Object(ae.a)(a)))),
+              (a.submit = a.submit.bind(Object(re.a)(Object(re.a)(a)))),
               a
             );
           }
           return Object(b.a)(t, e), t;
         })(l.Component),
-        Ie = Object(De.injectStripe)(Be),
-        Le = !0,
-        Re = {
+        Re = Object(Be.injectStripe)(Le),
+        Ue = !0,
+        Ae = {
           data: {
             error: null,
             bookData: {
@@ -7279,7 +7306,7 @@
             }
           }
         },
-        Ue = (function(e) {
+        Te = (function(e) {
           function t(e) {
             var a;
             return (
@@ -7288,8 +7315,8 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                Le
-                  ? a.setState({ transactionData: Re.data, renderReady: !0 })
+                Ue
+                  ? a.setState({ transactionData: Ae.data, renderReady: !0 })
                   : J.f.getTransactionInfo(a.state.tid).then(function(e) {
                       return a.setState({
                         transactionData: e,
@@ -7427,15 +7454,15 @@
                     'div',
                     { className: 'col' },
                     i.a.createElement(
-                      De.StripeProvider,
+                      Be.StripeProvider,
                       { apiKey: 'pk_test_TYooMQauvdEDq54NiTphI7jx' },
                       i.a.createElement(
                         'div',
                         { className: 'example' },
                         i.a.createElement(
-                          De.Elements,
+                          Be.Elements,
                           null,
-                          i.a.createElement(Ie, { tid: a.state.tid })
+                          i.a.createElement(Re, { tid: a.state.tid })
                         )
                       )
                     )
@@ -7463,8 +7490,8 @@
           }
           return Object(b.a)(t, e), t;
         })(l.Component),
-        Ae = !0,
-        Te = {
+        Me = !0,
+        Fe = {
           data: [
             {
               tid: 1,
@@ -7506,7 +7533,7 @@
             }
           ]
         },
-        Me = [
+        We = [
           {
             path: '/transaction/',
             exact: !0,
@@ -7519,9 +7546,9 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    Ae &&
+                    Me &&
                       a.setState({
-                        transactionHistoryData: Te.data,
+                        transactionHistoryData: Fe.data,
                         renderReady: !0
                       });
                   }),
@@ -7709,9 +7736,9 @@
               return Object(b.a)(t, e), t;
             })(l.Component)
           },
-          { path: '/transaction/:tid', exact: !0, component: Ue }
+          { path: '/transaction/:tid', exact: !0, component: Te }
         ],
-        Fe = (a(158),
+        Pe = (a(156),
         [
           {
             path: '/Invest',
@@ -7773,8 +7800,8 @@
             })(l.Component)
           }
         ]),
-        We = (a(159), !0),
-        Pe = (function(e) {
+        He = (a(157), !0),
+        ze = (function(e) {
           function t(e) {
             var a;
             return (
@@ -7783,7 +7810,7 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).submitButtonHandler = function() {
-                We &&
+                He &&
                   (console.log(a.state.commentInput),
                   console.log(a.state.listingID));
               }),
@@ -7844,8 +7871,8 @@
             t
           );
         })(l.Component),
-        He = !0,
-        ze = {
+        qe = !0,
+        Ve = {
           data: {
             title: 'Book Sample Title',
             isbn: '111-111-111',
@@ -7857,7 +7884,7 @@
               'https://diybookcovers.com/wp-content/uploads/2017/02/newcovers3d.png'
           }
         },
-        qe = [
+        Ge = [
           {
             path: '/bookReview/:bid',
             exact: !0,
@@ -7870,7 +7897,7 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    He && a.setState({ bookData: ze.data, renderReady: !0 });
+                    qe && a.setState({ bookData: Ve.data, renderReady: !0 });
                   }),
                   (a.state = {
                     bookData: {
@@ -7963,7 +7990,7 @@
                                 i.a.createElement(
                                   'div',
                                   { className: 'mt-4' },
-                                  i.a.createElement(Pe, null)
+                                  i.a.createElement(ze, null)
                                 )
                               )
                             )
@@ -7979,9 +8006,9 @@
             })(l.Component)
           }
         ],
-        Ve = (a(160), a(33)),
-        Ge = !0,
-        _e = (function(e) {
+        _e = (a(158), a(34)),
+        Ye = !0,
+        Je = (function(e) {
           function t(e) {
             var a;
             return (
@@ -7990,7 +8017,7 @@
                 this,
                 Object(f.a)(t).call(this, e)
               )).componentDidMount = function() {
-                Ge &&
+                Ye &&
                   a.setState({
                     sellerName: 'superUser92',
                     commentText:
@@ -8020,7 +8047,7 @@
                       i.a.createElement(
                         'div',
                         { className: 'px-5 py-2 mb-3 w-10' },
-                        i.a.createElement(Ve.a, {
+                        i.a.createElement(_e.a, {
                           rating: this.state.ratingValue,
                           dimension: 12
                         })
@@ -8039,8 +8066,8 @@
             t
           );
         })(l.Component),
-        Ye = !0,
-        Je = [
+        Qe = !0,
+        Xe = [
           {
             path: '/SellerReview/:sid',
             exact: !0,
@@ -8053,7 +8080,7 @@
                     this,
                     Object(f.a)(t).call(this, e)
                   )).componentDidMount = function() {
-                    Ye &&
+                    Qe &&
                       a.setState({
                         sellerName: 'superUser92',
                         sellerRating: 4.2,
@@ -8108,9 +8135,9 @@
                                   ' Reviews)'
                                 ),
                                 i.a.createElement('h5', null, 'Comments:'),
-                                i.a.createElement(_e, null),
-                                i.a.createElement(_e, null),
-                                i.a.createElement(_e, null)
+                                i.a.createElement(Je, null),
+                                i.a.createElement(Je, null),
+                                i.a.createElement(Je, null)
                               )
                             )
                           )
@@ -8125,23 +8152,23 @@
             })(l.Component)
           }
         ],
-        Qe = [].concat(
+        Ze = [].concat(
           Object(d.a)(G),
           Object(d.a)(_.default),
           Object(d.a)(Q),
           Object(d.a)(X),
           Object(d.a)($),
           Object(d.a)(ee),
-          Object(d.a)(Ne),
-          Object(d.a)(Ce),
-          Object(d.a)(xe),
-          Object(d.a)(te),
-          Object(d.a)(Me),
-          Object(d.a)(we.default),
+          Object(d.a)(ke),
+          Object(d.a)(Se),
+          Object(d.a)(Oe),
+          Object(d.a)(ne),
+          Object(d.a)(We),
+          Object(d.a)(Ce.default),
           Object(d.a)(Z),
-          Object(d.a)(Fe),
-          Object(d.a)(qe),
-          Object(d.a)(Je),
+          Object(d.a)(Pe),
+          Object(d.a)(Ge),
+          Object(d.a)(Xe),
           Object(d.a)(N)
         );
       Boolean(
@@ -8151,14 +8178,14 @@
             /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
           )
       );
-      a(161);
+      a(159);
       null !== r.a &&
         null !== o.a &&
         (c.a.render(
           i.a.createElement(
             m.a,
             null,
-            i.a.createElement('div', null, Object(u.a)(Qe))
+            i.a.createElement('div', null, Object(u.a)(Ze))
           ),
           document.getElementById('root')
         ),
@@ -8168,6 +8195,6 @@
           }));
     }
   ],
-  [[88, 1, 2]]
+  [[87, 1, 2]]
 ]);
-//# sourceMappingURL=main.a9a724ae.chunk.js.map
+//# sourceMappingURL=main.0c228f17.chunk.js.map
