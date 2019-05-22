@@ -12,6 +12,12 @@ router.get(
       .catch(error => response.json(error))
 );
 
+router.get('/api/userchats', authenticated, ({ user: { uid } }, response) =>
+  ChatDb.getUserChats(uid)
+    .then(chats => response.json(chats))
+    .catch(error => response.json(error))
+);
+
 router.get(
   '/api/chatroom/:crid',
   authenticated,
