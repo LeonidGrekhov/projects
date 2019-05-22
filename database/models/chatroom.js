@@ -20,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'crid'
     });
     chatroom.hasMany(db.chat, {
+      as: 'Chats',
       foreignKey: 'crid'
     });
   };
