@@ -11,7 +11,10 @@ class GoogleMap extends Component {
   }
 
   componentWillReceiveProps = newProps => {
-    window.initMap(newProps);
+    if (this.props.title !== newProps.title) {
+      window.initMap(newProps);
+      this.props = newProps;
+    }
   };
 
   componentDidMount = () => {
