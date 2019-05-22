@@ -1,11 +1,25 @@
 const getChat = db => (uid, rid) => db.chat.findOne({ where: { uid, rid } });
 
-const getChatroom = db => crid =>
+const getUserChats = db => uid => db.chat.findAll({ where: { uid } });
+
+const getChatroom = db => (uid, crid) =>
   db.chatroom.findByPk(crid, {
     include: [
       {
         model: db.chatlog,
-        as: Chatlogs
+        as: 'Chatlogs'
+      },
+      {
+        model: db.chat,
+        as: 'Chats',
+        where: { uid },
+        include: [
+          {
+            model: db.user,
+            as: 'Receiver',
+            attributes: ['uid', 'firstname', 'lastname']
+          }
+        ]
       }
     ]
   });
@@ -32,6 +46,7 @@ const createChatlog = db => (crid, message) =>
 
 module.exports = db => ({
   getChat: getChat(db),
+  getUserChats: getUserChats(db),
   getChatroom: getChatroom(db),
   createChat: createChat(db),
   createChatlog: createChatlog(db)

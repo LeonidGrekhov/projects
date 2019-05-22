@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { User } from '../../api';
+import { Chat } from '../../api';
 
-let debug = true;
 let json = {
   profileData: {
     firstname: 'Bob',
@@ -90,25 +89,40 @@ class Profile extends Component {
   }
 
   componentDidMount = () => {
-    if (debug) {
-      this.setState({
-        chatListData: json.chatListData,
-        profileData: json.profileData,
-        reportListData: json.reportListData,
-        display: 'Profile'
-      });
-    } else {
-      let { uid } = this.state;
-      User.getUserProfile(uid).then(profileData => {
-        if (profileData.error) {
-          window.location = '/404';
-        } else {
-          User.getUserChatList(uid).then(chatListData =>
-            this.setState({ chatListData, profileData, display: 'Profile' })
-          );
-        }
-      });
-    }
+    Chat.getUserChats().then(chats => {
+      if (chats) {
+        Promise.all(chats.map(chat => Chat.getChatroom(chat.crid))).then(
+          chatrooms => {
+            let chatListData = chatrooms.map(chatroom => ({
+              cid: chatroom.Chats[0].cid,
+              crid: chatroom.Chats[0].crid,
+              sender:
+                chatroom.Chats[0].Receiver.firstname +
+                ' ' +
+                chatroom.Chats[0].Receiver.lastname,
+              lastMessage: chatroom.Chatlogs.length
+                ? chatroom.Chatlogs[chatroom.Chatlogs.length - 1].message.split(
+                    ':'
+                  )[1]
+                : ''
+            }));
+            this.setState({
+              chatListData,
+              profileData: json.profileData,
+              reportListData: json.reportListData,
+              display: 'Profile'
+            });
+          }
+        );
+      } else {
+        this.setState({
+          chatListData: [],
+          profileData: json.profileData,
+          reportListData: json.reportListData,
+          display: 'Profile'
+        });
+      }
+    });
   };
 
   bodyContent = () => {
@@ -263,6 +277,7 @@ class Profile extends Component {
       reportListData,
       uid
     } = this.state;
+    console.log(chatListData);
     if ('Profile' === display) {
       return (
         <>
@@ -277,14 +292,13 @@ class Profile extends Component {
           <br />
           {chatListData.map((chat, i) => (
             <div className="row" key={i}>
-              <div class="col">
+              <div className="col">
                 <div
                   className="card"
-                  onClick={_ => (window.location = `./${uid}/chat/${chat.cid}`)}
+                  onClick={_ => (window.location = `/chatroom/${chat.crid}`)}
                 >
                   <div className="card-body">
                     <h5 className="card-title">{chat.sender}</h5>
-                    <p className="card-text text-dark">{chat.time}</p>
                     <p className="card-text">{chat.lastMessage}</p>
                   </div>
                 </div>
@@ -313,7 +327,7 @@ class Profile extends Component {
           <br />
           {reportListData.map((report, i) => (
             <div className="row" key={i}>
-              <div class="col">
+              <div className="col">
                 <div
                   className="card"
                   onClick={_ =>

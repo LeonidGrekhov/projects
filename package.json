@@ -67,5 +67,10 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "front-end/"
+    ]
   }
 }

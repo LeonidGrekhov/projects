@@ -6,18 +6,17 @@ const init = server => {
   io.use(({ request }, next) => session(request, request.res, next));
   io.attach(server);
 };
-const userChatrooms = new Map();
 
 const userSockets = new Map();
 
 io.on('connection', socket => {
   try {
-    if (socket.request.session.passport) {
-      const {
-        user: { uid }
-      } = socket.request.session.passport;
-      userSockets.set(uid, socket);
-      socket.on('disconnect', () => userSockets.delete(uid));
+    if (!!socket.request.session.passport) {
+      if (socket.request.session.passport.user) {
+        const { user: uid } = socket.request.session.passport;
+        userSockets.set(uid.toString(), socket);
+        socket.on('disconnect', () => userSockets.delete(uid.toString()));
+      }
     }
   } catch (error) {
     console.log('Socket Error:', error);

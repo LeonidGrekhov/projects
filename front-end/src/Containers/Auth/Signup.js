@@ -19,9 +19,9 @@ class Signup extends Component {
 
   componentDidMount = () => {
     Auth.getLogin().then(userInfo => {
-      if (!userInfo) {
+      try {
         window.location = '/';
-      }
+      } catch (_) {}
     });
   };
 
@@ -131,7 +131,7 @@ class Signup extends Component {
                   checked={this.state.tosCheckbox}
                   onChange={this.onTos}
                 />
-                <label className="form-check-label" for="exampleCheck1">
+                <label className="form-check-label" htmlFor="exampleCheck1">
                   Read Terms of Service
                 </label>
               </div>
@@ -146,7 +146,7 @@ class Signup extends Component {
             <div
               className="modal fade"
               id="exampleModalLong"
-              tabindex="-1"
+              tabIndex="-1"
               role="dialog"
               aria-labelledby="exampleModalLongTitle"
               aria-hidden="true"

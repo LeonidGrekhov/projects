@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { Listing as ListingAPI } from '../../api';
+import { Auth, Chat, Listing as ListingAPI } from '../../api';
 
 class Listing extends Component {
   constructor(props) {
@@ -38,7 +38,10 @@ class Listing extends Component {
 
   addToCart = () => (
     <>
-      <button className="btn btn-warning float-right mr-5">
+      <button
+        className="btn btn-warning float-right mr-5"
+        onClick={this.onAddToCart}
+      >
         <h4>
           <i className="fa fa-shopping-cart" /> Add To Cart
         </h4>
@@ -101,12 +104,39 @@ class Listing extends Component {
             </div>
           </div>
           <h6>condition: {this.state.listData.condition}</h6>
-          <h6>price: {this.state.listData.price}</h6>
+          <h6>price: ${this.state.listData.price}</h6>
         </div>
         <div className="col-2" />
       </div>
     </>
   );
+
+  onAddToCart = _ => {
+    const {
+      lid,
+      listData: {
+        Seller: { uid }
+      }
+    } = this.state;
+    Auth.getLogin().then(userData => {
+      if (userData.uid !== uid) {
+        Chat.getChat(uid).then(chat => {
+          if (!chat) {
+            Chat.putChat(uid).then(_ =>
+              Chat.getChat(uid).then(chat => {
+                Chat.putChatlog(
+                  chat.crid,
+                  "hi, I'm interested in your listing #" + lid
+                ).then(_ => (window.location = '/chatroom/' + chat.crid));
+              })
+            );
+          } else {
+            window.location = '/chatroom/' + chat.crid;
+          }
+        });
+      }
+    });
+  };
 
   render = () => {
     return (

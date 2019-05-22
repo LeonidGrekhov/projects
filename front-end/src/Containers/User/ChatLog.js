@@ -8,20 +8,21 @@ class ChatLog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logData: props.logData
+      chatLogData: props.logData
     };
   }
 
   componentWillReceiveProps = props => {
-    this.setState({ logData: props.logData });
+    this.setState({ chatLogData: props.logData });
   };
 
   componentDidMount = () => {
-    this.ps = new PerfectScrollbar(ReactDOM.findDOMNode(this));
-    let height = ReactDOM.findDOMNode(this).clientHeight;
+    this.ps = new PerfectScrollbar(ReactDOM.findDOMNode(this), {
+      wheelPropagation: true,
+      suppressScrollX: true
+    });
+    let height = ReactDOM.findDOMNode(this).scrollHeight;
     ReactDOM.findDOMNode(this).scrollTop = height;
-    this.ps.update();
-    ReactDOM.findDOMNode(this).scrollTo(0, height);
   };
 
   componentDidUpdate = _ => {
@@ -34,8 +35,8 @@ class ChatLog extends Component {
   render = () => {
     return (
       <div className="border">
-        {this.state.logData.map((message, i) => (
-          <p className="text-dark mx-4" key={i}>
+        {this.state.chatLogData.map(({ message }, i) => (
+          <p className="text-dark ml-4" key={i}>
             {' '}
             {message}{' '}
           </p>
