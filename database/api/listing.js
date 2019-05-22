@@ -26,7 +26,7 @@ const S3UploadPromiseWraper = (lid, pic) => {
   });
 };
 
-const createListing = db => (uid, bid, price, condition, pic) =>
+const createListing = db => (uid, bid, price, condition, pic, mid) =>
   pic
     ? db.listing
         .create({
@@ -34,7 +34,8 @@ const createListing = db => (uid, bid, price, condition, pic) =>
           uid,
           created: moment().format(),
           price,
-          condition
+          condition,
+          mid
         })
         .then(list =>
           resolve({
@@ -54,7 +55,8 @@ const createListing = db => (uid, bid, price, condition, pic) =>
         uid,
         created: moment().format(),
         price,
-        condition
+        condition,
+        mid
       });
 
 const updateListing = db => (lid, price, condition, pic) =>

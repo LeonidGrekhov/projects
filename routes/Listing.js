@@ -34,13 +34,14 @@ router.get('/api/list/:lid', authenticated, ({ params: { lid } }, response) => {
 router.put(
   '/api/list',
   authenticated,
-  ({ body: { uid, bid, price, condition, pic } }, response) => {
+  ({ body: { uid, bid, price, condition, pic, mid } }, response) => {
     return Listing.createListing(
       parseInt(uid),
       parseInt(bid),
       parseInt(price),
       condition,
-      pic
+      pic,
+      mid
     )
       .then(data => {
         return response.json(data);
