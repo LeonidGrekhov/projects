@@ -47,8 +47,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     {
       classMethods: {
-        associate: function(models) {
-          User.hasOne(models.VerificationToken, {
+        associate: db => {
+          User.hasOne(db.VerificationToken, {
             as: 'verificationtoken',
             foreignKey: 'uid',
             foreignKeyConstraint: true

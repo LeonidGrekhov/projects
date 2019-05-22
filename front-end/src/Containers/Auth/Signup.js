@@ -20,7 +20,6 @@ class Signup extends Component {
   componentDidMount = () => {
     Auth.getLogin().then(userInfo => {
       try {
-        console.log(userInfo.id);
         window.location = '/';
       } catch (_) {}
     });

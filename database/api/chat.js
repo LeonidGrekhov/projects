@@ -1,9 +1,8 @@
 const getChat = db => (uid, rid) => db.chat.findOne({ where: { uid, rid } });
 
-const getUserChats = db => uid =>
-  db.user.findByPk(uid).then(user => user.findChats());
+const getUserChats = db => uid => db.chat.findAll({ where: { uid } });
 
-const getChatroom = db => crid =>
+const getChatroom = db => (uid, crid) =>
   db.chatroom.findByPk(crid, {
     include: [
       {
@@ -12,7 +11,8 @@ const getChatroom = db => crid =>
       },
       {
         model: db.chat,
-        as: 'Chat',
+        as: 'Chats',
+        where: { uid },
         include: [
           {
             model: db.user,

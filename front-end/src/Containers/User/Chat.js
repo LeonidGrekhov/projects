@@ -20,9 +20,9 @@ class Chat extends Component {
   }
 
   componentDidMount = () => {
-    ChatAPI.getChatroom(this.state.crid).then(chatroomData =>
-      this.setState({ chatroomData, renderReady: true })
-    );
+    ChatAPI.getChatroom(this.state.crid).then(chatroomData => {
+      this.setState({ chatroomData, renderReady: true });
+    });
   };
 
   onChange = event => {
@@ -31,14 +31,14 @@ class Chat extends Component {
 
   onChat = message => {
     let chatroomData = this.state.chatroomData;
-    chatroomData.ChatLogs.push(message);
+    chatroomData.ChatLogs.push({ message });
     this.setState({ chatroomData });
   };
 
   onSubmit = event => {
     event.preventDefault();
     let { crid, message } = this.state;
-    ChatAPI.putChatlog({ crid, message });
+    ChatAPI.putChatlog(crid, message);
     this.setState({ message: '' });
   };
 
@@ -63,7 +63,7 @@ class Chat extends Component {
       <div className="row m-4">
         <div className="col-1" />
         <div className="col">
-          <ChatLog logData={this.state.chatroomData.ChatLogs} />
+          <ChatLog logData={this.state.chatroomData.Chatlogs} />
         </div>
         <div className="col-1" />
       </div>

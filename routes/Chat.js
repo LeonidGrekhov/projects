@@ -14,15 +14,15 @@ router.get(
 
 router.get('/api/userchats', authenticated, ({ user: { uid } }, response) =>
   ChatDb.getUserChats(uid)
-    .then(chats => response.json(chats))
+    .then(chatroom => response.json(chatroom))
     .catch(error => response.json(error))
 );
 
 router.get(
   '/api/chatroom/:crid',
   authenticated,
-  ({ params: { crid } }, response) =>
-    ChatDb.getChatroom(crid)
+  ({ params: { crid }, user: { uid } }, response) =>
+    ChatDb.getChatroom(uid, crid)
       .then(chatroom => response.json(chatroom))
       .catch(error => response.json(error))
 );

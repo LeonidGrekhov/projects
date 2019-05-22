@@ -91,31 +91,28 @@ class Profile extends Component {
   componentDidMount = () => {
     Chat.getUserChats().then(chats => {
       if (chats) {
-        Promise.all(
-          chats
-            .map(chat => Chat.getChatroom(chat.crid))
-            .then(chatrooms => {
-              let chatListData = chatrooms.map(chatroom => {
-                return {
-                  cid: chatroom.Chat.cid,
-                  sender:
-                    chatroom.Chat.Receiver.firstname +
-                    ' ' +
-                    chatroom.Chat.Receiver.lastname,
-                  lastMessage: chatroom.Chatlogs.length
-                    ? chatroom.Chatlogs[chatroom.Chatlogs.length - 1].split(
-                        ':'
-                      )[1]
-                    : ''
-                };
-              });
-              this.setState({
-                chatListData,
-                profileData: json.profileData,
-                reportListData: json.reportListData,
-                display: 'Profile'
-              });
-            })
+        Promise.all(chats.map(chat => Chat.getChatroom(chat.crid))).then(
+          chatrooms => {
+            let chatListData = chatrooms.map(chatroom => ({
+              cid: chatroom.Chats[0].cid,
+              crid: chatroom.Chats[0].crid,
+              sender:
+                chatroom.Chats[0].Receiver.firstname +
+                ' ' +
+                chatroom.Chats[0].Receiver.lastname,
+              lastMessage: chatroom.Chatlogs.length
+                ? chatroom.Chatlogs[chatroom.Chatlogs.length - 1].message.split(
+                    ':'
+                  )[1]
+                : ''
+            }));
+            this.setState({
+              chatListData,
+              profileData: json.profileData,
+              reportListData: json.reportListData,
+              display: 'Profile'
+            });
+          }
         );
       } else {
         this.setState({
@@ -280,6 +277,7 @@ class Profile extends Component {
       reportListData,
       uid
     } = this.state;
+    console.log(chatListData);
     if ('Profile' === display) {
       return (
         <>
@@ -297,7 +295,7 @@ class Profile extends Component {
               <div className="col">
                 <div
                   className="card"
-                  onClick={_ => (window.location = `./${uid}/chat/${chat.cid}`)}
+                  onClick={_ => (window.location = `/chatroom/${chat.crid}`)}
                 >
                   <div className="card-body">
                     <h5 className="card-title">{chat.sender}</h5>
