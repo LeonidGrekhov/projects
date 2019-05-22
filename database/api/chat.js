@@ -7,7 +7,18 @@ const getChatroom = db => crid =>
     include: [
       {
         model: db.chatlog,
-        as: Chatlogs
+        as: 'Chatlogs'
+      },
+      {
+        model: db.chat,
+        as: Chat,
+        include: [
+          {
+            model: db.user,
+            as: 'Receiver',
+            attributes: ['uid', 'firstname', 'lastname']
+          }
+        ]
       }
     ]
   });
