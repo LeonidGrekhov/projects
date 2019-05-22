@@ -101,7 +101,7 @@ class Listing extends Component {
             </div>
           </div>
           <h6>condition: {this.state.listData.condition}</h6>
-          <h6>price: {this.state.listData.price}</h6>
+          <h6>price: ${this.state.listData.price}</h6>
         </div>
         <div className="col-2" />
       </div>

@@ -155,7 +155,7 @@ class ListingList extends Component {
               </div>
             </div>
             <div className="col col-3 border">{list.condition}</div>
-            <div className="col col-2 border">{list.price}</div>
+            <div className="col col-2 border">$ {list.price}</div>
           </div>
         );
       })}
