@@ -35,35 +35,41 @@ class CreateUserListing extends Component {
 
   onChangeSearch = event => {
     let search = event.target.value;
-    Search.getAllSearchByTitle(search).then(books => {
-      console.log(books);
+    if (null === search || '' === search) {
       this.setState({
         search,
-        searchSuggestion: (
-          <ul>
-            {books.map((book, i) => {
-              if (
-                '' !== search &&
-                book.title.toLowerCase().includes(search.toLowerCase())
-              ) {
-                return (
-                  <li
-                    key={i}
-                    onClick={this.onSuggestion}
-                    value={book.title}
-                    bookid={book.bid}
-                  >
-                    {book.title}
-                  </li>
-                );
-              } else {
-                return <div key={i} />;
-              }
-            })}
-          </ul>
-        )
+        searchSuggestion: <ul />
       });
-    });
+    } else {
+      Search.getAllSearchByTitle(search).then(books => {
+        this.setState({
+          search,
+          searchSuggestion: (
+            <ul>
+              {books.map((book, i) => {
+                if (
+                  '' !== search &&
+                  book.title.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return (
+                    <li
+                      key={i}
+                      onClick={this.onSuggestion}
+                      value={book.title}
+                      bookid={book.bid}
+                    >
+                      {book.title}
+                    </li>
+                  );
+                } else {
+                  return <div key={i} />;
+                }
+              })}
+            </ul>
+          )
+        });
+      });
+    }
   };
 
   onImageUpload = event => {
