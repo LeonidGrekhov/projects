@@ -46,7 +46,7 @@ router.put(
       .then(chatlog => chatlog.getChatroom())
       .then(chatroom => chatroom.getChats({ where: { uid } }))
       .then(chats => {
-        ChatSocket.emit(uid, chats[0].rid, log);
+        ChatSocket.emit(uid, chats[0].rid, crid, log);
       })
       .catch(error => response.json(error));
   }

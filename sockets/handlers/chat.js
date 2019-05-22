@@ -1,11 +1,11 @@
-const emit = sockets => (sid, rid, message) => {
+const emit = sockets => (sid, rid, crid, message) => {
   const senderSocket = sockets.get(sid);
   const receiverSocket = sockets.get(rid);
   if (senderSocket) {
-    senderSocket.emit(`chat:${rid}`, message);
+    senderSocket.emit(`chat:${crid}`, message);
   }
   if (receiverSocket) {
-    receiverSocket.emit(`chat:${sid}`, message);
+    receiverSocket.emit(`chat:${crid}`, message);
   }
 };
 
