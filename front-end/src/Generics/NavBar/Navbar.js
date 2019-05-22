@@ -22,7 +22,7 @@ class Navbar extends Component {
     }
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
-    this.onRegister = this.onRegister.bind(this);
+    this.onSignUp = this.onSignUp.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
 
@@ -46,9 +46,9 @@ class Navbar extends Component {
     });
   };
 
-  onRegister = event => {
+  onSignUp = event => {
     event.preventDefault();
-    window.location = '/register';
+    window.location = '/signup';
   };
 
   onSearch = event => {
@@ -182,7 +182,7 @@ class Navbar extends Component {
         id="SignUpButton"
         className="btn btn-primary my-2 mr-2 my-sm-0"
         type="submit"
-        onClick={this.onRegister}
+        onClick={this.onSignUp}
       >
         Sign Up
       </button>
