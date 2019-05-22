@@ -1,11 +1,6 @@
-div.border.ps {
+div.border {
   position: relative;
-  min-height: 30vh;
-  max-height: 30vh;
+  min-height: 60vh;
+  max-height: 60vh;
   overflow-y: auto;
-  direction: rtl;
-}
-
-div.border > .text-dark {
-  direction: ltr;
 }

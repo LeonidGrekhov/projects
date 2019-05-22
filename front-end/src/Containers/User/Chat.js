@@ -21,7 +21,9 @@ class Chat extends Component {
 
   componentDidMount = () => {
     ChatAPI.getChatroom(this.state.crid).then(chatroomData => {
-      this.setState({ chatroomData, renderReady: true });
+      if (chatroomData) {
+        this.setState({ chatroomData, renderReady: true });
+      }
     });
   };
 
@@ -31,7 +33,7 @@ class Chat extends Component {
 
   onChat = message => {
     let chatroomData = this.state.chatroomData;
-    chatroomData.ChatLogs.push({ message });
+    chatroomData.Chatlogs.push({ message });
     this.setState({ chatroomData });
   };
 
