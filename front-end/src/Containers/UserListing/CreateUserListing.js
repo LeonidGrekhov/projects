@@ -32,12 +32,12 @@ class CreateUserListing extends Component {
       search: '',
       searchSuggestion: <ul />,
       bookData: null,
-      userDescription: '',
       userPrice: 0,
       listData: null,
       bookCondition: 'Book Condition',
       selectedMeetingPoint: null,
       meetingPoints: null,
+      listerImageNames: [],
       listerImages: [],
       listerImageDisplayIndex: null,
       listerImageCapacity: 1,
@@ -113,46 +113,91 @@ class CreateUserListing extends Component {
   };
 
   onImageUpload = event => {
-    let { listerImages, listerImageCapacity } = this.state;
+    let { listerImageNames, listerImages, listerImageCapacity } = this.state;
+    let names = listerImageNames;
     let images = listerImages;
     let index = 0;
     if (images.length < listerImageCapacity) {
+      names.push(event.target.files[0].name);
       images.push(URL.createObjectURL(event.target.files[0]));
       index = images.length - 1;
+      console.log(images[index]);
     }
 
     this.setState({
+      listerImageNames: names,
       listerImages: images,
       listerImageDisplayIndex: index
     });
   };
   onImageRemove = _ => {
-    let { listerImages, listerImageDisplayIndex } = this.state;
+    let {
+      listerImageNames,
+      listerImages,
+      listerImageDisplayIndex
+    } = this.state;
+    let names = listerImageNames;
     let images = listerImages;
     if (0 < images.length) {
+      names.pop();
       images.pop();
       if (0 === images.length) {
-        this.setState({ listerImages: images, listerImageDisplayIndex: null });
+        this.setState({
+          listerImageNames: names,
+          listerImages: images,
+          listerImageDisplayIndex: null
+        });
       } else if (listerImageDisplayIndex === images.length) {
         this.setState({
+          listerImageNames: names,
           listerImages: images,
           listerImageDisplayIndex: listerImageDisplayIndex - 1
         });
       } else {
-        this.setState({ listerImages: images });
+        this.setState({ listerImageNames: names, listerImages: images });
       }
     }
   };
   onSubmit = event => {
+    const {
+      uid,
+      bookData: { bid },
+      userPrice,
+      bookCondition,
+      listerImageNames,
+      listerImages,
+      listerImageDisplayIndex
+    } = this.state;
     event.preventDefault();
-    Listing.putListCreate(
-      this.state.uid,
-      this.state.bookData.bid,
-      this.state.userPrice,
-      this.state.bookCondition
-    ).then(({ bid, lid }) => {
-      window.location = `/book/${bid}/list/${lid}`;
-    });
+    let pic = null;
+    if (listerImageDisplayIndex) {
+      let name = listerImageNames[listerImageDisplayIndex];
+      let extensionIndex = name.lastIndexOf('.');
+      /*
+      https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data#Sending_binary_data
+      
+      var oReq = new XMLHttpRequest();
+      oReq.open("POST", url, true);
+      oReq.onload = function (oEvent) {
+        // Uploaded.
+      };
+
+      var blob = new Blob(['abc123'], {type: 'text/plain'});
+
+      oReq.send(blob);
+      
+      */
+      pic = {
+        filename: name.substr(0, extensionIndex),
+        extension: name.substr(extensionIndex + 1),
+        streamData: listerImages[listerImageDisplayIndex]
+      };
+    }
+    Listing.putListCreate(uid, bid, userPrice, bookCondition, pic).then(
+      ({ bid, lid }) => {
+        window.location = `/book/${bid}/list/${lid}`;
+      }
+    );
   };
 
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
