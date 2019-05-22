@@ -12,7 +12,7 @@ const addBook = db => (title, author, isbn, description, pictureurl, type) =>
 
 //Recomendations for carousel returns 5 books from the database
 const getLatestReleases = db => () => {
-  return db.book.findAll({ limit: 5, order: [['bid', 'DESC']] });
+  return db.book.findAll({ limit: 10, order: [['bid', 'DESC']] });
 };
 
 const getBookListings = db => bid =>
