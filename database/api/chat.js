@@ -1,5 +1,7 @@
 const getChat = db => (uid, rid) => db.chat.findOne({ where: { uid, rid } });
 
+const getUserChats = db => uid => db.user.findByPk(uid).then(user.getChats());
+
 const getChatroom = db => crid =>
   db.chatroom.findByPk(crid, {
     include: [
@@ -32,6 +34,7 @@ const createChatlog = db => (crid, message) =>
 
 module.exports = db => ({
   getChat: getChat(db),
+  getUserChats: getUserChats(db),
   getChatroom: getChatroom(db),
   createChat: createChat(db),
   createChatlog: createChatlog(db)
