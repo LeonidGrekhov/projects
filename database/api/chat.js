@@ -1,6 +1,7 @@
 const getChat = db => (uid, rid) => db.chat.findOne({ where: { uid, rid } });
 
-const getUserChats = db => uid => db.user.findByPk(uid).then(user.getChats());
+const getUserChats = db => uid =>
+  db.user.findByPk(uid).then(user => user.findChats());
 
 const getChatroom = db => crid =>
   db.chatroom.findByPk(crid, {

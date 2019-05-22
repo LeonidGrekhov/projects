@@ -90,7 +90,7 @@ class Profile extends Component {
 
   componentDidMount = () => {
     Chat.getUserChats().then(chats => {
-      if (chats.length) {
+      if (chats) {
         Promise.all(
           chats
             .map(chat => Chat.getChatroom(chat.crid))
@@ -294,7 +294,7 @@ class Profile extends Component {
           <br />
           {chatListData.map((chat, i) => (
             <div className="row" key={i}>
-              <div class="col">
+              <div className="col">
                 <div
                   className="card"
                   onClick={_ => (window.location = `./${uid}/chat/${chat.cid}`)}
@@ -329,7 +329,7 @@ class Profile extends Component {
           <br />
           {reportListData.map((report, i) => (
             <div className="row" key={i}>
-              <div class="col">
+              <div className="col">
                 <div
                   className="card"
                   onClick={_ =>
