@@ -109,6 +109,10 @@ const getListing = db => lid =>
         model: db.user,
         as: 'Seller',
         attributes: ['uid', 'firstname', 'lastname']
+      },
+      {
+        model: db.meeting,
+        as: 'Meeting'
       }
     ]
   });

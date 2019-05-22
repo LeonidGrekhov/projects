@@ -67,6 +67,16 @@ module.exports = function(sequelize, DataTypes) {
           model: 'user',
           key: 'rating'
         }
+      },
+      mid: {
+        type: DataTypes.INTEGER(11),
+        onUpdate: 'restrict',
+        onDelete: 'restrict',
+        allowNull: false,
+        references: {
+          model: 'meeting',
+          key: 'mid'
+        }
       }
     },
     {
@@ -83,6 +93,10 @@ module.exports = function(sequelize, DataTypes) {
     Listing.belongsTo(db.user, {
       as: 'Seller',
       foreignKey: 'uid'
+    });
+    Listing.belongsTo(db.meeting, {
+      as: 'Meeting',
+      foreignKey: 'mid'
     });
   };
   return Listing;

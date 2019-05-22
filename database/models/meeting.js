@@ -9,9 +9,20 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         primaryKey: true
       },
-      location: {
-        type: DataTypes.STRING(45),
-        allowNull: false
+      lat: {
+        type: DataTypes.DOUBLE
+      },
+      lng: {
+        type: DataTypes.DOUBLE
+      },
+      name: {
+        type: DataTypes.STRING(150)
+      },
+      title: {
+        type: DataTypes.STRING(150)
+      },
+      info: {
+        type: DataTypes.STRING(500)
       }
     },
     {
