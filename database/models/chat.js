@@ -37,9 +37,15 @@ module.exports = function(sequelize, DataTypes) {
   );
   chat.associate = db => {
     chat.belongsTo(db.user, {
+      as: 'Receiver',
+      foreignKey: 'rid'
+    });
+    chat.belongsTo(db.user, {
+      as: 'Sender',
       foreignKey: 'uid'
     });
     chat.belongsTo(db.chatroom, {
+      as: 'Chatroom',
       foreignKey: 'crid'
     });
   };

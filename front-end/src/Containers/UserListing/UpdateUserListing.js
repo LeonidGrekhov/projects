@@ -5,6 +5,23 @@ import './UserListing.css';
 
 import { Book, Listing } from '../../api';
 
+const meetingPointsJson = [
+  {
+    name: 'Conference Services',
+    lat: 37.7236693,
+    lng: -122.4834738,
+    title: 'Conference Services',
+    info: `Towers at Centennial Square Jr. Suites - State University, 798 Font Blvd, San Francisco, CA 94132`
+  },
+  {
+    name: 'meetingPoint2',
+    lat: 57.7236693,
+    lng: -142.4834738,
+    title: 'meeting point 2',
+    info: 'meeting point infoooooooooooooooooooooooooooooo - aaaa - qqqqq'
+  }
+];
+
 class CreateUserListing extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +35,8 @@ class CreateUserListing extends Component {
       userPrice: 0,
       listData: null,
       bookCondition: 'Book Condition',
+      selectedMeetingPoint: null,
+      meetingPoints: null,
       listerImages: [],
       listerImageDisplayIndex: null,
       listerImageCapacity: 5,

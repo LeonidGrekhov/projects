@@ -26,6 +26,7 @@ module.exports = function(sequelize, DataTypes) {
   );
   chatlog.associate = db => {
     chatlog.belongsTo(db.chatroom, {
+      as: 'Chatroom',
       foreignKey: 'crid'
     });
   };

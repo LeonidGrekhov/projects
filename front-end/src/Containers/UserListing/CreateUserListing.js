@@ -1,9 +1,26 @@
 import React, { Component } from 'react';
 
 import Generics from '../../Generics';
+import GoogleMap from './GoogleMap';
 import './UserListing.css';
-
 import { Book, Search, Listing } from '../../api';
+
+const meetingPointsJson = [
+  {
+    name: 'Conference Services',
+    lat: 37.7236693,
+    lng: -122.4834738,
+    title: 'Conference Services',
+    info: `Towers at Centennial Square Jr. Suites - State University, 798 Font Blvd, San Francisco, CA 94132`
+  },
+  {
+    name: 'meetingPoint2',
+    lat: 57.7236693,
+    lng: -142.4834738,
+    title: 'meeting point 2',
+    info: 'meeting point infoooooooooooooooooooooooooooooo - aaaa - qqqqq'
+  }
+];
 
 class CreateUserListing extends Component {
   constructor(props) {
@@ -19,6 +36,8 @@ class CreateUserListing extends Component {
       userPrice: 0,
       listData: null,
       bookCondition: 'Book Condition',
+      selectedMeetingPoint: null,
+      meetingPoints: null,
       listerImages: [],
       listerImageDisplayIndex: null,
       listerImageCapacity: 5,
@@ -27,11 +46,32 @@ class CreateUserListing extends Component {
   }
 
   componentDidMount = () => {
-    this.setState({ renderReady: true });
+    this.setState({
+      meetingPoints: meetingPointsJson,
+      selectedMeetingPoint: meetingPointsJson[0],
+      renderReady: true
+    });
+
+    /*
+    API.getMeetingPoints().then( meetingPoints =>
+      this.setState({
+        meetingPoints,
+        selectedMeetingPoint: meetingPoints[0],
+        renderReady: true
+      })
+    )
+    */
   };
 
   onChange = event =>
     this.setState({ [event.target.name]: event.target.value });
+
+  onChangeMeetingPoint = event =>
+    this.setState({
+      selectedMeetingPoint: this.state.meetingPoints.filter(
+        meetingPoint => event.target.value === meetingPoint.name
+      )[0]
+    });
 
   onChangeSearch = event => {
     let search = event.target.value;
@@ -216,16 +256,28 @@ class CreateUserListing extends Component {
                 </div>
                 <br />
                 <div className="form-group">
-                  <label htmlFor="form">User description:</label>
-                  <textarea
-                    rows="4"
-                    type="userDescription"
-                    className="form-control"
-                    id="form-userDescription"
-                    placeholder="Enter book description"
-                    name="userDescription"
-                    value={this.state.userDescription}
-                    onChange={this.onChange}
+                  <label>Meeting Point:</label>
+                  <select
+                    className="custom-select"
+                    name="selectedMeetingPoint"
+                    value={this.state.selectedMeetingPoint.name}
+                    onChange={this.onChangeMeetingPoint}
+                  >
+                    {this.state.meetingPoints.map(({ name }, i) => (
+                      <option value={name} key={i}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                  <br />
+                  <br />
+                  <GoogleMap
+                    lat={this.state.selectedMeetingPoint.lat}
+                    lng={this.state.selectedMeetingPoint.lng}
+                    zoom={15}
+                    title={this.state.selectedMeetingPoint.title}
+                    info={this.state.selectedMeetingPoint.info}
+                    dimension="33vw"
                   />
                 </div>
                 Book Condition:
