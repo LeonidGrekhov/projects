@@ -53,9 +53,12 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: 'uid',
             foreignKeyConstraint: true
           });
-
           User.hasMany(db.listing, {
             as: 'Listings',
+            foreignKey: 'uid'
+          });
+          User.hasMany(db.chat, {
+            as: 'Chats',
             foreignKey: 'uid'
           });
         }
