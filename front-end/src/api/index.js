@@ -6,4 +6,5 @@ import Search from './Search';
 import User from './User';
 import Transaction from './Transaction';
 import Book from './Book';
-export { socket, Admin, Auth, Listing, Search, User, Transaction, Book };
+import Chat from './Chat';
+export { socket, Admin, Auth, Listing, Search, User, Transaction, Book, Chat };
