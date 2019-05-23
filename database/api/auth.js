@@ -31,6 +31,17 @@ const findUserById = db => uid => {
   return user;
 };
 
+const findUserProfile = db => uid =>
+  db.user.findByPk(uid, {
+    include: [
+      {
+        model: db.listing,
+        as: 'Listings'
+      }
+    ],
+    attributes: ['firstname', 'lastname', 'email', 'rating']
+  });
+
 const updatePassword = db => (email, new_password) =>
   bcrypt
     .hash(new_password, SALT_ROUNDS)
@@ -58,6 +69,7 @@ module.exports = db => ({
   insertUser: insertUser(db),
   findUserByEmail: findUserByEmail(db),
   findUserById: findUserById(db),
+  findUserProfile: findUserProfile(db),
   updatePassword: updatePassword(db),
   verifyUser: verifyUser(db),
   insertSession: insertSession(db),

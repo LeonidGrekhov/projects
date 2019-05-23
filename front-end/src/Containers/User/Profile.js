@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { Chat } from '../../api';
+import { Chat, Profile as ProfileAPI } from '../../api';
 
 let json = {
   profileData: {
@@ -61,6 +61,10 @@ class Profile extends Component {
     this.state = {
       guest: true,
       uid: props.match.params.uid,
+      firstname: '',
+      lastname: '',
+      rating: null,
+      email: '',
       chatListData: [],
       reportListData: [],
       profileData: null,
@@ -72,7 +76,7 @@ class Profile extends Component {
         Listing: this.onListing,
         Report: _ => this.setState({ display: 'Report' })
       },
-      renderReady: false
+      renderReady: true
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.profileSideBar = this.profileSideBar.bind(this);
@@ -89,6 +93,24 @@ class Profile extends Component {
   }
 
   componentDidMount = () => {
+    ProfileAPI.getUserProfile(this.state.uid).then(user => {
+      console.log('printing the output for user');
+      console.log(typeof user);
+      console.log(user);
+      var email = user.email;
+      var firstname = user.firstname;
+      var lastname = user.lastname;
+      var rating = user.rating;
+      var listings = user.listings;
+      this.setState({
+        firstname,
+        lastname,
+        email,
+        rating,
+        listings: listings
+      });
+    });
+
     Chat.getUserChats().then(chats => {
       if (chats) {
         Promise.all(chats.map(chat => Chat.getChatroom(chat.crid))).then(

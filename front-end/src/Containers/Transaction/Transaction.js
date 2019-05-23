@@ -65,7 +65,7 @@ class Transaction extends Component {
     );
 
   transactionDetail = () => (
-    <div className="row my-4" style={{marginRight:'0'}}>
+    <div className="row my-4" style={{ marginRight: '0' }}>
       <div className="col-1" />
       <div className="col-2">
         <img
@@ -84,7 +84,7 @@ class Transaction extends Component {
         </h5>
         <span>isbn: {this.state.transactionData.bookData.isbn}</span>
         <br />
-        <div className="row" style={{marginRight:'0'}}>
+        <div className="row" style={{ marginRight: '0' }}>
           <div className="col-2">rating:</div>
           <div className="col-2">
             <Generics.Body.RatingStar
@@ -96,7 +96,7 @@ class Transaction extends Component {
       </div>
       <div className="col-4">
         <h5>Seller: {this.state.transactionData.listData.seller}</h5>
-        <div className="row" style={{marginRight:'0'}}>
+        <div className="row" style={{ marginRight: '0' }}>
           <div className="col-2">rating:</div>
           <div className="col-2">
             <Generics.Body.RatingStar
@@ -113,7 +113,7 @@ class Transaction extends Component {
   );
 
   checkoutRow = () => (
-    <div className="row my-4" style={{marginRight:'0'}}>
+    <div className="row my-4" style={{ marginRight: '0' }}>
       <div className="col-2" />
       <div className="col">
         <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
@@ -133,6 +133,7 @@ class Transaction extends Component {
       <div>
         <Generics.NavBar />
         <Generics.Header />
+
         <Generics.Body content={this.bodyContent()} />
         <Generics.Footer />
       </div>

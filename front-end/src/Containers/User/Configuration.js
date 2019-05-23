@@ -22,7 +22,7 @@ class Configuration extends Component {
       firstname: '',
       lastname: '',
       email: '',
-      renderReady: false
+      renderReady: true
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.onChange = this.onChange.bind(this);

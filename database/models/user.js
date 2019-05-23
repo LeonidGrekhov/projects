@@ -46,26 +46,24 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     {
-      classMethods: {
-        associate: db => {
-          User.hasOne(db.VerificationToken, {
-            as: 'verificationtoken',
-            foreignKey: 'uid',
-            foreignKeyConstraint: true
-          });
-          User.hasMany(db.listing, {
-            as: 'Listings',
-            foreignKey: 'uid'
-          });
-          User.hasMany(db.chat, {
-            as: 'Chats',
-            foreignKey: 'uid'
-          });
-        }
-      },
       timestamps: false,
       tableName: 'user'
     }
   );
+  User.associate = db => {
+    User.hasOne(db.verificationToken, {
+      as: 'verificationtoken',
+      foreignKey: 'uid',
+      foreignKeyConstraint: true
+    });
+    User.hasMany(db.listing, {
+      as: 'Listings',
+      foreignKey: 'uid'
+    });
+    User.hasMany(db.chat, {
+      as: 'Chats',
+      foreignKey: 'uid'
+    });
+  };
   return User;
 };
