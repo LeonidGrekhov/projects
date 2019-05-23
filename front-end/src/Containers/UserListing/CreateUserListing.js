@@ -7,13 +7,15 @@ import { Book, Search, Listing } from '../../api';
 
 const meetingPointsJson = [
   {
-    name: 'Malcome X Plaze',
+    mid: 1,
+    name: 'Malcolm X Plaza',
     lat: 37.7221622,
     lng: -122.4788561,
-    title: 'Malcome X Plaza',
+    title: 'Malcolm X Plaza',
     info: `1650 Holloway Ave, San Francisco, CA 94132 `
   },
   {
+    mid: 2,
     name: 'J. Paul Leonard Library',
     lat: 37.720929,
     lng: -122.476856,
@@ -22,6 +24,7 @@ const meetingPointsJson = [
       '1630 Holloway Avenue, San Francisco, CA 94132, United States of America'
   },
   {
+    mid: 3,
     name: 'Student Services',
     lat: 37.7236197,
     lng: -122.4812626,
@@ -29,6 +32,7 @@ const meetingPointsJson = [
     info: `1600 Holloway Ave, San Francisco, CA 94132`
   },
   {
+    mid: 4,
     name: 'University Police Station',
     lat: 37.7259304,
     lng: -122.4820684,
@@ -36,6 +40,7 @@ const meetingPointsJson = [
     info: `100 N State Dr, San Francisco, CA 94132`
   },
   {
+    mid: 5,
     name: 'Thornton Hall',
     lat: 37.723724,
     lng: -122.4791161,
@@ -50,6 +55,7 @@ class CreateUserListing extends Component {
     this.state = {
       uid: props.match.params.uid,
       bid: null,
+      mid: null,
       showSideBar: false,
       search: '',
       searchSuggestion: <ul />,
@@ -190,6 +196,9 @@ class CreateUserListing extends Component {
       listerImages,
       listerImageDisplayIndex
     } = this.state;
+    const mid = this.state.selectedMeetingPoint.mid;
+    console.log('book id is ', bid, '\n');
+    console.log('meeting id is ', mid);
     event.preventDefault();
     let pic = null;
     if (listerImageDisplayIndex) {
@@ -215,7 +224,7 @@ class CreateUserListing extends Component {
         streamData: listerImages[listerImageDisplayIndex]
       };
     }
-    Listing.putListCreate(uid, bid, userPrice, bookCondition, pic).then(
+    Listing.putListCreate(uid, bid, userPrice, bookCondition, pic, mid).then(
       ({ bid, lid }) => {
         window.location = `/book/${bid}/list/${lid}`;
       }
