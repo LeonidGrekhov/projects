@@ -10,7 +10,7 @@ class SearchResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSideBar: true,
+      showSideBar: false,
       result: null,
       page: parseInt(this.props.match.params.page),
       pageCount: null,

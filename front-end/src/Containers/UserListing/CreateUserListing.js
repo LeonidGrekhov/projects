@@ -7,18 +7,45 @@ import { Book, Search, Listing } from '../../api';
 
 const meetingPointsJson = [
   {
-    name: 'Conference Services',
-    lat: 37.7236693,
-    lng: -122.4834738,
-    title: 'Conference Services',
-    info: `Towers at Centennial Square Jr. Suites - State University, 798 Font Blvd, San Francisco, CA 94132`
+    mid: 1,
+    name: 'Malcolm X Plaza',
+    lat: 37.7221622,
+    lng: -122.4788561,
+    title: 'Malcolm X Plaza',
+    info: `1650 Holloway Ave, San Francisco, CA 94132 `
   },
   {
-    name: 'meetingPoint2',
-    lat: 57.7236693,
-    lng: -142.4834738,
-    title: 'meeting point 2',
-    info: 'meeting point infoooooooooooooooooooooooooooooo - aaaa - qqqqq'
+    mid: 2,
+    name: 'J. Paul Leonard Library',
+    lat: 37.720929,
+    lng: -122.476856,
+    title: 'J. Paul Leonard Library',
+    info:
+      '1630 Holloway Avenue, San Francisco, CA 94132, United States of America'
+  },
+  {
+    mid: 3,
+    name: 'Student Services',
+    lat: 37.7236197,
+    lng: -122.4812626,
+    title: 'Student Services ',
+    info: `1600 Holloway Ave, San Francisco, CA 94132`
+  },
+  {
+    mid: 4,
+    name: 'University Police Station',
+    lat: 37.7259304,
+    lng: -122.4820684,
+    title: 'University Police Station',
+    info: `100 N State Dr, San Francisco, CA 94132`
+  },
+  {
+    mid: 5,
+    name: 'Thornton Hall',
+    lat: 37.723724,
+    lng: -122.4791161,
+    title: 'Thornton Hall',
+    info: `17 20th Ave, San Francisco, CA 94132`
   }
 ];
 
@@ -28,19 +55,20 @@ class CreateUserListing extends Component {
     this.state = {
       uid: props.match.params.uid,
       bid: null,
+      mid: null,
       showSideBar: false,
       search: '',
       searchSuggestion: <ul />,
       bookData: null,
-      userDescription: '',
       userPrice: 0,
       listData: null,
       bookCondition: 'Book Condition',
       selectedMeetingPoint: null,
       meetingPoints: null,
+      listerImageNames: [],
       listerImages: [],
       listerImageDisplayIndex: null,
-      listerImageCapacity: 5,
+      listerImageCapacity: 1,
       renderReady: false
     };
   }
@@ -113,46 +141,94 @@ class CreateUserListing extends Component {
   };
 
   onImageUpload = event => {
-    let { listerImages, listerImageCapacity } = this.state;
+    let { listerImageNames, listerImages, listerImageCapacity } = this.state;
+    let names = listerImageNames;
     let images = listerImages;
     let index = 0;
     if (images.length < listerImageCapacity) {
+      names.push(event.target.files[0].name);
       images.push(URL.createObjectURL(event.target.files[0]));
       index = images.length - 1;
+      console.log(images[index]);
     }
 
     this.setState({
+      listerImageNames: names,
       listerImages: images,
       listerImageDisplayIndex: index
     });
   };
   onImageRemove = _ => {
-    let { listerImages, listerImageDisplayIndex } = this.state;
+    let {
+      listerImageNames,
+      listerImages,
+      listerImageDisplayIndex
+    } = this.state;
+    let names = listerImageNames;
     let images = listerImages;
     if (0 < images.length) {
+      names.pop();
       images.pop();
       if (0 === images.length) {
-        this.setState({ listerImages: images, listerImageDisplayIndex: null });
+        this.setState({
+          listerImageNames: names,
+          listerImages: images,
+          listerImageDisplayIndex: null
+        });
       } else if (listerImageDisplayIndex === images.length) {
         this.setState({
+          listerImageNames: names,
           listerImages: images,
           listerImageDisplayIndex: listerImageDisplayIndex - 1
         });
       } else {
-        this.setState({ listerImages: images });
+        this.setState({ listerImageNames: names, listerImages: images });
       }
     }
   };
   onSubmit = event => {
+    const {
+      uid,
+      bookData: { bid },
+      userPrice,
+      bookCondition,
+      listerImageNames,
+      listerImages,
+      listerImageDisplayIndex
+    } = this.state;
+    const mid = this.state.selectedMeetingPoint.mid;
+    console.log('book id is ', bid, '\n');
+    console.log('meeting id is ', mid);
     event.preventDefault();
-    Listing.putListCreate(
-      this.state.uid,
-      this.state.bookData.bid,
-      this.state.userPrice,
-      this.state.bookCondition
-    ).then(({ bid, lid }) => {
-      window.location = `/book/${bid}/list/${lid}`;
-    });
+    let pic = null;
+    if (listerImageDisplayIndex) {
+      let name = listerImageNames[listerImageDisplayIndex];
+      let extensionIndex = name.lastIndexOf('.');
+      /*
+      https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data#Sending_binary_data
+      
+      var oReq = new XMLHttpRequest();
+      oReq.open("POST", url, true);
+      oReq.onload = function (oEvent) {
+        // Uploaded.
+      };
+
+      var blob = new Blob(['abc123'], {type: 'text/plain'});
+
+      oReq.send(blob);
+      
+      */
+      pic = {
+        filename: name.substr(0, extensionIndex),
+        extension: name.substr(extensionIndex + 1),
+        streamData: listerImages[listerImageDisplayIndex]
+      };
+    }
+    Listing.putListCreate(uid, bid, userPrice, bookCondition, pic, mid).then(
+      ({ bid, lid }) => {
+        window.location = `/book/${bid}/list/${lid}`;
+      }
+    );
   };
 
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
