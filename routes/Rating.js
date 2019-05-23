@@ -3,25 +3,23 @@ const { Rating } = require('../database/api/');
 
 router.put('/api/book/rating', (req, res) => {
   const { bid, rating } = req.body;
-
   return Rating.updateBookRating(bid, rating)
-    .then(book => {
-      res.json({ book });
+    .then(data => {
+      return res.json(data);
     })
-    .catch(e => {
-      res.json(e);
+    .catch(_ => {
+      return res.json(null);
     });
 });
 
 router.put('/api/user/rating', (req, res) => {
   const { uid, rating } = req.body;
-
   return Rating.updateUserRating(uid, rating)
-    .then(user => {
-      res.json({ user });
+    .then(data => {
+      return res.json(data);
     })
-    .catch(e => {
-      res.json(e);
+    .catch(_ => {
+      return res.json(null);
     });
 });
 
