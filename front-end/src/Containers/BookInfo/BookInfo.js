@@ -11,7 +11,7 @@ class BookInfo extends Component {
       bid: props.match.params.bid,
       bookData: null,
       guest: true,
-      showSideBar: true,
+      showSideBar: false,
       renderReady: false
     };
   }
