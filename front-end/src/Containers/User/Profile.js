@@ -2,20 +2,10 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { User } from '../../api';
+import { Chat, Profile as ProfileAPI } from '../../api';
+import defaultProfileImage from './images/profile_default.png';
 
-let debug = true;
 let json = {
-  profileData: {
-    firstname: 'Bob',
-    lastname: 'Ross',
-    email: 'fake@email.domain',
-    rating: 4.3,
-    pictureurl:
-      'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-    description:
-      'this is a placeholder account. Turn off debug to switch to an actual profile.'
-  },
   chatListData: [
     {
       cid: 24,
@@ -62,6 +52,11 @@ class Profile extends Component {
     this.state = {
       guest: true,
       uid: props.match.params.uid,
+      firstname: '',
+      lastname: '',
+      rating: null,
+      email: '',
+      description: '',
       chatListData: [],
       reportListData: [],
       profileData: null,
@@ -73,7 +68,7 @@ class Profile extends Component {
         Listing: this.onListing,
         Report: _ => this.setState({ display: 'Report' })
       },
-      renderReady: false
+      renderReady: true
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.profileSideBar = this.profileSideBar.bind(this);
@@ -90,27 +85,58 @@ class Profile extends Component {
   }
 
   componentDidMount = () => {
-    if (debug) {
-      this.setState({
-        chatListData: json.chatListData,
-        profileData: json.profileData,
-        reportListData: json.reportListData,
-        display: 'Profile'
-      });
-    } else {
-      let { uid } = this.state;
-      User.getUserProfile(uid).then(profileData => {
-        if (profileData.error) {
-          window.location = '/404';
-        } else {
-          User.getUserChatList(uid).then(chatListData =>
-            this.setState({ chatListData, profileData, display: 'Profile' })
-          );
-        }
-      });
-    }
+    ProfileAPI.getUserProfile(this.state.uid).then(user => {
+      console.log('printing the output for user');
+      console.log(typeof user);
+      console.log(user);
+      if (user) {
+        this.setState({
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          rating: user.rating,
+          listings: user.listings
+        });
+      }
+    });
+
+    Chat.getUserChats().then(chats => {
+      if (chats) {
+        Promise.all(chats.map(chat => Chat.getChatroom(chat.crid))).then(
+          chatrooms => {
+            let chatListData = chatrooms.map(chatroom => ({
+              cid: chatroom.Chats[0].cid,
+              crid: chatroom.Chats[0].crid,
+              sender:
+                chatroom.Chats[0].Receiver.firstname +
+                ' ' +
+                chatroom.Chats[0].Receiver.lastname,
+              lastMessage: chatroom.Chatlogs.length
+                ? chatroom.Chatlogs[chatroom.Chatlogs.length - 1].message.split(
+                    ':'
+                  )[1]
+                : ''
+            }));
+            this.setState({
+              chatListData,
+              profileData: json.profileData,
+              reportListData: json.reportListData,
+              display: 'Profile'
+            });
+          }
+        );
+      } else {
+        this.setState({
+          chatListData: [],
+          profileData: json.profileData,
+          reportListData: json.reportListData,
+          display: 'Profile'
+        });
+      }
+    });
   };
 
+  //Todo remove the guest hard code from state props
   bodyContent = () => {
     let guest = this.state.guest;
     return (
@@ -152,7 +178,7 @@ class Profile extends Component {
       }}
     >
       <img
-        src={this.state.profileData.pictureurl}
+        src={defaultProfileImage}
         className="img-fluid img-thumbnail"
         alt="profile"
         style={{
@@ -171,10 +197,9 @@ class Profile extends Component {
           }}
         >
           <h3>
-            {this.state.profileData.firstname} {this.state.profileData.lastname}
+            {this.state.firstname} {this.state.lastname}
           </h3>
-          {this.state.profileData.rating &&
-            this.displayRating(this.state.profileData.rating)}
+          {this.state.rating && this.displayRating(this.state.rating)}
         </li>
         <button
           type="button"
@@ -263,12 +288,13 @@ class Profile extends Component {
       reportListData,
       uid
     } = this.state;
+    console.log(chatListData);
     if ('Profile' === display) {
       return (
         <>
           <br />
           <h2>Profile</h2>
-          <div>{profileData.description}</div>
+          <div>{this.state.description}</div>
         </>
       );
     } else if ('Message' === display) {
@@ -277,14 +303,13 @@ class Profile extends Component {
           <br />
           {chatListData.map((chat, i) => (
             <div className="row" key={i}>
-              <div class="col">
+              <div className="col">
                 <div
                   className="card"
-                  onClick={_ => (window.location = `./${uid}/chat/${chat.cid}`)}
+                  onClick={_ => (window.location = `/chatroom/${chat.crid}`)}
                 >
                   <div className="card-body">
                     <h5 className="card-title">{chat.sender}</h5>
-                    <p className="card-text text-dark">{chat.time}</p>
                     <p className="card-text">{chat.lastMessage}</p>
                   </div>
                 </div>
@@ -297,14 +322,12 @@ class Profile extends Component {
       return (
         <div>
           <br />
-          to do
         </div>
       );
     } else if ('Listing' === display) {
       return (
         <div>
           <br />
-          to do
         </div>
       );
     } else if ('Report' === display) {
@@ -313,7 +336,7 @@ class Profile extends Component {
           <br />
           {reportListData.map((report, i) => (
             <div className="row" key={i}>
-              <div class="col">
+              <div className="col">
                 <div
                   className="card"
                   onClick={_ =>

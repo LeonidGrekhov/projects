@@ -1,8 +1,7 @@
 module.exports = (request, response, next) => {
-    if (!request.isAuthenticated()) {
-      next();
-    } else {
-      response.sendStatus(404);
-    }
-  };
-  
+  if (!request.isAuthenticated()) {
+    next();
+  } else {
+    response.json(null);
+  }
+};

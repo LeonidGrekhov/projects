@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { User } from '../../api';
-
-let debug = true;
-
 let userJson = {
   data: {
     generalInfo: {
@@ -26,7 +22,7 @@ class Configuration extends Component {
       firstname: '',
       lastname: '',
       email: '',
-      renderReady: false
+      renderReady: true
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -34,23 +30,12 @@ class Configuration extends Component {
   }
 
   componentDidMount = () => {
-    if (debug) {
-      this.setState({
-        renderReady: true,
-        firstname: userJson.data.generalInfo.firstname,
-        lastname: userJson.data.generalInfo.lastname,
-        email: userJson.data.generalInfo.email
-      });
-    } else {
-      User.getUserConfiguration(this.props.match.params.uid).then(data =>
-        this.setState({
-          renderReady: true,
-          firstname: data.generalInfo.firstname,
-          lastname: data.generalInfo.lastname,
-          email: data.generalInfo.email
-        })
-      );
-    }
+    this.setState({
+      renderReady: true,
+      firstname: userJson.data.generalInfo.firstname,
+      lastname: userJson.data.generalInfo.lastname,
+      email: userJson.data.generalInfo.email
+    });
   };
 
   bodyContent = () =>
@@ -137,24 +122,6 @@ class Configuration extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    User.postUserConfiguration({
-      uid: this.props.match.params.uid,
-      configuration: {
-        generalInfo: {
-          firstname: this.state.firstname,
-          lastname: this.state.lastname,
-          email: this.state.lastname
-        },
-        buyerInfo: {},
-        sellerInfo: {}
-      }
-    }).then(response => {
-      if (response.ok) {
-        window.location = './';
-      } else {
-        console.log(response);
-      }
-    });
   };
 
   render = () => (

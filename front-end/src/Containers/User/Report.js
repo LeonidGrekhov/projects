@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { User } from '../../api';
-
-let debug = true;
-
 let userJson = {
   data: {
     generalInfo: {
@@ -34,30 +30,19 @@ class Report extends Component {
       reportDescription: null,
       reportStatusOpen: false,
       reportResolution: 'user Anon123 is now banned, thank you for your report',
-      renderReady: false
+      renderReady: true
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount = () => {
-    if (debug) {
-      this.setState({
-        renderReady: true,
-        userInfo: userJson.data.generalInfo,
-        reportTitle: reportJson.title,
-        reportDescription: reportJson.description
-      });
-    } else {
-      User.getUserConfiguration(this.props.match.params.uid).then(data =>
-        this.setState({
-          renderReady: true,
-          firstname: data.generalInfo.firstname,
-          lastname: data.generalInfo.lastname,
-          email: data.generalInfo.email
-        })
-      );
-    }
+    this.setState({
+      renderReady: true,
+      userInfo: userJson.data.generalInfo,
+      reportTitle: reportJson.title,
+      reportDescription: reportJson.description
+    });
   };
 
   bodyContent = () =>
@@ -118,24 +103,6 @@ class Report extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    User.postUserConfiguration({
-      uid: this.props.match.params.uid,
-      configuration: {
-        generalInfo: {
-          firstname: this.state.firstname,
-          lastname: this.state.lastname,
-          email: this.state.lastname
-        },
-        buyerInfo: {},
-        sellerInfo: {}
-      }
-    }).then(response => {
-      if (response.ok) {
-        window.location = './';
-      } else {
-        console.log(response);
-      }
-    });
   };
 
   render = () => (

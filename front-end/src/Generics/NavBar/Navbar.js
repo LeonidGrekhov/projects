@@ -6,8 +6,6 @@ import logo from './logo.svg';
 import './NavBar.css';
 import cartLogo from './shoppingCart.svg';
 
-let debugUser = false;
-
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -24,33 +22,12 @@ class Navbar extends Component {
     }
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
-    this.onRegister = this.onRegister.bind(this);
+    this.onSignUp = this.onSignUp.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
 
   componentDidMount = () => {
-    if (debugUser) {
-      this.setState({
-        user: {
-          firstname: 'Rob'
-        }
-      });
-    } else {
-      Auth.getLogin().then(response => {
-        if (response.ok) {
-          response.text().then(promise => {
-            promise = JSON.parse(promise);
-            if (promise.firstname) {
-              this.setState({
-                user: {
-                  firstname: promise.firstname
-                }
-              });
-            }
-          });
-        }
-      });
-    }
+    Auth.getLogin().then(user => this.setState({ user }));
   };
 
   onChange = event => {
@@ -69,9 +46,9 @@ class Navbar extends Component {
     });
   };
 
-  onRegister = event => {
+  onSignUp = event => {
     event.preventDefault();
-    window.location = '/register';
+    window.location = '/signup';
   };
 
   onSearch = event => {
@@ -205,7 +182,7 @@ class Navbar extends Component {
         id="SignUpButton"
         className="btn btn-primary my-2 mr-2 my-sm-0"
         type="submit"
-        onClick={this.onRegister}
+        onClick={this.onSignUp}
       >
         Sign Up
       </button>
@@ -232,7 +209,8 @@ class Navbar extends Component {
         0
       </button>
     );
-    if (this.state.user) {
+    const { user } = this.state;
+    if (user) {
       return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <a className="navbar-brand" href="/">
@@ -272,16 +250,22 @@ class Navbar extends Component {
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuLink"
                 >
-                  <a className="dropdown-item" href="/user/1">
+                  <a className="dropdown-item" href={`/user/${user.uid}`}>
                     User Profile
                   </a>
-                  <a className="dropdown-item" href="/user/1/listing/1">
+                  <a
+                    className="dropdown-item"
+                    href={`/user/${user.uid}/listing`}
+                  >
                     Create a listing
                   </a>
                   <a className="dropdown-item" href="/transaction">
                     Transaction history
                   </a>
-                  <a className="dropdown-item" href="/user/1/report">
+                  <a
+                    className="dropdown-item"
+                    href={`/user/${user.uid}/report`}
+                  >
                     User Report
                   </a>
                 </div>
