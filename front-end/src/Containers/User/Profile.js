@@ -86,9 +86,6 @@ class Profile extends Component {
 
   componentDidMount = () => {
     ProfileAPI.getUserProfile(this.state.uid).then(user => {
-      console.log('printing the output for user');
-      console.log(typeof user);
-      console.log(user);
       if (user) {
         this.setState({
           firstname: user.firstname,
@@ -97,6 +94,8 @@ class Profile extends Component {
           rating: user.rating,
           listings: user.listings
         });
+      } else {
+        window.location = '/';
       }
     });
 

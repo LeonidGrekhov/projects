@@ -37,7 +37,6 @@ class Navbar extends Component {
   onLogin = event => {
     event.preventDefault();
     Auth.postLogin(this.state.email, this.state.password).then(response => {
-      console.log(response);
       if (response.firstname) {
         this.setState({ user: response });
       } else {

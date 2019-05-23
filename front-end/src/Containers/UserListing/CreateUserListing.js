@@ -149,7 +149,6 @@ class CreateUserListing extends Component {
       names.push(event.target.files[0].name);
       images.push(URL.createObjectURL(event.target.files[0]));
       index = images.length - 1;
-      console.log(images[index]);
     }
 
     this.setState({
@@ -197,8 +196,6 @@ class CreateUserListing extends Component {
       listerImageDisplayIndex
     } = this.state;
     const mid = this.state.selectedMeetingPoint.mid;
-    console.log('book id is ', bid, '\n');
-    console.log('meeting id is ', mid);
     event.preventDefault();
     let pic = null;
     if (listerImageDisplayIndex) {
