@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Generics from '../../Generics';
 
 import { Chat, Profile as ProfileAPI } from '../../api';
+import defaultProfileImage from './images/profile_default.png';
 
 let json = {
   chatListData: [
@@ -88,14 +89,15 @@ class Profile extends Component {
       console.log('printing the output for user');
       console.log(typeof user);
       console.log(user);
-
-      this.setState({
-        firstname: user.firstname,
-        lastname: user.lastname,
-        email: user.email,
-        rating: user.rating,
-        listings: user.listings
-      });
+      if (user) {
+        this.setState({
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          rating: user.rating,
+          listings: user.listings
+        });
+      }
     });
 
     Chat.getUserChats().then(chats => {
@@ -133,6 +135,7 @@ class Profile extends Component {
       }
     });
   };
+
   //Todo remove the guest hard code from state props
   bodyContent = () => {
     let guest = this.state.guest;
@@ -175,7 +178,7 @@ class Profile extends Component {
       }}
     >
       <img
-        src={this.state.profileData.pictureurl}
+        src={defaultProfileImage}
         className="img-fluid img-thumbnail"
         alt="profile"
         style={{
@@ -196,8 +199,7 @@ class Profile extends Component {
           <h3>
             {this.state.firstname} {this.state.lastname}
           </h3>
-          {this.state.profileData.rating &&
-            this.displayRating(this.state.rating)}
+          {this.state.rating && this.displayRating(this.state.rating)}
         </li>
         <button
           type="button"
@@ -320,14 +322,12 @@ class Profile extends Component {
       return (
         <div>
           <br />
-          to do
         </div>
       );
     } else if ('Listing' === display) {
       return (
         <div>
           <br />
-          to do
         </div>
       );
     } else if ('Report' === display) {
