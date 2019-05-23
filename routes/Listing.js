@@ -34,13 +34,14 @@ router.get('/api/list/:lid', authenticated, ({ params: { lid } }, response) => {
 router.put(
   '/api/list',
   authenticated,
-  ({ body: { uid, bid, price, condition, pic } }, response) => {
+  ({ body: { uid, bid, price, condition, pic, mid } }, response) => {
     return Listing.createListing(
       parseInt(uid),
       parseInt(bid),
       parseInt(price),
       condition,
-      pic
+      pic,
+      mid
     )
       .then(data => {
         return response.json(data);
@@ -56,18 +57,22 @@ router.put(
 router.put(
   '/api/list/:lid',
   authenticated,
-  ({ params: { lid }, body: { price, condition, pic } }, response) => {
-    return Listing.updateListing(lid, parseInt(price), condition, pic).then(
-      data => {
-        return Listing.getListing(lid)
-          .then(updatedData => {
-            return response.json(updatedData);
-          })
-          .catch(_ => {
-            return response.json(null);
-          });
-      }
-    );
+  ({ params: { lid }, body: { price, condition, pic, mid } }, response) => {
+    return Listing.updateListing(
+      lid,
+      parseInt(price),
+      condition,
+      pic,
+      mid
+    ).then(data => {
+      return Listing.getListing(lid)
+        .then(updatedData => {
+          return response.json(updatedData);
+        })
+        .catch(_ => {
+          return response.json(null);
+        });
+    });
   }
 );
 
