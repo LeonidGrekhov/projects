@@ -5,16 +5,6 @@ import Generics from '../../Generics';
 import { Chat, Profile as ProfileAPI } from '../../api';
 
 let json = {
-  profileData: {
-    firstname: 'Bob',
-    lastname: 'Ross',
-    email: 'fake@email.domain',
-    rating: 4.3,
-    pictureurl:
-      'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-    description:
-      'this is a placeholder account. Turn off debug to switch to an actual profile.'
-  },
   chatListData: [
     {
       cid: 24,
@@ -65,6 +55,7 @@ class Profile extends Component {
       lastname: '',
       rating: null,
       email: '',
+      description: '',
       chatListData: [],
       reportListData: [],
       profileData: null,
@@ -97,17 +88,13 @@ class Profile extends Component {
       console.log('printing the output for user');
       console.log(typeof user);
       console.log(user);
-      var email = user.email;
-      var firstname = user.firstname;
-      var lastname = user.lastname;
-      var rating = user.rating;
-      var listings = user.listings;
+
       this.setState({
-        firstname,
-        lastname,
-        email,
-        rating,
-        listings: listings
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        rating: user.rating,
+        listings: user.listings
       });
     });
 
@@ -146,7 +133,7 @@ class Profile extends Component {
       }
     });
   };
-
+  //Todo remove the guest hard code from state props
   bodyContent = () => {
     let guest = this.state.guest;
     return (
@@ -207,10 +194,10 @@ class Profile extends Component {
           }}
         >
           <h3>
-            {this.state.profileData.firstname} {this.state.profileData.lastname}
+            {this.state.firstname} {this.state.lastname}
           </h3>
           {this.state.profileData.rating &&
-            this.displayRating(this.state.profileData.rating)}
+            this.displayRating(this.state.rating)}
         </li>
         <button
           type="button"
@@ -305,7 +292,7 @@ class Profile extends Component {
         <>
           <br />
           <h2>Profile</h2>
-          <div>{profileData.description}</div>
+          <div>{this.state.description}</div>
         </>
       );
     } else if ('Message' === display) {
