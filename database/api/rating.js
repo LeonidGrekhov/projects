@@ -1,18 +1,20 @@
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-const updateBookRating = db => (id, rating) => {
-  var rate = db.bookrating.findAndCountAll({
-    attributes: [rating],
-    where: { bid: id }
+const updateBookRating = db => (bid, rating) => {
+  var newrating = 0.0;
+  var sum = db.bookrating.sum('rating', { where: { bid: bid } }).then(sum => {
+    sum = sum + rating;
+    var count = db.bookrating
+      .count({ where: { bid: { [Op.eq]: bid } } })
+      .then(count => {
+        count = count + 1;
+        newrating = sum / count;
+        Math.round(newrating);
+        db.book.update({ rating: newrating }, { where: { bid: bid } });
+      });
   });
-  console.log(rate);
-  return db.book.update(
-    {
-      rating: rating
-    },
-    { where: { bid } }
-  );
+  return db.bookrating.create({ rating, bid });
 };
 
 const updateUserRating = db => (uid, rating) => {
@@ -23,11 +25,8 @@ const updateUserRating = db => (uid, rating) => {
       .count({ where: { uid: { [Op.eq]: uid } } })
       .then(count => {
         count = count + 1;
-        console.log(sum);
-        console.log(count);
         newrating = sum / count;
         Math.round(newrating);
-        console.log(newrating);
         db.user.update({ rating: newrating }, { where: { uid: uid } });
       });
   });

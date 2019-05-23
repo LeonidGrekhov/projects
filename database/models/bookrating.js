@@ -15,11 +15,12 @@ module.exports = function(sequelize, DataTypes) {
       bid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
+        primaryKey: true,
         onUpdate: 'cascade',
         onDelete: 'cascade',
         references: {
-          model: 'user',
-          key: 'uid'
+          model: 'book',
+          key: 'bid'
         }
       }
     },
