@@ -28,7 +28,7 @@ class Profile extends Component {
         Listing: this.onListing,
         Report: _ => this.setState({ display: 'Report' })
       },
-      renderReady: true
+      renderReady: false
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.profileSideBar = this.profileSideBar.bind(this);
