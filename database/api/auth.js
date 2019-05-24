@@ -36,7 +36,13 @@ const findUserProfile = db => uid =>
     include: [
       {
         model: db.listing,
-        as: 'Listings'
+        as: 'Listings',
+        include: [
+          {
+            model: db.book,
+            as: 'Book'
+          }
+        ]
       }
     ],
     attributes: ['firstname', 'lastname', 'email', 'rating']

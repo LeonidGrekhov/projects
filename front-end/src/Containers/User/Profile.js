@@ -64,7 +64,6 @@ class Profile extends Component {
                       ].message.split(':')[1]
                     : ''
                 }));
-                console.log(user);
                 this.setState({
                   firstname: user.firstname,
                   lastname: user.lastname,
@@ -72,8 +71,6 @@ class Profile extends Component {
                   rating: user.rating,
                   listings: user.Listings,
                   chatListData,
-                  profileData: json.profileData,
-                  reportListData: json.reportListData,
                   display: 'Profile'
                 });
               }
@@ -86,8 +83,6 @@ class Profile extends Component {
               rating: user.rating,
               listings: user.Listings,
               chatListData: [],
-              profileData: json.profileData,
-              reportListData: json.reportListData,
               display: 'Profile'
             });
           }
@@ -281,17 +276,30 @@ class Profile extends Component {
     } else if ('Listing' === display) {
       return (
         <div>
+          <br />
           {listings.map((listing, i) => (
-            <div
-              key={i}
-              onClick={_ =>
-                (window.location = `./book/${listing.bid}/list/${listing.lid}`)
-              }
-            >
-              {listing.lid}
+            <div className="row" key={i}>
+              <div className="col">
+                <div
+                  className="card"
+                  onClick={_ =>
+                    (window.location = `./book/${listing.bid}/list/${
+                      listing.lid
+                    }`)
+                  }
+                >
+                  <div className="card-body">
+                    <h5 className="card-title">Listing #:{listing.lid}</h5>
+                    <p className="card-text">
+                      Book Title: {listing.Book.title}
+                    </p>
+                    <p className="card-text">Author: {listing.Book.author}</p>
+                    <p className="card-text">ISBN: {listing.Book.isbn}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
-          <br />
         </div>
       );
     } else if ('Report' === display) {
