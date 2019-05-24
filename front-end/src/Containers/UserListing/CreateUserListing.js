@@ -124,7 +124,7 @@ class CreateUserListing extends Component {
                       key={i}
                       onClick={this.onSuggestion}
                       value={book.title}
-                      bookid={book.bid}
+                      bid={book.bid}
                     >
                       {book.title}
                     </li>
@@ -231,7 +231,7 @@ class CreateUserListing extends Component {
   onShowOrHide = _ => this.setState({ showSideBar: !this.state.showSideBar });
 
   onSuggestion = event => {
-    let bid = event.target.getAttribute('bookid');
+    let bid = event.target.getAttribute('bid');
     Book.getBook(bid).then(bookData => this.setState({ bookData }));
   };
 
