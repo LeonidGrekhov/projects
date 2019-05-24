@@ -40,7 +40,6 @@ class Signup extends Component {
       if (userInfo) {
         window.location = '/';
       } else {
-        console.log('signup fail');
       }
     });
   };

@@ -46,8 +46,7 @@ router.put(
       .then(data => {
         return response.json(data);
       })
-      .catch(_ => {
-        console.log('An error occurred, ', _);
+      .catch(e => {
         return response.json(null);
       });
   }

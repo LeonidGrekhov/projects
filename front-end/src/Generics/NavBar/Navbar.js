@@ -41,7 +41,6 @@ class Navbar extends Component {
         this.setState({ user: response });
         window.location.reload();
       } else {
-        console.log(response.error);
       }
     });
   };

@@ -18,9 +18,7 @@ io.on('connection', socket => {
         socket.on('disconnect', () => userSockets.delete(uid.toString()));
       }
     }
-  } catch (error) {
-    console.log('Socket Error:', error);
-  }
+  } catch (error) {}
 });
 
 module.exports = {
