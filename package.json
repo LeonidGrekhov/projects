@@ -8,7 +8,7 @@
     "build:react": "cd front-end && npm install && npm run build",
     "start:express": "npm run install:express && npm run express",
     "install:express": "npm install",
-    "express": "set DEBUG=Team4:* & node ./bin/www",
+    "express": "DEBUG=Team4:* node ./bin/www",
     "dev:express": "DEBUG=Team4:* LOCAL_SERVER=yes nodemon ./bin/www",
     "dev:react": "cd front-end && REACT_APP_LOCAL_SERVER=yes PORT=4000 npm start",
     "dev:express:windows": "SET DEBUG=Team4:*& SET LOCAL_SERVER=yes& nodemon ./bin/www",
