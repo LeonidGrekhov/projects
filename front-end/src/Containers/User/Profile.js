@@ -283,7 +283,7 @@ class Profile extends Component {
                 <div
                   className="card"
                   onClick={_ =>
-                    (window.location = `./book/${listing.bid}/list/${
+                    (window.location = `/book/${listing.bid}/list/${
                       listing.lid
                     }`)
                   }
