@@ -115,7 +115,9 @@ class Listing extends Component {
           </div>
           <h6>condition: {this.state.listData.condition}</h6>
           <h6>price: ${this.state.listData.price}</h6>
-          {this.review()}
+          <div className="row">
+            <div classNAme="col-4">{this.review()}</div>
+          </div>
         </div>
         <div className="col-2" />
       </div>
@@ -166,7 +168,7 @@ class Listing extends Component {
       </select>
       <button
         type="submit"
-        className="btn btn-success"
+        className="btn btn-success btn-block"
         onClick={this.onAddReview}
       >
         Add review
