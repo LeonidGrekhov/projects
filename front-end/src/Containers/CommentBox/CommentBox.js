@@ -13,8 +13,6 @@ class CommentBox extends Component {
   }
   submitButtonHandler = () => {
     if (debug) {
-      console.log(this.state.commentInput);
-      console.log(this.state.listingID);
     }
   };
   onChangeInputText = () => {
@@ -22,9 +20,7 @@ class CommentBox extends Component {
       commentInput: this.textInput.current.value //set value to text box
     });
   };
-  onChangeRatingSelect = e => {
-    console.log(e);
-  };
+  onChangeRatingSelect = e => {};
   componentDidMount() {
     if (this.props.ID == null) {
       this.setState({

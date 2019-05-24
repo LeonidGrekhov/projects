@@ -111,7 +111,6 @@ router.put('/api/verification', (req, res) => {
   const { email } = req.query;
   return Auth.findUserByEmail(email)
     .then(user => {
-      console.log('User found');
       if (user.isVerified)
         return res.status(202).json('Email Already Verified');
 

@@ -40,7 +40,6 @@ class Navbar extends Component {
       if (response.firstname) {
         this.setState({ user: response });
       } else {
-        console.log(response.error);
       }
     });
   };
