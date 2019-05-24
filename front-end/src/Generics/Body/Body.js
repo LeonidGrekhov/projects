@@ -8,13 +8,13 @@ class BodyLanding extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showSideBar: !props.noSideBar
+      showSideBar: false
     };
   }
 
-  componentWillReceiveProps(props) {
+  componentWillReceiveProps(_) {
     this.setState({
-      showSideBar: !props.noSideBar
+      showSideBar: false
     });
   }
 
