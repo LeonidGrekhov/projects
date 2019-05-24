@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { Auth, Chat, Listing as ListingAPI } from '../../api';
+import { Auth, Chat, Listing as ListingAPI, Review } from '../../api';
 
 class Listing extends Component {
   constructor(props) {
@@ -11,9 +11,19 @@ class Listing extends Component {
       bid: props.match.params.bid,
       lid: props.match.params.lid,
       listData: null,
+      review: 0,
       renderReady: false
     };
   }
+
+  onReviewSelect = event => {
+    this.setState({ review: event.target.getAttribute('value') });
+  };
+
+  onAddReview = _ => {
+    const { lid, review } = this.state;
+    Review.putUserRating(lid, review).then(_ => window.location.reload());
+  };
 
   componentDidMount = () =>
     ListingAPI.getList(this.state.lid).then(listData => {
@@ -105,6 +115,9 @@ class Listing extends Component {
           </div>
           <h6>condition: {this.state.listData.condition}</h6>
           <h6>price: ${this.state.listData.price}</h6>
+          <div className="row">
+            <div classNAme="col-4">{this.review()}</div>
+          </div>
         </div>
         <div className="col-2" />
       </div>
@@ -137,6 +150,34 @@ class Listing extends Component {
       }
     });
   };
+
+  review = () => (
+    <>
+      <br />
+      <select
+        className="custom-select"
+        name="selectedReview"
+        value={this.state.review}
+        onChange={this.onReviewSelect}
+      >
+        {[0, 1, 2, 3, 4, 5].map(val => (
+          <option value={val} key={val}>
+            {val}
+          </option>
+        ))}
+      </select>
+      <button
+        type="submit"
+        className="btn btn-success btn-block"
+        onClick={this.onAddReview}
+      >
+        Add review
+      </button>
+      <br />
+      <br />
+      <br />
+    </>
+  );
 
   render = () => {
     return (
