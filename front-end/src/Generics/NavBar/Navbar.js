@@ -39,6 +39,7 @@ class Navbar extends Component {
     Auth.postLogin(this.state.email, this.state.password).then(response => {
       if (response.firstname) {
         this.setState({ user: response });
+        window.location.reload();
       } else {
         console.log(response.error);
       }
@@ -64,6 +65,7 @@ class Navbar extends Component {
     Auth.postLogout().then(response => {
       if (response.ok) {
         this.setState({ user: null });
+        window.location.reload();
       }
     });
   };
