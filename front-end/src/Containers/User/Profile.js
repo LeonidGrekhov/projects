@@ -87,50 +87,52 @@ class Profile extends Component {
   componentDidMount = () => {
     ProfileAPI.getUserProfile(this.state.uid).then(user => {
       if (user) {
-        this.setState({
-          firstname: user.firstname,
-          lastname: user.lastname,
-          email: user.email,
-          rating: user.rating,
-          listings: user.listings
-        });
-      } else {
-        window.location = '/';
-      }
-    });
-
-    Chat.getUserChats().then(chats => {
-      if (chats) {
-        Promise.all(chats.map(chat => Chat.getChatroom(chat.crid))).then(
-          chatrooms => {
-            let chatListData = chatrooms.map(chatroom => ({
-              cid: chatroom.Chats[0].cid,
-              crid: chatroom.Chats[0].crid,
-              sender:
-                chatroom.Chats[0].Receiver.firstname +
-                ' ' +
-                chatroom.Chats[0].Receiver.lastname,
-              lastMessage: chatroom.Chatlogs.length
-                ? chatroom.Chatlogs[chatroom.Chatlogs.length - 1].message.split(
-                    ':'
-                  )[1]
-                : ''
-            }));
+        Chat.getUserChats().then(chats => {
+          if (chats) {
+            Promise.all(chats.map(chat => Chat.getChatroom(chat.crid))).then(
+              chatrooms => {
+                let chatListData = chatrooms.map(chatroom => ({
+                  cid: chatroom.Chats[0].cid,
+                  crid: chatroom.Chats[0].crid,
+                  sender:
+                    chatroom.Chats[0].Receiver.firstname +
+                    ' ' +
+                    chatroom.Chats[0].Receiver.lastname,
+                  lastMessage: chatroom.Chatlogs.length
+                    ? chatroom.Chatlogs[
+                        chatroom.Chatlogs.length - 1
+                      ].message.split(':')[1]
+                    : ''
+                }));
+                this.setState({
+                  firstname: user.firstname,
+                  lastname: user.lastname,
+                  email: user.email,
+                  rating: user.rating,
+                  listings: user.listings,
+                  chatListData,
+                  profileData: json.profileData,
+                  reportListData: json.reportListData,
+                  display: 'Profile'
+                });
+              }
+            );
+          } else {
             this.setState({
-              chatListData,
+              firstname: user.firstname,
+              lastname: user.lastname,
+              email: user.email,
+              rating: user.rating,
+              listings: user.listings,
+              chatListData: [],
               profileData: json.profileData,
               reportListData: json.reportListData,
               display: 'Profile'
             });
           }
-        );
-      } else {
-        this.setState({
-          chatListData: [],
-          profileData: json.profileData,
-          reportListData: json.reportListData,
-          display: 'Profile'
         });
+      } else {
+        window.location = '/';
       }
     });
   };
