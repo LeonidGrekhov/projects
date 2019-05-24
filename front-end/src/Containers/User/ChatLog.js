@@ -34,7 +34,7 @@ class ChatLog extends Component {
 
   render = () => {
     return (
-      <div className="border">
+      <div className="chat">
         {this.state.chatLogData.map(({ message }, i) => (
           <p className="text-dark ml-4" key={i}>
             {' '}
