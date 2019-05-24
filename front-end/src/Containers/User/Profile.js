@@ -5,47 +5,6 @@ import Generics from '../../Generics';
 import { Chat, Profile as ProfileAPI } from '../../api';
 import defaultProfileImage from './images/profile_default.png';
 
-let json = {
-  chatListData: [
-    {
-      cid: 24,
-      sender: 'jimmy99',
-      lastMessage: 'Hi',
-      time: '14:22 24-03-2019'
-    },
-    {
-      cid: 12,
-      sender: 'looking4FreeBooks',
-      lastMessage: 'Heyy',
-      time: '10:02 22-03-2019'
-    },
-    {
-      cid: 16,
-      sender: 'yourDad',
-      lastMessage: 'Hello',
-      time: '06:12 16-03-2019'
-    },
-    {
-      cid: 39,
-      sender: 'xXxpageDestroyerxXx',
-      lastMessage: 'Yo',
-      time: '23:57 01-03-2019'
-    }
-  ],
-  reportListData: [
-    {
-      rid: 1,
-      title: 'adasd',
-      time: '14:22 24-03-2019'
-    },
-    {
-      rid: 3,
-      title: 'eitnieuyn69384',
-      time: '18:22 21-03-2019'
-    }
-  ]
-};
-
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -61,6 +20,7 @@ class Profile extends Component {
       reportListData: [],
       profileData: null,
       display: null,
+      listings: [],
       onUserNavigation: {
         Profile: this.onProfile,
         Message: this.onMessage,
@@ -104,12 +64,13 @@ class Profile extends Component {
                       ].message.split(':')[1]
                     : ''
                 }));
+                console.log(user);
                 this.setState({
                   firstname: user.firstname,
                   lastname: user.lastname,
                   email: user.email,
                   rating: user.rating,
-                  listings: user.listings,
+                  listings: user.Listings,
                   chatListData,
                   profileData: json.profileData,
                   reportListData: json.reportListData,
@@ -123,7 +84,7 @@ class Profile extends Component {
               lastname: user.lastname,
               email: user.email,
               rating: user.rating,
-              listings: user.listings,
+              listings: user.Listings,
               chatListData: [],
               profileData: json.profileData,
               reportListData: json.reportListData,
@@ -137,7 +98,6 @@ class Profile extends Component {
     });
   };
 
-  //Todo remove the guest hard code from state props
   bodyContent = () => {
     let guest = this.state.guest;
     return (
@@ -282,14 +242,7 @@ class Profile extends Component {
   );
 
   userContent = ({ guest }) => {
-    let {
-      display,
-      profileData,
-      chatListData,
-      reportListData,
-      uid
-    } = this.state;
-    console.log(chatListData);
+    let { listings, display, chatListData, reportListData, uid } = this.state;
     if ('Profile' === display) {
       return (
         <>
@@ -328,6 +281,16 @@ class Profile extends Component {
     } else if ('Listing' === display) {
       return (
         <div>
+          {listings.map((listing, i) => (
+            <div
+              key={i}
+              onClick={_ =>
+                (window.location = `./book/${listing.bid}/list/${listing.lid}`)
+              }
+            >
+              {listing.lid}
+            </div>
+          ))}
           <br />
         </div>
       );
