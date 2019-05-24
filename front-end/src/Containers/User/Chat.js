@@ -14,7 +14,7 @@ class Chat extends Component {
       crid: props.match.params.crid,
       chatroomData: null,
       message: '',
-      renderReady: true
+      renderReady: false
     };
     socket.on(`chat:${this.state.crid}`, this.onChat);
   }

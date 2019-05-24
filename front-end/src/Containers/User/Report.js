@@ -30,7 +30,7 @@ class Report extends Component {
       reportDescription: null,
       reportStatusOpen: false,
       reportResolution: 'user Anon123 is now banned, thank you for your report',
-      renderReady: true
+      renderReady: false
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
