@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { Auth, Book } from '../../api';
+import { Auth, Book, Review } from '../../api';
 
 class BookInfo extends Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class BookInfo extends Component {
       bid: props.match.params.bid,
       bookData: null,
       guest: true,
+      review: 0,
       showSideBar: false,
       renderReady: false
     };
@@ -24,6 +25,15 @@ class BookInfo extends Component {
         this.setState({ bookData, guest: !!userInfo, renderReady: true })
       )
     );
+  };
+
+  onReviewSelect = event => {
+    this.setState({ review: event.target.getAttribute('value') });
+  };
+
+  onAddReview = _ => {
+    const { bid, review } = this.state;
+    Review.putBookRating(bid, review).then(_ => window.location.reload());
   };
 
   onGoToListing = event => {
@@ -61,6 +71,34 @@ class BookInfo extends Component {
               <div className="text-default">
                 Description: {this.state.bookData.description}
               </div>
+
+              {this.state.guest && (
+                <>
+                  <br />
+                  <select
+                    className="custom-select"
+                    name="selectedReview"
+                    value={this.state.review}
+                    onChange={this.onReviewSelect}
+                  >
+                    {[0, 1, 2, 3, 4, 5].map(val => (
+                      <option value={val} key={val}>
+                        {val}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="submit"
+                    className="btn btn-success"
+                    onClick={this.onAddReview}
+                  >
+                    Add review
+                  </button>
+                  <br />
+                  <br />
+                  <br />
+                </>
+              )}
 
               {this.state.guest && (
                 <button
