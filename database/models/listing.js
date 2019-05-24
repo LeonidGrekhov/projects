@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define(
+  const Listing = sequelize.define(
     'listing',
     {
       lid: {
@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
           key: 'bid'
         }
       },
-      sid: {
+      uid: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
         onUpdate: 'cascade',
@@ -67,6 +67,16 @@ module.exports = function(sequelize, DataTypes) {
           model: 'user',
           key: 'rating'
         }
+      },
+      mid: {
+        type: DataTypes.INTEGER(11),
+        onUpdate: 'restrict',
+        onDelete: 'restrict',
+        allowNull: false,
+        references: {
+          model: 'meeting',
+          key: 'mid'
+        }
       }
     },
     {
@@ -74,4 +84,20 @@ module.exports = function(sequelize, DataTypes) {
       timestamps: false
     }
   );
+  Listing.associate = db => {
+    Listing.belongsTo(db.book, {
+      as: 'Book',
+      foreignKey: 'bid'
+    });
+    //Listing is the source model, user is the target
+    Listing.belongsTo(db.user, {
+      as: 'Seller',
+      foreignKey: 'uid'
+    });
+    Listing.belongsTo(db.meeting, {
+      as: 'Meeting',
+      foreignKey: 'mid'
+    });
+  };
+  return Listing;
 };

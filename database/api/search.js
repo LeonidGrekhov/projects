@@ -1,65 +1,56 @@
-const findBookByTitle = db => title => {
-  var splitString = title.split(' ');
-
-  let orValue = [];
-  splitString.map(str => {
-    let orValueInteration = {
-      title: {
-        [db.Sequelize.Op.like]: '%' + str + '%'
-      }
-    };
-    orValue.push(orValueInteration);
-  });
-  let where = {
-    [db.Sequelize.Op.or]: orValue
-  };
-
-  // SQL Statement here; Sequelize allows us to avoid raw SQL queries.
-  return db.book.findAll({ where });
-};
-
-const findBookByAuthor = db => author => {
-  var splitString = author.split(' ');
-
-  let orValue = [];
-  splitString.map(str => {
-    let orValueInteration = {
-      author: {
-        [db.Sequelize.Op.like]: '%' + str + '%'
-      }
-    };
-    orValue.push(orValueInteration);
-  });
-  let where = {
-    [db.Sequelize.Op.or]: orValue
-  };
-
-  // SQL Statement here; Sequelize allows us to avoid raw SQL queries
-  return db.book.findAll({ where });
-};
-
-const findBookByISBN = db => isbn => {
-  // SQL statement here; Sequelize allows us to avoid raw SQL queries
-  return db.book.findAll({
+const findBookWithListing = db => (query, column, page) =>
+  db.book.findAndCountAll({
+    distinct: true,
     where: {
-      isbn: {
-        [db.Sequelize.Op.like]: '%' + isbn + '%'
+      [db.Sequelize.Op.or]: query.split(' ').map(str => ({
+        [column]: {
+          [db.Sequelize.Op.like]: '%' + str + '%'
+        }
+      }))
+    },
+    offset: 5 * (page - 1),
+    limit: 5,
+    include: [
+      {
+        model: db.listing,
+        as: 'Listings',
+        include: [
+          {
+            model: db.user,
+            as: 'Seller',
+            attributes: ['uid', 'firstname', 'lastname']
+          }
+        ]
       }
+    ]
+  });
+
+const findBookWithoutListing = db => (query, column, page) =>
+  db.book.findAndCountAll({
+    where: {
+      [db.Sequelize.Op.or]: query.split(' ').map(str => ({
+        [column]: {
+          [db.Sequelize.Op.like]: '%' + str + '%'
+        }
+      }))
+    },
+    offset: 5 * (page - 1),
+    limit: 5
+  });
+
+const findAllBookWithoutListing = db => (query, column) =>
+  db.book.findAll({
+    where: {
+      [db.Sequelize.Op.or]: query.split(' ').map(str => ({
+        [column]: {
+          [db.Sequelize.Op.like]: '%' + str + '%'
+        }
+      }))
     }
   });
-};
-
-const findBookByID = db => bid => {
-  return db.book.findOne({
-    where: {
-      bid
-    }
-  });
-};
 
 module.exports = db => ({
-  findBookByTitle: findBookByTitle(db),
-  findBookByAuthor: findBookByAuthor(db),
-  findBookByISBN: findBookByISBN(db),
-  findBookByID: findBookByID(db)
+  findBookWithListing: findBookWithListing(db),
+  findBookWithoutListing: findBookWithoutListing(db),
+  findAllBookWithoutListing: findAllBookWithoutListing(db)
 });

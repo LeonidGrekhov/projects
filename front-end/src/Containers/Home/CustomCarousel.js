@@ -1,26 +1,5 @@
 import React, { Component } from 'react';
-
-// markup data
-import book1 from './SampleBookCovers/theIntelligentInvestor.jpeg';
-import book2 from './SampleBookCovers/CollegePhysics.jpeg';
-import book3 from './SampleBookCovers/Socrates.jpeg';
-import book4 from './SampleBookCovers/CollegeAlgebra.jpeg';
-
-let debug = true;
-
-// top 10 recommendations
-let json = [
-  { pic: book1 },
-  { pic: book2 },
-  { pic: book3 },
-  { pic: book4 },
-  { pic: book1 },
-  { pic: book2 },
-  { pic: book3 },
-  { pic: book4 },
-  { pic: book1 },
-  { pic: book2 }
-];
+import { Book } from '../../api';
 
 class CustomCarousel extends Component {
   constructor(props) {
@@ -37,10 +16,16 @@ class CustomCarousel extends Component {
   }
 
   componentDidMount = () => {
-    let framePerSecond = 30;
-    let animationData = this.initializeAnimationData(json, framePerSecond * 5);
-    let intervalId = setInterval(this.animate, 1000 / framePerSecond);
-    this.setState({ data: json, intervalId, animationData });
+    Book.getLatestReleases().then(books => {
+      const data = books.map(book => ({ pic: book.pictureurl, bid: book.bid }));
+      let framePerSecond = 30;
+      let animationData = this.initializeAnimationData(
+        data,
+        framePerSecond * 5
+      );
+      let intervalId = setInterval(this.animate, 1000 / framePerSecond);
+      this.setState({ data, intervalId, animationData });
+    });
   };
 
   componentWillUnmount = () => {
@@ -50,6 +35,7 @@ class CustomCarousel extends Component {
   initializeAnimationData = (json, framePerSecond) => {
     let animationData = {};
     animationData.covers = json.map(e => e.pic);
+    animationData.bids = json.map(e => e.bid);
     animationData.picHeights = [400, 400, 400, 400, 400, 400, 400];
     animationData.paddingRightResets = [2050, 1650, 1250, 850, 450, 50, -350];
     animationData.paddingRights = animationData.paddingRightResets;
@@ -82,6 +68,7 @@ class CustomCarousel extends Component {
       >
         <img
           carouselindex={i}
+          bid={animationData.bids[animationData.picIndices[i]]}
           src={animationData.covers[animationData.picIndices[i]]}
           alt="cover"
           style={{
@@ -150,6 +137,7 @@ class CustomCarousel extends Component {
         >
           <img
             carouselindex={i}
+            bid={animationData.bids[i]}
             src={animationData.covers[animationData.picIndices[i]]}
             alt="cover"
             style={{
@@ -166,11 +154,7 @@ class CustomCarousel extends Component {
   };
 
   onClick = event => {
-    if (debug) {
-      window.location = '/book/1';
-    } else {
-      window.location = `book/${event.target.getAttribute('bookid')}`;
-    }
+    window.location = `book/${event.target.getAttribute('bid')}`;
   };
 
   onEnter = event => {

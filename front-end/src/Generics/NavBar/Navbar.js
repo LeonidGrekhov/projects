@@ -22,7 +22,7 @@ class Navbar extends Component {
     }
     this.onChange = this.onChange.bind(this);
     this.onLogin = this.onLogin.bind(this);
-    this.onRegister = this.onRegister.bind(this);
+    this.onSignUp = this.onSignUp.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
 
@@ -37,18 +37,17 @@ class Navbar extends Component {
   onLogin = event => {
     event.preventDefault();
     Auth.postLogin(this.state.email, this.state.password).then(response => {
-      console.log(response);
       if (response.firstname) {
         this.setState({ user: response });
+        window.location.reload();
       } else {
-        console.log(response.error);
       }
     });
   };
 
-  onRegister = event => {
+  onSignUp = event => {
     event.preventDefault();
-    window.location = '/register';
+    window.location = '/signup';
   };
 
   onSearch = event => {
@@ -65,6 +64,7 @@ class Navbar extends Component {
     Auth.postLogout().then(response => {
       if (response.ok) {
         this.setState({ user: null });
+        window.location.reload();
       }
     });
   };
@@ -182,7 +182,7 @@ class Navbar extends Component {
         id="SignUpButton"
         className="btn btn-primary my-2 mr-2 my-sm-0"
         type="submit"
-        onClick={this.onRegister}
+        onClick={this.onSignUp}
       >
         Sign Up
       </button>

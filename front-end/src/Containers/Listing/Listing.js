@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { BookInfo as BookInfoAPI, Listing as ListingAPI } from '../../api';
+import { Auth, Chat, Listing as ListingAPI } from '../../api';
 
 class Listing extends Component {
   constructor(props) {
@@ -10,23 +10,17 @@ class Listing extends Component {
     this.state = {
       bid: props.match.params.bid,
       lid: props.match.params.lid,
-      bookData: null,
       listData: null,
       renderReady: false
     };
   }
 
-  componentDidMount = () => {
-    BookInfoAPI.getBookInfo(this.state.bid).then(bookData =>
-      ListingAPI.getListingInfo(this.state.bid, this.state.lid).then(data => {
-        if (bookData && data) {
-          let listData = data.list;
-          listData.seller = data.seller;
-          this.setState({ bookData, listData: listData, renderReady: true });
-        }
-      })
-    );
-  };
+  componentDidMount = () =>
+    ListingAPI.getList(this.state.lid).then(listData => {
+      if (listData) {
+        this.setState({ listData, renderReady: true });
+      }
+    });
 
   bodyContent = () => (
     <>
@@ -43,13 +37,16 @@ class Listing extends Component {
   );
 
   addToCart = () => (
-    <>
-      <button className="btn btn-warning float-right mr-5">
+    <div className="container pt-2 ">
+      <button
+        className="btn btn-warning float-right mr-5"
+        onClick={this.onAddToCart}
+      >
         <h4>
-          <i className="fa fa-shopping-cart" /> Add To Cart
+          <i className="fa fa-shopping-cart " /> Contact seller
         </h4>
       </button>
-    </>
+    </div>
   );
 
   bookInfo = () => (
@@ -58,28 +55,28 @@ class Listing extends Component {
       <div className="row mt-3">
         <div className="col-3">
           <img
-            className="img-fluid"
-            src={this.state.bookData.pictureurl}
+            className="img-fluid pl-2"
+            src={this.state.listData.Book.pictureurl}
             alt="cover"
           />
         </div>
         <div className="col mt-3">
-          <h1>{this.state.bookData.title}</h1>
-          <h5>author(s): {this.state.bookData.author}</h5>
-          <span>isbn: {this.state.bookData.isbn}</span>
+          <h1>{this.state.listData.Book.title}</h1>
+          <h5>author(s): {this.state.listData.Book.author}</h5>
+          <span>isbn: {this.state.listData.Book.isbn}</span>
           <br />
           <div className="row">
             <div className="col-1">rating:</div>
             <div className="col-1">
               <Generics.Body.RatingStar
-                rating={this.state.bookData.rating}
+                rating={this.state.listData.Book.rating}
                 dimension={12}
               />
             </div>
           </div>
           <br />
           <br />
-          <h6>{this.state.bookData.description}</h6>
+          <h6>{this.state.listData.Book.description}</h6>
         </div>
       </div>
     </>
@@ -93,9 +90,9 @@ class Listing extends Component {
         <div className="col">
           <h5>
             Seller:{' '}
-            {this.state.listData.seller.firstname +
+            {this.state.listData.Seller.firstname +
               ' ' +
-              this.state.listData.seller.lastname}
+              this.state.listData.Seller.lastname}
           </h5>
           <div className="row">
             <div className="col-1">rating:</div>
@@ -107,13 +104,39 @@ class Listing extends Component {
             </div>
           </div>
           <h6>condition: {this.state.listData.condition}</h6>
-          <h6>price: {this.state.listData.price}</h6>
-          <h6>description: {this.state.listData.description}</h6>
+          <h6>price: ${this.state.listData.price}</h6>
         </div>
         <div className="col-2" />
       </div>
     </>
   );
+
+  onAddToCart = _ => {
+    const {
+      lid,
+      listData: {
+        Seller: { uid }
+      }
+    } = this.state;
+    Auth.getLogin().then(userData => {
+      if (userData.uid !== uid) {
+        Chat.getChat(uid).then(chat => {
+          if (!chat) {
+            Chat.putChat(uid).then(_ =>
+              Chat.getChat(uid).then(chat => {
+                Chat.putChatlog(
+                  chat.crid,
+                  "hi, I'm interested in your listing #" + lid
+                ).then(_ => (window.location = '/chatroom/' + chat.crid));
+              })
+            );
+          } else {
+            window.location = '/chatroom/' + chat.crid;
+          }
+        });
+      }
+    });
+  };
 
   render = () => {
     return (

@@ -27,7 +27,6 @@ class CheckoutForm extends Component {
           if (response.ok) {
             this.setState({ complete: true });
           } else {
-            console.log(response.text().then(data => JSON.parse(data).error));
           }
         });
       }
