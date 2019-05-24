@@ -22,6 +22,7 @@ class Chat extends Component {
   componentDidMount = () => {
     ChatAPI.getChatroom(this.state.crid).then(chatroomData => {
       if (chatroomData) {
+        console.log(chatroomData);
         this.setState({ chatroomData, renderReady: true });
       }
     });
@@ -59,7 +60,9 @@ class Chat extends Component {
       <div className="row m-4">
         <div className="col-1" />
         <div className="col">
-          <h1>ChatLog</h1>
+          <h1>
+            Chat with {this.state.chatroomData.Chats[0].Receiver.firstname}
+          </h1>
         </div>
       </div>
       <div className="row m-4">
