@@ -37,16 +37,16 @@ class Listing extends Component {
   );
 
   addToCart = () => (
-    <>
+    <div className="container pt-2 ">
       <button
         className="btn btn-warning float-right mr-5"
         onClick={this.onAddToCart}
       >
         <h4>
-          <i className="fa fa-shopping-cart" /> Add To Cart
+          <i className="fa fa-shopping-cart " /> Contact seller
         </h4>
       </button>
-    </>
+    </div>
   );
 
   bookInfo = () => (
@@ -55,7 +55,7 @@ class Listing extends Component {
       <div className="row mt-3">
         <div className="col-3">
           <img
-            className="img-fluid"
+            className="img-fluid pl-2"
             src={this.state.listData.Book.pictureurl}
             alt="cover"
           />
