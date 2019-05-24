@@ -125,18 +125,23 @@ class Signup extends Component {
                   className="form-check-input"
                   id="exampleCheck1"
                   name="tosCheckbox"
-                  data-toggle="modal"
-                  data-target="#exampleModalLong"
                   checked={this.state.tosCheckbox}
                   onChange={this.onTos}
                 />
-                <label className="form-check-label" htmlFor="exampleCheck1">
+                <label
+                  className="form-check-label"
+                  style={{ cursor: 'pointer' }}
+                  className="ml-3"
+                  data-toggle="modal"
+                  data-target="#exampleModalLong"
+                  htmlFor="exampleCheck1"
+                >
                   Read Terms of Service
                 </label>
               </div>
               <button
                 type="submit"
-                className="btn btn-primary"
+                className="btn mt-2 btn-primary"
                 onClick={this.onSubmit}
               >
                 Register
@@ -428,14 +433,14 @@ class Signup extends Component {
                     <p />
                     <button
                       type="button"
-                      className="btn btn-secondary"
+                      className="btn m-2 btn-secondary"
                       data-dismiss="modal"
                     >
                       Close
                     </button>
                     <button
                       type="button"
-                      className="btn btn-primary"
+                      className="btn m-2 btn-primary"
                       data-dismiss="modal"
                     >
                       Read Terms of Services
