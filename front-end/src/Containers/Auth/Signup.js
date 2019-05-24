@@ -19,9 +19,9 @@ class Signup extends Component {
 
   componentDidMount = () => {
     Auth.getLogin().then(userInfo => {
-      try {
+      if (userInfo && userInfo.uid) {
         window.location = '/';
-      } catch (_) {}
+      }
     });
   };
 
