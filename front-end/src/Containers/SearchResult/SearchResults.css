@@ -4,7 +4,7 @@
 }
 
 #summary p.collapse:not(.show) {
-  height: 42px !important;
+  height: 104px !important;
   overflow: hidden;
 
   display: -webkit-box;
