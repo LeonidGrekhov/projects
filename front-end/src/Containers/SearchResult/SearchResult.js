@@ -35,13 +35,12 @@ class SearchResult extends Component {
   }
 
   componentDidMount = () => {
-    this.state.search(this.state.query, this.state.page).then(data => {
-      console.log(data.rows);
+    this.state.search(this.state.query, this.state.page).then(data =>
       this.setState({
         result: data.rows,
         pageCount: Math.ceil(data.count / 5)
-      });
-    });
+      })
+    );
   };
 
   bodyContent = () => {
@@ -159,7 +158,6 @@ class SearchResult extends Component {
         '',
         `./${page}`
       );
-      console.log(result);
       this.setState({
         result: result.rows,
         page

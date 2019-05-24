@@ -2,58 +2,8 @@ import React, { Component } from 'react';
 
 import Generics from '../../Generics';
 
-import { Chat } from '../../api';
-
-let json = {
-  profileData: {
-    firstname: 'Bob',
-    lastname: 'Ross',
-    email: 'fake@email.domain',
-    rating: 4.3,
-    pictureurl:
-      'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-    description:
-      'this is a placeholder account. Turn off debug to switch to an actual profile.'
-  },
-  chatListData: [
-    {
-      cid: 24,
-      sender: 'jimmy99',
-      lastMessage: 'Hi',
-      time: '14:22 24-03-2019'
-    },
-    {
-      cid: 12,
-      sender: 'looking4FreeBooks',
-      lastMessage: 'Heyy',
-      time: '10:02 22-03-2019'
-    },
-    {
-      cid: 16,
-      sender: 'yourDad',
-      lastMessage: 'Hello',
-      time: '06:12 16-03-2019'
-    },
-    {
-      cid: 39,
-      sender: 'xXxpageDestroyerxXx',
-      lastMessage: 'Yo',
-      time: '23:57 01-03-2019'
-    }
-  ],
-  reportListData: [
-    {
-      rid: 1,
-      title: 'adasd',
-      time: '14:22 24-03-2019'
-    },
-    {
-      rid: 3,
-      title: 'eitnieuyn69384',
-      time: '18:22 21-03-2019'
-    }
-  ]
-};
+import { Chat, Profile as ProfileAPI } from '../../api';
+import defaultProfileImage from './images/profile_default.png';
 
 class Profile extends Component {
   constructor(props) {
@@ -61,10 +11,16 @@ class Profile extends Component {
     this.state = {
       guest: true,
       uid: props.match.params.uid,
+      firstname: '',
+      lastname: '',
+      rating: null,
+      email: '',
+      description: '',
       chatListData: [],
       reportListData: [],
       profileData: null,
       display: null,
+      listings: [],
       onUserNavigation: {
         Profile: this.onProfile,
         Message: this.onMessage,
@@ -72,7 +28,7 @@ class Profile extends Component {
         Listing: this.onListing,
         Report: _ => this.setState({ display: 'Report' })
       },
-      renderReady: false
+      renderReady: true
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.profileSideBar = this.profileSideBar.bind(this);
@@ -89,38 +45,50 @@ class Profile extends Component {
   }
 
   componentDidMount = () => {
-    Chat.getUserChats().then(chats => {
-      if (chats) {
-        Promise.all(chats.map(chat => Chat.getChatroom(chat.crid))).then(
-          chatrooms => {
-            let chatListData = chatrooms.map(chatroom => ({
-              cid: chatroom.Chats[0].cid,
-              crid: chatroom.Chats[0].crid,
-              sender:
-                chatroom.Chats[0].Receiver.firstname +
-                ' ' +
-                chatroom.Chats[0].Receiver.lastname,
-              lastMessage: chatroom.Chatlogs.length
-                ? chatroom.Chatlogs[chatroom.Chatlogs.length - 1].message.split(
-                    ':'
-                  )[1]
-                : ''
-            }));
+    ProfileAPI.getUserProfile(this.state.uid).then(user => {
+      if (user) {
+        Chat.getUserChats().then(chats => {
+          if (chats) {
+            Promise.all(chats.map(chat => Chat.getChatroom(chat.crid))).then(
+              chatrooms => {
+                let chatListData = chatrooms.map(chatroom => ({
+                  cid: chatroom.Chats[0].cid,
+                  crid: chatroom.Chats[0].crid,
+                  sender:
+                    chatroom.Chats[0].Receiver.firstname +
+                    ' ' +
+                    chatroom.Chats[0].Receiver.lastname,
+                  lastMessage: chatroom.Chatlogs.length
+                    ? chatroom.Chatlogs[
+                        chatroom.Chatlogs.length - 1
+                      ].message.split(':')[1]
+                    : ''
+                }));
+                this.setState({
+                  firstname: user.firstname,
+                  lastname: user.lastname,
+                  email: user.email,
+                  rating: user.rating,
+                  listings: user.Listings,
+                  chatListData,
+                  display: 'Profile'
+                });
+              }
+            );
+          } else {
             this.setState({
-              chatListData,
-              profileData: json.profileData,
-              reportListData: json.reportListData,
+              firstname: user.firstname,
+              lastname: user.lastname,
+              email: user.email,
+              rating: user.rating,
+              listings: user.Listings,
+              chatListData: [],
               display: 'Profile'
             });
           }
-        );
-      } else {
-        this.setState({
-          chatListData: [],
-          profileData: json.profileData,
-          reportListData: json.reportListData,
-          display: 'Profile'
         });
+      } else {
+        window.location = '/';
       }
     });
   };
@@ -166,7 +134,7 @@ class Profile extends Component {
       }}
     >
       <img
-        src={this.state.profileData.pictureurl}
+        src={defaultProfileImage}
         className="img-fluid img-thumbnail"
         alt="profile"
         style={{
@@ -185,10 +153,9 @@ class Profile extends Component {
           }}
         >
           <h3>
-            {this.state.profileData.firstname} {this.state.profileData.lastname}
+            {this.state.firstname} {this.state.lastname}
           </h3>
-          {this.state.profileData.rating &&
-            this.displayRating(this.state.profileData.rating)}
+          {this.state.rating && this.displayRating(this.state.rating)}
         </li>
         <button
           type="button"
@@ -270,20 +237,13 @@ class Profile extends Component {
   );
 
   userContent = ({ guest }) => {
-    let {
-      display,
-      profileData,
-      chatListData,
-      reportListData,
-      uid
-    } = this.state;
-    console.log(chatListData);
+    let { listings, display, chatListData, reportListData, uid } = this.state;
     if ('Profile' === display) {
       return (
         <>
           <br />
           <h2>Profile</h2>
-          <div>{profileData.description}</div>
+          <div>{this.state.description}</div>
         </>
       );
     } else if ('Message' === display) {
@@ -311,14 +271,35 @@ class Profile extends Component {
       return (
         <div>
           <br />
-          to do
         </div>
       );
     } else if ('Listing' === display) {
       return (
         <div>
           <br />
-          to do
+          {listings.map((listing, i) => (
+            <div className="row" key={i}>
+              <div className="col">
+                <div
+                  className="card"
+                  onClick={_ =>
+                    (window.location = `./book/${listing.bid}/list/${
+                      listing.lid
+                    }`)
+                  }
+                >
+                  <div className="card-body">
+                    <h5 className="card-title">Listing #:{listing.lid}</h5>
+                    <p className="card-text">
+                      Book Title: {listing.Book.title}
+                    </p>
+                    <p className="card-text">Author: {listing.Book.author}</p>
+                    <p className="card-text">ISBN: {listing.Book.isbn}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       );
     } else if ('Report' === display) {

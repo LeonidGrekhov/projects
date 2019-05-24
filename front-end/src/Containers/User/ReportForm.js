@@ -23,7 +23,7 @@ class ReportForm extends Component {
       targetInfo: null,
       reportTitle: null,
       reportDescription: null,
-      renderReady: false
+      renderReady: true
     };
     this.bodyContent = this.bodyContent.bind(this);
     this.onSubmit = this.onSubmit.bind(this);

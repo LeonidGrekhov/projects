@@ -17,7 +17,6 @@ class CustomCarousel extends Component {
 
   componentDidMount = () => {
     Book.getLatestReleases().then(books => {
-      console.log(books);
       const data = books.map(book => ({ pic: book.pictureurl, bid: book.bid }));
       let framePerSecond = 30;
       let animationData = this.initializeAnimationData(
